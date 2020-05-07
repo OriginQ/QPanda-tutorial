@@ -38,7 +38,7 @@ CZ(1,0)
                 << CNOT(q[1], q[0]) << H(q[0]) << CNOT(q[1], q[2])
                 << H(q[2]) << CNOT(q[2], q[3]) << H(q[3]);
 
-            cout << prog;
+            cout << convert_qprog_to_originir(prog,qvm) << endl;
             auto query_cir = QCircuit();
             query_cir << H(q[0]) << CNOT(q[1], q[0]) << H(q[0]);
 
@@ -48,7 +48,7 @@ CZ(1,0)
             QProg update_prog;
             graph_query_replace(prog, query_cir, replace_cir, update_prog, qvm);
 
-            cout << update_prog;
+            cout << convert_qprog_to_originir(update_prog,qvm) << endl;
 
             return 0;
         }
