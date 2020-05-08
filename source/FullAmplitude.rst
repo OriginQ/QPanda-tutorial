@@ -163,14 +163,8 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
                 << CNOT(qubits[2], qubits[3])
                 << Measure(qubits[0], cbits[0]);
 
-            // 构建rapidjson::Document对象，并设置测量次数为1000
-            int shots = 1000;
-            rapidjson::Document doc;
-            doc.Parse("{}");
-            doc.AddMember("shots", shots, doc.GetAllocator());
-
-            // 对量子程序进行量子测量
-            auto result = qvm.runWithConfiguration(prog, cbits, doc);
+            // 量子程序运行1000次，并返回测量结果
+            auto result = qvm.runWithConfiguration(prog, cbits, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)

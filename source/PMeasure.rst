@@ -53,6 +53,7 @@ QPanda2提供了三种获得PMeasure结果的方式，其中有 ``probRunList`` 
             prog << H(qubits[0])
                 << CNOT(qubits[0], qubits[1]);
 
+            // 概率测量，并返回目标量子比特的概率测量结果，下标为二进制
             std::cout << "probRunDict: " << std::endl;
             auto result1 = probRunDict(prog, qubits);
             for (auto &val: result1)
@@ -60,6 +61,7 @@ QPanda2提供了三种获得PMeasure结果的方式，其中有 ``probRunList`` 
                 std::cout << val.first << ", " << val.second << std::endl;
             }
 
+            // 概率测量，并返回目标量子比特的概率测量结果，下标为十进制
             std::cout << "probRunTupleList: " << std::endl;
             auto result2 = probRunTupleList(prog, qubits);
             for (auto &val: result2)
@@ -67,6 +69,7 @@ QPanda2提供了三种获得PMeasure结果的方式，其中有 ``probRunList`` 
                 std::cout << val.first << ", " << val.second << std::endl;
             }
 
+            // 概率测量，并返回目标量子比特的概率测量结果， 无下标
             std::cout << "probRunList: " << std::endl;
             auto result3 = probRunList(prog, qubits);
             for (auto &val: result3)
