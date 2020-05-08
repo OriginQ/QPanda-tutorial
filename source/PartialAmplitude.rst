@@ -68,9 +68,9 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
         {
             auto machine = new PartialAmplitudeQVM();
             machine->init();
-
             auto qlist = machine->qAllocMany(10);
 
+            // 构建量子程序
             auto prog = QProg();
             for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { prog << H(val); });
             prog << CZ(qlist[1], qlist[5])
@@ -87,9 +87,12 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
                  << RY(qlist[2], PI / 4)
                  << RZ(qlist[9], PI / 4)
                  << CR(qlist[2], qlist[7], PI / 2);
-                
+
+            // 获取量子态所有分量的振幅     
             machine->run(prog);
             auto res = machine->getQState();
+
+            // 打印特定量子态分量的振幅
             cout << res["0000000000"] << endl;
             cout << res["0000000001"] << endl;
 

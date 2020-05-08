@@ -182,22 +182,36 @@ Linux 和 MacOS
     .. code-block:: c
 
         #include "QPanda.h"
-        #include <stdio.h>
-        using namespace QPanda;
+        USING_QPANDA
+
         int main()
         {
+            // 初始化量子虚拟机
             init(QMachineType::CPU);
-            QProg prog;
+            
+            // 申请量子比特以及经典寄存器
             auto q = qAllocMany(2);
             auto c = cAllocMany(2);
+           
+            // 构建量子程序
+            QProg prog;
             prog << H(q[0])
                 << CNOT(q[0],q[1])
                 << MeasureAll(q, c);
+            
+            // 对量子程序进行量子测量
             auto results = runWithConfiguration(prog, c, 1000);
-            for (auto result : results){
-                printf("%s : %d\n", result.first.c_str(), result.second);
+
+            // 打印量子态在量子程序多次运行结果中出现的次数
+            for (auto &val: results)
+            {
+                std::cout << val.first << ", " << val.second << std::endl;
             }
+
+            // 释放量子虚拟机
             finalize();
+
+            return 0;
         }
 
 示例程序的编译方式与编译QPanda库的方式基本类似，在这里就不多做赘述。我们在QPanda-2的github库中添加了 `Template <https://github.com/OriginQ/QPanda-2/tree/master/Template>`_ 文件夹，用于展示各个平台的使用案例。

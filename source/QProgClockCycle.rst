@@ -37,8 +37,8 @@
 
     .. code-block:: c
           
-        auto qubits = qvm->allocateQubits(4);
-        auto prog = CreateEmptyQProg();
+        auto qubits = qvm->qAllocMany(4);
+        auto prog = createEmptyQProg();
         prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
                 << iSWAP(qubits[1], qubits[2]) << RX(qubits[3], PI/4);
 
@@ -67,12 +67,18 @@
         int main(void)
         {
             auto qvm = initQuantumMachine();
-            auto qubits = qvm->allocateQubits(4);
-            auto prog = CreateEmptyQProg();
-            prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
-                    << iSWAP(qubits[1], qubits[2]) << RX(qubits[3], PI/4);
+            auto qubits = qvm->qAllocMany(4);
+            auto prog = createEmptyQProg();
 
+            // 构建量子程序
+            prog << H(qubits[0]) 
+                << CNOT(qubits[0], qubits[1])
+                << iSWAP(qubits[1], qubits[2]) 
+                << RX(qubits[3], PI/4);
+
+            // 统计量子程序时钟周期
             auto time = getQProgClockCycle(prog, qvm);
+            
             std::cout << "clockCycle : " << time << std::endl;
             destroyQuantumMachine(qvm);
 

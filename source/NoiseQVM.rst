@@ -127,20 +127,21 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
     .. code-block:: c
 
-        #include <QPanda.h>
+        #include "QPanda.h"
 
         int main(void)
         {
             NoiseQVM qvm;
-            // T1: 5.0, T2: 2.0, t_gate: 0.03
+            // T1: 5.0, T2: 2.0, t_gate: 0.03, 设置噪声模型参数
             qvm.set_noise_model(NOISE_MODEL::DECOHERENCE_KRAUS_OPERATOR, GateType::HADAMARD_GATE, { 5.0, 2.0, 0.03 });
             qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::CPHASE_GATE, { 0.1 });
             qvm.init();
 
             auto qvec = qvm.qAllocMany(4);
             auto cvec = qvm.cAllocMany(4);
-            QCircuit  qft = CreateEmptyCircuit();
 
+            // 构建QFT量子线路
+            QCircuit  qft = createEmptyCircuit();
             for (auto i = 0; i<qvec.size(); i++)
             {
                 qft << H(qvec[qvec.size() - 1 - i]);
@@ -151,13 +152,19 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
                 }
             }
 
+            // 构建量子程序
             QProg prog;
             prog << qft << MeasureAll(qvec, cvec);
+
+            // 构建rapidjson::Document对象，并设置测量次数为1000
             rapidjson::Document doc;
             doc.Parse("{}");
             doc.AddMember("shots", 1000, doc.GetAllocator());
 
+            // 对量子程序进行量子测量
             auto result = qvm.runWithConfiguration(prog, cvec, doc);
+
+            // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
             {
                 std::cout << val.first << " : " << val.second << std::endl;

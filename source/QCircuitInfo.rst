@@ -3,14 +3,14 @@
 获取量子线路对应矩阵
 ====================
 
-接口getMatrix可以获得输入线路的对应矩阵，有3个输出参数，一个量子线路QCircuit(或者Qprog)，另外两个是可选参数：迭代器开始位置和结束位置，用于指定一个要获取对应矩阵信息的线路区间，如果这两个参数为空，代表要获取整个量子线路的矩阵信息。
+接口 ``getCircuitMatrix`` 可以获得输入线路的对应矩阵，有3个输出参数，一个量子线路QCircuit(或者Qprog)，另外两个是可选参数：迭代器开始位置和结束位置，用于指定一个要获取对应矩阵信息的线路区间，如果这两个参数为空，代表要获取整个量子线路的矩阵信息。
 
-.. note:: 使用getMatrix需要注意的是量子线路中不能包含测量操作。
+.. note:: 使用 getCircuitMatrix 需要注意的是量子线路中不能包含测量操作。
 
 实例
 ---------------
 
- .. code-block:: c
+.. code-block:: c
 
     #include "QPanda.h"
     USING_QPANDA
@@ -18,28 +18,34 @@
     int main(void)
     {
         auto qvm = initQuantumMachine(QMachineType::CPU);
-        auto qubits = qvm->allocateQubits(2);
-        auto cbits = qvm->allocateCBits(2);
-        
-        QCircuit target_cir;
-        target_cir<< H(qubits[1])
-                  << CNOT(qubits[0],qubits[1])
-                  << H(qubits[1]);
+        auto q = qvm->qAllocMany(2);
+        auto c = qvm->cAllocMany(2);
 
-        auto cir_Matrix = getMatrix(target_cir);
+        // 构建量子线路
+        QCircuit cir;
+        cir << H(q[1])
+            << CNOT(q[0], q[1])
+            << H(q[1]);
+        
+        // 获取线路对应矩阵
+        QStat cir_matrix = getCircuitMatrix(cir);
+
+        // 打印矩阵信息
+        std::cout << cir_matrix << std::endl;
 
         destroyQuantumMachine(qvm);
         return 0;
     }
 
+
 具体步骤如下:
 
 1. 首先在主程序中用 initQuantumMachine()
    初始化一个量子虚拟机对象，用于管理后续一系列行为
-2. 接着用 allocateQubits() 和 allocateCBits()
-   初始化量子比特与经典寄存器数目
-3. 然后构建target\_cir
-4. 最后调用接口 getMatrix输出量子线路的对应矩阵
+2. 接着用 qAllocMany() 和 cAllocMany()初始化量子比特与经典寄存器数目
+3. 然后构建量子线路 cir
+4. 最后调用接口 getCircuitMatrix() 输出量子线路的对应矩阵，并打印矩阵
+
 
 判断量子逻辑门是否匹配量子拓扑结构
 ====================================
@@ -48,6 +54,7 @@
 
 .. figure:: ./images/IBM_Qubits.png
    :alt:
+
 从图中可知，量子芯片中的每个量子比特不是两两相连的，不相连的量子比特之间是不能直接执行多门操作的。所以在执行量子程序之前需要先判断量子程序中的双门（多门）操作是否适配量子比特拓扑结构。
 
 接口介绍
@@ -64,9 +71,9 @@ isMatchTopology：判断量子逻辑门是否符合量子比特拓扑结构。�
 
     bool result = isMatchTopology(CNOT(q[1],q[3]),qubits_topology);
 
-在使用isMatchTopology前需要先构建指定量子芯片的量子比特拓扑结构邻接矩阵qubits\_topology。
+在使用isMatchTopology前需要先构建指定量子芯片的量子比特拓扑结构邻接矩阵qubits_topology。
 
-从以上示例可以看出，qubits\_topology有四个量子比特，量子比特拓扑图如下：
+从以上示例可以看出，qubits_topology有四个量子比特，量子比特拓扑图如下：
 
 .. figure:: ./images/My_Qubits.png
    :alt:
@@ -81,22 +88,50 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 实例
 ---------------
 
-::
+.. code-block:: c
+ 
+    #include "QPanda.h"
+    USING_QPANDA
+    int main(void)
+    {
+        auto qvm = initQuantumMachine(QMachineType::CPU);
+        auto q = qvm->qAllocMany(4);
+        auto c = qvm->cAllocMany(4);
+        QProg prog;
 
-    prog << H(q[0])<<H(q[1])<<H(q[2])<<H(q[3])
-        <<RX(q[0],PI/2)<<CNOT(q[1],q[2])
-        <<RX(q[1],PI/2)<<RX(q[2],PI/2)
-        <<RX(q[3],PI/2)<<CNOT(q[q[2],q[3]);
-    auto node_iter= prog.getFirstNodeIter();
-    vector<NodeIter> node_iter_vector;
-    getAdjacentQGateType(prog,node_iter,node_iter_vector);
+        // 构建量子程序
+        prog << H(q[0]) 
+            << H(q[1]) 
+            << H(q[2]) 
+            << H(q[3])
+            << RX(q[0], PI / 2) 
+            << CNOT(q[1], q[2])
+            << RX(q[1], PI / 2) 
+            << RX(q[2], PI / 2)
+            << RX(q[3], PI / 2) 
+            << CNOT(q[2], q[3]);
+
+        auto node_iter = prog.getFirstNodeIter();
+        std::vector<NodeInfo> node_iter_vector;
+
+        // 获取量子程序中node_iter位置上的的相邻节点
+        getAdjacentQGateType(prog, node_iter, node_iter_vector);
+
+        // 打印前后相邻节点类型
+        std::cout << "The previous node type : " << node_iter_vector[0].m_node_type << std::endl;
+        std::cout << "The node type that follows :" << node_iter_vector[1].m_node_type << std::endl;
+
+        destroyQuantumMachine(qvm);
+        return 0;
+    }
+
 
 
 以上实例展示 getAdjacentQGateType 接口的使用方式：
 
   1. 构建一个量子程序prog；
-  2. 获取prog的第一个量子逻辑门的迭代器node\_iter；
-  3. 调用getAdjacentQGateType接口获取node\_iter的相邻逻辑门的迭代器集合。
+  2. 获取prog的第一个量子逻辑门的迭代器node_iter；
+  3. 调用getAdjacentQGateType接口获取node_iter的相邻逻辑门的迭代器集合。
 
 在使用getAdjacentQGateType接口时，我们需要注意以下几点： 
 
@@ -119,19 +154,48 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 以下实例展示isSwappable接口的使用方式：
 
   1. 构建一个量子程序prog； 
-  2. 获取prog的第一个量子逻辑门的迭代器node\_iter和最后一个量逻辑门的迭代器last\_node\_iter；
+  2. 获取prog的第一个量子逻辑门的迭代器node_iter和最后一个量逻辑门的迭代器last_node_iter；
   3. 调用isSwappable接口判断指定位置的两个逻辑门能否交换位置。
 
-::
+.. code-block:: c
 
-    prog << H(q[0])<<H(q[1])<<H(q[2])<<H(q[3])
-        <<RX(q[0],PI/2)<<CNOT(q[1],q[2])
-        <<RX(q[1],PI/2)<<RX(q[2],PI/2)
-        <<RX(q[3],PI/2)<<CNOT(q[q[2],q[3]);
-    auto node_iter= prog.getFirstNodeIter();
-    auto last_node_iter= prog.getLastNodeIter();
-    vector<NodeIter> node_iter_vector;
-    bool result = isSwappable(prog,node_iter,last_node_iter);
+    #include "QPanda.h"
+    USING_QPANDA
+    int main(void)
+    {
+        auto qvm = initQuantumMachine(QMachineType::CPU);
+        auto q = qvm->qAllocMany(4);
+        auto c = qvm->cAllocMany(4);
+        QProg prog;
+
+        // 构建量子程序
+        prog << H(q[0]) 
+            << H(q[1]) 
+            << H(q[2]) 
+            << H(q[3])
+            << RX(q[0], PI / 2) 
+            << CNOT(q[1], q[2])
+            << RX(q[1], PI / 2) 
+            << RX(q[2], PI / 2)
+            << RX(q[3], PI / 2) 
+            << CNOT(q[2], q[3]);
+        
+        // 获取待判断的节点
+        auto node_iter = prog.getFirstNodeIter();
+        auto last_node_iter = prog.getLastNodeIter();
+
+        // 判断节点是否可交换
+        bool result = isSwappable(prog, node_iter, last_node_iter);
+
+        if (result)
+            std::cout << "is  swappable! " << std::endl;
+        else
+            std::cout << "is not swappable! " << std::endl;
+
+        destroyQuantumMachine(qvm);
+        return 0;
+    }
+
 
 判断逻辑门是否属于量子芯片支持的量子逻辑门集合
 ==============================================
@@ -176,9 +240,30 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 
 从上面的示例中我们可以得到，量子芯片支持RX，RY，RZ，S，H，X1，CNOT，CZ，ISWAP门。在配置文件配置完成后，我们可以调用接口isSupportedGateType，判断逻辑门是否属于量子芯片支持的量子逻辑门集合。isSupportedGateType接口只有一个参数：目标量子逻辑门；
 
-::
+.. code-block:: c
 
-    auto qgate = X(q[1])
-    bool result = isSupportedGateType(qgate);
+    #include "QPanda.h"
+    USING_QPANDA
+
+    int main(void)
+    {
+        auto qvm = initQuantumMachine();
+        auto q = qvm->qAllocMany(5);
+        QProg prog;
+
+        // 构建待判断的逻辑门
+        prog << H(q[1]);
+
+        // 判断逻辑门类型是否支持
+        bool result = isSupportedGateType(prog.getFirstNodeIter());
+
+        if (result)
+            std::cout << "Gate type is supported !";
+        else
+            std::cout << "Gate type is not supported !";
+
+        destroyQuantumMachine(qvm);
+        return 0;
+    }
 
 .. note:: 用户可通过如下链接地址获取默认配置文件 `QPandaConfig.xml <https://github.com/OriginQ/QPanda-2/blob/master/QPandaConfig.xml>`_ , 将该默认配置文件放在执行程序同级目录下，可执行程序会自动解析该文件。

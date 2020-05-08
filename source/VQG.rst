@@ -67,7 +67,7 @@ VariationalQuantumGate_CZ     VQG_CZ
         constexpr int qnum = 2;
 
         QuantumMachine *machine = initQuantumMachine(CPU_SINGLE_THREAD);
-        auto q = machine->allocateQubits(qnum);
+        auto q = machine->qAllocMany(qnum);
 
         MatrixXd m1(1, 1);
         MatrixXd m2(1, 1);

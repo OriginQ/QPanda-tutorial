@@ -75,15 +75,20 @@ C语言风格
             cvec[1].setValue(0);
             cvec[0].setValue(0);
 
-            QProg branch_true;
-            QProg branch_false;
+            QProg branch_true, branch_false;
+            
+            // 构建QIf正确分支以及错误分支
             branch_true << H(qvec[cvec[0]]) << (cvec[0]=cvec[0]+1);
             branch_false << H(qvec[0]) << CNOT(qvec[0],qvec[1]) << CNOT(qvec[1],qvec[2]);
 
+            // 构建QIf
             auto qif = createIfProg(cvec[1]>5, branch_true, branch_false);
+
+            // QIf插入到量子程序中，并进行概率测量
             prog << qif;
             auto result = probRunTupleList(prog, qvec);
 
+            // 打印概率测量结果
             for (auto & val : result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;
