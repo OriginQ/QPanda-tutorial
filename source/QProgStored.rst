@@ -14,8 +14,8 @@
 
     .. code-block:: c
           
-        auto qubits = qvm_store->allocateQubits(4);
-        auto cbits = qvm_store->allocateCBits(4);
+        auto qubits = qvm->qAllocMany(4);
+        auto cbits = qvm->cAllocMany(4);
 
         QProg prog;
         prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
@@ -62,22 +62,25 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
         int main(void)
         {
             auto qvm = initQuantumMachine();
-            auto qubits = qvm->allocateQubits(4);
-            auto cbits = qvm->allocateCBits(4);
+            auto qubits = qvm->qAllocMany(4);
+            auto cbits = qvm->cAllocMany(4);
             cbits[0].setValue(0);
 
+            // 构建量子程序
             QProg prog;
             prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
                     << CNOT(qubits[1], qubits[2])
-                    << CNOT(qubits[2], qubits[3])
-                    ;
+                    << CNOT(qubits[2], qubits[3]);
+            
+            // 量子程序序列化
             auto data = convert_qprog_to_binary(prog, qvm);
-            auto base64_data = Base64::encode(data.data(), data.size()); // 将得到的二进制数据以base64的方式编码
+
+            // 将得到的二进制数据以base64的方式编码
+            auto base64_data = Base64::encode(data.data(), data.size());
             std::string data_str(base64_data.begin(), base64_data.end());
             std::cout << data_str << std::endl;
 
  	        destroyQuantumMachine(qvm);
-
             return 0;
         }
         

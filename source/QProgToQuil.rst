@@ -35,8 +35,8 @@
     .. code-block:: c
           
         QProg prog;
-        auto qubits = qvm->allocateQubits(4);
-        auto cbits = qvm->allocateCBits(4);
+        auto qubits = qvm->qAllocMany(4);
+        auto cbits = qvm->cAllocMany(4);
 
         prog << X(qvec[0])
              << Y(qvec[1])
@@ -69,15 +69,18 @@
         int main(void)
         {
             auto qvm = initQuantumMachine(QMachineType::CPU);
-            auto qubits = qvm->allocateQubits(4);
-            auto cbits = qvm->allocateCBits(4);
+            auto qubits = qvm->qAllocMany(4);
+            auto cbits = qvm->cAllocMany(4);
             QProg prog;
+
+            // 构建量子程序
             prog << X(qubits[0])
                  << Y(qubits[1])
                  << H(qubits[2])
                  << RX(qubits[3], 3.14)
                  << Measure(qubits[0], cbits[0]);
 
+            // 量子程序转换Quil
             std::string instructions = convert_qprog_to_quil(prog, qvm);
             std::cout << instructions << std::endl;
             destroyQuantumMachine(qvm);

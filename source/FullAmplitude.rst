@@ -105,7 +105,13 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
         map<string, bool> result = qvm->directlyRun(prog); // 执行量子程序
 
 如果想多次运行一个量子程序，并得到每次量子程序的结果，除了循环调用 ``directlyRun`` 方法外， 我们还提供了一个接口 ``runWithConfiguration`` 。
-为了以后的扩展， ``runWithConfiguration`` 配置参数是一个rapidjson::Document类型的参数， rapidjson::Document保存的是一个Json对象，由于现在只支持
+``runWithConfiguration`` 有两个重载方法，一个是int类型的配置参数，另一个是rapidjson::Document类型的配置参数。其中int类型的配置参数用法如下：
+      .. code-block:: c
+
+        int shots = 1000;
+        qvm->runWithConfiguration(prog, cbits, shots);
+
+``runWithConfiguration`` 另个重载方法是为了以后的扩展，配置参数类型为rapidjson::Document， rapidjson::Document保存的是一个Json对象，由于现在只支持
 量子程序运行次数的配置， 其json数据结构为：
 
     .. code-block:: json
@@ -146,9 +152,10 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
         {
             CPUQVM qvm;
             qvm.init();
-            auto qubits = qvm.allocateQubits(4);
-            auto cbits = qvm.allocateCBits(4);
+            auto qubits = qvm.qAllocMany(4);
+            auto cbits = qvm.cAllocMany(4);
 
+            // 构建量子程序
             QProg prog;
             prog << H(qubits[0])
                 << CNOT(qubits[0], qubits[1])
@@ -156,12 +163,16 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
                 << CNOT(qubits[2], qubits[3])
                 << Measure(qubits[0], cbits[0]);
 
+            // 构建rapidjson::Document对象，并设置测量次数为1000
             int shots = 1000;
             rapidjson::Document doc;
             doc.Parse("{}");
             doc.AddMember("shots", shots, doc.GetAllocator());
+
+            // 对量子程序进行量子测量
             auto result = qvm.runWithConfiguration(prog, cbits, doc);
 
+            // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;
@@ -194,6 +205,7 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
             auto qubits = qAllocMany(4);
             auto cbits = cAllocMany(4);
 
+            //构建量子程序
             QProg prog;
             prog << H(qubits[0])
                 << CNOT(qubits[0], qubits[1])

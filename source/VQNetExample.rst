@@ -128,7 +128,7 @@ QAOA
         QuantumMachine *machine = initQuantumMachine();
         QVec qlist;
         for (int i = 0; i < op.getMaxIndex(); ++i)
-            qlist.push_back(machine->allocateQubit());
+            qlist.push_back(machine->qAlloc());
 
         VQC vqc;
         for_each(qlist.begin(), qlist.end(), [&vqc](Qubit* qbit)

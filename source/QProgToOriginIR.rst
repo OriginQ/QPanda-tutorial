@@ -55,7 +55,7 @@ OriginIR把量子逻辑门分为以下几个种类：
 
 ::
 
-    U2 q[0],(1.570796,4.712389,1.570796)
+    U3 q[0],(1.570796,4.712389,1.570796)
 
 
 5、单门四个参数关键字：U4；表示有四个参数的单量子逻辑门；格式为量子逻辑门关键字+空格+目标量子比特+空格+（四个偏转角度）。示例：
@@ -240,8 +240,8 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
             auto prog = createEmptyQProg();
             auto cir = createEmptyCircuit();
 
-            auto q = qvm->allocateQubits(6);
-            auto c = qvm->allocateCBits(6);
+            auto q = qvm->qAllocMany(6);
+            auto c = qvm->cAllocMany(6);
 
 
             cir << Y(q[2]) << H(q[2]);
@@ -250,6 +250,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
             auto h1 = H(q[1]);
             h1.setDagger(true);
             
+            // 构建量子程序
             prog << H(q[1]) 
                 << X(q[2]) 
                 << h1 
@@ -258,6 +259,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
                 << CR(q[1], q[2], PI / 2)
                 << MeasureAll(q,c);
 
+            // 量子程序转换QriginIR，并打印OriginIR
             std::cout << convert_qprog_to_originir(prog,qvm) << std::endl;
 
             destroyQuantumMachine(qvm);
@@ -270,7 +272,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
 
  - 首先在主程序中用 ``initQuantumMachine()`` 初始化一个量子虚拟机对象，用于管理后续一系列行为
 
- - 接着用 ``allocateQubits()`` 和 ``allocateCBits()`` 初始化量子比特与经典寄存器数目
+ - 接着用 ``qAllocMany()`` 和 ``cAllocMany()`` 初始化量子比特与经典寄存器数目
 
  - 然后调用 ``createEmptyQProg()`` 构建量子程序
 

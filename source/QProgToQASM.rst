@@ -64,16 +64,14 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
             auto prog = createEmptyQProg();
             auto cir = createEmptyCircuit();
 
-            auto q = qvm->allocateQubits(6);
-            auto c = qvm->allocateCBits(6);
+            auto q = qvm->qAllocMany(6);
+            auto c = qvm->cAllocMany(6);
 
-
+            // 构建量子程序
             cir << Y(q[2]) << H(q[2]);
             cir.setDagger(true);
-
             auto h1 = H(q[1]);
             h1.setDagger(true);
-            
             prog << H(q[1]) 
                  << X(q[2]) 
                  << h1 
@@ -82,6 +80,7 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
                  << CR(q[1], q[2], PI / 2)
                  <<MeasureAll(q,c);
 
+            // 量子程序转换QASM，并打印QASM
             std::cout << convert_qprog_to_qasm(prog,qvm);
 
             destroyQuantumMachine(qvm);
@@ -92,7 +91,7 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
 
  - 首先在主程序中用 ``initQuantumMachine()`` 初始化一个量子虚拟机对象，用于管理后续一系列行为
 
- - 接着用 ``allocateQubits()`` 和 ``allocateCBits()`` 初始化量子比特与经典寄存器数目
+ - 接着用 ``qAllocMany()`` 和 ``cAllocMany()`` 初始化量子比特与经典寄存器数目
 
  - 然后调用 ``createEmptyQProg()`` 构建量子程序
 

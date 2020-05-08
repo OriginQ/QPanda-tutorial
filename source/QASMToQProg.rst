@@ -25,6 +25,7 @@ QPanda 2提供了QASM文件转换工具接口 ``convert_qasm_to_qprog()`` 该接
 
 		int main()
 		{
+			// 编写QASM文件
 			std::string filename = "testfile.txt";
 			std::ofstream os(filename);
 			os << R"(// test QASM file
@@ -45,11 +46,13 @@ QPanda 2提供了QASM文件转换工具接口 ``convert_qasm_to_qprog()`` 该接
 			os.close();
 
 			auto machine = initQuantumMachine(QMachineType::CPU);
-			
 			QVec out_qv;
 			std::vector<ClassicalCondition> out_cv;
+
+			// QASM转换量子程序
 			QProg out_prog = convert_qasm_to_qprog(filename, machine, out_qv, out_cv);
 
+			// 量子程序转换QASM，打印并对比转换结果
 			std::cout << convert_qprog_to_qasm(out_prog, machine) << std::endl;
 			destroyQuantumMachine(machine);
 			return 0;
