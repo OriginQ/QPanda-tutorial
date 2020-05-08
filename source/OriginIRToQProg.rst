@@ -25,6 +25,7 @@ QPanda 2提供了OriginIR文件转换工具接口 ``convert_originir_to_qprog()`
 
         int main()
         {
+            // 编写OriginIR文件
 	        std::string filename = "testfile.txt";
 	        std::ofstream os(filename);
 	        os << R"(QINIT 4
@@ -52,8 +53,11 @@ QPanda 2提供了OriginIR文件转换工具接口 ``convert_originir_to_qprog()`
 	        auto machine = initQuantumMachine(QMachineType::CPU);
             QVec out_qv;
 			std::vector<ClassicalCondition> out_cv;
+
+            // OriginIR转换量子程序
 	        QProg out_prog = convert_originir_to_qprog(filename, machine, out_qv, out_cv);
 
+            // 量子程序转换OriginIR，打印并对比转换结果
 	        std::cout <<
 		        convert_qprog_to_originir(out_prog, machine)
 		        << std::endl;

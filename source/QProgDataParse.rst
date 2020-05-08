@@ -17,7 +17,7 @@
 
         prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
                 << CNOT(qubits[1], qubits[2])
-                << CNOT(qubits[2], qubits[3])；
+                << CNOT(qubits[2], qubits[3]);
 
 序列化之后经过base64编码之后得到的结果是（具体序列化的方法参照 :ref:`QProgStored`）
 
@@ -67,9 +67,14 @@
             std::vector<ClassicalCondition> cbits_parse;
 
             std::string data_str = "AAAAAAQAAAAEAAAABAAAAA4AAQAAAAAAJAACAAAAAQAkAAMAAQACACQABAACAAMA";
+      
+            // base64的方式解码，得到的二进制数据
             auto data = Base64::decode(data_str.data(), data_str.size());
+
+            // 解析二进制数据，得到量子程序
             convert_binary_data_to_qprog(qvm, data, qubits_parse, cbits_parse, parseProg);
 
+            // 打印量子程序的概率测量结果
             auto result_parse = probRunTupleList(parseProg, qubits_parse);
             for (auto &val : result_parse)
             {

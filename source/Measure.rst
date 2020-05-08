@@ -74,17 +74,21 @@
         int main(void)
         {
             auto qvm = initQuantumMachine();
-            auto qubits = qvm->allocateQubits(4);
-            auto cbits = qvm->allocateCBits(4);
+            auto qubits = qvm->qAllocMany(4);
+            auto cbits = qvm->cAllocMany(4);
+
+            // 构建量子程序
             QProg prog;
-            
             prog   << H(qubits[0])
                     << H(qubits[1])
                     << H(qubits[2])
                     << H(qubits[3])
                     << MeasureAll(qubits, cbits);
-
+           
+            // 对量子程序进行量子测量
             auto result = runWithConfiguration(prog, cbits, 1000);
+
+            // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val: result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;

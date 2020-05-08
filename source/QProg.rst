@@ -32,24 +32,6 @@ C语言风格
 
 QProg的构造函数还有以下几种：
 
-通过QNode*构造量子程序：
-
-    .. code-block:: c
-
-        auto qubit = qAlloc();
-        auto gate = H(qubit);
-        auto pnode = &gate;
-        QProg prog(pnode);
-
-通过shared_ptr<QNode>构造量子程序：
-
-    .. code-block:: c
-
-        auto qubit = qAlloc();
-        auto gate = H(qubit);
-        auto pnode = gate.getImplementationPtr();
-        QProg prog(pnode);
-
 通过量子线路构造量子程序：
 
     .. code-block:: c
@@ -171,12 +153,19 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
             auto cvec = cAllocMany(4);
 
             QProg prog;
-            prog << H(qvec[0]) << X(qvec[1])
+            
+            // 构建量子程序
+            prog << H(qvec[0]) 
+                << X(qvec[1])
                 << iSWAP(qvec[0], qvec[1])
                 << CNOT(qvec[1], qvec[2])
-                << H(qvec[3]) << MeasureAll(qvec ,cvec);
+                << H(qvec[3]) 
+                << MeasureAll(qvec ,cvec);
 
+            // 对量子程序进行量子测量
             auto result = runWithConfiguration(prog, cvec, 1000);
+
+            // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;

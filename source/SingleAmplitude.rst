@@ -63,10 +63,10 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
         {
             auto machine = new SingleAmplitudeQVM();
             machine->init();
-
-            auto prog = QProg();
             auto qlist = machine->qAllocMany(10);
 
+            // 构建量子程序
+            auto prog = QProg();
             for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { prog << H(val); });
             prog << CZ(qlist[1], qlist[5])
                  << CZ(qlist[3], qlist[5])
@@ -92,9 +92,12 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
                  << RY(qlist[2], PI / 2)
                  << RZ(qlist[3], PI / 4)
                  << CR(qlist[7], qlist[8], PI);
-                
+            
+            // 获取量子态所有分量的振幅
             machine->run(prog);
             auto res = machine->getQState();
+
+            // 打印特定量子态分量的振幅
             cout << res["0000000000"] << endl;
             cout << res["0000000001"] << endl;
 

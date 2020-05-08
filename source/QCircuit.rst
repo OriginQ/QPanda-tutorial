@@ -113,15 +113,19 @@ control的作用是复制当前的量子线路，并给复制的量子线路添�
             init();
             auto qvec = qAllocMany(4);
             auto cbits = cAllocMany(4);
-            auto circuit = CreateEmptyCircuit(); 
+            auto circuit = createEmptyCircuit(); 
 
+            // 构建量子程序
             circuit << H(qvec[0]) << CNOT(qvec[0], qvec[1])
                     << CNOT(qvec[1], qvec[2]) << CNOT(qvec[2], qvec[3]);
             circuit.setDagger(true);
-            auto prog = CreateEmptyQProg();
+            auto prog = createEmptyQProg();
             prog << H(qvec[3]) << circuit << Measure(qvec[0], cbits[0]);
 
+            // 对量子程序进行量子测量
             auto result = runWithConfiguration(prog, cbits, 1000);
+
+            // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;
