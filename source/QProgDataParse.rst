@@ -74,8 +74,10 @@
             // 解析二进制数据，得到量子程序
             convert_binary_data_to_qprog(qvm, data, qubits_parse, cbits_parse, parseProg);
 
-            // 打印量子程序的概率测量结果
+            // 概率测量，并返回目标量子比特的概率测量结果，下标为十进制
             auto result_parse = probRunTupleList(parseProg, qubits_parse);
+
+            // 打印测量结果
             for (auto &val : result_parse)
             {
                 std::cout << val.first << ", " << val.second << std::endl;

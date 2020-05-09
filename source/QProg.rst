@@ -162,7 +162,7 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
                 << H(qvec[3]) 
                 << MeasureAll(qvec ,cvec);
 
-            // 对量子程序进行量子测量
+            // 量子程序运行1000次，并返回多次测量的结果
             auto result = runWithConfiguration(prog, cvec, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数
