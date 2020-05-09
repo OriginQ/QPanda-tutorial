@@ -199,7 +199,7 @@ Linux 和 MacOS
                 << CNOT(q[0],q[1])
                 << MeasureAll(q, c);
             
-            // 对量子程序进行量子测量
+            // 量子程序运行1000次，并返回测量结果
             auto results = runWithConfiguration(prog, c, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数

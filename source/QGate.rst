@@ -203,7 +203,7 @@ control的作用是复制当前的量子逻辑门，并给复制的量子逻辑�
 ----------------
 
 以下实例主要是向您展现QGate类型接口的使用方式，我们先使用init接口初始化一个量子虚拟机，向量子虚拟机申请3个量子比特，并把q[0],q[1]存放在一个量子比特容器中。
-接着，调用createEmptyQProg构建一个量子程序prog，然后我们可以通过 << 操作符把量子逻辑门插入到prog中。最后调用qprobRunTupleList概率测量运行接口，就可以得到计算结果了。
+接着，调用createEmptyQProg构建一个量子程序prog，然后我们可以通过 << 操作符把量子逻辑门插入到prog中。最后调用probRunTupleList概率测量运行接口，就可以得到计算结果了。
 
     .. code-block:: c
     
@@ -223,7 +223,7 @@ control的作用是复制当前的量子逻辑门，并给复制的量子逻辑�
                  << H(q[0]).dagger()
                  << X(q[2]).control(qubits);
             
-            // 对量子程序进行概率测量
+            // 概率测量，并返回目标量子比特的概率测量结果，下标为十进制
             auto result = probRunTupleList(prog, q);
 
             // 打印测量结果

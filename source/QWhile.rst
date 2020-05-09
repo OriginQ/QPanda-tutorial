@@ -82,7 +82,7 @@ C语言风格
             // QWhile插入到量子程序中
             prog << qwhile;
 
-            // 概率测量
+            // 概率测量，并返回目标量子比特的概率测量结果，其对应的下标为十进制
             auto result = probRunTupleList(prog, qvec);
 
             // 打印测量结果

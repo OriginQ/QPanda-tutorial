@@ -84,8 +84,10 @@ C语言风格
             // 构建QIf
             auto qif = createIfProg(cvec[1]>5, branch_true, branch_false);
 
-            // QIf插入到量子程序中，并进行概率测量
+            // QIf插入到量子程序中
             prog << qif;
+
+            // 概率测量，并返回目标量子比特的概率测量结果，下标为十进制
             auto result = probRunTupleList(prog, qvec);
 
             // 打印概率测量结果
