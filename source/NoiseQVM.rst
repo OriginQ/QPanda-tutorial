@@ -122,6 +122,14 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
         qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::CNOT_GATE, { 0.3 });
         qvm.init();
 
+含噪声虚拟机还支持设置设置带有角度的量子逻辑门的转转角度误差，其接口使用方式如下：
+
+    .. code-block:: c
+
+        qvm.set_rotation_angle_error(0.1)
+
+即设置角度旋转误差为0.1
+
 实例
 ----------------
 
@@ -135,6 +143,9 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
             // T1: 5.0, T2: 2.0, t_gate: 0.03, 设置噪声模型参数
             qvm.set_noise_model(NOISE_MODEL::DECOHERENCE_KRAUS_OPERATOR, GateType::HADAMARD_GATE, { 5.0, 2.0, 0.03 });
             qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::CPHASE_GATE, { 0.1 });
+
+            // 设置角度旋转误差为0.1
+            qvm.set_rotation_angle_error(0.1);
             qvm.init();
 
             auto qvec = qvm.qAllocMany(4);
@@ -174,20 +185,20 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
     .. code-block:: c
 
-        0000 : 74
-        0001 : 63
-        0010 : 51
-        0011 : 46
-        0100 : 53
+        0000 : 73
+        0001 : 68
+        0010 : 66
+        0011 : 56
+        0100 : 60
         0101 : 64
-        0110 : 69
-        0111 : 70
-        1000 : 67
-        1001 : 59
+        0110 : 56
+        0111 : 62
+        1000 : 56
+        1001 : 72
         1010 : 64
-        1011 : 74
-        1100 : 62
-        1101 : 60
-        1110 : 71
-        1111 : 53
+        1011 : 66
+        1100 : 58
+        1101 : 58
+        1110 : 55
+        1111 : 66
 
