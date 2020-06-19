@@ -64,7 +64,7 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
             auto qvm = initQuantumMachine();
             auto qubits = qvm->qAllocMany(4);
             auto cbits = qvm->cAllocMany(4);
-            cbits[0].setValue(0);
+            cbits[0].set_val(0);
 
             // 构建量子程序
             QProg prog;

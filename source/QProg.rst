@@ -47,7 +47,7 @@ QProg的构造函数还有以下几种：
 
         auto qubit = qAlloc();
         auto cbit = cAlloc();
-        cbit.setValue(3);
+        cbit.set_val(3);
         QCircuit circuit;
         circuit << H(qubit);
         QIfProg qif(cbit > 3, circuit);
@@ -59,7 +59,7 @@ QProg的构造函数还有以下几种：
 
         auto qubit = qAlloc();
         auto cbit = cAlloc();
-        cbit.setValue(3);
+        cbit.set_val(3);
         QCircuit circuit;
         circuit << H(qubit);
         QWhileProg qwhile(cbit > 3, circuit);
@@ -95,7 +95,7 @@ QProg的构造函数还有以下几种：
 
         auto qubit = qAlloc();
         auto cbit = cAlloc();
-        cbit.setValue(1);
+        cbit.set_val(1);
         auto gate = H(qubit);
         auto qif = QIfProg(cbit > 1, gate);
 

@@ -72,8 +72,8 @@ C语言风格
 
             auto qvec = qAllocMany(3);
             auto cvec = cAllocMany(3);
-            cvec[1].setValue(0);
-            cvec[0].setValue(0);
+            cvec[1].set_val(0);
+            cvec[0].set_val(0);
 
             QProg branch_true, branch_false;
             
