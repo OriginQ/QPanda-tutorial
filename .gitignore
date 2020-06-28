@@ -6,3 +6,5 @@
 .vscode
 .vs
 source/_build
+/build
+/source/sphinx/__pycache__

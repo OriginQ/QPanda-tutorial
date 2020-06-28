@@ -71,6 +71,7 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     
     GraphMatch
     FillQProgByI
+    MatrixDecompostion
 
 .. toctree::
     :caption: 组件
@@ -79,6 +80,7 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     PauliOperator
     FermionOperator
     Optimizer
+    QAdder
 
 .. toctree::
     :caption: VQNet

@@ -70,7 +70,7 @@ C语言风格
             QProg prog;
             auto qvec = qAllocMany(3);
             auto cvec = cAllocMany(3);
-            cvec[0].setValue(0);
+            cvec[0].set_val(0);
 
             // 构建QWhile的循环分支
             QProg prog_in;
