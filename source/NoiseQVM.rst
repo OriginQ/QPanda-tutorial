@@ -128,7 +128,32 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
         qvm.set_rotation_angle_error(0.1)
 
-即设置角度旋转误差为0.1
+即设置角度旋转误差为0.1。
+
+
+含噪声虚拟机同样支持直接设置KRAUS矩阵的方法，其接口使用方式如下：
+    
+    .. code-block:: c
+
+        double prob = 0.05;
+        QStat k1 = { qcomplex_t(1 - prob, 0),  0, 0, qcomplex_t(1 - prob, 0) };
+        QStat k2 = { 0, qcomplex_t(0, -sqrt(prob)), qcomplex_t(0, sqrt(prob)), 0 };
+        std::vector<QStat> noise = { k1, k2 };
+        qvm->set_noise_kraus_matrix(GateType::RX_GATE, noise);
+
+即设置KRAUS矩阵k1，k2。
+
+含噪声虚拟机更加支持直接设置自定义酉矩阵以及矩阵对应概率的方法，其接口使用方式如下：
+
+    .. code-block:: c
+
+        QStat mat_i = { 1, 0, 0, 1 };
+        QStat mat_x = { 0, 1, 1, 0 };
+        std::vector<QStat> gates_mat = { mat_i, mat_x };
+        std::vector<double> gates_prob = { 1 - prob , prob };
+        qvm->set_noise_unitary_matrix(GateType::PAULI_X_GATE, gates_mat, gates_prob);   
+
+即设置自定义矩阵集合gates_mat以及对应的概率集合gates_prob。
 
 实例
 ----------------
