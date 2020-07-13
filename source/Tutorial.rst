@@ -35,7 +35,7 @@
 
 1. ``FIND_CUDA`` : 查询系统中是否有cuda库，如果有就会将其编译进去， 在做量子计算时可以选择GPU作为计算后端
 2. ``USE_CHEMIQ`` : 化学模拟库
-3. ``USE_PYQPANDA`` : 编译出共python使用的pyqpanda库
+3. ``USE_PYQPANDA`` : 编译出供python使用的pyqpanda库
 
 *默认情况下，上述的配置项都是关闭的，如果有需要，可以在编译时选择打开*
 
