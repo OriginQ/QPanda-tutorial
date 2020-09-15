@@ -96,6 +96,9 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
             cout << res["0000000000"] << endl;
             cout << res["0000000001"] << endl;
 
+            machine->finalize();
+        }
+
 上述程序使用的接口为getQState()，即获取量子态所有分量的振幅，计算结果如下
 
     .. code-block:: c
