@@ -14,3 +14,4 @@
    SingleAmplitude
    PartialAmplitude
    MPS
+   QCloudMachine
