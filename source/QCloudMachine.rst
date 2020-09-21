@@ -175,7 +175,7 @@ QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器�
                     110 : 0.08
                     111 : 0.10
 
-        - ``6.full_amplitude_measure(本源悟源真实芯片测量操作)`` ：
+        - ``6.real_chip_measure(本源悟源真实芯片测量操作)`` ：
 
                 .. code-block:: c
 
