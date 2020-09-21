@@ -220,19 +220,19 @@ Linux 和 MacOS
 
     .. code-block:: c
 
-        g++ test.cpp -std=c++14 -fopenmp -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lTinyXML -lantlr4  -lGPUQGates -o test
+        g++ test.cpp -std=c++14 -fopenmp -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lantlr4  -lGPUQGates -o test
 
 如果宿主机上安装了libcurl，则编译命令如下所示：
 
     .. code-block:: c
 
-        g++ test.cpp -std=c++14 -fopenmp -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lTinyXML -lantlr4  -lGPUQGates -lcurl -o test
+        g++ test.cpp -std=c++14 -fopenmp -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lantlr4  -lGPUQGates -lcurl -o test
 
 如果安装的是可以含有CUDA的库，则编译命令如下：
 
     .. code-block:: c
 
-        g++ test.cpp -std=c++14 -fopenmp  -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lTinyXML -lantlr4  -lGPUQGates -L{cuda安装目录}/lib/  -lcudart  -o test
+        g++ test.cpp -std=c++14 -fopenmp  -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lComponents -lQAlg  -lQPanda2 -lantlr4  -lGPUQGates -L{cuda安装目录}/lib/  -lcudart  -o test
 
 
 
