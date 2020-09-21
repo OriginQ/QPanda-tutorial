@@ -16,37 +16,32 @@
 
 QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子计算，同时提供了相关接口，它的使用也很简单。
 
-首先构建一个单振幅量子虚拟机
-
     .. code-block:: c
 
-        auto machine = new SingleAmplitudeQVM();
-然后必须使用 ``SingleAmplitudeQVM::init()`` 初始化量子虚拟机环境
+        #include "QPanda.h"
 
-    .. code-block:: c
+        USING_QPANDA
 
-        machine->init();
-接着进行量子程序的构建、装载工作
+        int main(void)
+        {
 
-    .. code-block:: c
+            //首先构建一个单振幅量子虚拟机
+            SingleAmplitudeQVM qvm;
 
-        auto prog = QProg();
-        auto qlist = machine->qAlloc(10);
+            //初始化和配置量子虚拟机环境
+            qvm.init();
+            auto qlist = qvm.qAllocMany(10);
+            auto clist = qvm.cAllocMany(10);
 
-        for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { prog << H(val); });
-        prog << CZ(qlist[1], qlist[5]) << CZ(qlist[3], qlist[5]) << CZ(qlist[2], qlist[4]);
-        ...
-        machine->run(prog);
+            //构建量子算法对应的量子线路
+            QProg prog;
+            prog << HadamardQCircuit(qlist) << CNOT(qlist[1], qlist[5]) << CZ(qlist[3], qlist[5]);
 
-构建还可以采用另一种方式，即读取OriginIR语法文件形式，例如
+        }
 
-    .. code-block:: c
+以上是前期的准备工作，最后调用计算接口来获取结果，我们设计多种返回值的接口用于满足不同的计算需求，具体见如下完整的计算示例所述：
 
-        machine->run("D:\\OriginIR");
-
-最后调用计算接口，我们设计多种返回值的接口用于满足不同的计算需求，具体见示例所述：
-
-实例
+完整示例代码
 >>>>>>>>>>
 ----
 
@@ -61,151 +56,59 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
 
         int main(void)
         {
-            auto machine = new SingleAmplitudeQVM();
-            machine->init();
-            auto qlist = machine->qAllocMany(10);
+            SingleAmplitudeQVM qvm;
 
-            // 构建量子程序
-            auto prog = QProg();
-            for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { prog << H(val); });
-            prog << CZ(qlist[1], qlist[5])
-                 << CZ(qlist[3], qlist[5])
-                 << CZ(qlist[2], qlist[4])
-                 << CZ(qlist[3], qlist[7])
-                 << CZ(qlist[0], qlist[4])
-                 << RY(qlist[7], PI / 2)
-                 << RX(qlist[8], PI / 2)
-                 << RX(qlist[9], PI / 2)
-                 << CR(qlist[0], qlist[1], PI)
-                 << CR(qlist[2], qlist[3], PI)
-                 << RY(qlist[4], PI / 2)
-                 << RZ(qlist[5], PI / 4)
-                 << RX(qlist[6], PI / 2)
-                 << RZ(qlist[7], PI / 4)
-                 << CR(qlist[8], qlist[9], PI)
-                 << CR(qlist[1], qlist[2], PI)
-                 << RY(qlist[3], PI / 2)
-                 << RX(qlist[4], PI / 2)
-                 << RX(qlist[5], PI / 2)
-                 << CR(qlist[9], qlist[1], PI)
-                 << RY(qlist[1], PI / 2)
-                 << RY(qlist[2], PI / 2)
-                 << RZ(qlist[3], PI / 4)
-                 << CR(qlist[7], qlist[8], PI);
-            
-            // 获取量子态所有分量的振幅
-            machine->run(prog);
-            auto res = machine->getQState();
+            qvm.init();
+            auto qlist = qvm.qAllocMany(10);
+            auto clist = qvm.cAllocMany(10); 
 
-            // 打印特定量子态分量的振幅
-            cout << res["0000000000"] << endl;
-            cout << res["0000000001"] << endl;
+            QProg prog;
+            prog << HadamardQCircuit(qlist)
+                << CZ(qlist[1], qlist[5])
+                << CZ(qlist[3], qlist[5])
+                << CZ(qlist[2], qlist[4])
+                << CZ(qlist[3], qlist[7])
+                << CZ(qlist[0], qlist[4])
+                << RY(qlist[7], PI / 2)
+                << RX(qlist[8], PI / 2)
+                << RX(qlist[9], PI / 2)
+                << CR(qlist[0], qlist[1], PI)
+                << CR(qlist[2], qlist[3], PI)
+                << RY(qlist[4], PI / 2)
+                << RZ(qlist[5], PI / 4)
+                << RX(qlist[6], PI / 2)
+                << RZ(qlist[7], PI / 4)
+                << CR(qlist[8], qlist[9], PI)
+                << CR(qlist[1], qlist[2], PI)
+                << RY(qlist[3], PI / 2)
+                << RX(qlist[4], PI / 2)
+                << RX(qlist[5], PI / 2)
+                << CR(qlist[9], qlist[1], PI)
+                << RY(qlist[1], PI / 2)
+                << RY(qlist[2], PI / 2)
+                << RZ(qlist[3], PI / 4)
+                << CR(qlist[7], qlist[8], PI);;
 
-    getQState()接口表示获取量子态所有分量的振幅，输出结果用map容器保存，key为量子态对应的字符串，value为对应的振幅，上述程序的计算结果如下
+            //获取二进制下标对应的量子态振幅
+            auto bin_index_result = qvm.PMeasure_bin_index(prog, "0000000000");
+
+            //获取十进制下标对应的量子态振幅
+            auto dec_index_result = qvm.PMeasure_dec_index(prog, "1");
+
+            std::cout << bin_index_result << std::endl;
+            std::cout << dec_index_result << std::endl;
+
+            return 0;
+        }
+
+    ``bin_index_result`` 与 ``dec_index_result`` 接口分别计算量子态指定二进制和十进制下标的概率，上述程序的计算结果如下
 
     .. code-block:: c
 
-        (0.040830060839653015,-9.313225746154785e-10j)
-        (0.040830060839653015,-9.313225746154785e-10j)
-        ...
-        
-若使用其他接口：
-    - ``PMeasure(std::string)`` ,输入的参数表示获取测量所有比特构成量子态的概率的结果集的前多少项，比如如下例子，我们获取所有量子态的概率分布结果的前6项，程序运行如下：
+        0.00166709
+        0.00166709
 
-        .. code-block:: c
+    .. note::
 
-            auto res = machine->PMeasure("6");
-            for (auto val :res)
-            {
-                std::cout << val.first << " : " << val.second << std::endl;
-            }
-
-        结果输出如下，每个结果的序号表示量子态的下标，后面的值表示概率：
-
-        .. code-block:: c
-
-            0 : 0.00166709
-            1 : 0.00166709
-            2 : 0.000286028
-            3 : 0.000286028
-            4 : 0.000286028
-            5 : 0.000286028
-
-    - ``PMeasure(QVec,std::string)`` ,输入的第一个参数表示选取哪几个量子比特构成的量子态的概率，第二个参数表示选取结果的前多少项，使用示例如下：
-
-        .. code-block:: c
-
-            QVec qv = { qlist[1],qlist[2],qlist[3] ,qlist[4] ,qlist[5] ,qlist[6] ,qlist[7] ,qlist[8],qlist[9] };
-            auto res2 = machine->PMeasure(qv, "6");
-
-            for (auto val :res)
-            {
-                std::cout << val.first << " : " << val.second << std::endl;
-            }
-
-        结果输出如下，每个结果的序号表示量子态的下标，后面的值表示概率：
-
-        .. code-block:: c
-
-            0 : 0.00333419
-            1 : 0.000572056
-            2 : 0.000572056
-            3 : 0.00333419
-            4 : 0.00333419
-            5 : 0.000572056
-
-    - ``getProbDict(qvec,std::string)`` ,输入的第一个参数表示选取哪几个量子比特构成的量子态的概率，第二个参数表示选取结果的前多少项，使用示例如下：
-
-        .. code-block:: c
-
-            QVec qvec;
-            for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { qvec.emplace_back(val); });
-
-            auto res = machine->getProbDict(qvec,6);
-            for (auto val :res)
-            {
-                std::cout << val.first << " : " << val.second << endl;
-            }
-
-        结果输出如下，每个结果的前半部分表示量子态的二进制形式，后面的值表示概率：
-
-        .. code-block:: c
-
-            0000000000 : 0.00166709
-            0000000001 : 0.00166709
-            0000000010 : 0.000286028
-            0000000011 : 0.000286028
-            0000000100 : 0.000286028
-            0000000101 : 0.000286028
-
-    - ``pMeasureBinIndex(std::string)`` ,输入的参数表示指定需要测量的量子态二进制形式，使用示例如下：
-
-        .. code-block:: c
-
-            auto res = machine->pMeasureBinIndex("0000000001");
-            std::cout << res << std::endl;
-
-        结果输出如下，表示目标量子态的概率值：
-
-        .. code-block:: c
-
-            0.00166709
-
-    - ``pMeasureDecIndex(std::string)`` ,输入的参数表示指定需要测量的量子态十进制下标形式，使用示例
-
-        .. code-block:: c
-
-            auto res = machine->pMeasureBinIndex("1");
-            std::cout << res << std::endl;
-
-        结果输出如下，表示目标量子态的概率值：
-
-        .. code-block:: c
-
-            0.00166709
-
-        .. warning::
-
-            1. 部分接口，比如 ``getQState()`` 、 ``PMeasure(string)`` 、 ``PMeasure(string)`` 以及 ``getProbDict(qvec,string)`` 等会在后续的版本中舍弃。
-            2. 单振幅虚拟机会保留 ``pMeasureBinIndex(string)`` 以及 ``pMeasureDecIndex(string)`` 接口，并且它们的使用方式会略微调整。
-
+        1. 部分接口，比如 ``getQState()`` 、 ``PMeasure(string)`` 、 ``PMeasure(string)`` 、 ``pMeasureBinIndex(string)`` 以及 ``getProbDict(qvec,string)`` 等即将舍弃，在此不做过多介绍
+        2. 单振幅虚拟机适合模拟高比特低复杂度的量子线路，不适合模拟低比特高复杂度的线路。
