@@ -1,225 +1,395 @@
-.. _量子云虚拟机:
+from numpy import pi
+from pyqpanda import *
+import time
+PI = 3.1415926535898
 
-量子云虚拟机
-===============
-----
 
-在复杂的量子线路模拟中有必要借助于高性能计算机集群或真实的量子计算机，用云计算的方式替代本地计算，在一定程度上减轻用户的计算成本，获得更好的计算体验。
+def utilities_fun():
 
-量子云虚拟机基于量子云平台，用户通过量子云平台经由调度服务器向部署在远程的量子计算机或计算集群提交任务，并接收返回的结果，流程如下图所示。
+    machine = init_quantum_machine(QMachineType.CPU)
 
-.. image:: images/qcloud.gif
-   :align: center  
+    prog = QProg()
+    q = machine.qAlloc_many(6)
+    c = machine.cAlloc_many(6)
 
-QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器集群或量子真实芯片发送计算指令，并获取计算结果，在使用下文介绍的各种虚拟机之前，需要确保已开通对应的虚拟机产品。
+    prog.insert(H(q[0]))\
+        .insert(Y(q[5]))\
+        .insert(S(q[2]))\
+        .insert(CZ(q[0], q[1]))
 
-.. image:: images/products.png
-   :align: center
+    print(to_QRunes(prog, machine))
+    print(to_QASM(prog, machine))
+    print(to_Quil(prog, machine))
+    print(count_gate(prog, machine))
+    print(get_clock_cycle(machine, prog))
+    print(get_bin_str(prog, machine))
 
-代码流程如下：
- 
-        .. code-block:: c
+    machine.finalize()
 
-            #include "QPanda.h"
-            USING_QPANDA
 
-            int main(void)
-            {
-                //通过QCloudMachine创建量子云虚拟机
-                QCloudMachine QCM;;
+def cpu_qvm_fun():
 
-                //通过传入当前用户的token来初始化
-                QCM.init("3B1AC640AAC248C6A7EE4E8D8537370D");
-                auto qlist = QCM.allocateQubits(6);
-                auto clist = QCM.allocateCBits(6);
+    qvm = CPUQVM()
+    qvm.initQVM()
+    qubits = qvm.qAlloc_many(4)
+    cbits = qvm.cAlloc_many(4)
 
-                //构建量子程序
-                auto measure_prog = QProg();
-                measure_prog << HadamardQCircuit(qlist)
-                             << CZ(qlist[1], qlist[5])
-                             << CZ(qlist[0], qlist[4])
-                             << RX(qlist[2], PI / 4)
-                             << RX(qlist[1], PI / 4)
-                             << CZ(qlist[2], qlist[3])
-                             << Measure(qlist[0], clist[0])
-                             << Measure(qlist[1], clist[1])
-                             << Measure(qlist[2], clist[2]);
+    # 构建量子程序
+    prog = QProg()
+    prog.insert(H(qubits[0])).insert(
+        CNOT(qubits[0], qubits[1])).insert(Measure(qubits[0], cbits[0]))
 
-                auto pmeasure_prog = QProg();
-                pmeasure_prog << HadamardQCircuit(qlist)
-                             << CZ(qlist[1], qlist[5])
-                             << RX(qlist[2], PI / 4)
-                             << RX(qlist[1], PI / 4);
+    # 量子程序运行1000次，并返回测量结果
+    result = qvm.run_with_configuration(prog, cbits, 1000)
 
-                //调用计算接口，以全振幅为例
-                auto result = QCM.full_amplitude_measure(measure_prog, 100);
-                
-                QCM.finalize();
-                return 0;
-            }
+    # 打印量子态在量子程序多次运行结果中出现的次数
+    print(result)
 
-        上述过程需要注意的是， ``init_qvm`` 需要用户传入量子云平台用户验证标识token，可以从本源量子云平台个人信息下获取，具体见下方截图。
+    qvm.finalize()
 
-        .. image:: images/token.png
-            :align: center  
 
-        计算核心过程是提交计算接口，量子云虚拟机有多种计算后端，目前支持以下6种方式：
+def singleAmp_fun():
 
-        - ``1.full_amplitude_measure(全振幅蒙特卡洛测量操作)`` ：
+    machine = SingleAmpQVM()
 
-                .. code-block:: c
+    machine.initQVM()
 
-                    auto result0 = QCM.full_amplitude_measure(measure_prog, 100);
-                    for (auto val : result0)
-                    {
-                        cout << val.first <<" : "<< val.second << endl;
-                    }
-                
-                需要传入的第二个参数是测量次数，输出结果如下，左侧是量子态的二进制表示，右边表示测量次数对应的概率：
-                
-                .. code-block:: c
+    q = machine.qAlloc_many(10)
+    c = machine.cAlloc_many(10)
 
-                    000 : 0.12
-                    001 : 0.14
-                    010 : 0.15
-                    011 : 0.12
-                    100 : 0.11
-                    101 : 0.11
-                    110 : 0.11
-                    111 : 0.14
+    prog = QProg()
 
-        - ``2.full_amplitude_pmeasure(全振幅概率测量操作)`` ：
+    prog.insert(hadamard_circuit(q))\
+        .insert(CZ(q[1], q[5]))\
+        .insert(CZ(q[3], q[5]))\
+        .insert(CZ(q[2], q[4]))\
+        .insert(CZ(q[3], q[7]))\
+        .insert(CZ(q[0], q[4]))\
+        .insert(RY(q[7], PI / 2))\
+        .insert(RX(q[8], PI / 2))\
+        .insert(RX(q[9], PI / 2))\
+        .insert(CR(q[0], q[1], PI))\
+        .insert(CR(q[2], q[3], PI))\
+        .insert(RY(q[4], PI / 2))\
+        .insert(RZ(q[5], PI / 4))\
+        .insert(RX(q[6], PI / 2))\
+        .insert(RZ(q[7], PI / 4))\
+        .insert(CR(q[8], q[9], PI))\
+        .insert(CR(q[1], q[2], PI))\
+        .insert(RY(q[3], PI / 2))\
+        .insert(RX(q[4], PI / 2))\
+        .insert(RX(q[5], PI / 2))\
+        .insert(CR(q[9], q[1], PI))\
+        .insert(RY(q[1], PI / 2))\
+        .insert(RY(q[2], PI / 2))\
+        .insert(RZ(q[3], PI / 4))\
+        .insert(CR(q[7], q[8], PI))
 
-                .. code-block:: c
+    machine.run(prog)
 
-                    auto result1 = QCM.full_amplitude_pmeasure(pmeasure_prog, { 0, 1, 2 });
-                    for (auto val : result1)
-                    {
-                        cout << val.first << " : " << val.second << endl;
-                    }
-                
-                需要传入的第二个参数是测量的比特，输出结果如下，左侧是量子态的二进制表示，右边表示测量对应的概率：
-                
-                .. code-block:: c
+    # result1 = machine.pmeasure("6")
+    # result2 = machine.pmeasure_bin_index(prog, "0000000000")
+    # result3 = machine.pmeasure_dec_index(prog, "1")
+    # result = machine.pmeasure("6")
+    # print(result3)
 
-                    000 : 0.125
-                    001 : 0.125
-                    010 : 0.125
-                    011 : 0.125
-                    100 : 0.125
-                    101 : 0.125
-                    110 : 0.125
-                    111 : 0.125
+    qlist = [q[1], q[2], q[3], q[4], q[5], q[6], q[7], q[8], q[9]]
+    result4 = machine.get_prob_dict(qlist, "3")
 
-        - ``3.partial_amplitude_pmeasure(部分振幅概率测量操作)`` ：
 
-                .. code-block:: c
+def partialAmp_fun():
 
-                    auto result2 = QCM.partial_amplitude_pmeasure(pmeasure_prog, { "0", "1", "2"});
-                    for (auto val : result2)
-                    {
-                        cout << val.first << " : " << val.second << endl;
-                    }
-                
-                需要传入的第二个参数是测量的量子态振幅的十进制表示，输出结果如下，左侧是量子态振幅的十进制表示，右边表示复数形式的振幅值：
-                
-                .. code-block:: c
+    PI = 3.141593
+    machine = PartialAmpQVM()
+    machine.init_qvm()
 
-                    0 : (0.0883883,-0.0883883)
-                    1 : (0.0883883,-0.0883883)
-                    2 : (0.0883883,-0.0883883)
+    q = machine.qAlloc_many(10)
+    c = machine.cAlloc_many(10)
 
-        - ``4.single_amplitude_pmeasure(单振幅概率测量操作)`` ：
+    # 构建量子程序
+    prog = QProg()
+    prog.insert(hadamard_circuit(q))\
+        .insert(CZ(q[1], q[5]))\
+        .insert(CZ(q[3], q[7]))\
+        .insert(CZ(q[0], q[4]))\
+        .insert(RZ(q[7], PI / 4))\
+        .insert(RX(q[5], PI / 4))\
+        .insert(RX(q[4], PI / 4))\
+        .insert(RY(q[3], PI / 4))\
+        .insert(CZ(q[2], q[6]))\
+        .insert(RZ(q[3], PI / 4))\
+        .insert(RZ(q[8], PI / 4))\
+        .insert(CZ(q[9], q[5]))\
+        .insert(RY(q[2], PI / 4))\
+        .insert(RZ(q[9], PI / 4))\
+        .insert(CZ(q[2], q[3]))
 
-                .. code-block:: c
+    machine.run(prog)
 
-                    auto result3 = QCM.single_amplitude_pmeasure(pmeasure_prog, "0");
-                    cout << "0" << " : " << result3 << endl;
-                
-                需要传入的第二个参数是测量的振幅（十进制表示），输出结果如下，只会输出一个量子态对应的复数形式的振幅值：
-                
-                .. code-block:: c
+    result2 = machine.pmeasure_bin_index("0000000000")
+    result3 = machine.pmeasure_dec_index("1")
 
-                    0 : (0.0883883,-0.0883883)
+    qlist = ["0", "1", "2"]
+    result4 = machine.pmeasure_subset(qlist)
 
-        - ``5.noise_measure(噪声虚拟机测量操作)`` ：
+    print(result2, result3, result4)
 
-                .. code-block:: c
 
-                    QCM.set_noise_model(NOISE_MODEL::BIT_PHASE_FLIP_OPRATOR, { 0.01 }, { 0.02 });
-                    auto result4 = QCM.noise_measure(measure_prog, 100);
-                    for (auto val : result4)
-                    {
-                        cout << val.first << " : " << val.second << endl;
-                    }
-                
-                通过 ``set_noise_model`` 设置噪声参数，第一个参数是噪声模型，后面分别是单门噪声参数和双门噪声参数，噪声模型的定义如下：
+def graph_match_fun():
 
-                .. code-block:: c
+    machine = init_quantum_machine(QMachineType.CPU)
+    q = machine.qAlloc_many(4)
+    c = machine.cAlloc_many(4)
 
-                    enum NOISE_MODEL
-                    {
-                        DAMPING_KRAUS_OPERATOR,
-                        DEPHASING_KRAUS_OPERATOR,
-                        DECOHERENCE_KRAUS_OPERATOR_P1_P2,
-                        BITFLIP_KRAUS_OPERATOR,
-                        DEPOLARIZING_KRAUS_OPERATOR,
-                        BIT_PHASE_FLIP_OPRATOR,
-                        PHASE_DAMPING_OPRATOR,
-                        DECOHERENCE_KRAUS_OPERATOR,
-                        PAULI_KRAUS_MAP,
-                        KRAUS_MATRIX_OPRATOR,
-                        MIXED_UNITARY_OPRATOR,
-                    };
+    #           ┌─┐┌────┐┌─┐
+    # q_0:  |0>─┤H├┤CNOT├┤H├───────────────
+    #           └─┘└──┬─┘└─┘
+    # q_1:  |0>───────■─────■──────────────
+    #           ┌─┐      ┌──┴─┐┌─┐
+    # q_2:  |0>─┤H├──────┤CNOT├┤H├───■─────
+    #           ├─┤      └────┘└─┘┌──┴─┐┌─┐
+    # q_3:  |0>─┤H├───────────────┤CNOT├┤H├
+    #           └─┘               └────┘└─┘
 
-                该接口输出结果如下，左侧是量子态的二进制表示，右边表示测量对应的概率：
-                
-                .. code-block:: c
+    #           ┌──┐
+    # q_0:  |0>─┤CZ├────────
+    #           └─┬┘
+    # q_1:  |0>───■───■─────
+    #               ┌─┴┐
+    # q_2:  |0>─────┤CZ├──■─
+    #               └──┘┌─┴┐
+    # q_3:  |0>─────────┤CZ├
+    #                   └──┘
 
-                    000 : 0.10
-                    001 : 0.08
-                    010 : 0.13
-                    011 : 0.08
-                    100 : 0.20
-                    101 : 0.23
-                    110 : 0.08
-                    111 : 0.10
+    prog = QProg()
+    prog.insert(H(q[0]))\
+        .insert(H(q[2]))\
+        .insert(H(q[3]))\
+        .insert(CNOT(q[1], q[0]))\
+        .insert(H(q[0]))\
+        .insert(CNOT(q[1], q[2]))\
+        .insert(H(q[2]))\
+        .insert(CNOT(q[2], q[3]))\
+        .insert(H(q[3]))
 
-        - ``6.real_chip_measure(本源悟源真实芯片测量操作)`` ：
+    query_cir = QCircuit()
+    query_cir.insert(H(q[0]))\
+             .insert(CNOT(q[1], q[0]))\
+             .insert(H(q[0]))
 
-                .. code-block:: c
+    replace_cir = QCircuit()
+    replace_cir.insert(CZ(q[0], q[1]))
 
-                    auto result5 = QCM.real_chip_measure(measure_prog, 1000);
-                    for (auto val : result5)
-                    {
-                        cout << val.first << " : " << val.second << endl;
-                    }
-                
-                输出结果如下，左侧是量子态的二进制表示，右边表示测量次数对应的概率：
-                
-                .. code-block:: c
+    print("before replace")
+    print_qprog(prog)
 
-                    000 : 0.0979978
-                    001 : 0.0912204
-                    010 : 0.101005
-                    011 : 0.130386
-                    100 : 0.124317
-                    101 : 0.142877
-                    110 : 0.155054
-                    111 : 0.157143
+    update_prog = graph_query_replace(prog, query_cir, replace_cir, machine)
 
-                在使用本源悟源真实芯片测量操作时，经常会遇到各种错误，下面给出部分错误信息，可以根据抛出的错误异常信息进行对号入座。
+    print("after replace")
+    # print(to_originir(update_prog,machine))
+    print_qprog(update_prog)
 
-                -  ``server connection failed`` ：该异常表示服务器宕机或与服务器连接失败
-                -  ``api key error`` ：该异常表示用户的API-Key参数异常，请去官网确认个人资料的信息
-                -  ``un-activate products or lack of computing power`` ：该异常表示用户未开通该产品或算力不足
-                -  ``build system error`` ：该异常表示编译系统运行出错
-                -  ``exceeding maximum timing sequence`` ：该异常表示量子程序时序过长
-                -  ``unknown task status`` ：其他任务状态异常的情况
 
-        .. note:: 
-            - 使用对应的计算接口时，需要确认当前用户已经开通了该产品，否则可能会导致提交计算任务失败。
-            - 在噪声模拟时，退相干的单门噪声和双门参数参数分别有3个，不同于其他噪声
-            - 量子云虚拟机目前使用的真实芯片是本源悟源，仅支持6比特量子线路模拟，未来会加入其他的量子芯片，敬请期待。
-            - 在使用时遇到任何问题，请给我们提交 `用户反馈 <https://qcloud.qubitonline.cn/userFeedback>`_ ，我们看到后会尽快解决你的问题
+def QCloud_fun():
 
+    QCM = QCloud()
+    # QCM.init_qvm("C40A08F3D461481D829559EE7CCAA359")
+    QCM.init_qvm("EE3DE52BFF2245908EA9F47EFC8D50A3")
+
+    # QCM.set_compute_api(
+    #     "10.10.12.140:8060/api/taskApi/submitTask.json")
+    # QCM.set_inqure_api(
+    #     "10.10.12.140:8060/api/taskApi/getTaskDetail.json")
+
+    # QCM.set_compute_api(
+    #     "https://qcloud.qubitonline.cn/api/taskApi/submitTask.json")
+    # QCM.set_inqure_api(
+    #     "https://qcloud.qubitonline.cn/api/taskApi/getTaskDetail.json")
+
+    qlist = QCM.qAlloc_many(6)
+    clist = QCM.cAlloc_many(6)
+
+    measure_prog = QProg()
+    measure_prog.insert(hadamard_circuit(qlist))\
+                .insert(CZ(qlist[1], qlist[5]))\
+                .insert(Measure(qlist[0], clist[0]))\
+                .insert(Measure(qlist[1], clist[1]))
+
+    # pmeasure_prog = QProg()
+    # pmeasure_prog.insert(hadamard_circuit(qlist))\
+    #              .insert(CZ(qlist[1], qlist[5]))\
+    #              .insert(RX(qlist[2], PI / 4))\
+    #              .insert(RX(qlist[1], PI / 4))\
+
+    # result0 = QCM.full_amplitude_measure(measure_prog, 100)
+    # print(result0)
+    # print("full_amplitude_measure pass !")
+
+    # result1 = QCM.full_amplitude_pmeasure(pmeasure_prog, [0, 1, 2])
+    # print(result1)
+    # print("full_amplitude_pmeasure pass !")
+
+    # result2 = QCM.partial_amplitude_pmeasure(pmeasure_prog, ["0", "1", "2"])
+    # print(result2)
+    # print("partial_amplitude_pmeasure pass !")
+
+    # result3 = QCM.single_amplitude_pmeasure(pmeasure_prog, "0")
+    # print(result3)
+    # print("single_amplitude_pmeasure pass !")
+
+    # QCM.set_noise_model(NoiseModel.BIT_PHASE_FLIP_OPRATOR, [0.01], [0.02])
+    # result4 = QCM.noise_measure(measure_prog, 100)
+    # print(result4)
+    # print("noise_measure pass !")
+
+    # result5 = QCM.real_chip_measure(measure_prog, 100)
+    # print(result5)
+    print("real_chip_measure pass !")
+
+    # result6 = QCM.get_state_tomography_density(measure_prog, 100)
+    # print(result6)
+    # print("get_state_tomography_density !")
+
+    QCM.finalize()
+
+
+def Cluster_Cloud():
+
+    QCM = QCloud()
+    QCM.initQVM()
+
+    qlist = QCM.qAlloc_many(10)
+    clist = QCM.cAlloc_many(10)
+
+    prog = QProg()
+    prog.insert(H(qlist[0]))\
+        .insert(Measure(qlist[0], clist[0]))
+
+    # task = QCM.full_amplitude_measure(prog, 100)
+    # print(task)
+
+    # time.sleep(3)
+    result = QCM.get_cluster_result(
+        ClusterMachineType.Full_AMPLITUDE, "2001061726139435101012920")
+    # result = QCM.get_cluster_result(0, "2001061726139435101012920")
+
+    QCM.finalize()
+
+
+def noise_fun():
+    qvm = NoiseQVM()
+    qvm.set_configure(20, 20)
+
+    # default argc
+    qubits_num = 10
+    shot = 100
+
+    # 设置噪声模型参数
+    noise_rate = 0.001
+    qvm.set_noise_model(NoiseModel.DEPHASING_KRAUS_OPERATOR,
+                        GateType.HADAMARD_GATE, [noise_rate])
+    qvm.set_noise_model(NoiseModel.DEPHASING_KRAUS_OPERATOR,
+                        GateType.CPHASE_GATE, [2 * noise_rate])
+
+    qvm.init_qvm()
+
+    q = qvm.qAlloc_many(qubits_num)
+    c = qvm.cAlloc_many(qubits_num)
+
+    prog = QProg()
+    for i in range(0, qubits_num):
+        target = q[qubits_num - 1 - i]
+        prog.insert(H(target))
+        for j in range(i + 1, qubits_num):
+            control = q[qubits_num - 1 - j]
+            prog.insert(CR(control, target, 2 * pi / (1 << (j - i + 1))))
+
+    prog.insert(measure_all(q, c))
+
+    start = time.time()
+    result = qvm.run_with_configuration(prog, c, shot)
+    end = time.time()
+    print(qvm.get_allocate_cmem_num())
+    print(qvm.get_allocate_qubit_num())
+    print(qvm.getAllocateCMem())
+    print(qvm.getAllocateQubitNum())
+    print("noise :", "qubit =", qubits_num,
+          " shots =", shot, " times =", end - start)
+    # print(result)
+    qvm.finalize()
+
+
+def jkuqvm_fun():
+
+    machine = JKUQVM()
+    machine.set_configure(50, 50)
+    machine.init_qvm()
+
+    q = machine.qAlloc_many(1)
+    c = machine.cAlloc_many(1)
+
+    prog = QProg()
+    prog.insert(X1(q[0]))\
+        .insert(Z1(q[0]))\
+        .insert(Y1(q[0]))\
+        .insert(Measure(q[0], c[0]))
+
+    result = machine.run_with_configuration(prog, c, 100)
+    print(result)
+
+    machine.finalize()
+
+
+if __name__ == "__main__":
+
+    # QCloud_fun()
+    # cpu_qvm_fun()
+    # singleAmp_fun()
+    # partialAmp_fun()
+    # Cluster_Cloud()
+    # graph_match_fun()
+    # noise_fun()
+    # jkuqvm_fun()
+
+    # 通过QCloud()创建量子云虚拟机
+    QCM = QCloud()
+
+    # 通过传入当前用户的token来初始化
+    QCM.init_qvm("592AA472AF7B40749FE9075BC7C97FAE")
+
+    qlist = QCM.qAlloc_many(6)
+    clist = QCM.cAlloc_many(6)
+
+    # 构建量子程序，可以手动输入，也可以来自OriginIR或QASM语法文件等
+    measure_prog = QProg()
+    measure_prog.insert(hadamard_circuit(qlist))\
+                .insert(CZ(qlist[1], qlist[5]))\
+                .insert(Measure(qlist[0], clist[0]))\
+                .insert(Measure(qlist[1], clist[1]))
+
+    pmeasure_prog = QProg()
+    pmeasure_prog.insert(hadamard_circuit(qlist))\
+        .insert(CZ(qlist[1], qlist[5]))\
+        .insert(RX(qlist[2], PI / 4))\
+        .insert(RX(qlist[1], PI / 4))\
+
+    # 调用真实芯片计算接口，需要量子程序和测量次数两个参数
+    # result = QCM.real_chip_measure(measure_prog, 100)
+    # print(result)
+
+    result0 = QCM.full_amplitude_measure(measure_prog, 100)
+    print(result0)
+    result1 = QCM.full_amplitude_pmeasure(pmeasure_prog, [0, 1, 2])
+    print(result1)
+
+    result2 = QCM.partial_amplitude_pmeasure(pmeasure_prog, ["0", "1", "2"])
+    print(result2)
+
+    result3 = QCM.single_amplitude_pmeasure(pmeasure_prog, "0")
+    print(result3)
+
+    QCM.set_noise_model(NoiseModel.BIT_PHASE_FLIP_OPRATOR, [0.01], [0.02])
+    result4 = QCM.noise_measure(measure_prog, 100)
+    print(result4)
+
+    QCM.finalize()
