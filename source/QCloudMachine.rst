@@ -34,7 +34,7 @@ QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器�
 .. image:: images/param.png
    :align: center
 
-通过本源悟源请求计算任务的完整代码流程如下：
+通过量子云平台向本源悟源请求计算任务的完整代码流程如下：
  
     .. code-block:: c
 
@@ -62,12 +62,6 @@ QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器�
                             << Measure(qlist[0], clist[0])
                             << Measure(qlist[1], clist[1])
                             << Measure(qlist[2], clist[2]);
-
-            auto pmeasure_prog = QProg();
-            pmeasure_prog << HadamardQCircuit(qlist)
-                            << CZ(qlist[1], qlist[5])
-                            << RX(qlist[2], PI / 4)
-                            << RX(qlist[1], PI / 4);
 
             //调用真实芯片计算接口，需要量子程序和测量次数两个参数
             auto result = QCM.real_chip_measure(measure_prog, 100);
@@ -112,7 +106,53 @@ QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器�
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ----
 
-本源量子的高性能计算集群提供多种功能强大的虚拟机计算后端，适用于不同情况下的量子线路模拟需求，具体接口使用方式介绍如下：
+本源量子的高性能计算集群提供多种功能强大的虚拟机计算后端，适用于不同情况下的量子线路模拟需求，完整示例程序介绍如下：
+
+    .. code-block:: c
+
+        #include "QPanda.h"
+        USING_QPANDA
+
+        int main(void)
+        {
+            //通过QCloudMachine创建量子云虚拟机
+            QCloudMachine QCM;
+
+            //通过传入当前用户的token来初始化
+            QCM.init("3B1AC640AAC248C6A7EE4E8D8537370D");
+            auto qlist = QCM.allocateQubits(6);
+            auto clist = QCM.allocateCBits(6);
+
+            //构建量子程序
+            auto measure_prog = QProg();
+            measure_prog << HadamardQCircuit(qlist)
+                            << CZ(qlist[1], qlist[5])
+                            << CZ(qlist[0], qlist[4])
+                            << RX(qlist[2], PI / 4)
+                            << RX(qlist[1], PI / 4)
+                            << CZ(qlist[2], qlist[3])
+                            << Measure(qlist[0], clist[0])
+                            << Measure(qlist[1], clist[1])
+                            << Measure(qlist[2], clist[2]);
+
+            auto pmeasure_prog = QProg();
+            pmeasure_prog << HadamardQCircuit(qlist)
+                            << CZ(qlist[1], qlist[5])
+                            << RX(qlist[2], PI / 4)
+                            << RX(qlist[1], PI / 4);
+
+            //调用全振幅蒙特卡洛测量操作接口，需要量子程序和测量次数两个参数
+            auto result0 = QCM.full_amplitude_measure(measure_prog, 100);
+            for (auto val : result0)
+            {
+                cout << val.first << " : " << val.second << endl;
+            }
+            
+            QCM.finalize();
+            return 0;
+        }
+
+    对应的接口介绍如下
 
     - ``1.full_amplitude_measure(全振幅蒙特卡洛测量操作)`` ：
 
@@ -124,7 +164,7 @@ QPanda2中封装了量子云虚拟机，可以向本源量子的计算服务器�
                 cout << val.first <<" : "<< val.second << endl;
             }
         
-        需要传入的第二个参数是测量次数，输出结果如下，左侧是量子态的二进制表示，右边表示测量次数对应的概率：
+        输出结果如下，左侧是量子态的二进制表示，右边表示测量次数对应的概率：
         
         .. code-block:: c
 
