@@ -126,7 +126,7 @@ UMA模块是为了实现获得当前位结果，我们想要得到当前位 :mat
       Qubit* c,
       Qubit* is_carry);
 
-   QCircuit QAdderIgnoreCarry(
+   QCircuit QAdder(
       QVec &adder1,
       QVec &adder2,
       Qubit* c);
