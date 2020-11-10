@@ -210,7 +210,10 @@ Grover算法还有其他的接口函数，此处不作赘述。
       printf("pmeasure result:\n");
       for (auto aiter : result)
       {
-         if (0 == aiter.second) continue;
+         if (0 == aiter.second) 
+         {
+         	continue;
+         }
          printf("%s:%5f\n", aiter.first.c_str(), aiter.second);
       }
 
