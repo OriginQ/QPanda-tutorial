@@ -61,7 +61,7 @@
 
         constexpr int qnum = 2;
 
-        QuantumMachine *machine = initQuantumMachine(CPU_SINGLE_THREAD);
+        QuantumMachine *machine = initQuantumMachine(CPU);
         auto q = machine->qAllocMany(qnum);
 
         MatrixXd m1(1, 1);
