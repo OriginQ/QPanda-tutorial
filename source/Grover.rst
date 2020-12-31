@@ -1,4 +1,4 @@
-Grover's Algorithm & Quantum Counting
+Grover算法和量子计数算法
 ####
 
 量子计数算法（Quantum Counting）与Grover算法都是基于集合元素二类划分问题衍生的算法。\
@@ -210,7 +210,10 @@ Grover算法还有其他的接口函数，此处不作赘述。
       printf("pmeasure result:\n");
       for (auto aiter : result)
       {
-         if (0 == aiter.second) continue;
+         if (0 == aiter.second) 
+         {
+         	continue;
+         }
          printf("%s:%5f\n", aiter.first.c_str(), aiter.second);
       }
 
