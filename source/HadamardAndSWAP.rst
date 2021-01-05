@@ -1,4 +1,4 @@
-Hadamard Test与SWAP Test
+Hadamard测试与SWAP测试
 ####
 
 量子线路是一系列量子门操作的组合。众多量子线路中有一部分量子线路是在构造量子算法时会被反复使用，\

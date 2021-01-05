@@ -1,4 +1,4 @@
-Quantum Arithmetic
+量子四则运算
 ####
 
 在特定情况下，量子计算机中需要实现基本的四则运算。量子加法器及衍生出来的量子四则运算可以满足这些计算需求。
@@ -126,7 +126,7 @@ UMA模块是为了实现获得当前位结果，我们想要得到当前位 :mat
       Qubit* c,
       Qubit* is_carry);
 
-   QCircuit QAdderIgnoreCarry(
+   QCircuit QAdder(
       QVec &adder1,
       QVec &adder2,
       Qubit* c);

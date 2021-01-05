@@ -1,4 +1,4 @@
-Amplitude Amplification
+振幅放大
 ####
 
 振幅放大（Amplitude Amplification）线路的主要作用为对于给定纯态的振幅进行放大，从而调整其测量结果概率分布。
@@ -98,7 +98,10 @@ Amplitude Amplification
       // 构建振幅放大量子线路
       auto prog = createEmptyQProg();
       prog << H(qvec[0]);
-      for (int i = 0; i < 9; i++)prog << RY(qvec[0], PI / 2);
+      for (int i = 0; i < 9; i++)
+      {
+      	prog << RY(qvec[0], PI / 2);
+      }
 
       // 以概率方法输出结果量子态的理论值（并非测量）
       auto result = probRunDict(prog, qvec);
