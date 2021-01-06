@@ -103,7 +103,7 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
 目前QPanda2中含噪声量子逻辑门支持的噪声模型有：
 
-     .. code-block:: c
+    .. code-block:: c
 
         enum NOISE_MODEL
         {            
@@ -117,56 +117,84 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
             DECOHERENCE_KRAUS_OPERATOR,
         };
 
-设置量子逻辑门的接口如下：
+设置一个参数的噪声模型：
 
-     .. code-block:: c
+    .. code-block:: c
 
-        set_noise_model(NOISE_MODEL model, GateType type, std::vector<double> params_vec)
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob)
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const QVec &qubits)
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const std::vector<QVec> &qubits)
 
-第一个参数为噪声模型类型，第二个参数为量子逻辑门类型，第三个参数为噪声模型所需的参数。
+第一个参数为噪声模型类型，第二个参数为量子逻辑门类型，第三个参数为噪声模型所需的参数, 第四个参数是对单个比特设置噪声参数（包含单门和双门），若没有第四个参数则对所有的比特设置相应的噪声模型。
 
-假设希望设定RX,RY的噪声模型为DECOHERENCE_KRAUS_OPERATOR，CNOT的噪声模型为DEPHASING_KRAUS_OPERATOR，可以按下面的方式构建量子虚拟机：
+例如：
 
-     .. code-block:: c
+    .. code-block:: c
 
         NoiseQVM qvm;
-        qvm.set_noise_model(NOISE_MODEL::DECOHERENCE_KRAUS_OPERATOR, GateType::RX_GATE, { 5.0, 2.0, 0.03 }); // T1: 5.0, T2: 2.0, t_gate: 0.03
-        qvm.set_noise_model(NOISE_MODEL::DECOHERENCE_KRAUS_OPERATOR, GateType::RY_GATE, { 5.0, 2.0, 0.03 });
-        qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::CNOT_GATE, { 0.3 });
         qvm.init();
+        auto q = qvm.qAllocMany(4);
+        auto c = qvm.cAllocMany(4);
+
+        // X门所有比特设置比特反转噪声模型
+        qvm.set_noise_model(NOISE_MODEL::BITFLIP_KRAUS_OPERATOR, GateType::PAULI_X_GATE, 0.1);
+        
+        // H门作用在q0和q1上时设置去极化噪声模型
+        QVec qv = {q[0], q[1]};
+        qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::HADAMARD_GATE, 0.1, qv);
+
+        // CNOT门作用在q0、q1和q1、q2上时设置幅值阻尼噪声模型
+        std::vector<QVec> qves = {{q[0], q[1]}, {q[1], q[2]}};
+        qvm.set_noise_model(NOISE_MODEL::DAMPING_KRAUS_OPERATOR, GateType::CNOT_GATE, 0.1, qves);
+
+    .. code-block:: c
+
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double T1, double T2, double t_gate);
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double T1, double T2, double t_gate,
+                             const QVec &qubits);
+        void set_noise_model(const NOISE_MODEL &model, const GateType &type, double T1, double T2, double t_gate,
+                             const std::vector<QVec> &qubits);
+
+用法与上面的方法相同，只有噪声参数变为退相干的噪声的三个参数。
+
+    .. code-block:: c
+
+        void set_measure_error(const NOISE_MODEL &model, double prob, const QVec &qubits = {});
+        void set_measure_error(const NOISE_MODEL &model, double T1, double T2, double t_gate,
+                               const QVec &qubits = {});
+
+用法类似于量子逻辑门的噪声模型，第一个参数为噪声模型类型，后面的参数和量子逻辑门的噪声参数。
+
+    .. code-block:: c
+
+        void set_reset_error(double p0, double p1, const QVec &qubits = {});
+
+p0 表示重置到 :math:`\left|0\right\rangle`\ 的概率，p1表示重置到 :math:`\left|1\right\rangle`\ 的概率，未被重置的概率为 1-p0-p1。
+
+    .. code-block:: c
+
+        void set_readout_error(const std::vector<std::vector<double>> &probs_list, const QVec &qubits = {});
+
+示例：
+
+    .. code-block:: c
+
+        double f0 = 0.9;
+        double f1 = 0.85'
+        noise_qm->set_readout_error({{f0, 1 - f0},{1 - f1, f1}}, {q[0]});
+
+表示在读取q0时0读为0的概率为0.9，读为1的概率为1 - f0，
+1读为1的概率为0.85，读为0的概率为1 - f1
+
 
 含噪声虚拟机还支持设置设置带有角度的量子逻辑门的转转角度误差，其接口使用方式如下：
 
     .. code-block:: c
 
-        qvm.set_rotation_angle_error(0.1)
+        qvm.set_rotation_error(0.05);
 
-即设置角度旋转误差为0.1。
+即设置角度旋转误差为0.05。
 
-
-含噪声虚拟机同样支持直接设置KRAUS矩阵的方法，其接口使用方式如下：
-    
-    .. code-block:: c
-
-        double prob = 0.05;
-        QStat k1 = { qcomplex_t(1 - prob, 0),  0, 0, qcomplex_t(1 - prob, 0) };
-        QStat k2 = { 0, qcomplex_t(0, -sqrt(prob)), qcomplex_t(0, sqrt(prob)), 0 };
-        std::vector<QStat> noise = { k1, k2 };
-        qvm->set_noise_kraus_matrix(GateType::RX_GATE, noise);
-
-即设置KRAUS矩阵k1，k2。
-
-含噪声虚拟机更加支持直接设置自定义酉矩阵以及矩阵对应概率的方法，其接口使用方式如下：
-
-    .. code-block:: c
-
-        QStat mat_i = { 1, 0, 0, 1 };
-        QStat mat_x = { 0, 1, 1, 0 };
-        std::vector<QStat> gates_mat = { mat_i, mat_x };
-        std::vector<double> gates_prob = { 1 - prob , prob };
-        qvm->set_noise_unitary_matrix(GateType::PAULI_X_GATE, gates_mat, gates_prob);   
-
-即设置自定义矩阵集合gates_mat以及对应的概率集合gates_prob。
 
 实例
 ----------------
@@ -178,43 +206,34 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
         int main(void)
         {
             NoiseQVM qvm;
-            // T1: 5.0, T2: 2.0, t_gate: 0.03, 设置噪声模型参数
-            qvm.set_noise_model(NOISE_MODEL::DECOHERENCE_KRAUS_OPERATOR, GateType::HADAMARD_GATE, { 5.0, 2.0, 0.03 });
-            qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::CPHASE_GATE, { 0.1 });
-
-            // 设置角度旋转误差为0.1
-            qvm.set_rotation_angle_error(0.1);
             qvm.init();
+            auto q = qvm.qAllocMany(4);
+            auto c = qvm.cAllocMany(4);
 
-            auto qvec = qvm.qAllocMany(4);
-            auto cvec = qvm.cAllocMany(4);
+            qvm.set_noise_model(NOISE_MODEL::BITFLIP_KRAUS_OPERATOR, GateType::PAULI_X_GATE, 0.1);
+            QVec qv0 = {q[0], q[1]};
+            qvm.set_noise_model(NOISE_MODEL::DEPHASING_KRAUS_OPERATOR, GateType::HADAMARD_GATE, 0.1, qv0);
+            std::vector<QVec> qves = {{q[0], q[1]}, {q[1], q[2]}};
+            qvm.set_noise_model(NOISE_MODEL::DAMPING_KRAUS_OPERATOR, GateType::CNOT_GATE, 0.1, qves);
 
-            // 构建QFT量子线路
-            QCircuit  qft = createEmptyCircuit();
-            for (auto i = 0; i<qvec.size(); i++)
-            {
-                qft << H(qvec[qvec.size() - 1 - i]);
-                for (auto j = i + 1; j < qvec.size(); j++)
-                {
-                    qft << CR(qvec[qvec.size() - 1 - j],
-                        qvec[qvec.size() - 1 - i], 2 * PI / (1 << (j - i + 1)));
-                }
-            }
+            double f0 = 0.9;
+            double f1 = 0.85;
+            qvm.set_readout_error({{f0, 1-f0}, {1-f1, f1}});
+            qvm.set_rotation_error(0.05);
 
-            // 构建量子程序
             QProg prog;
-            prog << qft << MeasureAll(qvec, cvec);
+            prog << X(q[0]) << H(q[0])
+                << CNOT(q[0], q[1])
+                << CNOT(q[1], q[2])
+                << CNOT(q[2], q[3])
+                << MeasureAll(q, c);
 
-            // 量子程序运行1000次，并返回测量结果
-            auto result = qvm.runWithConfiguration(prog, cvec, 1000);
-
-            // 打印量子态在量子程序多次运行结果中出现的次数
-            for (auto &val : result)
+            auto result = qvm.runWithConfiguration(prog, c, 1000);
+            for (auto &item : result)
             {
-                std::cout << val.first << " : " << val.second << std::endl;
+                cout << item.first << " : " << item.second << endl;
             }
 
-            qvm.finalize();
             return 0;
         }
 
@@ -223,20 +242,20 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
     .. code-block:: c
 
-        0000 : 73
-        0001 : 68
-        0010 : 66
-        0011 : 56
-        0100 : 60
-        0101 : 64
-        0110 : 56
-        0111 : 62
-        1000 : 56
-        1001 : 72
-        1010 : 64
-        1011 : 66
-        1100 : 58
-        1101 : 58
-        1110 : 55
-        1111 : 66
+        0000 : 341
+        0001 : 82
+        0010 : 37
+        0011 : 41
+        0100 : 37
+        0101 : 16
+        0110 : 15
+        0111 : 28
+        1000 : 48
+        1001 : 23
+        1010 : 19
+        1011 : 29
+        1100 : 16
+        1101 : 51
+        1110 : 46
+        1111 : 171
 
