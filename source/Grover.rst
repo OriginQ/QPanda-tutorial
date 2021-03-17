@@ -200,12 +200,9 @@ Grover算法还有其他的接口函数，此处不作赘述。
       QVec measure_qubits;
       QProg grover_Qprog = build_grover_alg_prog(search_space, x == 6, machine, measure_qubits, 1);
 
-      QVec qv;
-      get_all_used_qubits(grover_Qprog, qv);
-
       //measure
       printf("Strat pmeasure.\n");
-      auto result = probRunDict(grover_Qprog, qv);
+      auto result = probRunDict(grover_Qprog, measure_qubits);
 
       printf("pmeasure result:\n");
       for (auto aiter : result)
@@ -226,7 +223,4 @@ Grover算法还有其他的接口函数，此处不作赘述。
 
 .. code-block:: c
 
-   1000:0.25
-   1001:0.25
-   1010:0.25
-   1011:0.25
+   10:1
