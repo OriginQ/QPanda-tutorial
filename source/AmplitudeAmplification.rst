@@ -98,7 +98,7 @@
       // 构建振幅放大量子线路
       auto prog = createEmptyQProg();
       prog << H(qvec[0]);
-      for (int i = 0; i < 9; i++)
+      for (int i = 0; i < 7; i++)
       {
       	prog << RY(qvec[0], PI / 2);
       }
