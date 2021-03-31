@@ -11,7 +11,7 @@ GitHub
 
 1. 如果您已经在系统中安装了git， 您可以通过git来获取QPanda2：
 
- + 选这一个保存QPanda2的文件夹然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
+ + 选择一个保存QPanda2的文件夹然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
 
  .. image:: images/GitBashHere1.jpg
     :align: center  
@@ -27,7 +27,7 @@ GitHub
     :align: center  
 
 
-2.当然了，对于一些未安装git的伙伴来说，也可以直接通过浏览器去下载QPanda-2， 具体的操作步骤如下：
+2.当然了，对于一些未安装git的小伙伴来说，也可以直接通过浏览器去下载QPanda-2， 具体的操作步骤如下：
 
  + 在浏览器中输入： https://github.com/OriginQ/QPanda-2 ， 进入网页会看到：
 
