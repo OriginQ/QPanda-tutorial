@@ -156,7 +156,7 @@ CMake+MinGW的编译命令如下：
 .. image:: images/win_compile_MinGW.jpg
     :align: center 
 
-.. image:: images/PowerShell2.jpg
+.. image:: images/powershell2.jpg
     :align: center 
 
 .. warning::
