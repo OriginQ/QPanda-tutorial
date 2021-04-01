@@ -11,7 +11,7 @@ GitHub
 
 1. 如果您已经在系统中安装了git， 您可以通过git来获取QPanda2：
 
- + 选这一个保存QPanda2的文件夹然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
+ + 选择一个保存QPanda2的文件夹然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
 
  .. image:: images/GitBashHere1.jpg
     :align: center  
@@ -156,7 +156,7 @@ CMake+MinGW的编译命令如下：
 .. image:: images/win_compile_MinGW.jpg
     :align: center 
 
-.. image:: images/PowerShell2.jpg
+.. image:: images/powershell2.jpg
     :align: center 
 
 .. warning::
