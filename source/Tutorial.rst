@@ -79,7 +79,7 @@ Gitee
     如需使用本源量子云服务，请在安装QPanda之前下载安装 `curl库 <https://curl.se/download.html>`_ 。
 
 Windows
->>>>>>>>>>>
+>>>>>>>>>>
 
 在Windows平台下，QPanda-2支持使用Visual Studio和MinGW编译、安装。
 
