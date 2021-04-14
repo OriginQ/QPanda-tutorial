@@ -47,7 +47,7 @@
 
 .. code-block:: cpp
 
-    QPanda::QResultPair myFunc(QPanda::vector_d para)
+    QPanda::QResultPair myFunc(QPanda::vector_d para, QPanda::vector_d &grad, int iter, int fcall)
     {
         std::vector<double> x = {3.3, 4.4, 5.5, 6.71, 6.93, 4.168, 9.779, 6.182, 7.59,
                     2.167, 7.042, 10.791, 5.313, 7.997, 5.654, 9.27, 3.1};

@@ -11,12 +11,13 @@ GitHub
 
 1. 如果您已经在系统中安装了git， 您可以通过git来获取QPanda2：
 
-+ 选择一个保存QPanda2的文件夹，然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
+ + 选择一个保存QPanda2的文件夹然后在文件夹内单击 ``鼠标右键`` -``Git Bash Here``
 
  .. image:: images/GitBashHere1.jpg
     :align: center  
 
-+ 在弹出的窗口中输入以下命令，再按下 ``Enter`` 键，然后静待下载完成即可：
+
+ + 在弹出的窗口中输入以下命令，再按下 ``Enter`` 键，然后静待下载完成即可：
 
  .. code-block:: c
 
@@ -26,19 +27,19 @@ GitHub
     :align: center  
 
 
-2.当然了，对于一些未安装git的小伙伴来说，也可以直接通过浏览器去下载QPanda-2， 具体的操作步骤如下：
+2.当然了，对于一些未安装git的伙伴来说，也可以直接通过浏览器去下载QPanda-2， 具体的操作步骤如下：
 
-+ 在浏览器中输入： https://github.com/OriginQ/QPanda-2 ， 进入网页会看到：
+ + 在浏览器中输入： https://github.com/OriginQ/QPanda-2 ， 进入网页会看到：
 
  .. image:: images/QPanda_github.jpg
     :align: center  
 
-+ 点击 ``Code`` 看到如下界面：
+ + 点击 ``Code`` 看到如下界面：
 
  .. image:: images/Code_Clone.jpg
     :align: center  
 
-+ 然后点击 ``Download ZIP``， 就会完成QPanda2的下载。
+ + 然后点击 ``Download ZIP``， 就会完成QPanda2的下载。
 
  .. image:: images/Download.jpg
     :align: center  
@@ -447,6 +448,8 @@ CMake
 .. image:: images/vs_cmake.png
     :align: center 
 
+
+vs_cmake.png
 2. 然后选择QPanda-example文件夹中的示例下的CMakeLists.txt点击，就会打开一个示例
 
 .. image:: images/CMakelist.png
@@ -562,7 +565,7 @@ gcc
 
     如遇以下错误：
 
-     .. image:: images/linux_cuda_error.png
+    .. image:: images/linux_cuda_error.png
         :align: center 
    
     可以使用如下方法解决（样例CUDA版本为11.2）：
@@ -661,15 +664,13 @@ CMake
     cd test
     mkdir -p build
     cd build
-    cmake -DQPANDA_INSTALL_DIR=/usr/local/ .. 
+    cmake -DQPANDA_INSTALL_DIR=/usr/local/ .. #本文档样例QPanda的路径是/usr/local/
     make
-本文档样例QPanda的路径是/usr/local/
 
-.. image:: images/mac_cmake.jpg
+.. image:: images/cmake.jpg
     :align: center   
 
 运行编译后文件：
-
 .. image:: images/cmake_result.jpg
     :align: center   
 
