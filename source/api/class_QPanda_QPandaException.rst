@@ -15,7 +15,7 @@ QPanda2 exception basic class.
 
 	#include <QPandaException.h>
 	
-	class QPandaException: public exception
+	class QPandaException: public runtime_error
 	{
 	public:
 		// construction

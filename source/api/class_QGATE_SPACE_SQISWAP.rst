@@ -16,11 +16,15 @@ class QGATE_SPACE::SQISWAP
 	#include <QuantumGate.h>
 	
 	class SQISWAP:
-	    public :ref:`QGATE_SPACE::ISWAPTheta<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p_theta>`,
+	    public :ref:`QGATE_SPACE::QDoubleGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_double_gate>`,
 	    public :ref:`QGATE_SPACE::DynamicCreator<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_dynamic_creator>`,
 	    public :ref:`QGATE_SPACE::DynamicCreator<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_dynamic_creator>`
 	{
 	public:
+		// fields
+	
+		double :target:`theta<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_s_q_i_s_w_a_p_1a5197907f404a7e1183d970b134ccb82c>`;
+
 		// construction
 	
 		:target:`SQISWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_s_q_i_s_w_a_p_1aa3c40745e8ac332f7ef3c8574fb5c02a>`(:ref:`QuantumGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_quantum_gate>`* gate_old);
@@ -50,6 +54,4 @@ Inherited Members
 		static :ref:`T<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_t>`* :ref:`CreateObject<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_dynamic_creator_1a0fcbddf75bfd66e35b71d1917e06cbe9>`(Targs&&... args);
 		virtual int :ref:`getOperationNum<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_double_gate_1a973d1bfbb4ff2a88d99af47fad1b2f84>`() const;
 		virtual void :ref:`getMatrix<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_double_gate_1ad9c2e8d8e079179022d4624333d9b81e>`(:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`&) const;
-		virtual double :ref:`getParameter<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_abstract_single_angle_parameter_1a5ff797e26bd6933d2c58eeb3937d848a>`() const = 0;
-		virtual double :ref:`getParameter<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p_theta_1a83b676d191c4e3aa0da782ffce306575>`() const;
 

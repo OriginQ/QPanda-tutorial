@@ -39,12 +39,12 @@ struct QPanda::Variational::impl_vqp
 	
 		double :target:`_get_gradient_one_term<doxid-struct_q_panda_1_1_variational_1_1impl__vqp_1ae4d787f0d0e2bf5e07dbdb4f9e56c0fe>`(
 			:ref:`var<doxid-class_q_panda_1_1_variational_1_1var>` _var,
-			:ref:`QTerm<doxid-namespace_q_panda_1a0985a180971aab50d40a76b537ce41b4>`
+			QTerm
 			);
 	
 		double :target:`_get_expectation_one_term<doxid-struct_q_panda_1_1_variational_1_1impl__vqp_1a30434cc6f897cd68bf73d771dae68f71>`(
 			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`,
-			:ref:`QTerm<doxid-namespace_q_panda_1a0985a180971aab50d40a76b537ce41b4>`
+			QTerm
 			);
 	
 		double :target:`_get_expectation<doxid-struct_q_panda_1_1_variational_1_1impl__vqp_1a2f60ca935ea2d45d208406768b73254f>`();

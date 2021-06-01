@@ -8,17 +8,20 @@ namespace QGATE_SPACE
 	:hidden:
 
 	class_QGATE_SPACE_AbstractSingleAngleParameter.rst
+	class_QGATE_SPACE_BARRIER.rst
 	class_QGATE_SPACE_CNOT.rst
 	class_QGATE_SPACE_CPHASE.rst
 	class_QGATE_SPACE_CU.rst
 	class_QGATE_SPACE_CZ.rst
 	class_QGATE_SPACE_DynamicCreator.rst
+	class_QGATE_SPACE_ECHO.rst
 	class_QGATE_SPACE_H.rst
 	class_QGATE_SPACE_I.rst
 	class_QGATE_SPACE_ISWAP.rst
 	class_QGATE_SPACE_ISWAPTheta.rst
 	class_QGATE_SPACE_OracularGate.rst
 	class_QGATE_SPACE_QDoubleGate.rst
+	class_QGATE_SPACE_RPhi.rst
 	class_QGATE_SPACE_RX.rst
 	class_QGATE_SPACE_RY.rst
 	class_QGATE_SPACE_RZ.rst
@@ -50,6 +53,7 @@ QGATE namespace.
 
 	class :ref:`AbstractAngleParameter<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_abstract_angle_parameter>`;
 	class :ref:`AbstractSingleAngleParameter<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_abstract_single_angle_parameter>`;
+	class :ref:`BARRIER<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_b_a_r_r_i_e_r>`;
 	class :ref:`CNOT<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_n_o_t>`;
 	class :ref:`CPHASE<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_p_h_a_s_e>`;
 	class :ref:`CU<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_u>`;
@@ -58,6 +62,7 @@ QGATE namespace.
 	template <typename T, typename ... Targs>
 	class :ref:`DynamicCreator<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_dynamic_creator>`;
 
+	class :ref:`ECHO<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_e_c_h_o>`;
 	class :ref:`H<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_h>`;
 	class :ref:`I<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i>`;
 	class :ref:`ISWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p>`;
@@ -69,6 +74,7 @@ QGATE namespace.
 	class :ref:`QGateFactory<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_gate_factory>`;
 
 	class :ref:`QuantumGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_quantum_gate>`;
+	class :ref:`RPhi<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_phi>`;
 	class :ref:`RX<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_x>`;
 	class :ref:`RY<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_y>`;
 	class :ref:`RZ<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_z>`;

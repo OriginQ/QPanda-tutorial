@@ -36,6 +36,11 @@ QPU implementation base class. :ref:`More...<details-class_q_p_u_impl>`
 			size_t qubit_num
 			) = 0;
 	
+		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`initState<doxid-class_q_p_u_impl_1a4caf9a31a84bb94def033f9686477041>`(
+			size_t qubit_num,
+			const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {}
+			) = 0;
+	
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`unitarySingleQubitGate<doxid-class_q_p_u_impl_1a5d4651b69e9ddcf7f3180b577a80ea22>`(size_t qn, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`controlunitarySingleQubitGate<doxid-class_q_p_u_impl_1ad1d0629c91a42e06e079d6d6c215c0a9>`(size_t qn, :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qnum, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`unitaryDoubleQubitGate<doxid-class_q_p_u_impl_1ad5f00e8ccf36ca66f48f4c63b3650e61>`(size_t qn_0, size_t qn_1, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;
@@ -52,6 +57,7 @@ QPU implementation base class. :ref:`More...<details-class_q_p_u_impl>`
 	class :ref:`CPUImplQPUSingleThread<doxid-class_c_p_u_impl_q_p_u_single_thread>`;
 	class :ref:`DistributedFullAmplitudeEngine<doxid-class_distributed_full_amplitude_engine>`;
 	class :ref:`NoisyCPUImplQPU<doxid-class_noisy_c_p_u_impl_q_p_u>`;
+	class :ref:`MPSImplQPU<doxid-class_q_panda_1_1_m_p_s_impl_q_p_u>`;
 .. _details-class_q_p_u_impl:
 
 Detailed Documentation

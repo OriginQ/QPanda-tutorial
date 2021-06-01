@@ -30,6 +30,7 @@ class originirParser::ConstantContext
 		virtual size_t :target:`getRuleIndex<doxid-classoriginir_parser_1_1_constant_context_1a8d28e525cbe628907acfff27a66d1bd6>`() const;
 		antlr4::tree::TerminalNode* :target:`Integer_Literal<doxid-classoriginir_parser_1_1_constant_context_1a4679983a37b561878fcbdcbee4ab19dd>`();
 		antlr4::tree::TerminalNode* :target:`Double_Literal<doxid-classoriginir_parser_1_1_constant_context_1ad338527d08fc524a951b082b4333e766>`();
+		antlr4::tree::TerminalNode* :target:`PI<doxid-classoriginir_parser_1_1_constant_context_1a84bb11f51750b3a5db14925f23db5823>`();
 		virtual void :target:`enterRule<doxid-classoriginir_parser_1_1_constant_context_1aa40737df7e40d077a9eca45e5bc79e29>`(antlr4::tree::ParseTreeListener* listener);
 		virtual void :target:`exitRule<doxid-classoriginir_parser_1_1_constant_context_1a946c8142e36d890b1deaf413817945b9>`(antlr4::tree::ParseTreeListener* listener);
 		virtual antlrcpp::Any :target:`accept<doxid-classoriginir_parser_1_1_constant_context_1a743b3f7a08272e0f1d982f4693cf1872>`(antlr4::tree::ParseTreeVisitor* visitor);

@@ -22,5 +22,7 @@ noise model type
 	    :target:`PHASE_DAMPING_OPRATOR<doxid-_noise_model_8h_1a4e433c5ef943716bf3d7b430a596f8a0a3af5513bb706e3a1cf9cc835e4a0e1ad>`,
 	    :target:`DECOHERENCE_KRAUS_OPERATOR<doxid-_noise_model_8h_1a4e433c5ef943716bf3d7b430a596f8a0a42cfa8a2f1db4c932b6a5d491b20a101>`,
 	    :target:`PAULI_KRAUS_MAP<doxid-_noise_model_8h_1a4e433c5ef943716bf3d7b430a596f8a0a01476facc56390e7553b1a1613280933>`,
+	    :target:`KRAUS_MATRIX_OPRATOR<doxid-_noise_model_8h_1a4e433c5ef943716bf3d7b430a596f8a0ad8f17f9bb1a033776c7d89d4006fe564>`,
+	    :target:`MIXED_UNITARY_OPRATOR<doxid-_noise_model_8h_1a4e433c5ef943716bf3d7b430a596f8a0adef8ce90a47781c1dc6b8e45fb584d09>`,
 	};
 

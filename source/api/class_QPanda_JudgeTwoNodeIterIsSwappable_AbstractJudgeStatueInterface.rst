@@ -19,40 +19,52 @@ class QPanda::JudgeTwoNodeIterIsSwappable::AbstractJudgeStatueInterface
 	public:
 		// methods
 	
-		virtual void :target:`handleQGate<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a964cb19c7481b132a6d73548eaa979e3>`(
+		virtual void :target:`handle_QGate<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1ac2a9a122ba5ebe6ef7a4bf54cdebbf11>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param,
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :target:`handleQMeasure<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a7215663a19c0f1482b5efdb31a532c87>`(
+		virtual void :target:`handle_QMeasure<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a5b700b7ac794ad8604a55a2050158594>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param,
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :target:`handleQReset<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a2132cff8afc7e95c2f6c5210a0da5720>`(
+		virtual void :target:`handle_QReset<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1ac19f549e773648f20f9ac08e392e1646>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param,
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :target:`onEnterFlowCtrlNode<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a96b9c56123f007ecf0515e13257bf52b>`();
-		virtual void :target:`onLeaveFlowCtrlNode<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a5511333628843598ff0199f94561e93d>`();
+		virtual void :target:`enter_flow_ctrl_node<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1afe7b190b3ceeef716940ff6a229491a8>`();
+		virtual void :target:`leave_flow_ctrl_node<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a388467558598aea35282b0c12d86453c>`();
 	
-		virtual void :target:`onEnterCircuit<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a7875c0ed682cc8de8b7051c7c42bd3d6>`(
+		virtual void :target:`on_enter_circuit<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a37270a288de42323965a3cb98928ecc1>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
 			);
 	
-		virtual void :target:`onLeaveCircuit<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a6560f6fd788c3b61f1ddff591a21b0cf>`(
+		virtual void :target:`on_leave_circuit<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a31c04e5fe5b622886ef80127b273e9d6>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
 			);
 	
-		virtual void :target:`onTraversalEnd<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a2c273461f71b117f84cb6b64ee0c0984>`();
-		virtual ResultStatue :target:`getStatue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a32b91e7c61c936de14bfe40f3da112bf>`() const = 0;
+		virtual void :target:`on_enter_prog<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1aaf3704ed71aaf9a1b887765b9368c8a7>`(
+			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
+			);
+	
+		virtual void :target:`on_leave_prog<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a0b5b8a0a8a288750f7cf4d6d8ff75383>`(
+			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			:ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
+			);
+	
+		virtual void :target:`on_traversal_end<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1abc0d2c35cd2e2a14b124f0abb7d35b3f>`();
+		virtual ResultStatue :target:`get_statue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_abstract_judge_statue_interface_1a7c8884c5795c7f53de3c910bfbb7d7c3>`() const = 0;
 	};

@@ -29,6 +29,7 @@ Abstract quantum machine base classes. :ref:`More...<details-class_q_panda_1_1_q
 		virtual :ref:`QMachineStatus<doxid-class_q_panda_1_1_q_machine_status>`* :ref:`getStatus<doxid-class_q_panda_1_1_quantum_machine_1a29299cd9882a2f5016971121a58fa679>`() const = 0;
 		virtual std::map<std::string, bool> :ref:`directlyRun<doxid-class_q_panda_1_1_quantum_machine_1a77357644931b71be480590764df59451>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& qProg) = 0;
 		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_quantum_machine_1a7dded3823353840ab733abdc3fb999b2>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, rapidjson::Document&) = 0;
+		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_quantum_machine_1af49fc4f7b7b608fed6327bcde3d28226>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, int) = 0;
 		virtual std::map<:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`, size_t> :ref:`getGateTimeMap<doxid-class_q_panda_1_1_quantum_machine_1a9caf6ddc2d278e222db50b78ff6d5a03>`() const = 0;
 		virtual void :ref:`finalize<doxid-class_q_panda_1_1_quantum_machine_1a2aff067ba64013dce87814dfdfbdc176>`() = 0;
 		virtual :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`getQState<doxid-class_q_panda_1_1_quantum_machine_1aee285b6b7f5cd7936491f2b304501167>`() const = 0;
@@ -58,6 +59,16 @@ Abstract quantum machine base classes. :ref:`More...<details-class_q_panda_1_1_q
 		virtual void :ref:`cFreeAll<doxid-class_q_panda_1_1_quantum_machine_1a2912a9f37c8600d8d0fc875eeca402d5>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0;
 		virtual size_t :ref:`getAllocateQubitNum<doxid-class_q_panda_1_1_quantum_machine_1a66fe7b76e261cde0b4571fc796107fcc>`() = 0;
 		virtual size_t :ref:`getAllocateCMemNum<doxid-class_q_panda_1_1_quantum_machine_1ac49cf7c186b153bc277e2505efce9344>`() = 0;
+	
+		virtual void :target:`initState<doxid-class_q_panda_1_1_quantum_machine_1ad8c9c37bd0aa2f8e3d2aaa0f0468de86>`(
+			const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {},
+			const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qlist = {}
+			) = 0;
+	
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_quantum_machine_1af4601428256d3511b0004d3c7def733f>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0;
+		virtual size_t :ref:`get_allocate_cbits<doxid-class_q_panda_1_1_quantum_machine_1a2c5e32ecb79ce0dbaabf03412d01e50a>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0;
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_quantum_machine_1a36e280b887f9cf99498403897233811c>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0;
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_quantum_machine_1a9f12409d33e4e66a7fd9c8e7eedb76ef>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int) = 0;
 	};
 
 	// direct descendants
@@ -222,6 +233,48 @@ runWithConfiguration
 
 	*
 		- rapidjson::Document&
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+std::map<std::string, Eigen::size_t>
+
+.. index:: pair: function; runWithConfiguration
+.. _doxid-class_q_panda_1_1_quantum_machine_1af49fc4f7b7b608fed6327bcde3d28226:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual std::map<std::string, size_t> runWithConfiguration(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&,
+		int
+		) = 0
+
+runWithConfiguration
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- quantum program
+
+	*
+		- std::vector<ClassicalCondition>&
+
+		- 
+
+	*
+		- int
 
 		- 
 
@@ -739,4 +792,141 @@ getAllocateCMemNum
 .. rubric:: Returns:
 
 Eigen::size_t count
+
+.. index:: pair: function; get_allocate_qubits
+.. _doxid-class_q_panda_1_1_quantum_machine_1af4601428256d3511b0004d3c7def733f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_allocate_qubits(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0
+
+get allocate qubits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QVec&
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+size_t allocate qubits size
+
+.. index:: pair: function; get_allocate_cbits
+.. _doxid-class_q_panda_1_1_quantum_machine_1a2c5e32ecb79ce0dbaabf03412d01e50a:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_allocate_cbits(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0
+
+get allocate cbits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::vector<ClassicalCondition>&
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+size_t allocate cbits size
+
+.. index:: pair: function; get_expectation
+.. _doxid-class_q_panda_1_1_quantum_machine_1a36e280b887f9cf99498403897233811c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual double get_expectation(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0
+
+gets the expected value of the Hamiltonian of the circuit
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
+
+		- quantum program
+
+	*
+		- QHamiltonian
+
+		- hamiltonian
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubits
+
+
+
+.. rubric:: Returns:
+
+double expectation
+
+.. index:: pair: function; get_expectation
+.. _doxid-class_q_panda_1_1_quantum_machine_1a9f12409d33e4e66a7fd9c8e7eedb76ef:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual double get_expectation(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int) = 0
+
+gets the expected value of the Hamiltonian of the circuit
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
+
+		- quantum program
+
+	*
+		- QHamiltonian
+
+		- hamiltonian
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubits
+
+	*
+		- int
+
+		- run shots
+
+
+
+.. rubric:: Returns:
+
+double expectation
 

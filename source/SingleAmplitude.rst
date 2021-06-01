@@ -39,7 +39,18 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
 
         }
 
-以上是前期的准备工作，最后调用计算接口来获取结果，我们设计多种返回值的接口用于满足不同的计算需求，具体见如下完整的计算示例所述：
+以上是前期的准备工作，最后调用计算接口来获取结果，我们设计多种返回值的接口用于满足不同的计算需求，
+主要接口有以下几种：
+
+``run`` ：输入参数为执行的量子程序，申请的量子比特，最大RANK，quickBB优化的最大运行时间
+
+``pMeasureBinindex`` ：输入参数为二进制索引字符串，如 ``pMeasureBinindex("0000000000")`` ，输出为该索引下的量子态，同时保证字符串长度与测量的比特数相同
+
+``pMeasureDecindex`` ：输入参数为十进制索引字符串，如 ``pMeasureDecindex("1")``
+
+``probRunDict`` ：输入参数为要执行的量子程序，以及要测量的量子比特。输出为对应量子比特的所有态结果。需要注意的是该接口要求量子比特数为30个以内时使用
+
+具体见如下完整的计算示例所述：
 
 完整示例代码
 >>>>>>>>>>
@@ -51,53 +62,71 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
     .. code-block:: c
 
         #include "QPanda.h"
-
         USING_QPANDA
-
-        int main(void)
+        using namespace std;
+        int main()
         {
-            SingleAmplitudeQVM qvm;
+            //申请单振幅量子虚拟机
+            auto qvm = new SingleAmplitudeQVM();
+            qvm->init();
+            auto qv = qvm->qAllocMany(10);
+            auto cv = qvm->cAllocMany(10);
 
-            qvm.init();
-            auto qlist = qvm.qAllocMany(10);
-            auto clist = qvm.cAllocMany(10); 
+            // 构建测试线路
+            auto prog = QProg();
+            for_each(qv.begin(), qv.end(), [&](Qubit* val) { prog << H(val); });
+            prog << CZ(qv[1], qv[5])
+                << CZ(qv[3], qv[5])
+                << CZ(qv[2], qv[4])
+                << CZ(qv[3], qv[7])
+                << CZ(qv[0], qv[4])
+                << RY(qv[7], PI / 2)
+                << RX(qv[8], PI / 2)
+                << RX(qv[9], PI / 2)
+                << CR(qv[0], qv[1], PI)
+                << CR(qv[2], qv[3], PI)
+                << RY(qv[4], PI / 2)
+                << RZ(qv[5], PI / 4)
+                << RX(qv[6], PI / 2)
+                << RZ(qv[7], PI / 4)
+                << CR(qv[8], qv[9], PI)
+                << CR(qv[1], qv[2], PI)
+                << RY(qv[3], PI / 2)
+                << RX(qv[4], PI / 2)
+                << RX(qv[5], PI / 2)
+                << CR(qv[9], qv[1], PI)
+                << RY(qv[1], PI / 2)
+                << RY(qv[2], PI / 2)
+                << RZ(qv[3], PI / 4)
+                << CR(qv[7], qv[8], PI);
 
-            QProg prog;
-            prog << HadamardQCircuit(qlist)
-                << CZ(qlist[1], qlist[5])
-                << CZ(qlist[3], qlist[5])
-                << CZ(qlist[2], qlist[4])
-                << CZ(qlist[3], qlist[7])
-                << CZ(qlist[0], qlist[4])
-                << RY(qlist[7], PI / 2)
-                << RX(qlist[8], PI / 2)
-                << RX(qlist[9], PI / 2)
-                << CR(qlist[0], qlist[1], PI)
-                << CR(qlist[2], qlist[3], PI)
-                << RY(qlist[4], PI / 2)
-                << RZ(qlist[5], PI / 4)
-                << RX(qlist[6], PI / 2)
-                << RZ(qlist[7], PI / 4)
-                << CR(qlist[8], qlist[9], PI)
-                << CR(qlist[1], qlist[2], PI)
-                << RY(qlist[3], PI / 2)
-                << RX(qlist[4], PI / 2)
-                << RX(qlist[5], PI / 2)
-                << CR(qlist[9], qlist[1], PI)
-                << RY(qlist[1], PI / 2)
-                << RY(qlist[2], PI / 2)
-                << RZ(qlist[3], PI / 4)
-                << CR(qlist[7], qlist[8], PI);;
+            // pMeasureBinindex : 获取对应（二进制）量子态概率
+            // run 有三个参数，默认2个，
+            // 第一个执行的量子程序;
+            // 第二个为申请的量子比特
+            // 第三个为最大RANK，这里根据内存设置，默认30；
+            // 第四个就是quickBB优化的最大运行时间，默认5s
+            qvm->run(prog, qv);
+            qvm->run(prog);
+            cout << qvm->pMeasureBinindex("0001000000") << endl;
 
-            //获取二进制下标对应的量子态振幅
-            auto bin_index_result = qvm.PMeasure_bin_index(prog, "0000000000");
+            // pMeasureDecindex : 获取对应（10进制）量子态概率
+            qvm->run(prog, qv);
+            cout << qvm->pMeasureDecindex("1") << endl;
 
-            //获取十进制下标对应的量子态振幅
-            auto dec_index_result = qvm.PMeasure_dec_index(prog, "1");
+            // getProbDict 获取对应量子比特所有量子态（如果申请比特数超过30， 该接口不提供使用）
+            qvm->run(prog, qv);
+            auto res_1 = qvm->getProbDict(qv);
 
-            std::cout << bin_index_result << std::endl;
-            std::cout << dec_index_result << std::endl;
+            // probRunDict  上面两个接口run和getProbDict的封装
+            auto res = qvm->probRunDict(prog, qv);
+            for (auto val : res)
+            {
+                std::cout << val.first << " : " << val.second << std::endl;
+            }
 
+            qvm->finalize();
+            delete(qvm);
             return 0;
         }
 

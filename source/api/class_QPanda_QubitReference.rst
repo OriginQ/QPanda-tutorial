@@ -34,7 +34,7 @@ The position of the qubit is an expression. :ref:`More...<details-class_q_panda_
 
 		// methods
 	
-		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_reference_1ac52025ebf1860482ecf8e47d932c526b>`();
+		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_reference_1ab5bb4c1d2084151d56a91eaff094d356>`() const;
 		virtual bool :ref:`getOccupancy<doxid-class_q_panda_1_1_qubit_reference_1a7eed27269ff858ef49e6a1a2d2162833>`();
 		virtual std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :target:`getExprPtr<doxid-class_q_panda_1_1_qubit_reference_1ad106c44aafb7d5be0497d7ed585d3ef0>`();
 	};
@@ -48,7 +48,8 @@ Inherited Members
 	public:
 		// methods
 	
-		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_1a05b7dd4dcfe023c3f341fc8d09d90943>`() = 0;
+		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_1ab5238f42f6dbbc19b127d80979ee654a>`() const = 0;
+		virtual size_t :ref:`get_phy_addr<doxid-class_q_panda_1_1_qubit_1a3dbdbfb4b2ba305204e703b75e95d7f9>`() const;
 		virtual bool :ref:`getOccupancy<doxid-class_q_panda_1_1_qubit_1a50abaaae859256175922cae0e07ea9f6>`() = 0;
 		virtual std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :ref:`getExprPtr<doxid-class_q_panda_1_1_qubit_reference_interface_1ae5b90745e942726dfe3d875601265141>`() = 0;
 
@@ -63,12 +64,12 @@ Methods
 -------
 
 .. index:: pair: function; getPhysicalQubitPtr
-.. _doxid-class_q_panda_1_1_qubit_reference_1ac52025ebf1860482ecf8e47d932c526b:
+.. _doxid-class_q_panda_1_1_qubit_reference_1ab5bb4c1d2084151d56a91eaff094d356:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* getPhysicalQubitPtr()
+	virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* getPhysicalQubitPtr() const
 
 Get physical qubit pointer.
 

@@ -13,6 +13,8 @@ VirtualQuantumProcessor
 	class_DefaultRandomEngine.rst
 	class_DistributedFullAmplitudeEngine.rst
 	class_DoubleGateNoiseModeMap.rst
+	class_QPanda_MPSImplQPU.rst
+	class_QPanda_MPSQVM.rst
 	class_NoisyCPUImplQPU.rst
 	class_QPanda_PartialAmplitudeGraph.rst
 	class_QPUImpl.rst
@@ -38,6 +40,8 @@ QPanda2 virtual quantum processor. :ref:`More...<details-group___virtual_quantum
 	class :ref:`DefaultRandomEngine<doxid-class_default_random_engine>`;
 	class :ref:`DistributedFullAmplitudeEngine<doxid-class_distributed_full_amplitude_engine>`;
 	class :ref:`DoubleGateNoiseModeMap<doxid-class_double_gate_noise_mode_map>`;
+	class :ref:`QPanda::MPSImplQPU<doxid-class_q_panda_1_1_m_p_s_impl_q_p_u>`;
+	class :ref:`QPanda::MPSQVM<doxid-class_q_panda_1_1_m_p_s_q_v_m>`;
 	class :ref:`NoisyCPUImplQPU<doxid-class_noisy_c_p_u_impl_q_p_u>`;
 	class :ref:`QPanda::PartialAmplitudeGraph<doxid-class_q_panda_1_1_partial_amplitude_graph>`;
 	class :ref:`QPUImpl<doxid-class_q_p_u_impl>`;
@@ -47,10 +51,10 @@ QPanda2 virtual quantum processor. :ref:`More...<details-group___virtual_quantum
 
 	// global functions
 
-	bool :ref:`bit_phase_flip_operator<doxid-group___virtual_quantum_processor_1ga387b0f99344a6794da969d23de3a96b0>` (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise);
-	bool :ref:`phase_damping_oprator<doxid-group___virtual_quantum_processor_1gaec6e538178b20f1f902fcdf30ff9062d>`(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise);
-	bool :ref:`double_bit_phase_flip_operator<doxid-group___virtual_quantum_processor_1gacc4ff7b27f520f6fb21a41c8848cdc0d>` (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise);
-	bool :ref:`double_phase_damping_oprator<doxid-group___virtual_quantum_processor_1gaef3f3a9f7026dc7a790cb2e58448b5ae>`(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise);
+	bool :ref:`bit_phase_flip_operator<doxid-group___virtual_quantum_processor_1ga387b0f99344a6794da969d23de3a96b0>` (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise);
+	bool :ref:`phase_damping_oprator<doxid-group___virtual_quantum_processor_1gaec6e538178b20f1f902fcdf30ff9062d>`(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise);
+	bool :ref:`double_bit_phase_flip_operator<doxid-group___virtual_quantum_processor_1gacc4ff7b27f520f6fb21a41c8848cdc0d>` (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise);
+	bool :ref:`double_phase_damping_oprator<doxid-group___virtual_quantum_processor_1gaef3f3a9f7026dc7a790cb2e58448b5ae>`(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise);
 
 .. _details-group___virtual_quantum_processor:
 
@@ -68,7 +72,7 @@ Global Functions
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool bit_phase_flip_operator (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise)
+	bool bit_phase_flip_operator (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise)
 
 Get Noise model bit-phase flip matrix.
 
@@ -103,7 +107,7 @@ bool true:get matrix success, false:get matrix failed
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool phase_damping_oprator(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise)
+	bool phase_damping_oprator(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise)
 
 Get Noise model bit-phase flip matrix.
 
@@ -138,7 +142,7 @@ bool true:get matrix success, false:get matrix failed
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool double_bit_phase_flip_operator (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise)
+	bool double_bit_phase_flip_operator (rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise)
 
 Get Noise model bit-phase flip matrix.
 
@@ -173,7 +177,7 @@ bool true:get matrix success, false:get matrix failed
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool double_phase_damping_oprator(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise)
+	bool double_phase_damping_oprator(rapidjson::Value& value, :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise)
 
 Get Noise model bit-phase flip matrix.
 

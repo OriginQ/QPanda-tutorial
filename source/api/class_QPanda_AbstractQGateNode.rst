@@ -32,8 +32,10 @@ Quantum gate basic abstract class. :ref:`More...<details-class_q_panda_1_1_abstr
 		virtual void :ref:`setQGate<doxid-class_q_panda_1_1_abstract_q_gate_node_1af754b29a705224c2b8569594bb59c35d>`(:ref:`QuantumGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_quantum_gate>`*) = 0;
 		virtual bool :ref:`isDagger<doxid-class_q_panda_1_1_abstract_q_gate_node_1a741d55580cfb5d2597bd25f3236819a8>`() const = 0;
 		virtual size_t :ref:`getControlVector<doxid-class_q_panda_1_1_abstract_q_gate_node_1ac82c51d31b345c36c0ce5edf2a8411b7>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) const = 0;
+		virtual void :ref:`clear_control<doxid-class_q_panda_1_1_abstract_q_gate_node_1a69d17f7abbab8652e30aef0ef472805f>`() = 0;
 		virtual bool :ref:`setDagger<doxid-class_q_panda_1_1_abstract_q_gate_node_1ae930a57233bd67928e5c8abfcd6b1835>`(bool) = 0;
 		virtual bool :ref:`setControl<doxid-class_q_panda_1_1_abstract_q_gate_node_1aff311eda65e1ce1105cf54aa10cf8650>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`) = 0;
+		virtual void :ref:`remap<doxid-class_q_panda_1_1_abstract_q_gate_node_1ac5a171d2e8347715631a79f4a3c96d74>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`) = 0;
 	};
 
 	// direct descendants
@@ -242,6 +244,22 @@ size_t
 
 :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
+.. index:: pair: function; clear_control
+.. _doxid-class_q_panda_1_1_abstract_q_gate_node_1a69d17f7abbab8652e30aef0ef472805f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual void clear_control() = 0
+
+Clear the control qubits for current quantum gate.
+
+
+
+.. rubric:: See also:
+
+:ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
 .. index:: pair: function; setDagger
 .. _doxid-class_q_panda_1_1_abstract_q_gate_node_1ae930a57233bd67928e5c8abfcd6b1835:
 
@@ -303,4 +321,18 @@ bool
 .. rubric:: See also:
 
 :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+.. index:: pair: function; remap
+.. _doxid-class_q_panda_1_1_abstract_q_gate_node_1ac5a171d2e8347715631a79f4a3c96d74:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual void remap(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`) = 0
+
+remap qubit
+
+
+
+.. rubric:: Returns:
 

@@ -44,6 +44,7 @@ This class provides an empty implementation of :ref:`qasmVisitor <doxid-classqas
 		virtual antlrcpp::Any :target:`visitExplist<doxid-classqasm_base_visitor_1a251a3219766b3a6f20412668b87a1943>`(:ref:`qasmParser::ExplistContext<doxid-classqasm_parser_1_1_explist_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitExp<doxid-classqasm_base_visitor_1a66e94ef84249d02a6dd6d3e469e83f20>`(:ref:`qasmParser::ExpContext<doxid-classqasm_parser_1_1_exp_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitId<doxid-classqasm_base_visitor_1a33e6dae78f4b66e4169b2409895f31db>`(:ref:`qasmParser::IdContext<doxid-classqasm_parser_1_1_id_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitReal<doxid-classqasm_base_visitor_1ad51c4d25dfb59ac8e25fdb2bd4ed87be>`(:ref:`qasmParser::RealContext<doxid-classqasm_parser_1_1_real_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitInteger<doxid-classqasm_base_visitor_1a0d68ab9026fbd162e63144366457b86e>`(:ref:`qasmParser::IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitDecimal<doxid-classqasm_base_visitor_1a9b46e0297d9e463f31b6a1bae78cd28e>`(:ref:`qasmParser::DecimalContext<doxid-classqasm_parser_1_1_decimal_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitFilename<doxid-classqasm_base_visitor_1a2d3840f07a8c13dbce318d9bf0247859>`(:ref:`qasmParser::FilenameContext<doxid-classqasm_parser_1_1_filename_context>`* ctx);
@@ -83,6 +84,7 @@ Inherited Members
 		virtual antlrcpp::Any :ref:`visitExplist<doxid-classqasm_visitor_1a0fe32d9ce227beb9454716490b27347b>`(:ref:`qasmParser::ExplistContext<doxid-classqasm_parser_1_1_explist_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitExp<doxid-classqasm_visitor_1a770c73bb0db6ad549842dc5f880fd5ed>`(:ref:`qasmParser::ExpContext<doxid-classqasm_parser_1_1_exp_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitId<doxid-classqasm_visitor_1aa64d339b752b1b2972169a9c4a4caa9b>`(:ref:`qasmParser::IdContext<doxid-classqasm_parser_1_1_id_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitReal<doxid-classqasm_visitor_1a54dcb5d796b6a89160e59cc2059c0cb9>`(:ref:`qasmParser::RealContext<doxid-classqasm_parser_1_1_real_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitInteger<doxid-classqasm_visitor_1ac8eb7df5f1d6ae51bc07930b3c5d8074>`(:ref:`qasmParser::IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitDecimal<doxid-classqasm_visitor_1a3970782307f706067fd6bc4a2d3a3c63>`(:ref:`qasmParser::DecimalContext<doxid-classqasm_parser_1_1_decimal_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitFilename<doxid-classqasm_visitor_1a6ea813f3f70f1ae02a536fc5037e34f2>`(:ref:`qasmParser::FilenameContext<doxid-classqasm_parser_1_1_filename_context>`* context) = 0;

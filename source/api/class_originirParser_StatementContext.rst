@@ -37,6 +37,8 @@ class originirParser::StatementContext
 		:ref:`Measure_statementContext<doxid-classoriginir_parser_1_1_measure__statement_context>`* :target:`measure_statement<doxid-classoriginir_parser_1_1_statement_context_1a4ed60bb5c0c352e2fb32783cd41cf907>`();
 		:ref:`Reset_statementContext<doxid-classoriginir_parser_1_1_reset__statement_context>`* :target:`reset_statement<doxid-classoriginir_parser_1_1_statement_context_1a60cef50b1e7495368d710318ed0d8e1f>`();
 		:ref:`Expression_statementContext<doxid-classoriginir_parser_1_1_expression__statement_context>`* :target:`expression_statement<doxid-classoriginir_parser_1_1_statement_context_1a2d0e5b3254dabfea38786589f2359331>`();
+		:ref:`Barrier_statementContext<doxid-classoriginir_parser_1_1_barrier__statement_context>`* :target:`barrier_statement<doxid-classoriginir_parser_1_1_statement_context_1ae42a8ce9440842d319cd599bb567ffd0>`();
+		:ref:`Gate_func_statementContext<doxid-classoriginir_parser_1_1_gate__func__statement_context>`* :target:`gate_func_statement<doxid-classoriginir_parser_1_1_statement_context_1a09cc2714efd51ee5a13ca066221b83ee>`();
 		virtual void :target:`enterRule<doxid-classoriginir_parser_1_1_statement_context_1a123120bb9fdf00b3d6b6f6904c2b0caf>`(antlr4::tree::ParseTreeListener* listener);
 		virtual void :target:`exitRule<doxid-classoriginir_parser_1_1_statement_context_1a50d7cb59cd5352a50aa636af94fa06ea>`(antlr4::tree::ParseTreeListener* listener);
 		virtual antlrcpp::Any :target:`accept<doxid-classoriginir_parser_1_1_statement_context_1aa260912fd526e33b1c21845e252915a3>`(antlr4::tree::ParseTreeVisitor* visitor);

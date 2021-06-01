@@ -22,19 +22,20 @@ Overview
 	public:
 		// fields
 	
-		:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :target:`m_current_layer_mat<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a754853fd981ab9ac37e9f86d31faaf7b>`;
+		:ref:`QProgToMatrix<doxid-class_q_panda_1_1_q_prog_to_matrix>`& :target:`m_parent<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1abeaefa80c2deb4cb105cc588e1959bb8>`;
+		:ref:`qmatrix_t<doxid-namespace_q_panda_1ae5390d4fcde76d93c817482cf46708f3>` :target:`m_current_layer_mat<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1acf948b192b14848c3de7696ab6cb1b2c>`;
 		gateQubitInfo_t :ref:`m_double_qubit_gates<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1afa13502053f0bbf9ef9d8961817c30fc>`;
 		gateQubitInfo_t :ref:`m_single_qubit_gates<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a4d2216e0ea5ad7c4882522b8654055c3>`;
 		gateQubitInfo_t :ref:`m_controled_gates<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a7f1abb15d6254db8b51b98e8402902eb>`;
 		calcUnitVec_t :target:`m_calc_unit_vec<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a1549d46a37f83f1610e8d77ed68f07e7>`;
-		const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :target:`m_mat_I<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a42030dd0615d38853d1830fc7abc6099>`;
+		:ref:`qmatrix_t<doxid-namespace_q_panda_1ae5390d4fcde76d93c817482cf46708f3>` :target:`m_mat_I<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1ae49c0c3eb477e3d6f7f4e1991abe7394>`;
 		std::vector<int>& :ref:`m_qubits_in_use<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1aa2b3b9ebb1da9d416a4fea08559b3336>`;
 
 		// construction
 	
-		:target:`MatrixOfOneLayer<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1a83c6eb6523cfaaf8eab5d185a32f00d1>`(
-			:ref:`SequenceLayer<doxid-namespace_q_panda_1abc4290cf1f142782fed752eaaffb7d9c>`& layer,
-			const :ref:`QProgDAG<doxid-class_q_panda_1_1_q_prog_d_a_g>`& prog_dag,
+		:target:`MatrixOfOneLayer<doxid-class_q_panda_1_1_q_prog_to_matrix_1_1_matrix_of_one_layer_1ac6c5a4166e0ffc00dd2e6a4928a87939>`(
+			:ref:`QProgToMatrix<doxid-class_q_panda_1_1_q_prog_to_matrix>`& parent,
+			:ref:`SeqLayer<doxid-namespace_q_panda_1a6ed9ed67bc56f43d141fc68fec4c6231>`<:ref:`pOptimizerNodeInfo<doxid-namespace_q_panda_1a20ed06f9e8a95ce4bb6321863d9662b3>`>& layer,
 			std::vector<int>& qubits_in_use
 			);
 

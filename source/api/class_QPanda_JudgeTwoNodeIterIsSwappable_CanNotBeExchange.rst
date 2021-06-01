@@ -26,5 +26,5 @@ class QPanda::JudgeTwoNodeIterIsSwappable::CanNotBeExchange
 
 		// methods
 	
-		ResultStatue :target:`getStatue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_can_not_be_exchange_1a6d498872a6dbbf5574a3b0111ac29cc5>`() const;
+		ResultStatue :target:`get_statue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_can_not_be_exchange_1a0987686acd80d4601ab10509faa122be>`() const;
 	};

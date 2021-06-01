@@ -29,6 +29,7 @@ class originirParser::Expression_statementContext
 	
 		virtual size_t :target:`getRuleIndex<doxid-classoriginir_parser_1_1_expression__statement_context_1a0d296af7dd3c2fec2c84606c89f25127>`() const;
 		:ref:`ExpressionContext<doxid-classoriginir_parser_1_1_expression_context>`* :target:`expression<doxid-classoriginir_parser_1_1_expression__statement_context_1a9ba193d7d74eaf98a91ce58a9a2145e7>`();
+		antlr4::tree::TerminalNode* :target:`NEWLINE<doxid-classoriginir_parser_1_1_expression__statement_context_1a703ee630cbbe9b989f58dffcb163e101>`();
 		virtual void :target:`enterRule<doxid-classoriginir_parser_1_1_expression__statement_context_1a5212e1a11317274ca459ffc840d4c303>`(antlr4::tree::ParseTreeListener* listener);
 		virtual void :target:`exitRule<doxid-classoriginir_parser_1_1_expression__statement_context_1a5f615049f4af0fe4ac5bcfa8111a1348>`(antlr4::tree::ParseTreeListener* listener);
 		virtual antlrcpp::Any :target:`accept<doxid-classoriginir_parser_1_1_expression__statement_context_1a767690911d5f70846d0fed6040051fd3>`(antlr4::tree::ParseTreeVisitor* visitor);

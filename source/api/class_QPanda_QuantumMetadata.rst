@@ -20,15 +20,15 @@ Parse xml config and get metadata.
 	public:
 		// construction
 	
-		:target:`QuantumMetadata<doxid-class_q_panda_1_1_quantum_metadata_1aa9905b0bffe0e1abfccdd0731ee5600d>`(const std::string& filename = :ref:`CONFIG_PATH<doxid-_x_m_l_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`);
+		:target:`QuantumMetadata<doxid-class_q_panda_1_1_quantum_metadata_1aa9905b0bffe0e1abfccdd0731ee5600d>`(const std::string& filename = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`);
 
 		// methods
 	
 		QuantumMetadata& :target:`operator =<doxid-class_q_panda_1_1_quantum_metadata_1aa5b73cb1b6ffad81333abb098f65c91c>` (const QuantumMetadata&);
 	
-		bool :target:`getMetadata<doxid-class_q_panda_1_1_quantum_metadata_1ae7ebd876b66430e515f2064471739c88>`(
+		bool :target:`getMetadata<doxid-class_q_panda_1_1_quantum_metadata_1a80b2273e7de987f77c809e20c5afd06f>`(
 			int& qubit_num,
-			std::vector<std::vector<int>>& matrix
+			std::vector<std::vector<double>>& matrix
 			);
 	
 		bool :target:`getQGate<doxid-class_q_panda_1_1_quantum_metadata_1a24ba457ae8c8c058b0f51fa984ee8b08>`(

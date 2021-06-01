@@ -12,10 +12,7 @@ class QPanda::AdjacentQGates
 	class_QPanda_AdjacentQGates_HaveNotFoundTargetNode.rst
 	class_QPanda_AdjacentQGates_ToFindBackNode.rst
 
-Overview
-~~~~~~~~
-
-Get information about adjacent nodes. :ref:`More...<details-class_q_panda_1_1_adjacent_q_gates>`
+Get information about adjacent nodes.
 
 
 .. ref-code-block:: cpp
@@ -35,8 +32,8 @@ Get information about adjacent nodes. :ref:`More...<details-class_q_panda_1_1_ad
 
 		// construction
 	
-		:target:`AdjacentQGates<doxid-class_q_panda_1_1_adjacent_q_gates_1a856c1aa25b558aa45c1c03977e898cec>`(
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+		:target:`AdjacentQGates<doxid-class_q_panda_1_1_adjacent_q_gates_1af6c3f4e0c5eb7a3a049350b0e8d7c79c>`(
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr
 			);
 
@@ -91,31 +88,29 @@ Get information about adjacent nodes. :ref:`More...<details-class_q_panda_1_1_ad
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :ref:`traverse_qprog<doxid-class_q_panda_1_1_adjacent_q_gates_1aaa74c3f6608c3d47306aa73e96e42fef>`();
+		virtual void :target:`traverse_qprog<doxid-class_q_panda_1_1_adjacent_q_gates_1aeba938c0af3f147a2a2455d785e85332>`();
 	
-		void :target:`updateFrontIter<doxid-class_q_panda_1_1_adjacent_q_gates_1a85a59c8774e508fd0e7408b0b9c0e1ea>`(
+		void :target:`update_front_iter<doxid-class_q_panda_1_1_adjacent_q_gates_1acdd3bf0470904cbb444ccafc2c498558>`(
 			const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& itr,
 			const :ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
 			);
 	
-		void :target:`updateBackIter<doxid-class_q_panda_1_1_adjacent_q_gates_1a20010bff9444676d52932f878ebbc0de>`(
+		void :target:`update_back_iter<doxid-class_q_panda_1_1_adjacent_q_gates_1a1a19538260f28ac7d77916967e423c4c>`(
 			const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& itr,
 			const :ref:`QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`& cir_param
 			);
 	
-		:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>` :target:`getFrontIterNodeType<doxid-class_q_panda_1_1_adjacent_q_gates_1a4572dca852908ac90ceabc05c24e1321>`();
-		:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>` :target:`getBackIterNodeType<doxid-class_q_panda_1_1_adjacent_q_gates_1ae2d9e06e198fe1596a2fd29aab245d4e>`();
-		:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>` :target:`getItrNodeType<doxid-class_q_panda_1_1_adjacent_q_gates_1a4758eedc50d40eadee0c6b3398bcf351>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& ter);
-		std::string :target:`getItrNodeTypeStr<doxid-class_q_panda_1_1_adjacent_q_gates_1a9e72e609dba92e8dd0902139a7df6141>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& ter);
-		std::string :target:`getBackIterNodeTypeStr<doxid-class_q_panda_1_1_adjacent_q_gates_1ac3b2e054f93a1955a16e72d8c1f5aee4>`();
-		std::string :target:`getFrontIterNodeTypeStr<doxid-class_q_panda_1_1_adjacent_q_gates_1a9420d579110095f1974e9c1febe9a03d>`();
-		bool :target:`isValidNodeType<doxid-class_q_panda_1_1_adjacent_q_gates_1a0fdd9689320e65906171028b32fea37d>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& itr);
-		bool :target:`isValidNodeType<doxid-class_q_panda_1_1_adjacent_q_gates_1ac95975acb0d17e56d71d6144a3035b5a>`(const :ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>` t);
-		const :ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`& :target:`getFrontNode<doxid-class_q_panda_1_1_adjacent_q_gates_1a4fd1eba4c5c1d7ec3c4ec59e541c2297>`();
-		const :ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`& :target:`getBackNode<doxid-class_q_panda_1_1_adjacent_q_gates_1ac0fef19215659c800f59990e4d536833>`();
-		void :target:`changeTraversalStatue<doxid-class_q_panda_1_1_adjacent_q_gates_1a89a949e0e04e5904834fe005472ba8b4>`(AbstractTraversalStatueInterface* s);
-		static bool :target:`isSubProgNode<doxid-class_q_panda_1_1_adjacent_q_gates_1a357648b447853847ac6b51dfa233d33f>`(const std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>& node);
-		static bool :target:`isFlowCtrlNode<doxid-class_q_panda_1_1_adjacent_q_gates_1ad55677f6167897601e37ddbd4340d5e5>`(const std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>& node);
+		:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>` :target:`get_node_ype<doxid-class_q_panda_1_1_adjacent_q_gates_1af6e816d652206a633d7b36b909355518>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& ter);
+		std::string :target:`get_node_type_str<doxid-class_q_panda_1_1_adjacent_q_gates_1ac37bb57694dfe97ee8fba03041d0b8c2>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& ter);
+		std::string :target:`get_back_node_type_str<doxid-class_q_panda_1_1_adjacent_q_gates_1ae03a23cb69ed0006a47f8c8cac811573>`();
+		std::string :target:`get_front_node_type_str<doxid-class_q_panda_1_1_adjacent_q_gates_1af1e8533806bd44a09dc389682727462d>`();
+		bool :target:`is_valid_node_type<doxid-class_q_panda_1_1_adjacent_q_gates_1ae635ee08f9263bc6c9e8a49cafe9ca24>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& itr);
+		bool :target:`is_valid_node_type<doxid-class_q_panda_1_1_adjacent_q_gates_1aaae6667b744b2ae58ed6d445b926c199>`(const :ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>` t);
+		const :ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`& :target:`get_front_node<doxid-class_q_panda_1_1_adjacent_q_gates_1a858a2f9136224015a1ecedbd7eb76a64>`();
+		const :ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`& :target:`get_back_node<doxid-class_q_panda_1_1_adjacent_q_gates_1a13c3be64245e2616b7fdbd9628a9eaed>`();
+		void :target:`change_traversal_statue<doxid-class_q_panda_1_1_adjacent_q_gates_1ae96da1f378babd42506e7ed3ffb3c866>`(AbstractTraversalStatueInterface* s);
+		static bool :target:`is_sub_prog_node<doxid-class_q_panda_1_1_adjacent_q_gates_1a39c02de1d08da426ba8cf0a5247ab3fe>`(const std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>& node);
+		static bool :target:`is_flow_ctrl_node<doxid-class_q_panda_1_1_adjacent_q_gates_1aedb92a399c4e8841f117e0028bf126d2>`(const std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>& node);
 	};
 
 Inherited Members
@@ -127,47 +122,47 @@ Inherited Members
 	public:
 		// methods
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a1cb0c50abcd626b8c45b8aa389cb3541>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1adb53e4c20d48a0efd6e377680d7f0988>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a6916170c055781c5ed5a615407390e1c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aed584073b781c9a5c6441b08b14afc3d>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa3389601eef27921246507d9bcd60e8f>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aadbf69a810033196de1790d3f362ef7a>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a2196c7ad5525e519cfedad3d0285d712>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aab65fda71b8e1f719bc4b7bdd70a10e7>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a34a63b4019719d77711fcf6efbb6400c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1ab452f71d25eb3354d46346694ff82db7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a310247426bda77a52b81c7654fa4b848>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a4e97902dc8b42d5f5f50d790d11f1517>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a7d2fb53e43f56cc2f57cf0d025585146>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa311fe1c6abc46d84d90d6f412be063a>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
 		virtual void :ref:`execute<doxid-class_q_panda_1_1_traverse_by_node_iter_1ab322f1c7e3734cf25d22c57c1dfe6e98>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
@@ -218,25 +213,5 @@ Inherited Members
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :ref:`traverse_qprog<doxid-class_q_panda_1_1_traverse_by_node_iter_1a407bc9a3cc75874142fbfec69447e9e2>`();
-
-.. _details-class_q_panda_1_1_adjacent_q_gates:
-
-Detailed Documentation
-~~~~~~~~~~~~~~~~~~~~~~
-
-Get information about adjacent nodes.
-
-Methods
--------
-
-.. index:: pair: function; traverse_qprog
-.. _doxid-class_q_panda_1_1_adjacent_q_gates_1aaa74c3f6608c3d47306aa73e96e42fef:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual void traverse_qprog()
-
-start traverse a quantum prog
+		virtual void :ref:`traverse_qprog<doxid-class_q_panda_1_1_traverse_by_node_iter_1ab298ca4e8835cb14518f8b83c87d6287>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
 
