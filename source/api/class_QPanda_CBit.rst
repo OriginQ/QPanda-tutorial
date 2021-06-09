@@ -27,7 +27,8 @@ Overview
 		virtual std::string :ref:`getName<doxid-class_q_panda_1_1_c_bit_1a62ffbca9662222da8582aa60b41d9d63>`() const = 0;
 		virtual void :ref:`setOccupancy<doxid-class_q_panda_1_1_c_bit_1ac24ec9e2a5b8bc32d0f0766c0d93ca9d>`(bool) = 0;
 		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`getValue<doxid-class_q_panda_1_1_c_bit_1ab8a0183794d68e924233374e03807b7a>`() const = 0;
-		virtual void :ref:`setValue<doxid-class_q_panda_1_1_c_bit_1a5a45642e44f0ceb077b155100bafcb5d>`(const cbit_size_t) = 0;
+		virtual void :ref:`set_val<doxid-class_q_panda_1_1_c_bit_1a05fbc0bd18485de947494b69fb5235f6>`(const cbit_size_t) = 0;
+		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_addr<doxid-class_q_panda_1_1_c_bit_1a8705c73aa003ca7561619b1ce06ac3bb>`() const = 0;
 	};
 
 	// direct descendants
@@ -113,13 +114,13 @@ get the value of this bit
 
 cbit_size_t
 
-.. index:: pair: function; setValue
-.. _doxid-class_q_panda_1_1_c_bit_1a5a45642e44f0ceb077b155100bafcb5d:
+.. index:: pair: function; set_val
+.. _doxid-class_q_panda_1_1_c_bit_1a05fbc0bd18485de947494b69fb5235f6:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual void setValue(const cbit_size_t) = 0
+	virtual void set_val(const cbit_size_t) = 0
 
 set the value of this bit
 
@@ -134,4 +135,20 @@ set the value of this bit
 		- cbit_size_t
 
 		- value
+
+.. index:: pair: function; get_addr
+.. _doxid-class_q_panda_1_1_c_bit_1a8705c73aa003ca7561619b1ce06ac3bb:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` get_addr() const = 0
+
+get the addr of this bit
+
+
+
+.. rubric:: Returns:
+
+cbit_size_t
 

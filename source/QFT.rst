@@ -98,6 +98,11 @@ QFT的量子线路图如下所示
 
 .. image:: images/QFT.png
    :align: center
+   
+特别地，注意到上图中初始量子态为 :math:`\left|x_i\right\rangle` 的量子比特对应的结果量子态为\
+:math:`\frac{1}{\sqrt{2}}(\left|0\right\rangle + e^{2\pi ix2^{n+1-l}}\left|1\right\rangle)`\ 
+而非 :math:`\frac{1}{\sqrt{2}}(\left|0\right\rangle + e^{2\pi ix2^{-l}}\left|1\right\rangle)` ，\
+因此实际使用时还需要追加相应的多组 :math:`SWAP` 门。
 
 代码实现
 ****
@@ -108,8 +113,6 @@ QFT在一维情况就是Hadamard量子门。
 .. code-block:: c
 
    QCircuit QFT(QVec qvec);
-
-需要注意的是会对输入的量子比特向量按序号从高往低排序开始QFT操作。
 
 选取 :math:`\left|x\right\rangle=\left|000\right\rangle` 验证QFT的代码实例如下
 

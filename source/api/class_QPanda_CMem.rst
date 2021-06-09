@@ -29,11 +29,13 @@ Overview
 		virtual size_t :ref:`getIdleMem<doxid-class_q_panda_1_1_c_mem_1ac26cf626fa7860bd8c9ee943328b08ac>`() const = 0;
 		virtual void :ref:`Free_CBit<doxid-class_q_panda_1_1_c_mem_1a1fa4061f315050163260e32160df38ed>`(:ref:`CBit<doxid-class_q_panda_1_1_c_bit>`*) = 0;
 		virtual void :ref:`clearAll<doxid-class_q_panda_1_1_c_mem_1a145989c3b5caec7476f3924aa0ea5551>`() = 0;
+		virtual size_t :ref:`get_allocate_cbits<doxid-class_q_panda_1_1_c_mem_1ab6dabe80bb6ef1e4dd3111c89f3f9a40>`(std::vector<:ref:`CBit<doxid-class_q_panda_1_1_c_bit>`*>&) = 0;
 	};
 
 	// direct descendants
 
 	class :ref:`OriginCMem<doxid-class_q_panda_1_1_origin_c_mem>`;
+	class :ref:`OriginCMemv2<doxid-class_q_panda_1_1_origin_c_memv2>`;
 .. _details-class_q_panda_1_1_c_mem:
 
 Detailed Documentation
@@ -139,4 +141,32 @@ free a :ref:`CBit <doxid-class_q_panda_1_1_c_bit>`
 	virtual void clearAll() = 0
 
 clear the :ref:`CBit <doxid-class_q_panda_1_1_c_bit>` vector
+
+.. index:: pair: function; get_allocate_cbits
+.. _doxid-class_q_panda_1_1_c_mem_1ab6dabe80bb6ef1e4dd3111c89f3f9a40:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_allocate_cbits(std::vector<:ref:`CBit<doxid-class_q_panda_1_1_c_bit>`*>&) = 0
+
+get allocate cbits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::vector<CBit
+
+		- \*>&
+
+
+
+.. rubric:: Returns:
+
+size_t allocate cbits size
 

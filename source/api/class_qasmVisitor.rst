@@ -44,6 +44,7 @@ This class defines an abstract visitor for a parse tree produced by :ref:`qasmPa
 		virtual antlrcpp::Any :target:`visitExplist<doxid-classqasm_visitor_1a0fe32d9ce227beb9454716490b27347b>`(:ref:`qasmParser::ExplistContext<doxid-classqasm_parser_1_1_explist_context>`* context) = 0;
 		virtual antlrcpp::Any :target:`visitExp<doxid-classqasm_visitor_1a770c73bb0db6ad549842dc5f880fd5ed>`(:ref:`qasmParser::ExpContext<doxid-classqasm_parser_1_1_exp_context>`* context) = 0;
 		virtual antlrcpp::Any :target:`visitId<doxid-classqasm_visitor_1aa64d339b752b1b2972169a9c4a4caa9b>`(:ref:`qasmParser::IdContext<doxid-classqasm_parser_1_1_id_context>`* context) = 0;
+		virtual antlrcpp::Any :target:`visitReal<doxid-classqasm_visitor_1a54dcb5d796b6a89160e59cc2059c0cb9>`(:ref:`qasmParser::RealContext<doxid-classqasm_parser_1_1_real_context>`* context) = 0;
 		virtual antlrcpp::Any :target:`visitInteger<doxid-classqasm_visitor_1ac8eb7df5f1d6ae51bc07930b3c5d8074>`(:ref:`qasmParser::IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* context) = 0;
 		virtual antlrcpp::Any :target:`visitDecimal<doxid-classqasm_visitor_1a3970782307f706067fd6bc4a2d3a3c63>`(:ref:`qasmParser::DecimalContext<doxid-classqasm_parser_1_1_decimal_context>`* context) = 0;
 		virtual antlrcpp::Any :target:`visitFilename<doxid-classqasm_visitor_1a6ea813f3f70f1ae02a536fc5037e34f2>`(:ref:`qasmParser::FilenameContext<doxid-classqasm_parser_1_1_filename_context>`* context) = 0;

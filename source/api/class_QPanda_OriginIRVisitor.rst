@@ -36,7 +36,11 @@ OriginIR Visitor. :ref:`More...<details-class_q_panda_1_1_origin_i_r_visitor>`
 
 		// construction
 	
-		:target:`OriginIRVisitor<doxid-class_q_panda_1_1_origin_i_r_visitor_1a5a3b394cc5b2980749a620b648b1b093>`(:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+		:target:`OriginIRVisitor<doxid-class_q_panda_1_1_origin_i_r_visitor_1ad86944b0858337bbab1c20d0bb3ecde2>`(
+			:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
+			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+			std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+			);
 
 		// methods
 	
@@ -64,6 +68,15 @@ OriginIR Visitor. :ref:`More...<details-class_q_panda_1_1_origin_i_r_visitor>`
 		virtual antlrcpp::Any :target:`visitDouble_gate_with_one_parameter_type<doxid-class_q_panda_1_1_origin_i_r_visitor_1ab7193ea6afba12539a7dda01627f619c>`(:ref:`originirParser::Double_gate_with_one_parameter_typeContext<doxid-classoriginir_parser_1_1_double__gate__with__one__parameter__type_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitDouble_gate_with_four_parameter_type<doxid-class_q_panda_1_1_origin_i_r_visitor_1a901a8092048e43964e802d70745b65d3>`(:ref:`originirParser::Double_gate_with_four_parameter_typeContext<doxid-classoriginir_parser_1_1_double__gate__with__four__parameter__type_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitTriple_gate_without_parameter_type<doxid-class_q_panda_1_1_origin_i_r_visitor_1ad03ca77d01fe6622e260232d15a43a56>`(:ref:`originirParser::Triple_gate_without_parameter_typeContext<doxid-classoriginir_parser_1_1_triple__gate__without__parameter__type_context>`* ctx);
+	
+		void :target:`call_define_gatefunc<doxid-class_q_panda_1_1_origin_i_r_visitor_1af309c63dfb43c65adc2e4a72129658d5>`(
+			size_t prog_id,
+			const std::string& func_name,
+			const std::vector<ExprContext>& actual_qubits,
+			const std::vector<double>& actual_angles
+			);
+	
+		virtual antlrcpp::Any :target:`visitDefine_gate_declaration<doxid-class_q_panda_1_1_origin_i_r_visitor_1a51bf461c687d1d039dd4f351200b1cd0>`(:ref:`originirParser::Define_gate_declarationContext<doxid-classoriginir_parser_1_1_define__gate__declaration_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitPri_ckey<doxid-class_q_panda_1_1_origin_i_r_visitor_1a13b8b90aaf2c9aab22db21d56c0dca7c>`(:ref:`originirParser::Pri_ckeyContext<doxid-classoriginir_parser_1_1_pri__ckey_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitPri_cst<doxid-class_q_panda_1_1_origin_i_r_visitor_1aa6e41d57635742a9f0b3dc16b707fdd3>`(:ref:`originirParser::Pri_cstContext<doxid-classoriginir_parser_1_1_pri__cst_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitPri_expr<doxid-class_q_panda_1_1_origin_i_r_visitor_1aeced3f48127bdca3ef3bf0c055c3adf4>`(:ref:`originirParser::Pri_exprContext<doxid-classoriginir_parser_1_1_pri__expr_context>`* ctx);
@@ -85,7 +98,13 @@ OriginIR Visitor. :ref:`More...<details-class_q_panda_1_1_origin_i_r_visitor>`
 		virtual antlrcpp::Any :target:`visitQwhile_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1aca81ab077e702c5734338bf6c8f457fa>`(:ref:`originirParser::Qwhile_statementContext<doxid-classoriginir_parser_1_1_qwhile__statement_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitMeasure_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1ac2f9169f66b015ade0689fc875a6e086>`(:ref:`originirParser::Measure_statementContext<doxid-classoriginir_parser_1_1_measure__statement_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitReset_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1a7046023088f71470d941b47ba9da0e0f>`(:ref:`originirParser::Reset_statementContext<doxid-classoriginir_parser_1_1_reset__statement_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitBarrier_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1a273ea32529eede9529011b12625bc6a5>`(:ref:`originirParser::Barrier_statementContext<doxid-classoriginir_parser_1_1_barrier__statement_context>`* ctx);
 		virtual antlrcpp::Any :target:`visitExpression_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1accd2e109090253ff5b13296de72e5d6d>`(:ref:`originirParser::Expression_statementContext<doxid-classoriginir_parser_1_1_expression__statement_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitDefine_gate_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1a0ea93bbe49aebc0bfa914e88916a5161>`(:ref:`originirParser::Define_gate_statementContext<doxid-classoriginir_parser_1_1_define__gate__statement_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitExplist<doxid-class_q_panda_1_1_origin_i_r_visitor_1a2c0d90cf8427d317abbf220e090f3da7>`(:ref:`originirParser::ExplistContext<doxid-classoriginir_parser_1_1_explist_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitExp<doxid-class_q_panda_1_1_origin_i_r_visitor_1ad1dde2760061276544cf3bfb23db5292>`(:ref:`originirParser::ExpContext<doxid-classoriginir_parser_1_1_exp_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitGate_func_statement<doxid-class_q_panda_1_1_origin_i_r_visitor_1a314b2ba987a6650a8d4bc32979fc7251>`(:ref:`originirParser::Gate_func_statementContext<doxid-classoriginir_parser_1_1_gate__func__statement_context>`* ctx);
+		virtual antlrcpp::Any :target:`visitId_list<doxid-class_q_panda_1_1_origin_i_r_visitor_1ad591243f443c595d26ff17ca99273799>`(:ref:`originirParser::Id_listContext<doxid-classoriginir_parser_1_1_id__list_context>`* ctx);
 	};
 
 Inherited Members
@@ -114,6 +133,7 @@ Inherited Members
 		virtual antlrcpp::Any :ref:`visitDouble_gate_with_one_parameter_declaration<doxid-classoriginir_visitor_1a94f72e10a20134d865036113bac9c454>`(:ref:`originirParser::Double_gate_with_one_parameter_declarationContext<doxid-classoriginir_parser_1_1_double__gate__with__one__parameter__declaration_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitDouble_gate_with_four_parameter_declaration<doxid-classoriginir_visitor_1a6b35d772a224894b5a6acab1e3c3b80c>`(:ref:`originirParser::Double_gate_with_four_parameter_declarationContext<doxid-classoriginir_parser_1_1_double__gate__with__four__parameter__declaration_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitTriple_gate_without_parameter_declaration<doxid-classoriginir_visitor_1a650ba14d421b0fc96f1ee8aac39af4df>`(:ref:`originirParser::Triple_gate_without_parameter_declarationContext<doxid-classoriginir_parser_1_1_triple__gate__without__parameter__declaration_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitDefine_gate_declaration<doxid-classoriginir_visitor_1a1fd0c764192505ab327418bbadc667a1>`(:ref:`originirParser::Define_gate_declarationContext<doxid-classoriginir_parser_1_1_define__gate__declaration_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitSingle_gate_without_parameter_type<doxid-classoriginir_visitor_1a2b2d973981441bb17e7d575106f22252>`(:ref:`originirParser::Single_gate_without_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__without__parameter__type_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitSingle_gate_with_one_parameter_type<doxid-classoriginir_visitor_1a774b6f00bfb4721574e9d2ff8c5d04ef>`(:ref:`originirParser::Single_gate_with_one_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__with__one__parameter__type_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitSingle_gate_with_two_parameter_type<doxid-classoriginir_visitor_1a46bd8a9a9f01652d6d3a39f81fff2cb8>`(:ref:`originirParser::Single_gate_with_two_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__with__two__parameter__type_context>`* context) = 0;
@@ -145,7 +165,15 @@ Inherited Members
 		virtual antlrcpp::Any :ref:`visitQwhile_statement<doxid-classoriginir_visitor_1ad57bec937e5cf88af27b31dc8cf1e5f3>`(:ref:`originirParser::Qwhile_statementContext<doxid-classoriginir_parser_1_1_qwhile__statement_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitMeasure_statement<doxid-classoriginir_visitor_1a2a9575d11bbec345f91d7a54408348e2>`(:ref:`originirParser::Measure_statementContext<doxid-classoriginir_parser_1_1_measure__statement_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitReset_statement<doxid-classoriginir_visitor_1aea822832627154b0d27abb3461e61dab>`(:ref:`originirParser::Reset_statementContext<doxid-classoriginir_parser_1_1_reset__statement_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitBarrier_statement<doxid-classoriginir_visitor_1a1fb23e6ec4b0f6623be55269faea4521>`(:ref:`originirParser::Barrier_statementContext<doxid-classoriginir_parser_1_1_barrier__statement_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitExpression_statement<doxid-classoriginir_visitor_1abeef7f57a2b1b8e25d9108a68e011191>`(:ref:`originirParser::Expression_statementContext<doxid-classoriginir_parser_1_1_expression__statement_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitDefine_gate_statement<doxid-classoriginir_visitor_1a01f7abb9f94d40aea08a3e91be0ad940>`(:ref:`originirParser::Define_gate_statementContext<doxid-classoriginir_parser_1_1_define__gate__statement_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitExplist<doxid-classoriginir_visitor_1a79c718691d9411d1e69a5dd18f8f7693>`(:ref:`originirParser::ExplistContext<doxid-classoriginir_parser_1_1_explist_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitExp<doxid-classoriginir_visitor_1a4ea6c1cc57483c61dd0e611d8717f285>`(:ref:`originirParser::ExpContext<doxid-classoriginir_parser_1_1_exp_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitGate_func_statement<doxid-classoriginir_visitor_1a0f36caa59307cbba998072d01b4cc710>`(:ref:`originirParser::Gate_func_statementContext<doxid-classoriginir_parser_1_1_gate__func__statement_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitId<doxid-classoriginir_visitor_1a6b84155504c22779aa67b8c655f595b2>`(:ref:`originirParser::IdContext<doxid-classoriginir_parser_1_1_id_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitId_list<doxid-classoriginir_visitor_1a2e1071e66ec2be837a80efdb2a51fe55>`(:ref:`originirParser::Id_listContext<doxid-classoriginir_parser_1_1_id__list_context>`* context) = 0;
+		virtual antlrcpp::Any :ref:`visitGate_name<doxid-classoriginir_visitor_1a7f7e1e1e9ba0502ba6a843d46afc7e49>`(:ref:`originirParser::Gate_nameContext<doxid-classoriginir_parser_1_1_gate__name_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitConstant<doxid-classoriginir_visitor_1a643e97d350ab10b740e5d599ceb3121c>`(:ref:`originirParser::ConstantContext<doxid-classoriginir_parser_1_1_constant_context>`* context) = 0;
 		virtual antlrcpp::Any :ref:`visitTranslationunit<doxid-classoriginir_base_visitor_1a14cc8955d38c3ba8a4a095e80c98d561>`(:ref:`originirParser::TranslationunitContext<doxid-classoriginir_parser_1_1_translationunit_context>`* context);
 		virtual antlrcpp::Any :ref:`visitDeclaration<doxid-classoriginir_base_visitor_1ad17f334e1fa8089a6474a8f7429df364>`(:ref:`originirParser::DeclarationContext<doxid-classoriginir_parser_1_1_declaration_context>`* ctx);
@@ -164,6 +192,7 @@ Inherited Members
 		virtual antlrcpp::Any :ref:`visitDouble_gate_with_one_parameter_declaration<doxid-classoriginir_base_visitor_1a4f4b2d1090d727cc10eb2b2b968bd543>`(:ref:`originirParser::Double_gate_with_one_parameter_declarationContext<doxid-classoriginir_parser_1_1_double__gate__with__one__parameter__declaration_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitDouble_gate_with_four_parameter_declaration<doxid-classoriginir_base_visitor_1a3fdc8860ebf6cbab204f62cb6ff73c93>`(:ref:`originirParser::Double_gate_with_four_parameter_declarationContext<doxid-classoriginir_parser_1_1_double__gate__with__four__parameter__declaration_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitTriple_gate_without_parameter_declaration<doxid-classoriginir_base_visitor_1ae80cb67db6aae613a8026a06f6581f1e>`(:ref:`originirParser::Triple_gate_without_parameter_declarationContext<doxid-classoriginir_parser_1_1_triple__gate__without__parameter__declaration_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitDefine_gate_declaration<doxid-classoriginir_base_visitor_1a31f30cc2577cc051ef369b6c6f6aefc7>`(:ref:`originirParser::Define_gate_declarationContext<doxid-classoriginir_parser_1_1_define__gate__declaration_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitSingle_gate_without_parameter_type<doxid-classoriginir_base_visitor_1ad6f8a2b3235673fa77ad1bf492fb3428>`(:ref:`originirParser::Single_gate_without_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__without__parameter__type_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitSingle_gate_with_one_parameter_type<doxid-classoriginir_base_visitor_1a7468df28afc0cc9e51822429f162eb46>`(:ref:`originirParser::Single_gate_with_one_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__with__one__parameter__type_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitSingle_gate_with_two_parameter_type<doxid-classoriginir_base_visitor_1a05966ebfa9d9f1543830442a48fd16dc>`(:ref:`originirParser::Single_gate_with_two_parameter_typeContext<doxid-classoriginir_parser_1_1_single__gate__with__two__parameter__type_context>`* ctx);
@@ -195,7 +224,15 @@ Inherited Members
 		virtual antlrcpp::Any :ref:`visitQwhile_statement<doxid-classoriginir_base_visitor_1aa637f71f65963c2977deef69abfba718>`(:ref:`originirParser::Qwhile_statementContext<doxid-classoriginir_parser_1_1_qwhile__statement_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitMeasure_statement<doxid-classoriginir_base_visitor_1aa6e8af30b9e7e956f4f2cdfad8e5fa9c>`(:ref:`originirParser::Measure_statementContext<doxid-classoriginir_parser_1_1_measure__statement_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitReset_statement<doxid-classoriginir_base_visitor_1acefa583e2d9f550c2dbaeb02d2b54bc1>`(:ref:`originirParser::Reset_statementContext<doxid-classoriginir_parser_1_1_reset__statement_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitBarrier_statement<doxid-classoriginir_base_visitor_1ad376f49bd646f7d9dd67033d019a7e6a>`(:ref:`originirParser::Barrier_statementContext<doxid-classoriginir_parser_1_1_barrier__statement_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitExpression_statement<doxid-classoriginir_base_visitor_1a0d499fff0219c95cd2ea5eb91d612d27>`(:ref:`originirParser::Expression_statementContext<doxid-classoriginir_parser_1_1_expression__statement_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitDefine_gate_statement<doxid-classoriginir_base_visitor_1a8595c6fd1fdb781dcc028f53c68c95c5>`(:ref:`originirParser::Define_gate_statementContext<doxid-classoriginir_parser_1_1_define__gate__statement_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitExplist<doxid-classoriginir_base_visitor_1a7b305f24fd67e723f392827f039f5508>`(:ref:`originirParser::ExplistContext<doxid-classoriginir_parser_1_1_explist_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitExp<doxid-classoriginir_base_visitor_1a8b09a1e7471ebdb3ae7869c572a3b9db>`(:ref:`originirParser::ExpContext<doxid-classoriginir_parser_1_1_exp_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitGate_func_statement<doxid-classoriginir_base_visitor_1a387faad2d50653cfeeb7f916e98d58d2>`(:ref:`originirParser::Gate_func_statementContext<doxid-classoriginir_parser_1_1_gate__func__statement_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitId<doxid-classoriginir_base_visitor_1a8397af62377722d0805917a87fdbaa54>`(:ref:`originirParser::IdContext<doxid-classoriginir_parser_1_1_id_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitId_list<doxid-classoriginir_base_visitor_1a39b2cb1ad1e64220674c4bac035c34d4>`(:ref:`originirParser::Id_listContext<doxid-classoriginir_parser_1_1_id__list_context>`* ctx);
+		virtual antlrcpp::Any :ref:`visitGate_name<doxid-classoriginir_base_visitor_1a73bf23b1365a820a9ffc19a035b22447>`(:ref:`originirParser::Gate_nameContext<doxid-classoriginir_parser_1_1_gate__name_context>`* ctx);
 		virtual antlrcpp::Any :ref:`visitConstant<doxid-classoriginir_base_visitor_1a640d6f56a0e65420d973b67618e8c911>`(:ref:`originirParser::ConstantContext<doxid-classoriginir_parser_1_1_constant_context>`* ctx);
 
 .. _details-class_q_panda_1_1_origin_i_r_visitor:

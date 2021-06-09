@@ -7,27 +7,35 @@ Utilities
 .. toctree::
 	:hidden:
 
+	struct_QPanda_CallGateInfo.rst
+	struct_QPanda_KakDescription.rst
 	class_QPanda_AdjacentQGates.rst
+	class_QPanda_BasicGridDevice.rst
 	class_QPanda_CancelControlQubitVector.rst
 	class_QPanda_ConfigMap.rst
+	class_QPanda_CrossEntropyBenchmarking.rst
 	class_QPanda_DecomposeControlUnitarySingleQGate.rst
 	class_QPanda_DecomposeDoubleQGate.rst
 	class_QPanda_DecomposeMultipleControlQGate.rst
 	class_QPanda_DecomposeUnitarySingleQGateIntoMetadataSingleQGate.rst
 	class_DeleteUnitQnode.rst
 	class_QPanda_DoubleGateTypeValidator.rst
-	class_QPanda_DrawQProg.rst
+	class_QPanda_DRAW_TEXT_PIC_DrawQProg.rst
+	class_QPanda_ExGridDevice.rst
 	class_QPanda_Exp.rst
 	class_QPanda_FillQProg.rst
 	class_QPanda_GetAllNodeType.rst
+	class_QPanda_GetAllUsedQubitAndCBit.rst
 	class_QPanda_GraphDijkstra.rst
-	class_QPanda_GraphMatch.rst
+	class_QPanda_JsonConfigParam.rst
+	class_QPanda_KAK.rst
 	class_QPanda_MergeSingleGate.rst
 	class_QPanda_MetadataValidity.rst
 	class_QPanda_NodeInfo.rst
 	class_QPanda_OriginIRVisitor.rst
 	class_QPanda_QASMToQProg.rst
 	class_QPanda_QCircuitParam.rst
+	class_QPanda_QCodarMatch.rst
 	class_QPanda_QGateCompare.rst
 	class_QPanda_QGateCounter.rst
 	class_QPanda_QPandaException.rst
@@ -45,10 +53,17 @@ Utilities
 	class_QPanda_QProgToQMeasure.rst
 	class_QPanda_QProgToQuil.rst
 	class_QPanda_QRunesToQProg.rst
+	class_QPanda_QScheduler.rst
 	class_QPanda_QString.rst
 	class_QPanda_QuantumMetadata.rst
+	class_QPanda_QuantumVolume.rst
+	class_QPanda_RandomCircuit.rst
+	class_QPanda_RandomizedBenchmarking.rst
 	class_ReadLock.rst
+	class_QPanda_RemapQProg.rst
+	class_QPanda_SU4TopologyMatch.rst
 	class_SharedMutex.rst
+	class_QPanda_SimpleGridDevice.rst
 	class_QPanda_SingleGateTypeValidator.rst
 	class_QPanda_TimeSequenceConfig.rst
 	class_QPanda_TopologyMatch.rst
@@ -64,8 +79,8 @@ Utilities
 	class_QPanda_TraversalConfig.rst
 	class_QPanda_TraversalInterface.rst
 	class_QPanda_TraverseByNodeIter.rst
+	class_QPanda_UncompletedGridDevice.rst
 	class_WriteLock.rst
-	class_QPanda_XmlConfigParam.rst
 	class_QPanda_init_fail.rst
 	class_QPanda_qalloc_fail.rst
 	class_QPanda_qcircuit_construction_fail.rst
@@ -79,36 +94,51 @@ Utilities
 Overview
 ~~~~~~~~
 
-QPanda2 base Utilities classes and interface. :ref:`More...<details-group___utilities>`
+
 
 
 .. ref-code-block:: cpp
 	:class: doxyrest-overview-code-block
 
 	
+	// typedefs
+
+	typedef :ref:`QGate<doxid-class_q_panda_1_1_q_gate>` (*:ref:`QPanda::QGateFunc<doxid-group___utilities_1ga979195d0548ad2c3bb1dce490b063ac6>`)(Qubit *);
+
+	// structs
+
+	struct :ref:`QPanda::CallGateInfo<doxid-struct_q_panda_1_1_call_gate_info>`;
+	struct :ref:`QPanda::KakDescription<doxid-struct_q_panda_1_1_kak_description>`;
+
 	// classes
 
 	class :ref:`QPanda::AdjacentQGates<doxid-class_q_panda_1_1_adjacent_q_gates>`;
+	class :ref:`QPanda::BasicGridDevice<doxid-class_q_panda_1_1_basic_grid_device>`;
 	class :ref:`QPanda::CancelControlQubitVector<doxid-class_q_panda_1_1_cancel_control_qubit_vector>`;
 	class :ref:`QPanda::ConfigMap<doxid-class_q_panda_1_1_config_map>`;
+	class :ref:`QPanda::CrossEntropyBenchmarking<doxid-class_q_panda_1_1_cross_entropy_benchmarking>`;
 	class :ref:`QPanda::DecomposeControlUnitarySingleQGate<doxid-class_q_panda_1_1_decompose_control_unitary_single_q_gate>`;
 	class :ref:`QPanda::DecomposeDoubleQGate<doxid-class_q_panda_1_1_decompose_double_q_gate>`;
 	class :ref:`QPanda::DecomposeMultipleControlQGate<doxid-class_q_panda_1_1_decompose_multiple_control_q_gate>`;
 	class :ref:`QPanda::DecomposeUnitarySingleQGateIntoMetadataSingleQGate<doxid-class_q_panda_1_1_decompose_unitary_single_q_gate_into_metadata_single_q_gate>`;
 	class :ref:`DeleteUnitQnode<doxid-class_delete_unit_qnode>`;
 	class :ref:`QPanda::DoubleGateTypeValidator<doxid-class_q_panda_1_1_double_gate_type_validator>`;
-	class :ref:`QPanda::DrawQProg<doxid-class_q_panda_1_1_draw_q_prog>`;
+	class :ref:`QPanda::DRAW_TEXT_PIC::DrawQProg<doxid-class_q_panda_1_1_d_r_a_w___t_e_x_t___p_i_c_1_1_draw_q_prog>`;
+	class :ref:`QPanda::ExGridDevice<doxid-class_q_panda_1_1_ex_grid_device>`;
 	class :ref:`QPanda::Exp<doxid-class_q_panda_1_1_exp>`;
 	class :ref:`QPanda::FillQProg<doxid-class_q_panda_1_1_fill_q_prog>`;
 	class :ref:`QPanda::GetAllNodeType<doxid-class_q_panda_1_1_get_all_node_type>`;
+	class :ref:`QPanda::GetAllUsedQubitAndCBit<doxid-class_q_panda_1_1_get_all_used_qubit_and_c_bit>`;
 	class :ref:`QPanda::GraphDijkstra<doxid-class_q_panda_1_1_graph_dijkstra>`;
-	class :ref:`QPanda::GraphMatch<doxid-class_q_panda_1_1_graph_match>`;
+	class :ref:`QPanda::JsonConfigParam<doxid-class_q_panda_1_1_json_config_param>`;
+	class :ref:`QPanda::KAK<doxid-class_q_panda_1_1_k_a_k>`;
 	class :ref:`QPanda::MergeSingleGate<doxid-class_q_panda_1_1_merge_single_gate>`;
 	class :ref:`QPanda::MetadataValidity<doxid-class_q_panda_1_1_metadata_validity>`;
 	class :ref:`QPanda::NodeInfo<doxid-class_q_panda_1_1_node_info>`;
 	class :ref:`QPanda::OriginIRVisitor<doxid-class_q_panda_1_1_origin_i_r_visitor>`;
 	class :ref:`QPanda::QASMToQProg<doxid-class_q_panda_1_1_q_a_s_m_to_q_prog>`;
 	class :ref:`QPanda::QCircuitParam<doxid-class_q_panda_1_1_q_circuit_param>`;
+	class :ref:`QPanda::QCodarMatch<doxid-class_q_panda_1_1_q_codar_match>`;
 	class :ref:`QPanda::QGateCompare<doxid-class_q_panda_1_1_q_gate_compare>`;
 	class :ref:`QPanda::QGateCounter<doxid-class_q_panda_1_1_q_gate_counter>`;
 	class :ref:`QPanda::QPandaException<doxid-class_q_panda_1_1_q_panda_exception>`;
@@ -126,10 +156,17 @@ QPanda2 base Utilities classes and interface. :ref:`More...<details-group___util
 	class :ref:`QPanda::QProgToQMeasure<doxid-class_q_panda_1_1_q_prog_to_q_measure>`;
 	class :ref:`QPanda::QProgToQuil<doxid-class_q_panda_1_1_q_prog_to_quil>`;
 	class :ref:`QPanda::QRunesToQProg<doxid-class_q_panda_1_1_q_runes_to_q_prog>`;
+	class :ref:`QPanda::QScheduler<doxid-class_q_panda_1_1_q_scheduler>`;
 	class :ref:`QPanda::QString<doxid-class_q_panda_1_1_q_string>`;
 	class :ref:`QPanda::QuantumMetadata<doxid-class_q_panda_1_1_quantum_metadata>`;
+	class :ref:`QPanda::QuantumVolume<doxid-class_q_panda_1_1_quantum_volume>`;
+	class :ref:`QPanda::RandomCircuit<doxid-class_q_panda_1_1_random_circuit>`;
+	class :ref:`QPanda::RandomizedBenchmarking<doxid-class_q_panda_1_1_randomized_benchmarking>`;
 	class :ref:`ReadLock<doxid-class_read_lock>`;
+	class :ref:`QPanda::RemapQProg<doxid-class_q_panda_1_1_remap_q_prog>`;
+	class :ref:`QPanda::SU4TopologyMatch<doxid-class_q_panda_1_1_s_u4_topology_match>`;
 	class :ref:`SharedMutex<doxid-class_shared_mutex>`;
+	class :ref:`QPanda::SimpleGridDevice<doxid-class_q_panda_1_1_simple_grid_device>`;
 	class :ref:`QPanda::SingleGateTypeValidator<doxid-class_q_panda_1_1_single_gate_type_validator>`;
 	class :ref:`QPanda::TimeSequenceConfig<doxid-class_q_panda_1_1_time_sequence_config>`;
 	class :ref:`QPanda::TopologyMatch<doxid-class_q_panda_1_1_topology_match>`;
@@ -148,8 +185,8 @@ QPanda2 base Utilities classes and interface. :ref:`More...<details-group___util
 	class :ref:`QPanda::TraversalInterface<doxid-class_q_panda_1_1_traversal_interface>`;
 
 	class :ref:`QPanda::TraverseByNodeIter<doxid-class_q_panda_1_1_traverse_by_node_iter>`;
+	class :ref:`QPanda::UncompletedGridDevice<doxid-class_q_panda_1_1_uncompleted_grid_device>`;
 	class :ref:`WriteLock<doxid-class_write_lock>`;
-	class :ref:`QPanda::XmlConfigParam<doxid-class_q_panda_1_1_xml_config_param>`;
 	class :ref:`QPanda::init_fail<doxid-class_q_panda_1_1init__fail>`;
 	class :ref:`QPanda::qalloc_fail<doxid-class_q_panda_1_1qalloc__fail>`;
 	class :ref:`QPanda::qcircuit_construction_fail<doxid-class_q_panda_1_1qcircuit__construction__fail>`;
@@ -162,10 +199,15 @@ QPanda2 base Utilities classes and interface. :ref:`More...<details-group___util
 
 	// global functions
 
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::transformOriginIRToQProg<doxid-group___utilities_1ga6c05a9faf342cc818885312391c779a5>`(std::string filePath, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::transformOriginIRToQProg<doxid-group___utilities_1ga3ebdc6e64354fbb9a4840bee72f0b29a>`(std::string filePath, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv);
 	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_originir_to_qprog<doxid-group___utilities_1gaac2060fa16ef56111baae96c504dc5e3>`(std::string file_path, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_originir_to_qprog<doxid-group___utilities_1ga2378b45c5225e8fea4a5bc8b71e1c697>`(std::string file_path, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv);
 	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_originir_string_to_qprog<doxid-group___utilities_1ga663bf50e836b485b1681d99140e262e1>`(std::string str_originir, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_originir_string_to_qprog<doxid-group___utilities_1ga7d86fcf5e2ae953ada82822b178124d1>`(std::string str_originir, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv);
 	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_qasm_to_qprog<doxid-group___utilities_1ga58cc63a9077019716862a43ecdf0f82c>`(std::string file_path, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_qasm_to_qprog<doxid-group___utilities_1ga22f7ec638fa0c0d60ba36c5e9ba88e57>`(std::string file_path, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_qasm_string_to_qprog<doxid-group___utilities_1gafcdec6e2d9990eba6bb423a764f4dcdd>`(std::string qasm_str, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::convert_qasm_string_to_qprog<doxid-group___utilities_1gaf04fc3399712138b73250e9cc996c86f>`(std::string qasm_str, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv);
 
 	bool :ref:`QPanda::transformBinaryDataToQProg<doxid-group___utilities_1ga126fbcaac23e41abf1cd661028cc9f57>`(
 		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
@@ -197,125 +239,139 @@ QPanda2 base Utilities classes and interface. :ref:`More...<details-group___util
 	template <typename _Ty>
 	std::string :ref:`QPanda::convert_qprog_to_originir<doxid-group___utilities_1ga139b35c89a0f7882bc77200bcf3e7b08>`(_Ty& node, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine);
 
-	std::string :ref:`QPanda::transformQProgToQASM<doxid-group___utilities_1gaa13be205f3f69ecf28d1d7759bdd8461>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& pQProg, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* quantum_machine, :ref:`IBMQBackends<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8c>` ibmBackend = :ref:`IBMQ_QASM_SIMULATOR<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8ca09728e1eb958bbe0ec92174a7ce111cd>`);
-	std::string :ref:`QPanda::convert_qprog_to_qasm<doxid-group___utilities_1ga2f95b62aff4c3ae3bbeac669bc64ec82>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, :ref:`IBMQBackends<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8c>` ibmBackend = :ref:`IBMQ_QASM_SIMULATOR<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8ca09728e1eb958bbe0ec92174a7ce111cd>`);
+	void :ref:`QPanda::write_to_originir_file<doxid-group___utilities_1gaacaf590edec6cd53f930b03df02f9c85>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, const std::string file_name);
+	std::string :ref:`QPanda::convert_qprog_to_qasm<doxid-group___utilities_1ga9e790548fd3c3cc2280c5d553805d3c7>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+	void :ref:`QPanda::write_to_qasm_file<doxid-group___utilities_1gaf32b48c2e232cd0ad54f4841fd34653d>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, const std::string file_name);
 	std::string :ref:`QPanda::transformQProgToQuil<doxid-group___utilities_1ga1afab9eb4d36a2758e559b40f63e82cc>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* quantum_machine);
 	std::string :ref:`QPanda::convert_qprog_to_quil<doxid-group___utilities_1ga6ba609a5a9659c9247464add93496ccb>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
 	std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`> :ref:`QPanda::transformQRunesToQProg<doxid-group___utilities_1ga1f9755f387cd30e9ac65ea502269f908>`(std::string, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`*);
+
+	void :ref:`QPanda::quantum_chip_adapter<doxid-group___utilities_1gaf8056e807ce59581186c3176f594b702>`(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* quantum_machine,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& new_qvec,
+		bool b_mapping = true,
+		const std::string config_data = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`
+		);
+
 	int :ref:`QPanda::arbitraryRotationMetadataValidity<doxid-group___utilities_1ga785ac4c99106792eb8c00392e5576104>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
 	int :ref:`QPanda::doubleContinuousMetadataValidity<doxid-group___utilities_1gac4ba5476ec612a6f63122f9c33ccfbd8>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
 	int :ref:`QPanda::singleContinuousAndDiscreteMetadataValidity<doxid-group___utilities_1ga429a2bcbd0f51f6a5560bcb088c10e1e>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
 	int :ref:`QPanda::doubleDiscreteMetadataValidity<doxid-group___utilities_1ga5534bc47fbbbf2ccd5bd994feeebfd6a>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
 	int :ref:`QPanda::doubleGateMetadataValidity<doxid-group___utilities_1gaceaea9db4f27bd09e4930b2ffa2fdfb5>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
 	int :ref:`QPanda::validateSingleQGateType<doxid-group___utilities_1ga0d5aad0edcc57eae1140ca91bf50bb5e>`(std::vector<std::string>& gates, std::vector<std::string>& valid_gates);
-	bool :ref:`QPanda::isMatchTopology<doxid-group___utilities_1ga459114e3940a2ff0128cf51ca92f98ca>`(const :ref:`QGate<doxid-class_q_panda_1_1_q_gate>`& gate, const std::vector<std::vector<int>>& vecTopoSt);
-	std::string :ref:`QPanda::getAdjacentQGateType<doxid-group___utilities_1ga0adcec3f1d6e1cb173e5afadc3aac5ab>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr, std::vector<:ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`>& adjacentNodes);
-	bool :ref:`QPanda::isSwappable<doxid-group___utilities_1ga18c8e4e48c21b6901eb93bd05e40ea30>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr1, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr2);
+	bool :ref:`QPanda::isMatchTopology<doxid-group___utilities_1gafce6dbcae83d04515f17f59a8265aecb>`(const :ref:`QGate<doxid-class_q_panda_1_1_q_gate>`& gate, const std::vector<std::vector<double>>& vecTopoSt);
+	std::string :ref:`QPanda::getAdjacentQGateType<doxid-group___utilities_1ga001536c094ce89eef0f37a5ed3f8880d>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr, std::vector<:ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`>& adjacentNodes);
+	bool :ref:`QPanda::isSwappable<doxid-group___utilities_1ga80e7e2572030d685250da60497ad551f>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr1, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr2);
 	bool :ref:`QPanda::isSupportedGateType<doxid-group___utilities_1ga28afe2b7d347e24df633c81ebb0d8ff1>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr);
-	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`QPanda::getCircuitMatrix<doxid-group___utilities_1gaecf3d5fffaaa40080b612fed1cd9d975>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` srcProg, const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrStart = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(), const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrEnd = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`());
 
-	void :ref:`QPanda::pickUpNode<doxid-group___utilities_1ga8484fc54a5cab80edc24654cc68201e1>`(
+	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`QPanda::getCircuitMatrix<doxid-group___utilities_1ga124b0790cd5be2ccc668dccdb6f44efe>`(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` srcProg,
+		const bool b_bid_endian = false,
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrStart = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrEnd = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
+		);
+
+	void :ref:`QPanda::pickUpNode<doxid-group___utilities_1ga98495795ac67b0a62bfe9421627d8380>`(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& outPutProg,
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& srcProg,
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` srcProg,
 		const std::vector<:ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>`> reject_node_types,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrStart = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrEnd = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		bool bDagger = false
 		);
 
-	void :ref:`QPanda::get_all_used_qubits<doxid-group___utilities_1ga60e9de7c80e617edb5f326689625a0c5>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, std::vector<int>& vecQuBitsInUse);
-	void :ref:`QPanda::get_all_used_class_bits<doxid-group___utilities_1gaaf010d547364709f49981078bf40cfae>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, std::vector<int>& vecClBitsInUse);
-	std::string :ref:`QPanda::printAllNodeType<doxid-group___utilities_1gae41e9802e11fe16be10a56819e6c6709>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog);
+	size_t :ref:`QPanda::get_all_used_qubits<doxid-group___utilities_1ga3501335f46decb71829be8dde89af2cc>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, std::vector<int>& vecQuBitsInUse);
+	size_t :ref:`QPanda::get_all_used_class_bits<doxid-group___utilities_1ga61e049c9f5830e9e7d873dcc3ad9cb49>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, std::vector<int>& vecClBitsInUse);
+	size_t :ref:`QPanda::get_measure_info<doxid-group___utilities_1gae7764808f386c690003a13258ebc8535>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, std::vector<std::pair<uint32_t, uint32_t>>& measure_info);
+	std::string :ref:`QPanda::printAllNodeType<doxid-group___utilities_1gae66749bec396a311e4d27171a30f97a3>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
 	void :ref:`QPanda::get_gate_parameter<doxid-group___utilities_1ga79406ec5a5ba912ce1675534c4ed9366>`(std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> pGate, std::string& para_str);
+	bool :ref:`QPanda::check_dagger<doxid-group___utilities_1ga1b6530f6d8c906aed1634b509035ceb4>`(std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> p_gate, const bool& b_dagger);
 
 	template <typename _Ty>
 	size_t :ref:`QPanda::getQGateNum<doxid-group___utilities_1gaa2167d6194906299c48b50228436f367>`(_Ty& node);
 
-	size_t :ref:`QPanda::getQProgClockCycle<doxid-group___utilities_1ga002a279e27f4843dbadd82c19553cdc1>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
-	std::string :ref:`QPanda::draw_qprog<doxid-group___utilities_1ga5b68a36676155a7e2413fa1f2c3c02d2>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(), const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`());
-	std::string :ref:`QPanda::draw_qprog_with_clock<doxid-group___utilities_1ga9729586010920bb1c7035ab3b207f119>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(), const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`());
+	size_t :ref:`QPanda::getQProgClockCycle<doxid-group___utilities_1ga2213e8b29b8575ab8b3140e746105a33>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, bool optimize = false);
+	size_t :ref:`QPanda::get_qprog_clock_cycle<doxid-group___utilities_1gaee357ef471dd4546550d5689ae97cd03>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, bool optimize = false);
+
+	std::string :ref:`QPanda::draw_qprog<doxid-group___utilities_1ga77ea8621d7fe5fa493b18c1224db75b7>`(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		uint32_t length = 100,
+		bool b_out_put_to_file = false,
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
+		);
+
+	std::string :ref:`QPanda::draw_qprog_with_clock<doxid-group___utilities_1gabd350b91611fc11460c8d2665d3aa829>`(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		const std::string config_data = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`,
+		uint32_t length = 100,
+		bool b_out_put_to_file = false,
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
+		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
+		);
+
 	std::ostream& :ref:`QPanda::operator <<<doxid-group___utilities_1gae4df8ff2e43a6a8ad196b3fe1ab31208>` (std::ostream& out, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
-
-	template <typename _Ty1, typename _Ty2, typename _Ty3>
-	void :ref:`QPanda::graph_query_replace<doxid-group___utilities_1gaa5d7f420dbaf504df35d77e11dc27313>`(
-		_Ty1& graph_node,
-		_Ty2& query_node,
-		_Ty3& replace_node,
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm
-		);
-
-	template <typename _Ty1, typename _Ty2>
-	bool :ref:`QPanda::graph_query<doxid-group___utilities_1gae94b1400c910547de03936bc91a94214>`(
-		_Ty1& graph_node,
-		_Ty2& query_node,
-		:ref:`ResultVector<doxid-namespace_q_panda_1a960ac3f5e928f3a42f4d2f2191320897>`& query_result
-		);
-
-	static bool :ref:`QPanda::cast_qprog_qcircuit<doxid-group___utilities_1gab6fa6a562c8f53d3e1a07ceae99c46d1>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit);
-	static :ref:`QGate<doxid-class_q_panda_1_1_q_gate>` :ref:`QPanda::cast_qprog_qgate<doxid-group___utilities_1gafe6ca010315b8926648f71f591e04e6c>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
-	static :ref:`QMeasure<doxid-class_q_panda_1_1_q_measure>` :ref:`QPanda::cast_qprog_qmeasure<doxid-group___utilities_1gaeca0972f111c64634cafdffb628dcbed>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::topology_match<doxid-group___utilities_1ga378f5da8f88411621aa9f364db018746>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine, :ref:`SwapQubitsMethod<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73>` method = :ref:`CNOT_GATE_METHOD<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73af0fd6c0d21b2b49d98160f724cff9cbe>`, :ref:`ArchType<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2a>` arch_type = :ref:`IBM_QX5_ARCH<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2aa1d998a495737ef4502e83b080f3dada0>`);
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::fill_qprog_by_I<doxid-group___utilities_1ga44d0898c5b799ae5d5a61885bb843019>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& input_prog);
-	void :ref:`QPanda::flatten<doxid-group___utilities_1ga997126df699b036f29971b65d91f7720>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog);
-	void :ref:`QPanda::flatten<doxid-group___utilities_1ga4ec2bd572ad776b199ed47e9c21ac049>`(:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit);
-	void :ref:`QPanda::full_flatten<doxid-group___utilities_1gafbdb42f53bdf318319bbc3b2ff2dce46>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog);
-
-	int :ref:`QPanda::partition<doxid-group___utilities_1ga34e90d38e9f219c3633ddba0d1ca5b8f>`(
-		const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& srcMatrix,
-		int partitionRowNum,
-		int partitionColumnNum,
-		:ref:`blockedMatrix_t<doxid-namespace_q_panda_1a8f8db55e468baa3e5febdb847979eadc>`& blockedMat
-		);
-
-	int :ref:`QPanda::blockMultip<doxid-group___utilities_1ga332ecf657ba1ac5c4817ce9abf280557>`(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& leftMatrix, const :ref:`blockedMatrix_t<doxid-namespace_q_panda_1a8f8db55e468baa3e5febdb847979eadc>`& blockedMat, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& resultMatrix);
-	void :ref:`QPanda::dagger<doxid-group___utilities_1gad7d29837687e202f654217bdc72c861e>`(:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& srcMat);
-	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`QPanda::tensor<doxid-group___utilities_1ga89e38fe6a988250608482e752ca15853>`(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& leftMatrix, const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& rightMatrix);
-	std::string :ref:`QPanda::matrix_to_string<doxid-group___utilities_1ga4ade7ce8fa33b32b51559cd3689a6459>`(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& mat);
-	:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` :ref:`QPanda::parityCheckCircuit<doxid-group___utilities_1ga45bce8581a43de45a3bbf5b3c7cbafcd>`(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*> qubit_vec);
-	:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` :ref:`QPanda::apply_QGate<doxid-group___utilities_1ga296d3416ba243601d3939bb960284d97>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubits, std::function<:ref:`QGate<doxid-class_q_panda_1_1_q_gate>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*)> gate);
-	:ref:`QGate<doxid-class_q_panda_1_1_q_gate>` :ref:`QPanda::Toffoli<doxid-group___utilities_1ga360ff2641ae0d9229ff920de8050fadf>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* qc1, :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* qc2, :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* target);
-	std::vector<std::string> :ref:`QPanda::split<doxid-group___utilities_1gad46a951a6cfb7b6339415f05686a80f4>`(const std::string& str, const std::string& delim);
-	bool :ref:`QPanda::str2int<doxid-group___utilities_1ga5ea0e3dbc8f13d4acf35ae04e30633c6>`(std::string s, long long& num);
-	bool :ref:`QPanda::str2double<doxid-group___utilities_1gab6004f2bad15ec13d4f40d3ab35c3979>`(std::string s, double& num);
-	std::string :ref:`QPanda::ll2str<doxid-group___utilities_1ga94d1661951a9556739e9c890275c421b>`(long long num);
-	std::string :ref:`QPanda::int2str<doxid-group___utilities_1ga4ba82eb2f8ee44b6bbe7387295f47e46>`(int num);
-	std::string :ref:`QPanda::double2str<doxid-group___utilities_1gabcdf63fbfaf0af391fbce6dca1a932c7>`(double num);
-
-	template <typename UnsignedIntegralType>
-	std::string :ref:`integerToBinary<doxid-group___utilities_1gaa65528bba400afbe3456b569805c1275>`(
-		const UnsignedIntegralType& number,
-		int ret_len
-		);
-
-	template <typename UnsignedIntegralType>
-	std::string :ref:`integerToString<doxid-group___utilities_1ga674c5935aa6e6b7f5fc63dab3b4376c2>`(const UnsignedIntegralType& number);
-
-	template <typename UnsignedIntegralType>
-	UnsignedIntegralType :ref:`getDecIndex<doxid-group___utilities_1gae427c07ca7652b1f831ccf1eda056393>`(
-		const UnsignedIntegralType& num1,
-		const UnsignedIntegralType& num2,
-		std::vector<size_t> qvec,
-		size_t len
-		);
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::qcodar_match_by_simple_type<doxid-group___utilities_1gad89f466db768b81ca10a60bd4063950a>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine, size_t m = 2, size_t n = 4, size_t run_times = 5);
 
 .. _details-group___utilities:
 
 Detailed Documentation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-QPanda2 base Utilities classes and interface.
+
+
+Typedefs
+--------
+
+.. index:: pair: typedef; QGateFunc
+.. _doxid-group___utilities_1ga979195d0548ad2c3bb1dce490b063ac6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	typedef :ref:`QGate<doxid-class_q_panda_1_1_q_gate>` (*QPanda::QGateFunc)(Qubit *)
+
+Apply Quantum Gate on a series of :ref:`Qubit <doxid-class_q_panda_1_1_qubit>`.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit vector
+
+	*
+		- std::function<QGate(Qubit\*)>
+
+		- :ref:`QGate <doxid-class_q_panda_1_1_q_gate>` function
+
+
+
+.. rubric:: Returns:
+
+:ref:`QCircuit <doxid-class_q_panda_1_1_q_circuit>`
 
 Global Functions
 ----------------
 
 .. index:: pair: function; transformOriginIRToQProg
-.. _doxid-group___utilities_1ga6c05a9faf342cc818885312391c779a5:
+.. _doxid-group___utilities_1ga3ebdc6e64354fbb9a4840bee72f0b29a:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::transformOriginIRToQProg(std::string filePath, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm)
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::transformOriginIRToQProg(
+		std::string filePath,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+		)
 
 OriginIR Transform To Quantum Program.
 
@@ -335,6 +391,16 @@ OriginIR Transform To Quantum Program.
 		- QuantumMachine\*
 
 		- quantum machine pointer
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit pointer
+
+	*
+		- std::vector<ClassicalCondition>
+
+		- classical register vector
 
 
 
@@ -375,6 +441,54 @@ Convert OriginIR To Quantum Program.
 
 :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
 
+.. index:: pair: function; convert_originir_to_qprog
+.. _doxid-group___utilities_1ga2378b45c5225e8fea4a5bc8b71e1c697:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::convert_originir_to_qprog(
+		std::string file_path,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+		)
+
+Convert OriginIR To Quantum Program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- OriginIR file path
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit pointer vector
+
+	*
+		- std::vector<ClassicalCondition>
+
+		- classical register vector
+
+
+
+.. rubric:: Returns:
+
+:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
+
 .. index:: pair: function; convert_originir_string_to_qprog
 .. _doxid-group___utilities_1ga663bf50e836b485b1681d99140e262e1:
 
@@ -401,6 +515,54 @@ Convert OriginIR String To Quantum Program.
 		- QuantumMachine\*
 
 		- quantum machine pointer
+
+
+
+.. rubric:: Returns:
+
+:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
+
+.. index:: pair: function; convert_originir_string_to_qprog
+.. _doxid-group___utilities_1ga7d86fcf5e2ae953ada82822b178124d1:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::convert_originir_string_to_qprog(
+		std::string str_originir,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+		)
+
+Convert OriginIR String To Quantum Program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- OriginIR String
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit pointer
+
+	*
+		- std::vector<ClassicalCondition>
+
+		- classical register vector
 
 
 
@@ -440,6 +602,129 @@ QASM Transform To Quantum Program.
 .. rubric:: Returns:
 
 :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
+
+.. index:: pair: function; convert_qasm_to_qprog
+.. _doxid-group___utilities_1ga22f7ec638fa0c0d60ba36c5e9ba88e57:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::convert_qasm_to_qprog(
+		std::string file_path,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+		)
+
+QASM Transform To Quantum Program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- QASM file path
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit pointer vector
+
+	*
+		- std::vector<ClassicalCondition>
+
+		- classical register vector
+
+
+
+.. rubric:: Returns:
+
+:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
+
+.. index:: pair: function; convert_qasm_string_to_qprog
+.. _doxid-group___utilities_1gafcdec6e2d9990eba6bb423a764f4dcdd:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::convert_qasm_string_to_qprog(std::string qasm_str, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm)
+
+QASM Transform To Quantum Program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- QASM string
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+
+
+.. rubric:: Returns:
+
+:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` quantum program
+
+.. index:: pair: function; convert_qasm_string_to_qprog
+.. _doxid-group___utilities_1gaf04fc3399712138b73250e9cc996c86f:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::convert_qasm_string_to_qprog(
+		std::string qasm_str,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+		)
+
+QASM Transform To Quantum Program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- QASM string
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- qubit pointer vector
+
+	*
+		- std::vector<ClassicalCondition>
+
+		- classical register vector @retur
 
 .. index:: pair: function; transformBinaryDataToQProg
 .. _doxid-group___utilities_1ga126fbcaac23e41abf1cd661028cc9f57:
@@ -829,7 +1114,7 @@ Quantum Program Transform To OriginIR
 
 .. rubric:: Returns:
 
-std::string QASM instruction set
+std::string OriginIR instruction set
 
 
 
@@ -884,21 +1169,17 @@ Convert Quantum Program To OriginIR.
 
 .. rubric:: Returns:
 
-std::string QASM instruction set
+std::string OriginIR instruction set
 
-.. index:: pair: function; transformQProgToQASM
-.. _doxid-group___utilities_1gaa13be205f3f69ecf28d1d7759bdd8461:
+.. index:: pair: function; write_to_originir_file
+.. _doxid-group___utilities_1gaacaf590edec6cd53f930b03df02f9c85:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::string QPanda::transformQProgToQASM(
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& pQProg,
-		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* quantum_machine,
-		:ref:`IBMQBackends<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8c>` ibmBackend = :ref:`IBMQ_QASM_SIMULATOR<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8ca09728e1eb958bbe0ec92174a7ce111cd>`
-		)
+	void QPanda::write_to_originir_file(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, const std::string file_name)
 
-Quantum program transform to qasm instruction set.
+write prog to originir file
 
 
 
@@ -918,42 +1199,21 @@ Quantum program transform to qasm instruction set.
 		- quantum machine pointer
 
 	*
-		- IBMQBackends
+		- const
 
-		- ibmBackend = IBMQ_QASM_SIMULATOR
+		- std::string originir file name
 
 
 
 .. rubric:: Returns:
 
-std::string QASM instruction set
-
-
-
-.. rubric:: See also:
-
-.. ref-code-block:: cpp
-
-	  init(QuantumMachine_type::CPU);
-	
-	  auto qubit = qAllocMany(6);
-	  auto cbit  = cAllocMany(2);
-	  auto prog = CreateEmptyQProg();
-	
-	  prog << CZ(qubit[0], qubit[2]) << H(qubit[1]) << CNOT(qubit[1], qubit[2])
-	  << RX(qubit[0],pi/2) << Measure(qubit[1],cbit[1]);
-	
-	extern QuantumMachine* global_quantum_machine;
-	  std::cout << transformQProgToQASM(prog, global_quantum_machine) << std::endl;
-	  finalize();
-
 .. index:: pair: function; convert_qprog_to_qasm
-.. _doxid-group___utilities_1ga2f95b62aff4c3ae3bbeac669bc64ec82:
+.. _doxid-group___utilities_1ga9e790548fd3c3cc2280c5d553805d3c7:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::string QPanda::convert_qprog_to_qasm(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, :ref:`IBMQBackends<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8c>` ibmBackend = :ref:`IBMQ_QASM_SIMULATOR<doxid-namespace_q_panda_1a13af700f152a6c7260fee48f68442b8ca09728e1eb958bbe0ec92174a7ce111cd>`)
+	std::string QPanda::convert_qprog_to_qasm(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm)
 
 Convert Quantum program to QASM instruction set.
 
@@ -984,6 +1244,42 @@ Convert Quantum program to QASM instruction set.
 .. rubric:: Returns:
 
 std::string QASM instruction set
+
+.. index:: pair: function; write_to_qasm_file
+.. _doxid-group___utilities_1gaf32b48c2e232cd0ad54f4841fd34653d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void QPanda::write_to_qasm_file(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm, const std::string file_name)
+
+write prog to qasm file
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- Quantum Program
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- const
+
+		- std::string qasm file name
+
+
+
+.. rubric:: Returns:
 
 .. index:: pair: function; transformQProgToQuil
 .. _doxid-group___utilities_1ga1afab9eb4d36a2758e559b40f63e82cc:
@@ -1099,6 +1395,58 @@ QRunes instruction set transform to quantum program interface.
 .. rubric:: Returns:
 
 void
+
+.. index:: pair: function; quantum_chip_adapter
+.. _doxid-group___utilities_1gaf8056e807ce59581186c3176f594b702:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void QPanda::quantum_chip_adapter(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* quantum_machine,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& new_qvec,
+		bool b_mapping = true,
+		const std::string config_data = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`
+		)
+
+Quantum chip adaptive conversion.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- Quantum Program
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
+	*
+		- QVec&
+
+		- Quantum bits after mapping. Note: if b_mapping is false, the input :ref:`QVec <doxid-class_q_panda_1_1_q_vec>` will be misoperated.
+
+	*
+		- bool
+
+		- whether or not perform the mapping operation.
+
+	*
+		- const
+
+		- std::string It can be configuration file or configuration data, which can be distinguished by file suffix, so the configuration file must be end with ".json", default is CONFIG_PATH
+
+
+
+.. rubric:: Returns:
 
 .. index:: pair: function; arbitraryRotationMetadataValidity
 .. _doxid-group___utilities_1ga785ac4c99106792eb8c00392e5576104:
@@ -1317,14 +1665,14 @@ Verify the validity of single quantum gates.
 int single quantum gate type
 
 .. index:: pair: function; isMatchTopology
-.. _doxid-group___utilities_1ga459114e3940a2ff0128cf51ca92f98ca:
+.. _doxid-group___utilities_1gafce6dbcae83d04515f17f59a8265aecb:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	bool QPanda::isMatchTopology(
 		const :ref:`QGate<doxid-class_q_panda_1_1_q_gate>`& gate,
-		const std::vector<std::vector<int>>& vecTopoSt
+		const std::vector<std::vector<double>>& vecTopoSt
 		)
 
 judge the Qgate if match the target topologic structure of quantum circuit
@@ -1337,7 +1685,7 @@ judge the Qgate if match the target topologic structure of quantum circuit
 	:widths: 20 80
 
 	*
-		- vector<vector<int>>&
+		- vector<vector<double>>&
 
 		- the target topologic structure of quantum circuit
 
@@ -1351,16 +1699,16 @@ if the Qgate match the target topologic structure return true, or else return fa
 
 .. rubric:: See also:
 
-:ref:`XmlConfigParam::readAdjacentMatrix(TiXmlElement \*, int&, std::vector\<std::vector\<int>>&) <doxid-group___utilities_1ga4e141809ff97965ba3dee77eb8e198fa>`
+JsonConfigParam::readAdjacentMatrix(TiXmlElement \*, int&, std::vector<std::vector<int>>&)
 
 .. index:: pair: function; getAdjacentQGateType
-.. _doxid-group___utilities_1ga0adcec3f1d6e1cb173e5afadc3aac5ab:
+.. _doxid-group___utilities_1ga001536c094ce89eef0f37a5ed3f8880d:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	std::string QPanda::getAdjacentQGateType(
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
 		:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr,
 		std::vector<:ref:`NodeInfo<doxid-class_q_panda_1_1_node_info>`>& adjacentNodes
 		)
@@ -1395,14 +1743,16 @@ result string.
 .. rubric:: See also:
 
 .. index:: pair: function; isSwappable
-.. _doxid-group___utilities_1ga18c8e4e48c21b6901eb93bd05e40ea30:
+.. _doxid-group___utilities_1ga80e7e2572030d685250da60497ad551f:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	bool QPanda::isSwappable(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr1, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr2)
+	bool QPanda::isSwappable(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr1, :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& nodeItr2)
 
 judge the specialed two NodeIters whether can be exchanged
+
+If the two input nodeIters are in different sub-prog, they are unswappable.
 
 
 
@@ -1426,10 +1776,6 @@ judge the specialed two NodeIters whether can be exchanged
 .. rubric:: Returns:
 
 if the two NodeIters can be exchanged, return true, otherwise retuen false.
-
-
-
-.. rubric:: See also:
 
 .. index:: pair: function; isSupportedGateType
 .. _doxid-group___utilities_1ga28afe2b7d347e24df633c81ebb0d8ff1:
@@ -1464,13 +1810,14 @@ if the target node is a base :ref:`QGate <doxid-class_q_panda_1_1_q_gate>` type,
 .. rubric:: See also:
 
 .. index:: pair: function; getCircuitMatrix
-.. _doxid-group___utilities_1gaecf3d5fffaaa40080b612fed1cd9d975:
+.. _doxid-group___utilities_1ga124b0790cd5be2ccc668dccdb6f44efe:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` QPanda::getCircuitMatrix(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` srcProg,
+		const bool b_bid_endian = false,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrStart = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrEnd = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
 		)
@@ -1483,6 +1830,11 @@ get the target matrix between the input two Nodeiters
 
 .. list-table::
 	:widths: 20 80
+
+	*
+		- const
+
+		- bool :ref:`Qubit <doxid-class_q_panda_1_1_qubit>` order mark of output matrix, true for positive sequence(Bid Endian), false for inverted order(Little Endian), default is false
 
 	*
 		- nodeItrStart
@@ -1505,14 +1857,14 @@ the target matrix include all the :ref:`QGate <doxid-class_q_panda_1_1_q_gate>` 
 .. rubric:: See also:
 
 .. index:: pair: function; pickUpNode
-.. _doxid-group___utilities_1ga8484fc54a5cab80edc24654cc68201e1:
+.. _doxid-group___utilities_1ga98495795ac67b0a62bfe9421627d8380:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	void QPanda::pickUpNode(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& outPutProg,
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& srcProg,
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` srcProg,
 		const std::vector<:ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>`> reject_node_types,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrStart = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` nodeItrEnd = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
@@ -1559,12 +1911,12 @@ pick up the nodes of srcProg between nodeItrStart and nodeItrEnd to outPutProg
 		- daggger flag @ Note: If there are any Qif/Qwhile nodes between nodeItrStart and nodeItrEnd, Or the nodeItrStart and the nodeItrEnd are in different sub-circuit, an exception will be throw.
 
 .. index:: pair: function; get_all_used_qubits
-.. _doxid-group___utilities_1ga60e9de7c80e617edb5f326689625a0c5:
+.. _doxid-group___utilities_1ga3501335f46decb71829be8dde89af2cc:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void QPanda::get_all_used_qubits(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, std::vector<int>& vecQuBitsInUse)
+	size_t QPanda::get_all_used_qubits(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, std::vector<int>& vecQuBitsInUse)
 
 Get all the used quantum bits in the input prog.
 
@@ -1583,15 +1935,21 @@ Get all the used quantum bits in the input prog.
 	*
 		- vecQuBitsInUse
 
-		- The vector of used quantum bits @ Note: All the Qif/Qwhile or other sub-circuit nodes in the input prog will be ignored.
+		- The vector of used quantum bits, sorted from small to large;
+
+
+
+.. rubric:: Returns:
+
+return the size of used qubits,sorted by physical address, in descending order
 
 .. index:: pair: function; get_all_used_class_bits
-.. _doxid-group___utilities_1gaaf010d547364709f49981078bf40cfae:
+.. _doxid-group___utilities_1ga61e049c9f5830e9e7d873dcc3ad9cb49:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void QPanda::get_all_used_class_bits(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, std::vector<int>& vecClBitsInUse)
+	size_t QPanda::get_all_used_class_bits(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, std::vector<int>& vecClBitsInUse)
 
 Get all the used class bits in the input prog.
 
@@ -1610,15 +1968,62 @@ Get all the used class bits in the input prog.
 	*
 		- vecClBitsInUse
 
-		- The vector of used class bits @ Note: All the Qif/Qwhile or other sub-circuit nodes in the input prog will be ignored.
+		- The vector of used class bits, sorted from small to large;
 
-.. index:: pair: function; printAllNodeType
-.. _doxid-group___utilities_1gae41e9802e11fe16be10a56819e6c6709:
+
+
+.. rubric:: Returns:
+
+return the size of used class bits
+
+.. index:: pair: function; get_measure_info
+.. _doxid-group___utilities_1gae7764808f386c690003a13258ebc8535:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::string QPanda::printAllNodeType(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog)
+	size_t QPanda::get_measure_info(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		std::vector<std::pair<uint32_t, uint32_t>>& measure_info
+		)
+
+Get all the measure-info in the input prog.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- prog
+
+		- the input prog
+
+	*
+		- std::vector<std::pair<uint32_t
+
+		- 
+
+	*
+		- uint32_t>>
+
+		- The vector of measure-info: std::pair<measured-qubit, target-cbit>
+
+
+
+.. rubric:: Returns:
+
+return the size of measure-info
+
+.. index:: pair: function; printAllNodeType
+.. _doxid-group___utilities_1gae66749bec396a311e4d27171a30f97a3:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	std::string QPanda::printAllNodeType(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog)
 
 output all the node type of the target prog
 
@@ -1671,6 +2076,34 @@ get gate parameter
 
 .. rubric:: Returns:
 
+.. index:: pair: function; check_dagger
+.. _doxid-group___utilities_1ga1b6530f6d8c906aed1634b509035ceb4:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	bool QPanda::check_dagger(std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> p_gate, const bool& b_dagger)
+
+Check if it is a valid dagger.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- bool
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+bool true for valid dagger
+
 .. index:: pair: function; getQGateNum
 .. _doxid-group___utilities_1gaa2167d6194906299c48b50228436f367:
 
@@ -1719,12 +2152,12 @@ size_t Quantum gate num
 	finalize();
 
 .. index:: pair: function; getQProgClockCycle
-.. _doxid-group___utilities_1ga002a279e27f4843dbadd82c19553cdc1:
+.. _doxid-group___utilities_1ga2213e8b29b8575ab8b3140e746105a33:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	size_t QPanda::getQProgClockCycle(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm)
+	size_t QPanda::getQProgClockCycle(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, bool optimize = false)
 
 Get quantum program clock cycle.
 
@@ -1762,21 +2195,50 @@ Get quantum program clock cycle.
 	
 	finalize();
 
+.. index:: pair: function; get_qprog_clock_cycle
+.. _doxid-group___utilities_1gaee357ef471dd4546550d5689ae97cd03:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	size_t QPanda::get_qprog_clock_cycle(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm, bool optimize = false)
+
+Get quantum program clock cycle.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
+
+		- & quantum program
+
+	*
+		- QuantumMachine\*
+
+		- quantum machine pointer
+
 .. index:: pair: function; draw_qprog
-.. _doxid-group___utilities_1ga5b68a36676155a7e2413fa1f2c3c02d2:
+.. _doxid-group___utilities_1ga77ea8621d7fe5fa493b18c1224db75b7:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	std::string QPanda::draw_qprog(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		uint32_t length = 100,
+		bool b_out_put_to_file = false,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
 		)
 
 output a quantum prog/circuit to console by text-pic(UTF-8 code), and will save the text-pic in file named QCircuitTextPic.txt in the same time in current path.
 
-All the output characters are UTF-8 code.
+All the output characters are UTF-8 encoded.
 
 
 
@@ -1807,20 +2269,23 @@ All the output characters are UTF-8 code.
 the output string
 
 .. index:: pair: function; draw_qprog_with_clock
-.. _doxid-group___utilities_1ga9729586010920bb1c7035ab3b207f119:
+.. _doxid-group___utilities_1gabd350b91611fc11460c8d2665d3aa829:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	std::string QPanda::draw_qprog_with_clock(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		const std::string config_data = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`,
+		uint32_t length = 100,
+		bool b_out_put_to_file = false,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_start = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`(),
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` itr_end = :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`()
 		)
 
 output a quantum prog/circuit by time sequence to console by text-pic(UTF-8 code), and will save the text-pic in file named QCircuitTextPic.txt in the same time in current path.
 
-All the output characters are UTF-8 code.
+All the output characters are GBK encoded on windows, UTF-8 encoded on other OS.
 
 
 
@@ -1833,6 +2298,11 @@ All the output characters are UTF-8 code.
 		- prog
 
 		- the source prog
+
+	*
+		- const
+
+		- std::string It can be configuration file or configuration data, which can be distinguished by file suffix, so the configuration file must be end with ".json", default is CONFIG_PATH
 
 	*
 		- itr_start
@@ -1883,113 +2353,26 @@ Overload operator <<.
 
 std::ostream
 
-.. index:: pair: function; graph_query_replace
-.. _doxid-group___utilities_1gaa5d7f420dbaf504df35d77e11dc27313:
+.. index:: pair: function; qcodar_match_by_simple_type
+.. _doxid-group___utilities_1gad89f466db768b81ca10a60bd4063950a:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	template <typename _Ty1, typename _Ty2, typename _Ty3>
-	void QPanda::graph_query_replace(
-		_Ty1& graph_node,
-		_Ty2& query_node,
-		_Ty3& replace_node,
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::qcodar_match_by_simple_type(
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+		:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine,
+		size_t m = 2,
+		size_t n = 4,
+		size_t run_times = 5
 		)
 
-graph query and replace
+A Contextual Duration-Aware :ref:`Qubit <doxid-class_q_panda_1_1_qubit>` Mapping for V arious NISQ Devices.
 
+QCodarGridDevice : SIMPLE_TYPE It's a simple undirected topology graph, build a topology based on the values of m and n 0 = 1 = 2 = 3
 
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- _Ty1
-
-		- & graph_node
-
-	*
-		- _Ty2
-
-		- & query_node
-
-	*
-		- _Ty3
-
-		- & replace_node
-
-	*
-		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
-
-		- & prog
-
-	*
-		- :ref:`QuantumMachine <doxid-class_q_panda_1_1_quantum_machine>`
-
-		- \* qvm
-
-
-
-.. rubric:: Returns:
-
-void
-
-.. index:: pair: function; graph_query
-.. _doxid-group___utilities_1gae94b1400c910547de03936bc91a94214:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	template <typename _Ty1, typename _Ty2>
-	bool QPanda::graph_query(
-		_Ty1& graph_node,
-		_Ty2& query_node,
-		:ref:`ResultVector<doxid-namespace_q_panda_1a960ac3f5e928f3a42f4d2f2191320897>`& query_result
-		)
-
-graph query
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- _Ty1
-
-		- & graph_node
-
-	*
-		- _Ty2
-
-		- & query_node
-
-	*
-		- ResultVector
-
-		- & query_result
-
-
-
-.. rubric:: Returns:
-
-bool true or false
-
-.. index:: pair: function; cast_qprog_qcircuit
-.. _doxid-group___utilities_1gab6fa6a562c8f53d3e1a07ceae99c46d1:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	static bool QPanda::cast_qprog_qcircuit(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit)
-
-Cast Quantum Program To Quantum Circuit.
+eg: m = 2, n = 4
 
 
 
@@ -2002,450 +2385,6 @@ Cast Quantum Program To Quantum Circuit.
 		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
 
 		- quantum program
-
-	*
-		- QCircuit&
-
-		- quantum progCircuitram
-
-
-
-.. rubric:: Returns:
-
-bool
-
-.. index:: pair: function; cast_qprog_qgate
-.. _doxid-group___utilities_1gafe6ca010315b8926648f71f591e04e6c:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	static :ref:`QGate<doxid-class_q_panda_1_1_q_gate>` QPanda::cast_qprog_qgate(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog)
-
-Cast Quantum Program To Quantum Gate.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
-
-		- quantum program
-
-
-
-.. rubric:: Returns:
-
-:ref:`QGate <doxid-class_q_panda_1_1_q_gate>` quantum gate
-
-.. index:: pair: function; cast_qprog_qmeasure
-.. _doxid-group___utilities_1gaeca0972f111c64634cafdffb628dcbed:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	static :ref:`QMeasure<doxid-class_q_panda_1_1_q_measure>` QPanda::cast_qprog_qmeasure(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog)
-
-Cast Quantum Program To Quantum Measure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
-
-		- quantum program
-
-
-
-.. rubric:: Returns:
-
-:ref:`QMeasure <doxid-class_q_panda_1_1_q_measure>` quantum measure
-
-.. index:: pair: function; topology_match
-.. _doxid-group___utilities_1ga378f5da8f88411621aa9f364db018746:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::topology_match(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine, :ref:`SwapQubitsMethod<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73>` method = :ref:`CNOT_GATE_METHOD<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73af0fd6c0d21b2b49d98160f724cff9cbe>`, :ref:`ArchType<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2a>` arch_type = :ref:`IBM_QX5_ARCH<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2aa1d998a495737ef4502e83b080f3dada0>`)
-
-QProg/QCircuit matches the topology of the physical qubits.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- prog
-
-		- quantum program
-
-	*
-		- machine
-
-		- quantum machine
-
-	*
-		- method
-
-		- swap qubits by CNOT/CZ/SWAP/iSWAP gate
-
-	*
-		- arch_type
-
-		- architectures type
-
-
-
-.. rubric:: Returns:
-
-:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` mapped quantum program
-
-.. index:: pair: function; fill_qprog_by_I
-.. _doxid-group___utilities_1ga44d0898c5b799ae5d5a61885bb843019:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` QPanda::fill_qprog_by_I(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& input_prog)
-
-Fill the input :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` by I gate.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- The
-
-		- input Qprog
-
-
-
-.. rubric:: Returns:
-
-the filled :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
-
-
-
-.. rubric:: See also:
-
-.. index:: pair: function; flatten
-.. _doxid-group___utilities_1ga997126df699b036f29971b65d91f7720:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void QPanda::flatten(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog)
-
-Flatten Quantum Program.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- QProg&
-
-		- quantum program
-
-
-
-.. rubric:: Returns:
-
-void
-
-.. index:: pair: function; flatten
-.. _doxid-group___utilities_1ga4ec2bd572ad776b199ed47e9c21ac049:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void QPanda::flatten(:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit)
-
-Flatten Quantum Circuit.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- QCircuit&
-
-		- circuit program
-
-
-
-.. rubric:: Returns:
-
-void
-
-.. index:: pair: function; full_flatten
-.. _doxid-group___utilities_1gafbdb42f53bdf318319bbc3b2ff2dce46:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void QPanda::full_flatten(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog)
-
-Full Flatten Quantum Program.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- QProg&
-
-		- quantum program
-
-
-
-.. rubric:: Returns:
-
-void
-
-.. index:: pair: function; partition
-.. _doxid-group___utilities_1ga34e90d38e9f219c3633ddba0d1ca5b8f:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int QPanda::partition(
-		const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& srcMatrix,
-		int partitionRowNum,
-		int partitionColumnNum,
-		:ref:`blockedMatrix_t<doxid-namespace_q_panda_1a8f8db55e468baa3e5febdb847979eadc>`& blockedMat
-		)
-
-partition matrix by the input partitionRowNum and partitionColumnNum
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- srcMatrix
-
-		- the source matrix
-
-	*
-		- partitionRowNum
-
-		- Specify how many blocks to separated horizontally
-
-	*
-		- partitionColumnNum
-
-		- Specify how many blocks to separated in the vertical direction
-
-	*
-		- blockedMat
-
-		- The separated matrix
-
-
-
-.. rubric:: Returns:
-
-Execution successfully returns 0, otherwise returns to other.
-
-.. index:: pair: function; blockMultip
-.. _doxid-group___utilities_1ga332ecf657ba1ac5c4817ce9abf280557:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	int QPanda::blockMultip(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& leftMatrix, const :ref:`blockedMatrix_t<doxid-namespace_q_panda_1a8f8db55e468baa3e5febdb847979eadc>`& blockedMat, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& resultMatrix)
-
-Block Multiplication of Matrix.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- leftMatrix
-
-		- the left input matrix
-
-	*
-		- blockedMat
-
-		- The matrix blocks
-
-	*
-		- resultMatrix
-
-		- The result of Block Multiplication
-
-
-
-.. rubric:: Returns:
-
-Execution successfully returns 0, otherwise returns to other.
-
-.. index:: pair: function; dagger
-.. _doxid-group___utilities_1gad7d29837687e202f654217bdc72c861e:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	void QPanda::dagger(:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& srcMat)
-
-Getting the Inverted Conjugate Matrix of the target Matrix.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- srcMat
-
-		- the target matrix
-
-
-
-.. rubric:: Returns:
-
-.. index:: pair: function; tensor
-.. _doxid-group___utilities_1ga89e38fe6a988250608482e752ca15853:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` QPanda::tensor(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& leftMatrix, const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& rightMatrix)
-
-Tensor Multiplication.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- leftMatrix
-
-		- the left input matrix
-
-	*
-		- rightMatrix
-
-		- the right input matrix
-
-
-
-.. rubric:: Returns:
-
-Tensor Product of input Left Matrix and Right Matrix.
-
-.. index:: pair: function; matrix_to_string
-.. _doxid-group___utilities_1ga4ade7ce8fa33b32b51559cd3689a6459:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::string QPanda::matrix_to_string(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& mat)
-
-output matrix information to consol
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- mat
-
-		- the target matrix
-
-
-
-.. rubric:: Returns:
-
-the matrix string
-
-.. index:: pair: function; parityCheckCircuit
-.. _doxid-group___utilities_1ga45bce8581a43de45a3bbf5b3c7cbafcd:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` QPanda::parityCheckCircuit(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*> qubit_vec)
-
-CNOT all qubits (except last) with the last qubit.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- std::vector<Qubit\*>
-
-		- qubit vector
-
-
-
-.. rubric:: Returns:
-
-:ref:`QCircuit <doxid-class_q_panda_1_1_q_circuit>`
-
-.. index:: pair: function; apply_QGate
-.. _doxid-group___utilities_1ga296d3416ba243601d3939bb960284d97:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` QPanda::apply_QGate(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubits, std::function<:ref:`QGate<doxid-class_q_panda_1_1_q_gate>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*)> gate)
-
-Apply Quantum Gate on a series of :ref:`Qubit <doxid-class_q_panda_1_1_qubit>`.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
 
 	*
 		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
@@ -2453,352 +2392,28 @@ Apply Quantum Gate on a series of :ref:`Qubit <doxid-class_q_panda_1_1_qubit>`.
 		- qubit vector
 
 	*
-		- std::function<QGate(Qubit\*)>
+		- QuantumMachine\*
 
-		- :ref:`QGate <doxid-class_q_panda_1_1_q_gate>` function
-
-
-
-.. rubric:: Returns:
-
-:ref:`QCircuit <doxid-class_q_panda_1_1_q_circuit>`
-
-.. index:: pair: function; Toffoli
-.. _doxid-group___utilities_1ga360ff2641ae0d9229ff920de8050fadf:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	:ref:`QGate<doxid-class_q_panda_1_1_q_gate>` QPanda::Toffoli(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* qc1, :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* qc2, :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* target)
-
-Toffoli Quantum Gate.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- Qubit\*
-
-		- first control qubit
-
-	*
-		- Qubit\*
-
-		- second control qubit
-
-	*
-		- Qubit\*
-
-		- target qubit
-
-
-
-.. rubric:: Returns:
-
-:ref:`QGate <doxid-class_q_panda_1_1_q_gate>`
-
-.. index:: pair: function; split
-.. _doxid-group___utilities_1gad46a951a6cfb7b6339415f05686a80f4:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::vector<std::string> QPanda::split(
-		const std::string& str,
-		const std::string& delim
-		)
-
-Splits the string by symbol.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- std::string&
-
-		- string
-
-	*
-		- std::string&
-
-		- delim
-
-
-
-.. rubric:: Returns:
-
-std::vector<std::string>
-
-.. index:: pair: function; str2int
-.. _doxid-group___utilities_1ga5ea0e3dbc8f13d4acf35ae04e30633c6:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	bool QPanda::str2int(std::string s, long long& num)
-
-cast string to int
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- std::string&
-
-		- string
-
-	*
-		- long
-
-		- long& number
-
-
-
-.. rubric:: Returns:
-
-bool
-
-.. index:: pair: function; str2double
-.. _doxid-group___utilities_1gab6004f2bad15ec13d4f40d3ab35c3979:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	bool QPanda::str2double(std::string s, double& num)
-
-cast string to double
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- std::string&
-
-		- string
-
-	*
-		- double&
-
-		- number
-
-
-
-.. rubric:: Returns:
-
-bool
-
-.. index:: pair: function; ll2str
-.. _doxid-group___utilities_1ga94d1661951a9556739e9c890275c421b:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::string QPanda::ll2str(long long num)
-
-cast long long to string
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- long
-
-		- long number
-
-
-
-.. rubric:: Returns:
-
-std::string
-
-.. index:: pair: function; int2str
-.. _doxid-group___utilities_1ga4ba82eb2f8ee44b6bbe7387295f47e46:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::string QPanda::int2str(int num)
-
-cast int to string
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- int
-
-		- number
-
-
-
-.. rubric:: Returns:
-
-std::string
-
-.. index:: pair: function; double2str
-.. _doxid-group___utilities_1gabcdf63fbfaf0af391fbce6dca1a932c7:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::string QPanda::double2str(double num)
-
-cast double to string
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- double
-
-		- number
-
-
-
-.. rubric:: Returns:
-
-std::string
-
-.. index:: pair: function; integerToBinary
-.. _doxid-group___utilities_1gaa65528bba400afbe3456b569805c1275:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	template <typename UnsignedIntegralType>
-	std::string integerToBinary(
-		const UnsignedIntegralType& number,
-		int ret_len
-		)
-
-Unsigned integer to binary string.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- UnsignedIntegralType&
-
-		- number
-
-	*
-		- int
-
-		- binary string length
-
-
-
-.. rubric:: Returns:
-
-std::string unsigned integer string
-
-.. index:: pair: function; integerToString
-.. _doxid-group___utilities_1ga674c5935aa6e6b7f5fc63dab3b4376c2:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	template <typename UnsignedIntegralType>
-	std::string integerToString(const UnsignedIntegralType& number)
-
-Unsigned integer to binary string.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- UnsignedIntegralType&
-
-		- number
-
-
-
-.. rubric:: Returns:
-
-std::string unsigned integer string
-
-.. index:: pair: function; getDecIndex
-.. _doxid-group___utilities_1gae427c07ca7652b1f831ccf1eda056393:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	template <typename UnsignedIntegralType>
-	UnsignedIntegralType getDecIndex(
-		const UnsignedIntegralType& num1,
-		const UnsignedIntegralType& num2,
-		std::vector<size_t> qvec,
-		size_t len
-		)
-
-Get quantum state dec index in pmeasure.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- UnsignedIntegralType&
-
-		- num1
-
-	*
-		- UnsignedIntegralType&
-
-		- num2
-
-	*
-		- std::vector<size_t>
-
-		- qvec
+		- quantum machine
 
 	*
 		- size_t
 
-		- binary string length
+		- m : the length of the topology
+
+	*
+		- size_t
+
+		- n : the width of the topology
+
+	*
+		- size_t
+
+		- run_times : the number of times run the remapping, better parameters get better results
 
 
 
 .. rubric:: Returns:
 
-Unsigned Integral Type
+:ref:`QProg <doxid-class_q_panda_1_1_q_prog>` mapped quantum program
 

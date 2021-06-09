@@ -13,6 +13,7 @@ Components
 	group_Operator.rst
 	group_Optimizer.rst
 	group_Utils.rst
+	class_QPanda_NodeSortProblemGenerator.rst
 
 QPanda2 Components Group.
 
@@ -23,4 +24,13 @@ QPanda2 Components Group.
 |	:ref:`Optimizer<doxid-group___optimizer>`
 |	:ref:`Utils<doxid-group___utils>`
 
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	// classes
+
+	class :ref:`QPanda::NodeSortProblemGenerator<doxid-class_q_panda_1_1_node_sort_problem_generator>`;
 

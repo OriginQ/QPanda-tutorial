@@ -24,6 +24,7 @@ Overview
 		// methods
 	
 		virtual size_t :ref:`getMaxQubit<doxid-class_q_panda_1_1_qubit_pool_1a557d6530da78875d35467979c7390017>`() const = 0;
+		virtual size_t :ref:`get_max_usedqubit_addr<doxid-class_q_panda_1_1_qubit_pool_1aa784fee5f1552fa751ff4da58ddd363b>`() const = 0;
 		virtual size_t :ref:`getIdleQubit<doxid-class_q_panda_1_1_qubit_pool_1ad6a5eba3ef747bea033d58ef8e9325d2>`() const = 0;
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubit<doxid-class_q_panda_1_1_qubit_pool_1a257710c139f9a9df2e7c98f8e8947f84>`() = 0;
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughPhyAddress<doxid-class_q_panda_1_1_qubit_pool_1affdaf4de13f5af779dc57c8f295f0493>`(size_t) = 0;
@@ -32,11 +33,13 @@ Overview
 		virtual void :ref:`clearAll<doxid-class_q_panda_1_1_qubit_pool_1a7962635e7aba3c82037bb9e5c4c5179d>`() = 0;
 		virtual size_t :ref:`getPhysicalQubitAddr<doxid-class_q_panda_1_1_qubit_pool_1a0a2c2fbeb5f26eff65322e2809da4d6d>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) = 0;
 		virtual size_t :ref:`getVirtualQubitAddress<doxid-class_q_panda_1_1_qubit_pool_1a99572216322ec218e12cbc651002dc4a>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) const = 0;
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_qubit_pool_1ac7914ab31598ef8d7f6b7a717f0856e7>`(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*>&) const = 0;
 	};
 
 	// direct descendants
 
 	class :ref:`OriginQubitPool<doxid-class_q_panda_1_1_origin_qubit_pool>`;
+	class :ref:`OriginQubitPoolv1<doxid-class_q_panda_1_1_origin_qubit_poolv1>`;
 	class :ref:`OriginQubitPoolv2<doxid-class_q_panda_1_1_origin_qubit_poolv2>`;
 .. _details-class_q_panda_1_1_qubit_pool:
 
@@ -57,6 +60,22 @@ Methods
 	virtual size_t getMaxQubit() const = 0
 
 get size of the :ref:`PhysicalQubit <doxid-class_q_panda_1_1_physical_qubit>` vector
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_max_usedqubit_addr
+.. _doxid-class_q_panda_1_1_qubit_pool_1aa784fee5f1552fa751ff4da58ddd363b:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_max_usedqubit_addr() const = 0
+
+Gets the largest address in the used physical qubit.
 
 
 
@@ -195,6 +214,34 @@ get virtual qubit address
 
 	*
 		- Qubit\*
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_allocate_qubits
+.. _doxid-class_q_panda_1_1_qubit_pool_1ac7914ab31598ef8d7f6b7a717f0856e7:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_allocate_qubits(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*>&) const = 0
+
+get allocate qubits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QVec&
 
 		- 
 

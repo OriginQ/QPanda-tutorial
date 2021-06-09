@@ -24,7 +24,7 @@ Circuit Parameter information. :ref:`More...<details-class_q_panda_1_1_q_circuit
 		// fields
 	
 		bool :ref:`m_is_dagger<doxid-class_q_panda_1_1_q_circuit_param_1a5b815041da10bbf9cd84dd9888aa486c>`;
-		std::vector<:ref:`QPanda::Qubit<doxid-class_q_panda_1_1_qubit>`*> :ref:`m_control_qubits<doxid-class_q_panda_1_1_q_circuit_param_1a04fbad0c2f4083190783e263b1cafa94>`;
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` :ref:`m_control_qubits<doxid-class_q_panda_1_1_q_circuit_param_1a20df1b07df27232f0b4f3bfd904de0a7>`;
 
 		// construction
 	
@@ -33,10 +33,14 @@ Circuit Parameter information. :ref:`More...<details-class_q_panda_1_1_q_circuit
 
 		// methods
 	
-		std::shared_ptr<QCircuitParam> :ref:`clone<doxid-class_q_panda_1_1_q_circuit_param_1a610bc95562c27a0a5e53aeca3c4605a0>`();
+		virtual std::shared_ptr<QCircuitParam> :ref:`clone<doxid-class_q_panda_1_1_q_circuit_param_1a225d03c234a07cd157e0bec0017dea64>`();
 		void :ref:`append_control_qubits<doxid-class_q_panda_1_1_q_circuit_param_1ae6c97a2064895b2602ad64ed05436b1d>`(const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& ctrl_qubits);
 		static :ref:`QVec<doxid-class_q_panda_1_1_q_vec>` :ref:`get_real_append_qubits<doxid-class_q_panda_1_1_q_circuit_param_1a71fe32cc5e7f1342dee18f887bda4dcd>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` append_qubits, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>` target_qubits);
 	};
+
+	// direct descendants
+
+	class :ref:`QCirParamForDAG<doxid-class_q_panda_1_1_q_prog_to_d_a_g_1_1_q_cir_param_for_d_a_g>`;
 .. _details-class_q_panda_1_1_q_circuit_param:
 
 Detailed Documentation
@@ -58,12 +62,12 @@ Fields
 dagger information
 
 .. index:: pair: variable; m_control_qubits
-.. _doxid-class_q_panda_1_1_q_circuit_param_1a04fbad0c2f4083190783e263b1cafa94:
+.. _doxid-class_q_panda_1_1_q_circuit_param_1a20df1b07df27232f0b4f3bfd904de0a7:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::vector<:ref:`QPanda::Qubit<doxid-class_q_panda_1_1_qubit>`*> m_control_qubits
+	:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` m_control_qubits
 
 control Quantum bits
 
@@ -94,12 +98,12 @@ Methods
 -------
 
 .. index:: pair: function; clone
-.. _doxid-class_q_panda_1_1_q_circuit_param_1a610bc95562c27a0a5e53aeca3c4605a0:
+.. _doxid-class_q_panda_1_1_q_circuit_param_1a225d03c234a07cd157e0bec0017dea64:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::shared_ptr<QCircuitParam> clone()
+	virtual std::shared_ptr<QCircuitParam> clone()
 
 clone
 

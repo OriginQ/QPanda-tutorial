@@ -30,7 +30,7 @@ Given a function of one-variable, return the local minimum of the function isola
 	
 		Brent& :target:`operator =<doxid-class_q_panda_1_1_brent_1abfd9b97209de7ab87c8a2832131f52e4>` (const Brent&);
 		void :ref:`optimize<doxid-class_q_panda_1_1_brent_1a0659715752c2f9324f0a739d9c3125db>`();
-		std::pair<double, :ref:`QResultPair<doxid-namespace_q_panda_1a682554b30f0d919b39109220e89e5855>`> :ref:`getResult<doxid-class_q_panda_1_1_brent_1a1c86398e34b833da2d1b78e65ca765b8>`();
+		std::pair<double, QResultPair> :ref:`getResult<doxid-class_q_panda_1_1_brent_1a1c86398e34b833da2d1b78e65ca765b8>`();
 	};
 .. _details-class_q_panda_1_1_brent:
 
@@ -73,7 +73,7 @@ execute optimization
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::pair<double, :ref:`QResultPair<doxid-namespace_q_panda_1a682554b30f0d919b39109220e89e5855>`> getResult()
+	std::pair<double, QResultPair> getResult()
 
 get result
 

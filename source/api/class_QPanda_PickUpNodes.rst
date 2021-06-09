@@ -23,15 +23,17 @@ Pick Up all the Nodes between the two NodeIters. :ref:`More...<details-class_q_p
 	public:
 		// construction
 	
-		:ref:`PickUpNodes<doxid-class_q_panda_1_1_pick_up_nodes_1ae8a58dc4c8e02b587f95c26bd77d3bbb>`(
+		:ref:`PickUpNodes<doxid-class_q_panda_1_1_pick_up_nodes_1ab19d5ec65100e71af105d96146fd1157>`(
 			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& output_prog,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& src_prog,
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` src_prog,
 			const std::vector<:ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>`>& reject_node_types,
 			const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& node_itr_start,
 			const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& node_itr_end
 			);
 
 		// methods
+	
+		virtual void :target:`traverse_qprog<doxid-class_q_panda_1_1_pick_up_nodes_1a5c15d719416011042f10e3aa0fc287a5>`();
 	
 		virtual void :target:`execute<doxid-class_q_panda_1_1_pick_up_nodes_1a41605f6d189b6cd266a5da20a7c98ead>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
@@ -97,47 +99,47 @@ Inherited Members
 	public:
 		// methods
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a1cb0c50abcd626b8c45b8aa389cb3541>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1adb53e4c20d48a0efd6e377680d7f0988>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a6916170c055781c5ed5a615407390e1c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aed584073b781c9a5c6441b08b14afc3d>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa3389601eef27921246507d9bcd60e8f>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aadbf69a810033196de1790d3f362ef7a>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a2196c7ad5525e519cfedad3d0285d712>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aab65fda71b8e1f719bc4b7bdd70a10e7>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a34a63b4019719d77711fcf6efbb6400c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1ab452f71d25eb3354d46346694ff82db7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a310247426bda77a52b81c7654fa4b848>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a4e97902dc8b42d5f5f50d790d11f1517>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a7d2fb53e43f56cc2f57cf0d025585146>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa311fe1c6abc46d84d90d6f412be063a>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
 		virtual void :ref:`execute<doxid-class_q_panda_1_1_traverse_by_node_iter_1ab322f1c7e3734cf25d22c57c1dfe6e98>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
@@ -188,7 +190,7 @@ Inherited Members
 			:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& cur_node_iter
 			);
 	
-		virtual void :ref:`traverse_qprog<doxid-class_q_panda_1_1_traverse_by_node_iter_1a407bc9a3cc75874142fbfec69447e9e2>`();
+		virtual void :ref:`traverse_qprog<doxid-class_q_panda_1_1_traverse_by_node_iter_1ab298ca4e8835cb14518f8b83c87d6287>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog);
 
 .. _details-class_q_panda_1_1_pick_up_nodes:
 
@@ -201,14 +203,14 @@ Construction
 ------------
 
 .. index:: pair: function; PickUpNodes
-.. _doxid-class_q_panda_1_1_pick_up_nodes_1ae8a58dc4c8e02b587f95c26bd77d3bbb:
+.. _doxid-class_q_panda_1_1_pick_up_nodes_1ab19d5ec65100e71af105d96146fd1157:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	PickUpNodes(
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& output_prog,
-		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& src_prog,
+		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` src_prog,
 		const std::vector<:ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>`>& reject_node_types,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& node_itr_start,
 		const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`& node_itr_end

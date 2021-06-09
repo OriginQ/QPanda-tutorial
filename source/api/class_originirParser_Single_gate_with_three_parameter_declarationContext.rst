@@ -36,6 +36,7 @@ class originirParser::Single_gate_with_three_parameter_declarationContext
 		std::vector<:ref:`ExpressionContext<doxid-classoriginir_parser_1_1_expression_context>`*> :target:`expression<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1a095d979e3d0bddc3a0c532e18f6594ec>`();
 		:ref:`ExpressionContext<doxid-classoriginir_parser_1_1_expression_context>`* :target:`expression<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1a85cc590a50ffcf0bb5ca7a44a12425b7>`(size_t i);
 		antlr4::tree::TerminalNode* :target:`RPAREN<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1a8d7547bef3312470b0af66663dd785f3>`();
+		antlr4::tree::TerminalNode* :target:`Q_KEY<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1ad14620378aea2ffbf39c2221ce29f6de>`();
 		virtual void :target:`enterRule<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1a4a944c3383f91f45126a9fb09fd74c03>`(antlr4::tree::ParseTreeListener* listener);
 		virtual void :target:`exitRule<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1a4d68d14a4f42ae197c5058c93ce67a4f>`(antlr4::tree::ParseTreeListener* listener);
 		virtual antlrcpp::Any :target:`accept<doxid-classoriginir_parser_1_1_single__gate__with__three__parameter__declaration_context_1aba5f35b0db69af1e6802749f0a3f6d83>`(antlr4::tree::ParseTreeVisitor* visitor);

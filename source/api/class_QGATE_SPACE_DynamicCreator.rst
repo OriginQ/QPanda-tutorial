@@ -36,6 +36,8 @@ template class QGATE_SPACE::DynamicCreator
 
 	// direct descendants
 
+	class :ref:`BARRIER<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_b_a_r_r_i_e_r>`;
+	class :ref:`BARRIER<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_b_a_r_r_i_e_r>`;
 	class :ref:`CNOT<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_n_o_t>`;
 	class :ref:`CNOT<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_n_o_t>`;
 	class :ref:`CPHASE<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_p_h_a_s_e>`;
@@ -45,6 +47,8 @@ template class QGATE_SPACE::DynamicCreator
 	class :ref:`CU<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_u>`;
 	class :ref:`CZ<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_z>`;
 	class :ref:`CZ<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_z>`;
+	class :ref:`ECHO<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_e_c_h_o>`;
+	class :ref:`ECHO<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_e_c_h_o>`;
 	class :ref:`H<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_h>`;
 	class :ref:`H<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_h>`;
 	class :ref:`I<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i>`;
@@ -57,6 +61,8 @@ template class QGATE_SPACE::DynamicCreator
 	class :ref:`OracularGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_oracular_gate>`;
 	class :ref:`QDoubleGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_double_gate>`;
 	class :ref:`QDoubleGate<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_q_double_gate>`;
+	class :ref:`RPhi<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_phi>`;
+	class :ref:`RPhi<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_phi>`;
 	class :ref:`RX<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_x>`;
 	class :ref:`RX<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_x>`;
 	class :ref:`RY<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_y>`;

@@ -26,13 +26,15 @@ Overview
 		void :ref:`initialize<doxid-class_q_panda_1_1_chemi_q_1a2d2dc70b75af2482fc5154f299da6c22>`(const std::string& dir);
 		void :ref:`finalize<doxid-class_q_panda_1_1_chemi_q_1a27e2646211fce4c8c5f1cbef36aca229>`();
 		void :ref:`setMolecule<doxid-class_q_panda_1_1_chemi_q_1a11e633fa9a7fcaad161dadd7a091ee08>`(const std::string& molecule);
-		void :ref:`setMolecules<doxid-class_q_panda_1_1_chemi_q_1af3b7557f42a6e360848a8e1e8d1f5306>`(const :ref:`vector_s<doxid-namespace_q_panda_1a81f654d5e024b7b9de5b4a14ded7b164>`& molecules);
+		void :ref:`setMoleculesStr<doxid-class_q_panda_1_1_chemi_q_1af551ceb8792907b38abc127ea35af06c>`(const std::string& molecule);
+		void :ref:`setMolecules<doxid-class_q_panda_1_1_chemi_q_1af3b7557f42a6e360848a8e1e8d1f5306>`(const vector_s& molecules);
 		void :ref:`setMultiplicity<doxid-class_q_panda_1_1_chemi_q_1a1db396aaf62d2c5031bf7b98429d6db4>`(int multiplicity);
 		void :ref:`setCharge<doxid-class_q_panda_1_1_chemi_q_1a6d1f8e61fea5b0e7b30a9ff76c5acc5e>`(int charge);
 		void :ref:`setBasis<doxid-class_q_panda_1_1_chemi_q_1a29b0287c1714758b49a68bb1f5a60800>`(const std::string& basis);
-		void :ref:`setTransformType<doxid-class_q_panda_1_1_chemi_q_1a1c462e3c09456f7b3a3a86a4e6ac90e7>`(:ref:`TransFormType<doxid-namespace_q_panda_1a5f9863b9f685c15e539744e808edde8b>` type);
-		void :ref:`setUccType<doxid-class_q_panda_1_1_chemi_q_1ac63601f2596eecfdfea5417e06d7f7da>`(:ref:`UccType<doxid-namespace_q_panda_1a7f68ed9ecff5c30e9105f9cf9ac259ba>` ucc_type);
-		void :ref:`setOptimizerType<doxid-class_q_panda_1_1_chemi_q_1abfe4046f374fd4e12fa68bcc673985d5>`(:ref:`OptimizerType<doxid-namespace_q_panda_1ad1be07c72805502c7d002a53b303bd1e>` optimizer_type);
+		void :ref:`setEqTolerance<doxid-class_q_panda_1_1_chemi_q_1ab32bdb472c3acbdf77bc6b755b168eab>`(const double val);
+		void :ref:`setTransformType<doxid-class_q_panda_1_1_chemi_q_1a1c462e3c09456f7b3a3a86a4e6ac90e7>`(TransFormType type);
+		void :ref:`setUccType<doxid-class_q_panda_1_1_chemi_q_1ac63601f2596eecfdfea5417e06d7f7da>`(UccType ucc_type);
+		void :ref:`setOptimizerType<doxid-class_q_panda_1_1_chemi_q_1abfe4046f374fd4e12fa68bcc673985d5>`(OptimizerType optimizer_type);
 		void :ref:`setOptimizerIterNum<doxid-class_q_panda_1_1_chemi_q_1af78b0025cccea20ed13e058dc7f21d96>`(size_t iter_num);
 		void :ref:`setOptimizerFuncCallNum<doxid-class_q_panda_1_1_chemi_q_1a18b677842018ec420c225812cd9e1c4a>`(size_t num);
 		void :ref:`setOptimizerXatol<doxid-class_q_panda_1_1_chemi_q_1a1a0e764d73d6a36cc8c47911cd935c53>`(double value);
@@ -44,12 +46,13 @@ Overview
 		void :ref:`setSaveDataDir<doxid-class_q_panda_1_1_chemi_q_1adce16410ebe6fd90f37c91dbcdc77c36>`(const std::string dir);
 		void :ref:`setQuantumMachineType<doxid-class_q_panda_1_1_chemi_q_1a626a5cd97a4480d4c10bc3d85744196b>`(:ref:`QMachineType<doxid-namespace_q_panda_1a49e43bfca791e92de2939590de4dcc13>` type);
 		void :ref:`setRandomPara<doxid-class_q_panda_1_1_chemi_q_1a46632ee24b1a5a78f66f73f8c42eab04>`(bool enable);
-		void :ref:`setDefaultOptimizedPara<doxid-class_q_panda_1_1_chemi_q_1ad07f4220ad29a22469bf529155524114>`(const :ref:`vector_d<doxid-namespace_q_panda_1abd75614c36cdeea208f1fbcd1d857021>`& para);
+		void :ref:`setDefaultOptimizedPara<doxid-class_q_panda_1_1_chemi_q_1ad07f4220ad29a22469bf529155524114>`(const vector_d& para);
 		void :ref:`setToGetHamiltonianFromFile<doxid-class_q_panda_1_1_chemi_q_1a2f536c623c736765fd4711fe7863b08e>`(bool enable);
 		void :ref:`setHamiltonianGenerationOnly<doxid-class_q_panda_1_1_chemi_q_1aa36eef0e1cc8d6a4468ad64e06888696>`(bool enable);
+		int :ref:`getQubitsNum<doxid-class_q_panda_1_1_chemi_q_1a73063d6ca0fc5a3631e6cc03e115f995>`();
 		bool :ref:`exec<doxid-class_q_panda_1_1_chemi_q_1abe3afde6547e50fa5def76bf054ea2a9>`();
 		std::string :ref:`getLastError<doxid-class_q_panda_1_1_chemi_q_1aba638f57282939c23115bf48c638c9db>`() const;
-		:ref:`vector_d<doxid-namespace_q_panda_1abd75614c36cdeea208f1fbcd1d857021>` :ref:`getEnergies<doxid-class_q_panda_1_1_chemi_q_1a76202acce7ecce62923f7b63906ac729>`() const;
+		vector_d :ref:`getEnergies<doxid-class_q_panda_1_1_chemi_q_1a76202acce7ecce62923f7b63906ac729>`() const;
 	};
 .. _details-class_q_panda_1_1_chemi_q:
 
@@ -101,7 +104,31 @@ Finalize the quantum chemistry calculation.
 
 	void setMolecule(const std::string& molecule)
 
-Set the molecular model to calculate.
+Set the molecular model to calculate separated by commas('
+
+') between atoms.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- std::string
+
+		- molecule model
+
+.. index:: pair: function; setMoleculesStr
+.. _doxid-class_q_panda_1_1_chemi_q_1af551ceb8792907b38abc127ea35af06c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void setMoleculesStr(const std::string& molecule)
+
+Setup molecular models, separated by semicolons(';') and separated by commas(',') between atoms.
 
 
 
@@ -121,7 +148,7 @@ Set the molecular model to calculate.
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setMolecules(const :ref:`vector_s<doxid-namespace_q_panda_1a81f654d5e024b7b9de5b4a14ded7b164>`& molecules)
+	void setMolecules(const vector_s& molecules)
 
 Set the molecular model to calculate.
 
@@ -141,7 +168,7 @@ Set the molecular model to calculate.
 
 .. rubric:: See also:
 
-:ref:`vector_s <doxid-namespace_q_panda_1a81f654d5e024b7b9de5b4a14ded7b164>`
+vector_s
 
 .. index:: pair: function; setMultiplicity
 .. _doxid-class_q_panda_1_1_chemi_q_1a1db396aaf62d2c5031bf7b98429d6db4:
@@ -209,13 +236,35 @@ Set the calculation basis.
 
 		- basis
 
+.. index:: pair: function; setEqTolerance
+.. _doxid-class_q_panda_1_1_chemi_q_1ab32bdb472c3acbdf77bc6b755b168eab:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void setEqTolerance(const double val)
+
+set Eq Tolerance
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- double
+
+		- the val of Tolerance
+
 .. index:: pair: function; setTransformType
 .. _doxid-class_q_panda_1_1_chemi_q_1a1c462e3c09456f7b3a3a86a4e6ac90e7:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setTransformType(:ref:`TransFormType<doxid-namespace_q_panda_1a5f9863b9f685c15e539744e808edde8b>` type)
+	void setTransformType(TransFormType type)
 
 Set the transform type from Fermion operator to Pauli operator.
 
@@ -235,7 +284,7 @@ Set the transform type from Fermion operator to Pauli operator.
 
 .. rubric:: See also:
 
-:ref:`TransFormType <doxid-namespace_q_panda_1a5f9863b9f685c15e539744e808edde8b>`
+TransFormType
 
 .. index:: pair: function; setUccType
 .. _doxid-class_q_panda_1_1_chemi_q_1ac63601f2596eecfdfea5417e06d7f7da:
@@ -243,7 +292,7 @@ Set the transform type from Fermion operator to Pauli operator.
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setUccType(:ref:`UccType<doxid-namespace_q_panda_1a7f68ed9ecff5c30e9105f9cf9ac259ba>` ucc_type)
+	void setUccType(UccType ucc_type)
 
 Set the ucc type to contruct the Fermion operator.
 
@@ -263,7 +312,7 @@ Set the ucc type to contruct the Fermion operator.
 
 .. rubric:: See also:
 
-:ref:`UccType <doxid-namespace_q_panda_1a7f68ed9ecff5c30e9105f9cf9ac259ba>`
+UccType
 
 .. index:: pair: function; setOptimizerType
 .. _doxid-class_q_panda_1_1_chemi_q_1abfe4046f374fd4e12fa68bcc673985d5:
@@ -271,7 +320,7 @@ Set the ucc type to contruct the Fermion operator.
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setOptimizerType(:ref:`OptimizerType<doxid-namespace_q_panda_1ad1be07c72805502c7d002a53b303bd1e>` optimizer_type)
+	void setOptimizerType(OptimizerType optimizer_type)
 
 Set the optimizer type.
 
@@ -291,7 +340,7 @@ Set the optimizer type.
 
 .. rubric:: See also:
 
-:ref:`OptimizerType <doxid-namespace_q_panda_1ad1be07c72805502c7d002a53b303bd1e>`
+OptimizerType
 
 .. index:: pair: function; setOptimizerIterNum
 .. _doxid-class_q_panda_1_1_chemi_q_1af78b0025cccea20ed13e058dc7f21d96:
@@ -547,7 +596,7 @@ Set random default optimizer paramter.
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setDefaultOptimizedPara(const :ref:`vector_d<doxid-namespace_q_panda_1abd75614c36cdeea208f1fbcd1d857021>`& para)
+	void setDefaultOptimizedPara(const vector_d& para)
 
 Set the default optimizer paramter by the given paramter.
 
@@ -567,7 +616,7 @@ Set the default optimizer paramter by the given paramter.
 
 .. rubric:: See also:
 
-:ref:`vector_d <doxid-namespace_q_panda_1abd75614c36cdeea208f1fbcd1d857021>`
+vector_d
 
 .. index:: pair: function; setToGetHamiltonianFromFile
 .. _doxid-class_q_panda_1_1_chemi_q_1a2f536c623c736765fd4711fe7863b08e:
@@ -613,6 +662,22 @@ Set hamiltonian generation only.
 
 		- enable
 
+.. index:: pair: function; getQubitsNum
+.. _doxid-class_q_panda_1_1_chemi_q_1a73063d6ca0fc5a3631e6cc03e115f995:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int getQubitsNum()
+
+get qubits num with the above config.
+
+
+
+.. rubric:: Returns:
+
+int -1:means failed.
+
 .. index:: pair: function; exec
 .. _doxid-class_q_panda_1_1_chemi_q_1abe3afde6547e50fa5def76bf054ea2a9:
 
@@ -651,7 +716,7 @@ std::string last error
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`vector_d<doxid-namespace_q_panda_1abd75614c36cdeea208f1fbcd1d857021>` getEnergies() const
+	vector_d getEnergies() const
 
 get calculated energies of the molecules.
 

@@ -18,25 +18,43 @@ Quantum program basic abstract class. :ref:`More...<details-class_q_panda_1_1_ab
 
 	#include <QProgram.h>
 	
-	class AbstractQuantumProgram
+	class AbstractQuantumProgram: public :ref:`QPanda::AbstractNodeManager<doxid-class_q_panda_1_1_abstract_node_manager>`
 	{
 	public:
 		// methods
 	
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getFirstNodeIter<doxid-class_q_panda_1_1_abstract_quantum_program_1a8a7dbbd920bb4c2eff9871f3236e39a8>`() = 0;
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getLastNodeIter<doxid-class_q_panda_1_1_abstract_quantum_program_1acc4046b581ce325ab55d1491eb3cb9a9>`() = 0;
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getEndNodeIter<doxid-class_q_panda_1_1_abstract_quantum_program_1aca6ac4bf3cf1a0c158daf19c42e13a6b>`() = 0;
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getHeadNodeIter<doxid-class_q_panda_1_1_abstract_quantum_program_1ac443054fc81e539e26a8b28dcc0c33b3>`() = 0;
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`insertQNode<doxid-class_q_panda_1_1_abstract_quantum_program_1a75619b19712397a7584c4838a28c5318>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&, std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0;
-		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`deleteQNode<doxid-class_q_panda_1_1_abstract_quantum_program_1afe70cb8d924c9f2285a3445ef5867e97>`(:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&) = 0;
-		virtual void :ref:`pushBackNode<doxid-class_q_panda_1_1_abstract_quantum_program_1a8581223f39a24f0a69e5b58c62c82892>`(std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0;
 		virtual void :ref:`clear<doxid-class_q_panda_1_1_abstract_quantum_program_1a5f31f3aa64a849d6654eb8ee1f73d3ab>`() = 0;
+		virtual size_t :ref:`get_max_qubit_addr<doxid-class_q_panda_1_1_abstract_quantum_program_1a8bdeebab139384217702489f01a7920a>`() = 0;
+		virtual size_t :ref:`get_used_qubits<doxid-class_q_panda_1_1_abstract_quantum_program_1abea5d2c41984ba3cf679325137b3067a>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0;
+		virtual size_t :ref:`get_used_cbits<doxid-class_q_panda_1_1_abstract_quantum_program_1a8db1ec2607e05c8a11232a0c627572c9>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0;
+		virtual size_t :ref:`get_qgate_num<doxid-class_q_panda_1_1_abstract_quantum_program_1aa910c05e038c58904ef1a49635087622>`() = 0;
+		virtual bool :ref:`is_measure_last_pos<doxid-class_q_panda_1_1_abstract_quantum_program_1a1d8232f912af4b86cf1b1770fda0360e>`() = 0;
+		virtual std::map<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*, bool> :ref:`get_measure_pos<doxid-class_q_panda_1_1_abstract_quantum_program_1ad25f4650c9ac5a30649f260c0ac43a8d>`() = 0;
+		virtual std::vector<std::pair<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*, :ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>> :ref:`get_measure_qubits_cbits<doxid-class_q_panda_1_1_abstract_quantum_program_1a76a02e81401bb45d83a365decfb584d5>`() = 0;
 	};
 
 	// direct descendants
 
 	class :ref:`OriginProgram<doxid-class_q_panda_1_1_origin_program>`;
 	class :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`;
+
+Inherited Members
+-----------------
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-inherited-code-block
+
+	public:
+		// methods
+	
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getFirstNodeIter<doxid-class_q_panda_1_1_abstract_node_manager_1aab8aacb324825696cf2c7735b8ce17bc>`() = 0;
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getLastNodeIter<doxid-class_q_panda_1_1_abstract_node_manager_1af035a5d190751faeea05132aefe1d6c6>`() = 0;
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getEndNodeIter<doxid-class_q_panda_1_1_abstract_node_manager_1ad2f723e4ab1bfbb499226d0a6939bd18>`() = 0;
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`getHeadNodeIter<doxid-class_q_panda_1_1_abstract_node_manager_1abffeb4cc2327ec65520da3b127999393>`() = 0;
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`insertQNode<doxid-class_q_panda_1_1_abstract_node_manager_1a9b5dc4a55201cd684f010f60835dd40d>`(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&, std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0;
+		virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` :ref:`deleteQNode<doxid-class_q_panda_1_1_abstract_node_manager_1a1aab80e3d5b0a1dab7f0804458c6628e>`(:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&) = 0;
+		virtual void :ref:`pushBackNode<doxid-class_q_panda_1_1_abstract_node_manager_1ae4b5be219a36fc04e671f00dfe3b6b11>`(std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0;
+
 .. _details-class_q_panda_1_1_abstract_quantum_program:
 
 Detailed Documentation
@@ -47,159 +65,6 @@ Quantum program basic abstract class.
 Methods
 -------
 
-.. index:: pair: function; getFirstNodeIter
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a8a7dbbd920bb4c2eff9871f3236e39a8:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` getFirstNodeIter() = 0
-
-Get the first :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`.
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; getLastNodeIter
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1acc4046b581ce325ab55d1491eb3cb9a9:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` getLastNodeIter() = 0
-
-Get the last :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`.
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; getEndNodeIter
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1aca6ac4bf3cf1a0c158daf19c42e13a6b:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` getEndNodeIter() = 0
-
-Get the end :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`.
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; getHeadNodeIter
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1ac443054fc81e539e26a8b28dcc0c33b3:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` getHeadNodeIter() = 0
-
-Get the head :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`.
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; insertQNode
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a75619b19712397a7584c4838a28c5318:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` insertQNode(const :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&, std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0
-
-Insert a new :ref:`QNode <doxid-class_q_panda_1_1_q_node>` at the location specified by :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- NodeIter&
-
-		- specified location
-
-	*
-		- std::shared_ptr<QNode>
-
-		- Inserted :ref:`QNode <doxid-class_q_panda_1_1_q_node>`
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; deleteQNode
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1afe70cb8d924c9f2285a3445ef5867e97:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual :ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>` deleteQNode(:ref:`NodeIter<doxid-class_q_panda_1_1_node_iter>`&) = 0
-
-Delete a :ref:`QNode <doxid-class_q_panda_1_1_q_node>` at the location specified by :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- NodeIter&
-
-		- specified location
-
-
-
-.. rubric:: Returns:
-
-:ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>` Deleted :ref:`NodeIter <doxid-class_q_panda_1_1_node_iter>`
-
-.. index:: pair: function; pushBackNode
-.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a8581223f39a24f0a69e5b58c62c82892:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	virtual void pushBackNode(std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>) = 0
-
-Insert a new node at the end of current quantum program node.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- std::shared_ptr<QNode>
-
-		- quantum node shared pointer
-
-
-
-.. rubric:: See also:
-
-:ref:`QNode <doxid-class_q_panda_1_1_q_node>`
-
 .. index:: pair: function; clear
 .. _doxid-class_q_panda_1_1_abstract_quantum_program_1a5f31f3aa64a849d6654eb8ee1f73d3ab:
 
@@ -209,4 +74,140 @@ Insert a new node at the end of current quantum program node.
 	virtual void clear() = 0
 
 Clear all node in current quantum program node.
+
+.. index:: pair: function; get_max_qubit_addr
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a8bdeebab139384217702489f01a7920a:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_max_qubit_addr() = 0
+
+Gets the maximum physical address of used qubits.
+
+
+
+.. rubric:: Returns:
+
+size_t maximum physical address
+
+.. index:: pair: function; get_used_qubits
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1abea5d2c41984ba3cf679325137b3067a:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_used_qubits(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0
+
+Get the used qubits for current quantum program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- used qubits vector
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_used_cbits
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a8db1ec2607e05c8a11232a0c627572c9:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_used_cbits(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0
+
+Get the used classical bits for current quantum program.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
+
+		- used qubits vector
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_qgate_num
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1aa910c05e038c58904ef1a49635087622:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_qgate_num() = 0
+
+Get current quantum program qgate number.
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; is_measure_last_pos
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a1d8232f912af4b86cf1b1770fda0360e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual bool is_measure_last_pos() = 0
+
+Measure operation in the last position of the program.
+
+
+
+.. rubric:: Returns:
+
+bool
+
+.. index:: pair: function; get_measure_pos
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1ad25f4650c9ac5a30649f260c0ac43a8d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual std::map<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*, bool> get_measure_pos() = 0
+
+Get Measure operation position of the program.
+
+
+
+.. rubric:: Returns:
+
+std::map<Qubit\*, bool>
+
+.. index:: pair: function; get_measure_qubits_cbits
+.. _doxid-class_q_panda_1_1_abstract_quantum_program_1a76a02e81401bb45d83a365decfb584d5:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual std::vector<std::pair<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*, :ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>> get_measure_qubits_cbits() = 0
+
+Get Measure operation qubits and cbits vector.
+
+
+
+.. rubric:: Returns:
+
+std::vector<std::pair<Qubit\*, ClassicalCondition>>
 

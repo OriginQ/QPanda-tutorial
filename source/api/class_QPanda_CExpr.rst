@@ -30,7 +30,7 @@ classical expression base class :ref:`More...<details-class_q_panda_1_1_c_expr>`
 		virtual std::string :ref:`getName<doxid-class_q_panda_1_1_c_expr_1a74c9764bd9a65db33aaf5aad6a20a0df>`() const = 0;
 		virtual :ref:`CBit<doxid-class_q_panda_1_1_c_bit>`* :ref:`getCBit<doxid-class_q_panda_1_1_c_expr_1ae27aed1a4e15fd2867d6293201c7a7ea>`() const = 0;
 		virtual bool :ref:`checkValidity<doxid-class_q_panda_1_1_c_expr_1a098c3db0d4deefb86e0fd87af3d919b5>`() const = 0;
-		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`eval<doxid-class_q_panda_1_1_c_expr_1abb5146bfaf8c28b68b9f68e8f4f28f8b>`() const = 0;
+		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_val<doxid-class_q_panda_1_1_c_expr_1a0264b30e68a581dae0ac6b1416560f72>`() const = 0;
 		virtual int :ref:`getContentSpecifier<doxid-class_q_panda_1_1_c_expr_1a0c47e5f9d4c8754136c412bab83ebaf9>`() const = 0;
 		virtual CExpr* :ref:`deepcopy<doxid-class_q_panda_1_1_c_expr_1aab82ac71c15e94928f7f260554d05473>`() const = 0;
 		virtual void :ref:`getCBitsName<doxid-class_q_panda_1_1_c_expr_1ab37db29d84b5f36d76877c2a58e60318>`(std::vector<std::string>&) = 0;
@@ -175,13 +175,13 @@ true check validity ture
 
 false check validity false
 
-.. index:: pair: function; eval
-.. _doxid-class_q_panda_1_1_c_expr_1abb5146bfaf8c28b68b9f68e8f4f28f8b:
+.. index:: pair: function; get_val
+.. _doxid-class_q_panda_1_1_c_expr_1a0264b30e68a581dae0ac6b1416560f72:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` eval() const = 0
+	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` get_val() const = 0
 
 get value
 

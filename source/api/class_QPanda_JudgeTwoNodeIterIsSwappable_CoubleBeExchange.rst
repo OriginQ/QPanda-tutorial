@@ -26,5 +26,5 @@ class QPanda::JudgeTwoNodeIterIsSwappable::CoubleBeExchange
 
 		// methods
 	
-		ResultStatue :target:`getStatue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_couble_be_exchange_1ad931308dacd44b96dcc49be5cbfbefb1>`() const;
+		ResultStatue :target:`get_statue<doxid-class_q_panda_1_1_judge_two_node_iter_is_swappable_1_1_couble_be_exchange_1adf229db7b7d02ca8cbff4680093129d6>`() const;
 	};

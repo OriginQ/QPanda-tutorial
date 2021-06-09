@@ -62,6 +62,8 @@ This interface defines an abstract listener for a parse tree produced by :ref:`q
 		virtual void :target:`exitExp<doxid-classqasm_listener_1a74d2cc777d6a6105b2848a2943536505>`(:ref:`qasmParser::ExpContext<doxid-classqasm_parser_1_1_exp_context>`* ctx) = 0;
 		virtual void :target:`enterId<doxid-classqasm_listener_1adb4cab7ce3e9f238dc19c18f5d3b3b26>`(:ref:`qasmParser::IdContext<doxid-classqasm_parser_1_1_id_context>`* ctx) = 0;
 		virtual void :target:`exitId<doxid-classqasm_listener_1a310d702cf38ea4433f4ffc8394ebc7b7>`(:ref:`qasmParser::IdContext<doxid-classqasm_parser_1_1_id_context>`* ctx) = 0;
+		virtual void :target:`enterReal<doxid-classqasm_listener_1ad93a448462e8cec79b51368b97b972db>`(:ref:`qasmParser::RealContext<doxid-classqasm_parser_1_1_real_context>`* ctx) = 0;
+		virtual void :target:`exitReal<doxid-classqasm_listener_1a1e42add01a329ae994399b4aaf396870>`(:ref:`qasmParser::RealContext<doxid-classqasm_parser_1_1_real_context>`* ctx) = 0;
 		virtual void :target:`enterInteger<doxid-classqasm_listener_1af0555e4d9a99529fca4c9547e220e01e>`(:ref:`qasmParser::IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* ctx) = 0;
 		virtual void :target:`exitInteger<doxid-classqasm_listener_1a9fa33ad127ed54fbaaf0f380d84e1cb9>`(:ref:`qasmParser::IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* ctx) = 0;
 		virtual void :target:`enterDecimal<doxid-classqasm_listener_1a50c9f9b3304915f420311835ecc46e4e>`(:ref:`qasmParser::DecimalContext<doxid-classqasm_parser_1_1_decimal_context>`* ctx) = 0;

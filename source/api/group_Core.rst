@@ -45,18 +45,18 @@ QPanda2 Core Group. :ref:`More...<details-group___core>`
 	void :ref:`QPanda::cFreeAll<doxid-group___core_1gaa438f340325085ab44936e0413c2d40d>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`> vCBit);
 	:ref:`QMachineStatus<doxid-class_q_panda_1_1_q_machine_status>`* :ref:`QPanda::getstat<doxid-group___core_1ga2dcbb445a1e5c3b5cdec9b44e1325096>`();
 	size_t :ref:`QPanda::getAllocateQubitNum<doxid-group___core_1ga9f99c54c66e54057d1f635b0bf4ed26e>`();
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::getProbTupleList<doxid-group___core_1ga9f7eb33268e651402871173ad289f201>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::getProbList<doxid-group___core_1ga37ce2c0c342a9dce0293c31412179e56>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
-	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`QPanda::getProbDict<doxid-group___core_1gac7d6f9130bb14da46068f669cbeb786f>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::probRunTupleList<doxid-group___core_1ga940377aac8c4e06aa93b6d9ad1ca44c6>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::probRunList<doxid-group___core_1ga8b769442bdd06bce0bd573dfa0b86125>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
-	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`QPanda::probRunDict<doxid-group___core_1gaad2d0834f62ae9c4b18573c7e8a50922>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1);
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::getProbTupleList<doxid-group___core_1gaf33bb76aa471e94acb73c6f826929f88>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::getProbList<doxid-group___core_1ga7366e4bf7003a2d2af60320b58f3d1a7>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`QPanda::getProbDict<doxid-group___core_1ga7d80ef096c4293c404eca95a3dc40079>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::probRunTupleList<doxid-group___core_1ga4d656a29d06a17473a5bf90709b97b2c>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::probRunList<doxid-group___core_1ga706f85efb9f4ed6792b4ebf140e6f205>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`QPanda::probRunDict<doxid-group___core_1ga9765f5328a72fa839b1c503d94646977>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1);
 	std::map<std::string, size_t> :ref:`QPanda::runWithConfiguration<doxid-group___core_1gaac240d65f6c9c0e955a583b7d7a7735b>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, int);
-	std::map<std::string, size_t> :ref:`QPanda::quickMeasure<doxid-group___core_1gaaaf64d793f51d39ead7ceba1cf7d6d01>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int);
+	std::map<std::string, size_t> :ref:`QPanda::quickMeasure<doxid-group___core_1gaab1e9c0f76888f6252953e5ffc001c02>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int);
 	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::accumulateProbability<doxid-group___core_1gab7fa40c4a3d8d4b6c9dc5a5bf389162f>`(:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>`& prob_list);
 
-	std::map<std::string, size_t> :ref:`QPanda::quick_measure<doxid-group___core_1gabbf7eea831182a82092f70285c027d42>`(
-		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector,
+	std::map<std::string, size_t> :ref:`QPanda::quick_measure<doxid-group___core_1ga5953c0ff383295f2bcea4d3cff1f1a29>`(
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector,
 		int shots,
 		:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>`& accumulate_probabilites
 		);
@@ -66,9 +66,10 @@ QPanda2 Core Group. :ref:`More...<details-group___core>`
 	void :ref:`QPanda::destroyQuantumMachine<doxid-group___core_1ga40086744d5e1d0ee04381ebd63ae40c7>`(:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qvm);
 	:ref:`QPanda::QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::MeasureAll<doxid-group___core_1ga5d448b1c38b2b3a13022c5c3a3587b40>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>);
 	size_t :ref:`QPanda::getAllocateCMemNum<doxid-group___core_1gaa455e0e99622f5f997c6931981bb33ea>`();
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::pMeasure<doxid-group___core_1ga3c19a648c8c21b9b8819b1c8180f20c0>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector, int select_max);
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::pMeasureNoIndex<doxid-group___core_1ga44c86a2a14f084483580f898a70e6a20>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector);
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` :ref:`QPanda::pMeasure<doxid-group___core_1ga757f4450197cae9577316a69ee7977b8>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector, int select_max);
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` :ref:`QPanda::pMeasureNoIndex<doxid-group___core_1ga0ead8a3eab7a3d51c26d887acbb410c0>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector);
 	:ref:`QMeasure<doxid-class_q_panda_1_1_q_measure>` :ref:`QPanda::Measure<doxid-group___core_1ga15b15ba85d24d7355880ad63fd4c2107>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*, :ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`);
+	:ref:`QMeasure<doxid-class_q_panda_1_1_q_measure>` :ref:`QPanda::Measure<doxid-group___core_1ga61455ff3714ff88b9d15f4be9fbbd3d3>`(int, int);
 
 .. _details-group___core:
 
@@ -395,12 +396,12 @@ Get all allocate qubit num.
 size_t :ref:`Qubit <doxid-class_q_panda_1_1_qubit>` num
 
 .. index:: pair: function; getProbTupleList
-.. _doxid-group___core_1ga9f7eb33268e651402871173ad289f201:
+.. _doxid-group___core_1gaf33bb76aa471e94acb73c6f826929f88:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::getProbTupleList(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::getProbTupleList(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as tuple list.
 
@@ -414,7 +415,7 @@ selectMax can not exceed (1ull << the size of qubits vector)
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- pmeasure qubits vector
 
@@ -430,12 +431,12 @@ selectMax can not exceed (1ull << the size of qubits vector)
 std::vector<std::pair<size_t, double>> result
 
 .. index:: pair: function; getProbList
-.. _doxid-group___core_1ga37ce2c0c342a9dce0293c31412179e56:
+.. _doxid-group___core_1ga7366e4bf7003a2d2af60320b58f3d1a7:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::getProbList(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::getProbList(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as list.
 
@@ -449,7 +450,7 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- pmeasure qubits vector
 
@@ -465,12 +466,12 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 prob_vec result
 
 .. index:: pair: function; getProbDict
-.. _doxid-group___core_1gac7d6f9130bb14da46068f669cbeb786f:
+.. _doxid-group___core_1ga7d80ef096c4293c404eca95a3dc40079:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` QPanda::getProbDict(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` QPanda::getProbDict(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as dict.
 
@@ -484,7 +485,7 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- pmeasure qubits vector
 
@@ -500,12 +501,12 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 std::map<std::string, double> result
 
 .. index:: pair: function; probRunTupleList
-.. _doxid-group___core_1ga940377aac8c4e06aa93b6d9ad1ca44c6:
+.. _doxid-group___core_1ga4d656a29d06a17473a5bf90709b97b2c:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::probRunTupleList(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::probRunTupleList(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as dict.
 
@@ -524,7 +525,7 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 		- Quantum program
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- pmeasure qubits vector
 
@@ -540,12 +541,12 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 std::vector<std::pair<size_t, double>> result
 
 .. index:: pair: function; probRunList
-.. _doxid-group___core_1ga8b769442bdd06bce0bd573dfa0b86125:
+.. _doxid-group___core_1ga706f85efb9f4ed6792b4ebf140e6f205:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::probRunList(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::probRunList(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as list.
 
@@ -564,7 +565,7 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 		- Quantum program
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- Pmeasure qubits vector
 
@@ -580,12 +581,12 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 prob_vec result
 
 .. index:: pair: function; probRunDict
-.. _doxid-group___core_1gaad2d0834f62ae9c4b18573c7e8a50922:
+.. _doxid-group___core_1ga9765f5328a72fa839b1c503d94646977:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` QPanda::probRunDict(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int selectMax = -1)
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` QPanda::probRunDict(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int selectMax = -1)
 
 Get pmeasure result as dict.
 
@@ -604,7 +605,7 @@ SelectMax can not exceed (1ull << the size of qubits vector)
 		- Quantum program
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- pmeasure qubits vector
 
@@ -662,12 +663,12 @@ Measure run with configuration.
 std::map<std::string, size_t> result
 
 .. index:: pair: function; quickMeasure
-.. _doxid-group___core_1gaaaf64d793f51d39ead7ceba1cf7d6d01:
+.. _doxid-group___core_1gaab1e9c0f76888f6252953e5ffc001c02:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	std::map<std::string, size_t> QPanda::quickMeasure(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int)
+	std::map<std::string, size_t> QPanda::quickMeasure(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`, int)
 
 Quick measure operate.
 
@@ -679,7 +680,7 @@ Quick measure operate.
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- qubits vector
 
@@ -723,13 +724,13 @@ AccumulateProbability.
 prob_vec
 
 .. index:: pair: function; quick_measure
-.. _doxid-group___core_1gabbf7eea831182a82092f70285c027d42:
+.. _doxid-group___core_1ga5953c0ff383295f2bcea4d3cff1f1a29:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
 	std::map<std::string, size_t> QPanda::quick_measure(
-		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector,
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector,
 		int shots,
 		:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>`& accumulate_probabilites
 		)
@@ -744,7 +745,7 @@ Quick measure.
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- qubits vector
 
@@ -867,7 +868,7 @@ Measure All :ref:`ClassicalCondition <doxid-class_q_panda_1_1_classical_conditio
 		- qubits vector
 
 	*
-		- std::vector<ClassicalCondition>&
+		- std::vector<ClassicalCondition>
 
 		- Cbits vector
 
@@ -894,12 +895,12 @@ Get allocate cbit number.
 size_t Cbit number
 
 .. index:: pair: function; pMeasure
-.. _doxid-group___core_1ga3c19a648c8c21b9b8819b1c8180f20c0:
+.. _doxid-group___core_1ga757f4450197cae9577316a69ee7977b8:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::pMeasure(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector, int select_max)
+	:ref:`prob_tuple<doxid-_q_panda_namespace_8h_1ab92b79b1b1a44ee773053c13c7fb5344>` QPanda::pMeasure(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector, int select_max)
 
 pMeasure
 
@@ -911,7 +912,7 @@ pMeasure
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- qubit vector
 
@@ -927,12 +928,12 @@ pMeasure
 std::vector<std::pair<size_t, double>> result
 
 .. index:: pair: function; pMeasureNoIndex
-.. _doxid-group___core_1ga44c86a2a14f084483580f898a70e6a20:
+.. _doxid-group___core_1ga0ead8a3eab7a3d51c26d887acbb410c0:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::pMeasureNoIndex(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qubit_vector)
+	:ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>` QPanda::pMeasureNoIndex(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qubit_vector)
 
 pMeasure only return result with no index
 
@@ -944,7 +945,7 @@ pMeasure only return result with no index
 	:widths: 20 80
 
 	*
-		- QVec&
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>`
 
 		- qubit vector
 
@@ -980,6 +981,39 @@ QPanda2 basic interface for creating a quantum measure node.
 		- :ref:`ClassicalCondition <doxid-class_q_panda_1_1_classical_condition>`
 
 		- cbit
+
+
+
+.. rubric:: Returns:
+
+:ref:`QPanda::QMeasure <doxid-class_q_panda_1_1_q_measure>` quantum measure node
+
+.. index:: pair: function; Measure
+.. _doxid-group___core_1ga61455ff3714ff88b9d15f4be9fbbd3d3:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`QMeasure<doxid-class_q_panda_1_1_q_measure>` QPanda::Measure(int, int)
+
+QPanda2 basic interface for creating a quantum measure node.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- int
+
+		- qubit address
+
+	*
+		- int
+
+		- cbit address
 
 
 

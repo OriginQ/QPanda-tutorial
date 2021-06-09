@@ -23,11 +23,13 @@ enum QPanda::QProgBuilder::GateType
 	    :target:`Y1<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da5aefcaaf9790cc8ece124e274779ae94>`,
 	    :target:`Z1<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da2871a030d5f4d04037a9b6f405e19c5a>`,
 	    :target:`I<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dadd7536794b63bf90eccfd37f9b147d7f>`,
+	    :target:`ECHO<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dad61484f1331c7f66061e43b859556409>`,
 	    :target:`RX<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928daf9c24782c24c237d16e79f18e2fa9046>`,
 	    :target:`RY<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928daccb21680cb44cbc3715ed8acc0145efe>`,
 	    :target:`RZ<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da25e29a048984cda66521f1eab1182666>`,
 	    :target:`U1<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928daf89412c11bdc0ab44f99f92d5e9a3c5e>`,
 	    :target:`U2<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da4684821448f0ae2437312daece9d1cd9>`,
+	    :target:`RPhi<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da5c0c583668a82783273e50694a8e02f4>`,
 	    :target:`U3<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dac960375866797bcd97f4f6c22c94b2aa>`,
 	    :target:`U4<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da7a7e060fbac468049775df37d8dfa511>`,
 	    :target:`CNOT<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da44d7f92f0edf49112af71a5326c54f0c>`,
@@ -39,5 +41,6 @@ enum QPanda::QProgBuilder::GateType
 	    :target:`CR<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928da1d7b33fc26ca22c2011aaa97fecc43d8>`,
 	    :target:`CU<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dac83f077534a373cb63a0a91969fdce54>`,
 	    :target:`TOFFOLI<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dae34676e1bcc39d72b0e46dd64073c580>`,
+	    :target:`DEFINE_QAGE<doxid-class_q_panda_1_1_q_prog_builder_1a06ddf4812a401a6835efd12e7767928dab0ad9a71d156653e76b317b980b16b28>`,
 	};
 

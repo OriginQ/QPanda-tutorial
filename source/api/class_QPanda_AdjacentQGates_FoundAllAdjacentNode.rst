@@ -26,5 +26,5 @@ class QPanda::AdjacentQGates::FoundAllAdjacentNode
 
 		// methods
 	
-		TraversalStatue :target:`getStatue<doxid-class_q_panda_1_1_adjacent_q_gates_1_1_found_all_adjacent_node_1a906bdd20e4f737738d015ee5020b8ad3>`() const;
+		TraversalStatue :target:`get_statue<doxid-class_q_panda_1_1_adjacent_q_gates_1_1_found_all_adjacent_node_1afe4a30cbce49dcbe5cca66af79937c20>`() const;
 	};
