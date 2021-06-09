@@ -7,6 +7,11 @@ class QPanda::TopologyMatch
 .. toctree::
 	:hidden:
 
+	struct_QPanda_TopologyMatch_edge.rst
+	struct_QPanda_TopologyMatch_gate.rst
+	struct_QPanda_TopologyMatch_node.rst
+	struct_QPanda_TopologyMatch_node_cmp.rst
+
 Overview
 ~~~~~~~~
 
@@ -21,17 +26,26 @@ QProg/QCircuit matches the topology of the physical qubits. :ref:`More...<detail
 	class TopologyMatch: public :ref:`QPanda::TraversalInterface<doxid-class_q_panda_1_1_traversal_interface>`
 	{
 	public:
+		// structs
+	
+		struct :ref:`edge<doxid-struct_q_panda_1_1_topology_match_1_1edge>`;
+		struct :ref:`gate<doxid-struct_q_panda_1_1_topology_match_1_1gate>`;
+		struct :ref:`node<doxid-struct_q_panda_1_1_topology_match_1_1node>`;
+		struct :ref:`node_cmp<doxid-struct_q_panda_1_1_topology_match_1_1node__cmp>`;
+
 		// construction
 	
-		:target:`TopologyMatch<doxid-class_q_panda_1_1_topology_match_1a34f357540221de68db9433e2f9bf5d37>`(
+		:target:`TopologyMatch<doxid-class_q_panda_1_1_topology_match_1afe4c974b8e2444336fc7fed8ccae1869>`(
 			:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* machine,
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog,
 			:ref:`SwapQubitsMethod<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73>` method = :ref:`CNOT_GATE_METHOD<doxid-namespace_q_panda_1a7f591622bab3f78555ae0db8d6919b73af0fd6c0d21b2b49d98160f724cff9cbe>`,
-			:ref:`ArchType<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2a>` arch_type = :ref:`IBM_QX5_ARCH<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2aa1d998a495737ef4502e83b080f3dada0>`
+			:ref:`ArchType<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2a>` arch_type = :ref:`IBM_QX5_ARCH<doxid-namespace_q_panda_1aa47c4caa285ab72dca1885b13d182a2aa1d998a495737ef4502e83b080f3dada0>`,
+			const std::string conf = :ref:`CONFIG_PATH<doxid-_json_config_param_8h_1a863ab5d791c86f9dfff4c6e90624130c>`
 			);
 
 		// methods
 	
-		void :ref:`mappingQProg<doxid-class_q_panda_1_1_topology_match_1a7efaa5d48df471466f7d3a7a94c73d5e>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& mapped_prog);
+		void :ref:`mappingQProg<doxid-class_q_panda_1_1_topology_match_1a6b5bf04991ba44cfc9165d9322e602bb>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& mapped_prog);
 	
 		virtual void :target:`execute<doxid-class_q_panda_1_1_topology_match_1a83fb3a65558ed1b9b529e596cf43c7fc>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
@@ -85,47 +99,47 @@ Inherited Members
 	public:
 		// methods
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a1cb0c50abcd626b8c45b8aa389cb3541>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1adb53e4c20d48a0efd6e377680d7f0988>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a6916170c055781c5ed5a615407390e1c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aed584073b781c9a5c6441b08b14afc3d>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa3389601eef27921246507d9bcd60e8f>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aadbf69a810033196de1790d3f362ef7a>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a2196c7ad5525e519cfedad3d0285d712>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aab65fda71b8e1f719bc4b7bdd70a10e7>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a34a63b4019719d77711fcf6efbb6400c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1ab452f71d25eb3354d46346694ff82db7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a310247426bda77a52b81c7654fa4b848>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a4e97902dc8b42d5f5f50d790d11f1517>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a7d2fb53e43f56cc2f57cf0d025585146>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa311fe1c6abc46d84d90d6f412be063a>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 
 .. _details-class_q_panda_1_1_topology_match:
 
@@ -138,12 +152,12 @@ Methods
 -------
 
 .. index:: pair: function; mappingQProg
-.. _doxid-class_q_panda_1_1_topology_match_1a7efaa5d48df471466f7d3a7a94c73d5e:
+.. _doxid-class_q_panda_1_1_topology_match_1a6b5bf04991ba44cfc9165d9322e602bb:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void mappingQProg(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& mapped_prog)
+	void mappingQProg(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, :ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& mapped_prog)
 
 Mapping qubits in a quantum program.
 

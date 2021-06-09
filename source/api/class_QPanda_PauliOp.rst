@@ -24,7 +24,7 @@ Pauli operator class. :ref:`More...<details-class_q_panda_1_1_pauli_op>`
 	public:
 		// typedefs
 	
-		typedef std::pair<:ref:`QPauliPair<doxid-namespace_q_panda_1a922b9a7c131f853272fc7115017e9bb8>`, :ref:`T<doxid-group___quantum_circuit_1ga1a3a2817333d06885d20303a8746e658>`> :target:`PauliItem<doxid-class_q_panda_1_1_pauli_op_1ace5238ddc3bf98197f24e72be57b1392>`;
+		typedef std::pair<QPauliPair, :ref:`T<doxid-group___quantum_circuit_1ga1a3a2817333d06885d20303a8746e658>`> :target:`PauliItem<doxid-class_q_panda_1_1_pauli_op_1ace5238ddc3bf98197f24e72be57b1392>`;
 		typedef std::vector<:ref:`PauliItem<doxid-class_q_panda_1_1_pauli_op_1ace5238ddc3bf98197f24e72be57b1392>`> :target:`PauliData<doxid-class_q_panda_1_1_pauli_op_1a2d0d61d1c03555513d5a092dfee4eef6>`;
 		typedef std::map<std::string, :ref:`T<doxid-group___quantum_circuit_1ga1a3a2817333d06885d20303a8746e658>`> :target:`PauliMap<doxid-class_q_panda_1_1_pauli_op_1af42ad2b2eaf927a6278b97965fdb6d25>`;
 
@@ -58,7 +58,7 @@ Pauli operator class. :ref:`More...<details-class_q_panda_1_1_pauli_op>`
 		double :ref:`error_threshold<doxid-class_q_panda_1_1_pauli_op_1a1f089bda4a44272deae129675396210f>`() const;
 		std::string :ref:`toString<doxid-class_q_panda_1_1_pauli_op_1aefa7ba3179d1f1e1e228388ae19231f4>`() const;
 		:ref:`PauliData<doxid-class_q_panda_1_1_pauli_op_1a2d0d61d1c03555513d5a092dfee4eef6>` :ref:`data<doxid-class_q_panda_1_1_pauli_op_1a409e2a18d8c04189f32d93662d471a83>`() const;
-		:ref:`QHamiltonian<doxid-namespace_q_panda_1ad608a1d24a69c36a298895b44c90a250>` :ref:`toHamiltonian<doxid-class_q_panda_1_1_pauli_op_1af31c31945f396d0d3a55053b6128c63e>`(bool* ok = nullptr);
+		QHamiltonian :ref:`toHamiltonian<doxid-class_q_panda_1_1_pauli_op_1a8108a6c5ce3a841bef877ad8acbfd5e0>`(bool* ok = nullptr) const;
 		PauliOp :ref:`operator +<doxid-class_q_panda_1_1_pauli_op_1aea667fb76deb422536b30a46d699d26a>` (const PauliOp& rhs) const;
 		PauliOp :ref:`operator -<doxid-class_q_panda_1_1_pauli_op_1acabf9859cc7ec060674fe8e8ac0dd436>` (const PauliOp& rhs) const;
 		PauliOp :ref:`operator *<doxid-class_q_panda_1_1_pauli_op_1afcc8b975f91a92c743a55f46a26a071d>` (const PauliOp& rhs) const;
@@ -257,12 +257,12 @@ get data
 PauliData return Pauli data
 
 .. index:: pair: function; toHamiltonian
-.. _doxid-class_q_panda_1_1_pauli_op_1af31c31945f396d0d3a55053b6128c63e:
+.. _doxid-class_q_panda_1_1_pauli_op_1a8108a6c5ce3a841bef877ad8acbfd5e0:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`QHamiltonian<doxid-namespace_q_panda_1ad608a1d24a69c36a298895b44c90a250>` toHamiltonian(bool* ok = nullptr)
+	QHamiltonian toHamiltonian(bool* ok = nullptr) const
 
 convert data to Hamiltonian
 

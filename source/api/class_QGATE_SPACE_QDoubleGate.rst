@@ -39,6 +39,7 @@ class QGATE_SPACE::QDoubleGate
 	class :ref:`CU<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_c_u>`;
 	class :ref:`ISWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p>`;
 	class :ref:`ISWAPTheta<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p_theta>`;
+	class :ref:`SQISWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_s_q_i_s_w_a_p>`;
 	class :ref:`SWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_s_w_a_p>`;
 
 Inherited Members

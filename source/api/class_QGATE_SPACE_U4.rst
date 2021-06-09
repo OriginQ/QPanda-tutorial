@@ -50,8 +50,11 @@ class QGATE_SPACE::U4
 
 	// direct descendants
 
+	class :ref:`BARRIER<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_b_a_r_r_i_e_r>`;
+	class :ref:`ECHO<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_e_c_h_o>`;
 	class :ref:`H<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_h>`;
 	class :ref:`I<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i>`;
+	class :ref:`RPhi<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_phi>`;
 	class :ref:`RX<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_x>`;
 	class :ref:`RY<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_y>`;
 	class :ref:`RZ<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_r_z>`;

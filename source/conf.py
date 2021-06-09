@@ -186,7 +186,8 @@ epub_exclude_files = ['search.html']
 
 
 # Specify the path to Doxyrest extensions for Sphinx:
-
+print("wangwt debug")
+print(os.path.abspath('sphinx'))
 sys.path.insert(1, os.path.abspath('sphinx'))
 
 # Add Doxyrest extensions ``doxyrest`` and ``cpplexer``:

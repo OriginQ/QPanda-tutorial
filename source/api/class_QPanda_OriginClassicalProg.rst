@@ -30,7 +30,7 @@ Origin classical program class. :ref:`More...<details-class_q_panda_1_1_origin_c
 		// methods
 	
 		virtual :ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>` :ref:`getNodeType<doxid-class_q_panda_1_1_origin_classical_prog_1a741b2e1666c45e61742398cffe9f29eb>`() const;
-		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`eval<doxid-class_q_panda_1_1_origin_classical_prog_1af354f9c774a94a5a14b256d75c97cc79>`();
+		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_val<doxid-class_q_panda_1_1_origin_classical_prog_1a7e018b06a5372d8a8ca1a3cfb0257ea9>`();
 		virtual std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :ref:`getExpr<doxid-class_q_panda_1_1_origin_classical_prog_1aea781941d5a9e2240128b956d795cac3>`();
 	};
 
@@ -45,7 +45,7 @@ Inherited Members
 	
 		virtual :ref:`NodeType<doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>` :ref:`getNodeType<doxid-class_q_panda_1_1_q_node_1a8e8793fe1aabcd13db3ed1f79892c011>`() const = 0;
 		virtual std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :ref:`getExpr<doxid-class_q_panda_1_1_abstract_classical_prog_1ac60d04893715ce3900525675045392b8>`() = 0;
-		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`eval<doxid-class_q_panda_1_1_abstract_classical_prog_1aeb45d67fe6f5783158b010c863d489fa>`() = 0;
+		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_val<doxid-class_q_panda_1_1_abstract_classical_prog_1a74e02336eb2b7234678747a83b38180f>`() = 0;
 
 .. _details-class_q_panda_1_1_origin_classical_prog:
 
@@ -106,13 +106,13 @@ NodeType current node type
 
 :ref:`NodeType <doxid-_q_global_variable_8h_1acac9cbaeea226ed297804c012dc12b16>`
 
-.. index:: pair: function; eval
-.. _doxid-class_q_panda_1_1_origin_classical_prog_1af354f9c774a94a5a14b256d75c97cc79:
+.. index:: pair: function; get_val
+.. _doxid-class_q_panda_1_1_origin_classical_prog_1a7e018b06a5372d8a8ca1a3cfb0257ea9:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` eval()
+	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` get_val()
 
 Get classical program value.
 

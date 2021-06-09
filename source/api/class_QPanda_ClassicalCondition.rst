@@ -31,8 +31,8 @@ Classical condition class Proxy class of cexpr class. :ref:`More...<details-clas
 		// methods
 	
 		std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :ref:`getExprPtr<doxid-class_q_panda_1_1_classical_condition_1a1d391947e9e439f9a64083fbe9b1d95f>`() const;
-		:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`eval<doxid-class_q_panda_1_1_classical_condition_1aa9d33bdab8c1b9838a5753f9675ed541>`();
-		void :ref:`setValue<doxid-class_q_panda_1_1_classical_condition_1abc871295162c891aca793f14417338b3>`(:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>`);
+		:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_val<doxid-class_q_panda_1_1_classical_condition_1af541b9e952d10fabd2f5ef1f3338ba66>`();
+		void :ref:`set_val<doxid-class_q_panda_1_1_classical_condition_1a3e49caaaa460bf29b09f16ff82a412c0>`(:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>`);
 		bool :ref:`checkValidity<doxid-class_q_panda_1_1_classical_condition_1a0ebbad048cafc03169be45d482a2c38e>`() const;
 		ClassicalCondition :ref:`operator =<doxid-class_q_panda_1_1_classical_condition_1ae94c43b3e9fc438b0a587ada57a066e2>` (ClassicalCondition old);
 		ClassicalCondition :ref:`operator =<doxid-class_q_panda_1_1_classical_condition_1af37ae5798411986ed9995709f850008d>` (const :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` value);
@@ -154,13 +154,13 @@ Get the Expr Ptr.
 
 std::shared_ptr<CExpr>
 
-.. index:: pair: function; eval
-.. _doxid-class_q_panda_1_1_classical_condition_1aa9d33bdab8c1b9838a5753f9675ed541:
+.. index:: pair: function; get_val
+.. _doxid-class_q_panda_1_1_classical_condition_1af541b9e952d10fabd2f5ef1f3338ba66:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` eval()
+	:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` get_val()
 
 Get the value of the current object.
 
@@ -170,13 +170,13 @@ Get the value of the current object.
 
 cbit_size_t
 
-.. index:: pair: function; setValue
-.. _doxid-class_q_panda_1_1_classical_condition_1abc871295162c891aca793f14417338b3:
+.. index:: pair: function; set_val
+.. _doxid-class_q_panda_1_1_classical_condition_1a3e49caaaa460bf29b09f16ff82a412c0:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	void setValue(:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>`)
+	void set_val(:ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>`)
 
 Set the Value of the current object.
 

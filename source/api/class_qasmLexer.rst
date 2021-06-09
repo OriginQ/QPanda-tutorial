@@ -56,9 +56,10 @@ class qasmLexer
 		    :target:`INTEGER<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6faaefb59da1f6f940b05d8ca6d391fa3e1>`      = 30,
 		    :target:`DECIMAL<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fa85b7535138437cf4b1fbcd78fcffb5af>`      = 31,
 		    :target:`FILENAME<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6faffcb26642180a524eb7d8a09409da927>`     = 32,
-		    :target:`NL<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fab18bfecba0b0b20eb8f7e8803d9c98f5>`           = 33,
-		    :target:`WS<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fa1ece7e89058c3fa34dfbe5a382f82f89>`           = 34,
-		    :target:`LC<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fa63cf97a4241ef0b7308f3a6aaf714008>`           = 35,
+		    :target:`REALEXP<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6faf73d0c4de8da7598777ec4b9a25581c4>`      = 33,
+		    :target:`NL<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fab18bfecba0b0b20eb8f7e8803d9c98f5>`           = 34,
+		    :target:`WS<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fa1ece7e89058c3fa34dfbe5a382f82f89>`           = 35,
+		    :target:`LC<doxid-classqasm_lexer_1ab6b346c32395d9cb157b9d23509d9b6fa63cf97a4241ef0b7308f3a6aaf714008>`           = 36,
 		};
 
 		// structs

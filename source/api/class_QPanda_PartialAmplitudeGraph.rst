@@ -7,7 +7,7 @@ class QPanda::PartialAmplitudeGraph
 .. toctree::
 	:hidden:
 
-Partial Amplitude Graph.
+Partial Amplitude :ref:`Graph <doxid-class_q_panda_1_1_graph>`.
 
 
 .. ref-code-block:: cpp
@@ -20,26 +20,25 @@ Partial Amplitude Graph.
 	public:
 		// fields
 	
-		uint32_t :target:`m_qubit_num<doxid-class_q_panda_1_1_partial_amplitude_graph_1ad6404c39c5bb831839762bc6db164ed3>`;
 		uint32_t :target:`m_spilt_num<doxid-class_q_panda_1_1_partial_amplitude_graph_1a469797f7b051bd7b0881cb2724846b8a>`;
+		uint32_t :target:`m_qubit_num<doxid-class_q_panda_1_1_partial_amplitude_graph_1ad6404c39c5bb831839762bc6db164ed3>`;
 		std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`> :target:`m_circuit<doxid-class_q_panda_1_1_partial_amplitude_graph_1abd6edf7be3247b59522e09b8b76016af>`;
-		std::vector<std::map<bool, std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>>> :target:`m_circuit_vec<doxid-class_q_panda_1_1_partial_amplitude_graph_1a348455f73a9c4af3792258feb7cca423>`;
+		std::vector<std::vector<:ref:`cir_type<doxid-namespace_q_panda_1aad8fc9fe4ec5bfe6e66b9d5cc83b3ba0>`>> :target:`m_sub_graph<doxid-class_q_panda_1_1_partial_amplitude_graph_1a73c50cec9d716e73e1f39205dd9cdacb>`;
 
 		// methods
 	
-		size_t :target:`getMapVecSize<doxid-class_q_panda_1_1_partial_amplitude_graph_1a0ccea71440d27d16e74d81d64e51f981>`();
-		void :target:`init<doxid-class_q_panda_1_1_partial_amplitude_graph_1a83fd342a2936bffd33792d1a5f2e9af9>`(uint32_t qubit_num);
+		void :target:`reset<doxid-class_q_panda_1_1_partial_amplitude_graph_1adb6f08bdb3fcfab8ce4d8b9445f3759d>`(size_t qubit_num);
 	
-		void :target:`traversalMap<doxid-class_q_panda_1_1_partial_amplitude_graph_1a132462e6a912010d98895d604c4af2df>`(
-			std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>&,
+		void :target:`computing_graph<doxid-class_q_panda_1_1_partial_amplitude_graph_1afc63b3ce94cc16a43fe770e48130f266>`(
+			const :ref:`cir_type<doxid-namespace_q_panda_1aad8fc9fe4ec5bfe6e66b9d5cc83b3ba0>`&,
 			:ref:`QPUImpl<doxid-class_q_p_u_impl>`*
 			);
 	
-		bool :target:`isCorssNode<doxid-class_q_panda_1_1_partial_amplitude_graph_1a9f009d8ffe9adfb259b8caf380798277>`(
+		bool :target:`is_corss_node<doxid-class_q_panda_1_1_partial_amplitude_graph_1af7c0cc48c512571cf60637f4eeb3d18a>`(
 			size_t,
 			size_t
 			);
 	
-		void :target:`traversalQlist<doxid-class_q_panda_1_1_partial_amplitude_graph_1a790d0358dfbbf7f38123f9bf3f22e35e>`(std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>&);
-		void :target:`splitQlist<doxid-class_q_panda_1_1_partial_amplitude_graph_1a7c3627ec2a69a4d29c434dc7f0051569>`(std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>&);
+		void :target:`traversal<doxid-class_q_panda_1_1_partial_amplitude_graph_1a49f9088702aff95b8793d1a20cdd2ca4>`(std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>&);
+		void :target:`split_circuit<doxid-class_q_panda_1_1_partial_amplitude_graph_1aa2d3c3497b52ec0b525693c0ec987081>`(std::vector<:ref:`QGateNode<doxid-struct_q_panda_1_1_q_gate_node>`>&);
 	};

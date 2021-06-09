@@ -29,12 +29,15 @@ get the matrix of a :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` :ref:`More...<
 
 		// construction
 	
-		:target:`QProgToMatrix<doxid-class_q_panda_1_1_q_prog_to_matrix_1ae9675d858e62b1831c0e3e8de4aef663>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& p);
+		:target:`QProgToMatrix<doxid-class_q_panda_1_1_q_prog_to_matrix_1a18e30e54d2b88ee1889fa86c838bb32d>`(
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& p,
+			const bool b_bid_endian = false
+			);
 
 		// methods
 	
-		:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`getMatrix<doxid-class_q_panda_1_1_q_prog_to_matrix_1a1ec162342ed91267c42d150208976d6e>`();
-		:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`getMatrixOfOneLayer<doxid-class_q_panda_1_1_q_prog_to_matrix_1a1dd83201e3ccd64a87d510dbc7c15650>`(:ref:`SequenceLayer<doxid-namespace_q_panda_1abc4290cf1f142782fed752eaaffb7d9c>`& layer, const :ref:`QProgDAG<doxid-class_q_panda_1_1_q_prog_d_a_g>`& prog_dag);
+		:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`get_matrix<doxid-class_q_panda_1_1_q_prog_to_matrix_1abd6c4f9d1d6207a0ed7e7f11049960ee>`();
+		:ref:`qmatrix_t<doxid-namespace_q_panda_1ae5390d4fcde76d93c817482cf46708f3>` :ref:`get_matrix_of_one_layer<doxid-class_q_panda_1_1_q_prog_to_matrix_1aef6cee69d1e51b0155bc6a2e8c5a0c96>`(:ref:`SeqLayer<doxid-namespace_q_panda_1a6ed9ed67bc56f43d141fc68fec4c6231>`<:ref:`pOptimizerNodeInfo<doxid-namespace_q_panda_1a20ed06f9e8a95ce4bb6321863d9662b3>`>& layer);
 	};
 .. _details-class_q_panda_1_1_q_prog_to_matrix:
 
@@ -46,13 +49,13 @@ get the matrix of a :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
 Methods
 -------
 
-.. index:: pair: function; getMatrix
-.. _doxid-class_q_panda_1_1_q_prog_to_matrix_1a1ec162342ed91267c42d150208976d6e:
+.. index:: pair: function; get_matrix
+.. _doxid-class_q_panda_1_1_q_prog_to_matrix_1abd6c4f9d1d6207a0ed7e7f11049960ee:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` getMatrix()
+	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` get_matrix()
 
 calc the matrix of the input :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
 
@@ -62,13 +65,13 @@ calc the matrix of the input :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
 
 QStat the matrix of the input :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
 
-.. index:: pair: function; getMatrixOfOneLayer
-.. _doxid-class_q_panda_1_1_q_prog_to_matrix_1a1dd83201e3ccd64a87d510dbc7c15650:
+.. index:: pair: function; get_matrix_of_one_layer
+.. _doxid-class_q_panda_1_1_q_prog_to_matrix_1aef6cee69d1e51b0155bc6a2e8c5a0c96:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` getMatrixOfOneLayer(:ref:`SequenceLayer<doxid-namespace_q_panda_1abc4290cf1f142782fed752eaaffb7d9c>`& layer, const :ref:`QProgDAG<doxid-class_q_panda_1_1_q_prog_d_a_g>`& prog_dag)
+	:ref:`qmatrix_t<doxid-namespace_q_panda_1ae5390d4fcde76d93c817482cf46708f3>` get_matrix_of_one_layer(:ref:`SeqLayer<doxid-namespace_q_panda_1a6ed9ed67bc56f43d141fc68fec4c6231>`<:ref:`pOptimizerNodeInfo<doxid-namespace_q_panda_1a20ed06f9e8a95ce4bb6321863d9662b3>`>& layer)
 
 calc the matrix of nodes in one layer
 
@@ -80,7 +83,7 @@ calc the matrix of nodes in one layer
 	:widths: 20 80
 
 	*
-		- SequenceLayer&
+		- SeqLayer<pOptimizerNodeInfo>&
 
 		- layer nodes
 
@@ -93,5 +96,5 @@ calc the matrix of nodes in one layer
 
 .. rubric:: Returns:
 
-QStat the matrix of the layer
+qmatrix_t the matrix of the layer
 

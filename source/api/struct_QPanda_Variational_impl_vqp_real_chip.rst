@@ -41,12 +41,12 @@ struct QPanda::Variational::impl_vqp_real_chip
 	
 		double :target:`_get_gradient_one_term<doxid-struct_q_panda_1_1_variational_1_1impl__vqp__real__chip_1a1647f375e9d685223e2bcfb260e913e0>`(
 			:ref:`var<doxid-class_q_panda_1_1_variational_1_1var>` _var,
-			:ref:`QTerm<doxid-namespace_q_panda_1a0985a180971aab50d40a76b537ce41b4>`
+			QTerm
 			);
 	
 		double :target:`_get_expectation_one_term<doxid-struct_q_panda_1_1_variational_1_1impl__vqp__real__chip_1a2b9b7fb184f3b814f7527f336ddf81d1>`(
 			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`,
-			:ref:`QTerm<doxid-namespace_q_panda_1a0985a180971aab50d40a76b537ce41b4>`
+			QTerm
 			);
 	
 		double :target:`_get_expectation<doxid-struct_q_panda_1_1_variational_1_1impl__vqp__real__chip_1adab8f61f6577904b64070a435576c598>`();

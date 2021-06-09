@@ -28,6 +28,7 @@ class qasmParser
 	class_qasmParser_MainprogramContext.rst
 	class_qasmParser_Opaque_declContext.rst
 	class_qasmParser_QopContext.rst
+	class_qasmParser_RealContext.rst
 	class_qasmParser_Reg_declContext.rst
 	class_qasmParser_StatementContext.rst
 	class_qasmParser_UopContext.rst
@@ -80,9 +81,10 @@ class qasmParser
 		    :target:`INTEGER<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa21907463a1bd490a2bb4a22b29947330>`      = 30,
 		    :target:`DECIMAL<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa71d1323c56852f255d342747151c80bb>`      = 31,
 		    :target:`FILENAME<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa448cee3cc687dc8e823c74d87c847858>`     = 32,
-		    :target:`NL<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa8c2ddf15815a9817f453eb9c70919307>`           = 33,
-		    :target:`WS<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa2265be47858dd34322efa8ed75fb3310>`           = 34,
-		    :target:`LC<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa130f2c69d46d44cde26c624922599711>`           = 35,
+		    :target:`REALEXP<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa08fcae7b1cad5fcea8c17c1d58f6c6c4>`      = 33,
+		    :target:`NL<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa8c2ddf15815a9817f453eb9c70919307>`           = 34,
+		    :target:`WS<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa2265be47858dd34322efa8ed75fb3310>`           = 35,
+		    :target:`LC<doxid-classqasm_parser_1a6e021634a0631aad1536425810528b1fa130f2c69d46d44cde26c624922599711>`           = 36,
 		};
 	
 		enum
@@ -108,9 +110,10 @@ class qasmParser
 		    :target:`RuleExplist<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852eaad794fb8ea33e7ad10ed78067ab5b6f0>`      = 18,
 		    :target:`RuleExp<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852eadaea9372b69bd1877efd9df3bcfae603>`          = 19,
 		    :target:`RuleId<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea5b247d393568987d7d041d1185779f62>`           = 20,
-		    :target:`RuleInteger<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852eafe1fbec3c4eb49d3b27f2bcb8215562b>`      = 21,
-		    :target:`RuleDecimal<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea61dae5a8045cf1e933c62fdad6190687>`      = 22,
-		    :target:`RuleFilename<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea0e795af98f4632367611df9ec783c377>`     = 23,
+		    :target:`RuleReal<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea36c6a71d8175993b63eed9b304f51fce>`         = 21,
+		    :target:`RuleInteger<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852eafe1fbec3c4eb49d3b27f2bcb8215562b>`      = 22,
+		    :target:`RuleDecimal<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea61dae5a8045cf1e933c62fdad6190687>`      = 23,
+		    :target:`RuleFilename<doxid-classqasm_parser_1affe8f6d0f38cbab8896593a8208d852ea0e795af98f4632367611df9ec783c377>`     = 24,
 		};
 
 		// structs
@@ -139,6 +142,7 @@ class qasmParser
 		class :ref:`MainprogramContext<doxid-classqasm_parser_1_1_mainprogram_context>`;
 		class :ref:`Opaque_declContext<doxid-classqasm_parser_1_1_opaque__decl_context>`;
 		class :ref:`QopContext<doxid-classqasm_parser_1_1_qop_context>`;
+		class :ref:`RealContext<doxid-classqasm_parser_1_1_real_context>`;
 		class :ref:`Reg_declContext<doxid-classqasm_parser_1_1_reg__decl_context>`;
 		class :ref:`StatementContext<doxid-classqasm_parser_1_1_statement_context>`;
 		class :ref:`UopContext<doxid-classqasm_parser_1_1_uop_context>`;
@@ -177,6 +181,7 @@ class qasmParser
 		:ref:`ExpContext<doxid-classqasm_parser_1_1_exp_context>`* :target:`exp<doxid-classqasm_parser_1af2f2617c29b040158222beb0217552f8>`();
 		:ref:`ExpContext<doxid-classqasm_parser_1_1_exp_context>`* :target:`exp<doxid-classqasm_parser_1a4c8abf922ac2b7fb7600c46e3cb81cf5>`(int precedence);
 		:ref:`IdContext<doxid-classqasm_parser_1_1_id_context>`* :target:`id<doxid-classqasm_parser_1aeda5ffb37f7b38673e85c1440ca2b56c>`();
+		:ref:`RealContext<doxid-classqasm_parser_1_1_real_context>`* :target:`real<doxid-classqasm_parser_1ac19c05de1ace89015542de5bd2f3434f>`();
 		:ref:`IntegerContext<doxid-classqasm_parser_1_1_integer_context>`* :target:`integer<doxid-classqasm_parser_1acb0e8b17287b23b354512152916e081f>`();
 		:ref:`DecimalContext<doxid-classqasm_parser_1_1_decimal_context>`* :target:`decimal<doxid-classqasm_parser_1ad2e97e7f634da7da99ec19209a535d7e>`();
 		:ref:`FilenameContext<doxid-classqasm_parser_1_1_filename_context>`* :target:`filename<doxid-classqasm_parser_1a954b6e04d08e7156ec155f226f612963>`();

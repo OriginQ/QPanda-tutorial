@@ -24,15 +24,18 @@ QPU implementation by noisy CPU model. :ref:`More...<details-class_noisy_c_p_u_i
 		// fields
 	
 		:ref:`vQParam<doxid-_q_p_u_impl_8h_1a902a178b3747917bdcc89bca8c9ccda5>` :target:`qubit2stat<doxid-class_noisy_c_p_u_impl_q_p_u_1a8780ae068f79675005ef2c6fe1bd7a9a>`;
+		:ref:`vQParam<doxid-_q_p_u_impl_8h_1a902a178b3747917bdcc89bca8c9ccda5>` :target:`init_qubit2stat<doxid-class_noisy_c_p_u_impl_q_p_u_1a3d496090586f5ff867263c0acd2782f5>`;
 
 		// construction
 	
 		:target:`NoisyCPUImplQPU<doxid-class_noisy_c_p_u_impl_q_p_u_1a68b1c2009f2e19da346be2de9bddd4e1>`();
 		:target:`NoisyCPUImplQPU<doxid-class_noisy_c_p_u_impl_q_p_u_1a6c9b24b2c39fe708d0aa73a3d806eb9f>`(rapidjson::Document&);
+		:target:`NoisyCPUImplQPU<doxid-class_noisy_c_p_u_impl_q_p_u_1ade7bb1e43f8bda49d1b0be5a585d6fba>`(:ref:`NoisyQuantum<doxid-class_noisy_quantum>`& quantum_noise);
 
 		// methods
 	
 		:ref:`QGateParam<doxid-struct_q_gate_param>`& :target:`findgroup<doxid-class_noisy_c_p_u_impl_q_p_u_1aa45b26b73b0b1e4b7138007bf7f2d07d>`(size_t qn);
+		void :target:`set_quantum_noise<doxid-class_noisy_c_p_u_impl_q_p_u_1ae88ddcc1c0233e16b13d577fe11fab23>`(const :ref:`NoisyQuantum<doxid-class_noisy_quantum>`& quantum_noise);
 	
 		bool :target:`TensorProduct<doxid-class_noisy_c_p_u_impl_q_p_u_1a6220c92fac3bea63de391bf9fd52f1c9>`(
 			:ref:`QGateParam<doxid-struct_q_gate_param>`& qgroup0,
@@ -45,7 +48,7 @@ QPU implementation by noisy CPU model. :ref:`More...<details-class_noisy_c_p_u_i
 			size_t qn,
 			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
 			bool isConjugate,
-			:ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise
+			:ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise
 			);
 	
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`controlunitarySingleQubitGate<doxid-class_noisy_c_p_u_impl_q_p_u_1accd016e153610a7640b2d3d517fc04f6>`(size_t qn, :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qnum, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`);
@@ -56,7 +59,7 @@ QPU implementation by noisy CPU model. :ref:`More...<details-class_noisy_c_p_u_i
 			size_t qn_1,
 			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
 			bool isConjugate,
-			:ref:`NoiseOp<doxid-_noise_model_8h_1ad01e905fa484518e596588e907885a21>`& noise
+			:ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& noise
 			);
 	
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`controlunitaryDoubleQubitGate<doxid-class_noisy_c_p_u_impl_q_p_u_1a9f2f6b4eaeb39af69efd7ed5523db6b3>`(size_t qn_0, size_t qn_1, :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qnum, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`);
@@ -346,6 +349,55 @@ QPU implementation by noisy CPU model. :ref:`More...<details-class_noisy_c_p_u_i
 			size_t rank_size,
 			size_t qubit_num
 			);
+	
+		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`initState<doxid-class_noisy_c_p_u_impl_q_p_u_1a9cb693c7f4f5540b56013a6fcc380d20>`(
+			size_t qubit_num,
+			const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {}
+			);
+	
+		:ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`unitary_noise_qubit_gate<doxid-class_noisy_c_p_u_impl_q_p_u_1a224640665363b44a6f5ebbf92636c83b>`(
+			const :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qns,
+			const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
+			bool is_conjugate,
+			:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>` type
+			);
+	
+		:ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`unitary_noise_qubit_kraus<doxid-class_noisy_c_p_u_impl_q_p_u_1a9c4feb4135f5c6da997ea48b5fe2bb9a>`(
+			const :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qns,
+			const :ref:`NoiseOp<doxid-_noise_model_8h_1ab2a7591e4959d317081e50c00caad539>`& ops,
+			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& standard_matrix
+			);
+	
+		:ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`unitary_qubit_gate_standard<doxid-class_noisy_c_p_u_impl_q_p_u_1aa3170821eed9679f66d2b15ac599dc2a>`(
+			size_t qn,
+			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
+			bool is_conjugate
+			);
+	
+		:ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`unitary_qubit_gate_standard<doxid-class_noisy_c_p_u_impl_q_p_u_1a38c839e067288b7084e9e7c95b04bea5>`(
+			size_t qn0,
+			size_t qn1,
+			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
+			bool is_conjugate
+			);
+	
+		:ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :target:`reset_standard<doxid-class_noisy_c_p_u_impl_q_p_u_1a0293c324b19e5f0eac7dee6a95fa6172>`(size_t qn);
+		bool :target:`measure_standard<doxid-class_noisy_c_p_u_impl_q_p_u_1ae08e9c58c4f6bbae16e91a0a5571c428>`(size_t qn);
+	
+		bool :target:`readout<doxid-class_noisy_c_p_u_impl_q_p_u_1a66b120d1f456025d0bab57db6401b05d>`(
+			bool measure,
+			size_t qn
+			);
+	
+		void :target:`normlize<doxid-class_noisy_c_p_u_impl_q_p_u_1aadb7bdbe9cb2c1ee709f04b5b4c6fcb6>`(
+			:ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix,
+			double p
+			);
+	
+		double :target:`unitary_kraus<doxid-class_noisy_c_p_u_impl_q_p_u_1aa213948167a98fd7ff5b3c7af58b6000>`(
+			const :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qns,
+			const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& op
+			);
 	};
 
 Inherited Members
@@ -360,6 +412,7 @@ Inherited Members
 		virtual bool :ref:`qubitMeasure<doxid-class_q_p_u_impl_1a8231dac2a0406c20032c871de6f45df3>`(size_t qn) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`pMeasure<doxid-class_q_p_u_impl_1a7b81f6f6dd6e1d3e56b812335cd26e5f>`(:ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qnum, :ref:`prob_vec<doxid-_q_panda_namespace_8h_1ac5ad900acfc23913f3100fa747b940c0>`& mResult) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`initState<doxid-class_q_p_u_impl_1a2fb637028cde700f9b415a9f0770eb02>`(size_t head_rank, size_t rank_size, size_t qubit_num) = 0;
+		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`initState<doxid-class_q_p_u_impl_1a4caf9a31a84bb94def033f9686477041>`(size_t qubit_num, const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {}) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`unitarySingleQubitGate<doxid-class_q_p_u_impl_1a5d4651b69e9ddcf7f3180b577a80ea22>`(size_t qn, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`controlunitarySingleQubitGate<doxid-class_q_p_u_impl_1ad1d0629c91a42e06e079d6d6c215c0a9>`(size_t qn, :ref:`Qnum<doxid-_q_panda_namespace_8h_1ae79dd36dc218ce815071e5a63b7713f7>`& qnum, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;
 		virtual :ref:`QError<doxid-_q_error_8h_1af306abe1caf901637ac7f16626512874>` :ref:`unitaryDoubleQubitGate<doxid-class_q_p_u_impl_1ad5f00e8ccf36ca66f48f4c63b3650e61>`(size_t qn_0, size_t qn_1, :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& matrix, bool isConjugate, :ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`) = 0;

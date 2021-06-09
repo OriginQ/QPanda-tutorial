@@ -38,6 +38,7 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     QIf
     QProg
     QuantumMachine
+    QubitPool
     Measure
     PMeasure
     QCloudServer
@@ -51,6 +52,9 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     QGateCounter
     QCircuitInfo
     DrawQProg
+    QuantumVolume
+    RandomizedBenchmarking
+    CrossEntropyBenchmarking
 
 .. toctree::
     :caption: 编译量子程序

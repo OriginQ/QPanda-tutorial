@@ -26,86 +26,62 @@ Quantum machine for single amplitude simulation. :ref:`More...<details-class_q_p
 		// methods
 	
 		virtual void :ref:`init<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1ac0f906d961b7823a0ebf46d9811a0719>`();
+		void :ref:`run<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a59317db84cdedfac78f9d45b8c172335>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, size_t max_rank = 30, size_t alloted_time = 5);
+		void :ref:`run<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a1667931ed1725b4e03cd77d3c7a5d06d>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, size_t max_rank, const std::vector<:ref:`qprog_sequence_t<doxid-_tensor_engine_8h_1ab1fd320f4cc67d35c6c2d2b6b23c39ec>`>& sequences);
+		size_t :ref:`getSequence<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1ae201333b87affa9de36b5f7832d8ef93>`(const std::vector<size_t>& quickbb_vertice, std::vector<:ref:`qprog_sequence_t<doxid-_tensor_engine_8h_1ab1fd320f4cc67d35c6c2d2b6b23c39ec>`>& sequence_vec);
+		void :target:`getQuickMapVertice<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a1c0658ec67bc19c0961e66dadf0c504e>`(std::vector<std::pair<size_t, size_t>>& map_vector);
+		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1ad41e917590ba0a7303522998805aaa9f>` :ref:`pMeasureBinindex<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a88a7e83db80d771fee56fd89a885ac1d>`(std::string index);
+		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1ad41e917590ba0a7303522998805aaa9f>` :ref:`pMeasureDecindex<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1adab416607edb0b2191fcf88052590a39>`(std::string index);
+		:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`getProbDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a98fb346bd3ee3bf0e6d93a905fc3d456>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qlist);
+		:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :ref:`probRunDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aee0d2c0faaa3ebe70cb250f2fad7d339>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qlist);
+		:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :target:`getProbDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a7eae02e799312ac458fbfadf9f735a22>`(const std::vector<int>& qaddrs_list);
 	
-		template <typename _Ty>
-		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` :target:`PMeasure_bin_index<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a597db92efc1964bc832b0d40a4c95342>`(
-			_Ty& node,
-			std::string bin_index
+		:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` :target:`probRunDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1abc2d3da5648b012284bd343dd1b19ae3>`(
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+			const std::vector<int>& qaddrs_list
 			);
 	
-		template <typename _Ty>
-		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` :target:`PMeasure_dec_index<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a1474119828204479c1373cb7b6714a8d>`(
-			_Ty& node,
-			std::string s_dec_index
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a792c67343653b64a2872e373822e55cc>`(
+			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		template <typename _Ty>
-		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` :ref:`pMeasureBinindex<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1af1c2b5dfbb5ef6ee4add9729c2cddcc5>`(_Ty& node, std::string s_dec_index);
-	
-		template <typename _Ty>
-		:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` :ref:`pMeasureDecindex<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a3b9561be207ede2ea30f5500ba79a41f>`(_Ty& node, std::string bin_index);
-	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1af918320de6d3fb256c7ae1fa6f869660>`(
-			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a7ae8a4bfb4e2f8fcacd855075f6f8698>`(
+			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a60ca425a5f93cd95bc2af40efa48341b>`(
-			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a3b7ee8f5583ae328b35540d9f9eff7dc>`(
+			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aedee77df0b57acd6b999fe19ba5f794a>`(
-			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a3e20d19aac30b79d0c93e182a7d007d1>`(
+			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aac6644103cdd9103b6fc41e69dbe0c0b>`(
-			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a3c37ada05f25ecca32dc70e8073866bd>`(
+			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aa4bb58f2226829c4fd95182b600f3a43>`(
-			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aefd949c3fdb34bf1229e00f0d8bd20be>`(
+			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
 	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aa08d0c37b7cd567f864d72e0b2fc5b92>`(
-			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
+		virtual void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a83535579fe520d392dde29f6b7d79fff>`(
+			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
+			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
+			bool& is_dagger
 			);
-	
-		void :target:`execute<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a571f6a5070038dd178fb1c7c96ebcc60>`(
-			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`>,
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`>
-			);
-	
-		:ref:`stat_map<doxid-_q_panda_namespace_8h_1a5b1ec78da541eaa2f329249b544e0488>` :target:`getQState<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a9a5b0ab40ff8d21c47ee10e32102940c>`();
-		:ref:`prob_map<doxid-_q_panda_namespace_8h_1a7f2845d06ff66a209709171dcb1f696a>` :target:`PMeasure<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a255e30fd723f4150e759daadcaa0dcd2>`(std::string);
-	
-		:ref:`prob_map<doxid-_q_panda_namespace_8h_1a7f2845d06ff66a209709171dcb1f696a>` :target:`PMeasure<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a92157ecde4681570875d0ba5b0377589>`(
-			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`,
-			std::string
-			);
-	
-		:ref:`prob_map<doxid-_q_panda_namespace_8h_1a7f2845d06ff66a209709171dcb1f696a>` :target:`getProbDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1ab1d362e55da47aa7b8f4f767a7126d3d>`(
-			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`,
-			std::string
-			);
-	
-		:ref:`prob_map<doxid-_q_panda_namespace_8h_1a7f2845d06ff66a209709171dcb1f696a>` :target:`probRunDict<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1af934ec91e59ae48b1c4e0ba32e25a22c>`(
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&,
-			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`,
-			std::string
-			);
-	
-		template <typename _Ty>
-		void :target:`run<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a69a850167a8531efe4dfea5fe58e0006>`(_Ty& node);
-	
-		void :target:`run<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a7ae08fbfba9cdbe262be27669f9c14b0>`(std::string sFilePath);
-	
-		template <typename _Ty>
-		void :target:`traversal<doxid-class_q_panda_1_1_single_amplitude_q_v_m_1ae252e1dff890836663009f59b9f6ca86>`(_Ty& node);
 	};
 
 Inherited Members
@@ -123,6 +99,7 @@ Inherited Members
 		virtual :ref:`QMachineStatus<doxid-class_q_panda_1_1_q_machine_status>`* :ref:`getStatus<doxid-class_q_panda_1_1_quantum_machine_1a29299cd9882a2f5016971121a58fa679>`() const = 0;
 		virtual std::map<std::string, bool> :ref:`directlyRun<doxid-class_q_panda_1_1_quantum_machine_1a77357644931b71be480590764df59451>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& qProg) = 0;
 		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_quantum_machine_1a7dded3823353840ab733abdc3fb999b2>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, rapidjson::Document&) = 0;
+		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_quantum_machine_1af49fc4f7b7b608fed6327bcde3d28226>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, int) = 0;
 		virtual std::map<:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`, size_t> :ref:`getGateTimeMap<doxid-class_q_panda_1_1_quantum_machine_1a9caf6ddc2d278e222db50b78ff6d5a03>`() const = 0;
 		virtual void :ref:`finalize<doxid-class_q_panda_1_1_quantum_machine_1a2aff067ba64013dce87814dfdfbdc176>`() = 0;
 		virtual :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`getQState<doxid-class_q_panda_1_1_quantum_machine_1aee285b6b7f5cd7936491f2b304501167>`() const = 0;
@@ -152,6 +129,12 @@ Inherited Members
 		virtual void :ref:`cFreeAll<doxid-class_q_panda_1_1_quantum_machine_1a2912a9f37c8600d8d0fc875eeca402d5>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0;
 		virtual size_t :ref:`getAllocateQubitNum<doxid-class_q_panda_1_1_quantum_machine_1a66fe7b76e261cde0b4571fc796107fcc>`() = 0;
 		virtual size_t :ref:`getAllocateCMemNum<doxid-class_q_panda_1_1_quantum_machine_1ac49cf7c186b153bc277e2505efce9344>`() = 0;
+		virtual void :ref:`initState<doxid-class_q_panda_1_1_quantum_machine_1ad8c9c37bd0aa2f8e3d2aaa0f0468de86>`(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {}, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qlist = {}) = 0;
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_quantum_machine_1af4601428256d3511b0004d3c7def733f>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0;
+		virtual size_t :ref:`get_allocate_cbits<doxid-class_q_panda_1_1_quantum_machine_1a2c5e32ecb79ce0dbaabf03412d01e50a>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&) = 0;
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_quantum_machine_1a36e280b887f9cf99498403897233811c>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&) = 0;
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_quantum_machine_1a9f12409d33e4e66a7fd9c8e7eedb76ef>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int) = 0;
+		virtual void :ref:`initState<doxid-class_q_panda_1_1_q_v_m_1ab0b60d46e7207275274ad09314023ee1>`(const :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>`& state = {}, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qlist = {});
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughPhyAddress<doxid-class_q_panda_1_1_q_v_m_1af3506b5b2b35451a8aae7364193f2843>`(size_t);
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughVirAddress<doxid-class_q_panda_1_1_q_v_m_1ae1f3ad0f3880eaada1101df5f6cc14f6>`(size_t);
 		virtual :ref:`QMachineStatus<doxid-class_q_panda_1_1_q_machine_status>`* :ref:`getStatus<doxid-class_q_panda_1_1_q_v_m_1a2fbdc658f90b541abd43934c93257b10>`() const;
@@ -160,6 +143,8 @@ Inherited Members
 		virtual void :ref:`finalize<doxid-class_q_panda_1_1_q_v_m_1ae1fdcd040b4c6612bbe684a606668453>`();
 		virtual std::map<std::string, bool> :ref:`directlyRun<doxid-class_q_panda_1_1_q_v_m_1adcf36345640beff726ad3fc6bb49c15b>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& qProg);
 		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_q_v_m_1a72948f788f8630b0eeffd987cf475a46>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, rapidjson::Document&);
+		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_q_v_m_1a153f1460b033c11151e5ff3d35777f6e>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&, int);
+		virtual std::map<std::string, size_t> :ref:`runWithConfiguration<doxid-class_q_panda_1_1_q_v_m_1a5a1e732b9903509586937a9d46cb4010>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`&, std::vector<int>&, int);
 		virtual std::map<:ref:`GateType<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c>`, size_t> :ref:`getGateTimeMap<doxid-class_q_panda_1_1_q_v_m_1ab5b2509d10ba71c908190eb8b5ef5385>`() const;
 		virtual :ref:`QStat<doxid-_q_panda_namespace_8h_1aef94fce258d1c9c8e692cf39254aa0ae>` :ref:`getQState<doxid-class_q_panda_1_1_q_v_m_1a8b2d34ed071e6c9a2450a692e80fc855>`() const;
 		virtual size_t :ref:`getVirtualQubitAddress<doxid-class_q_panda_1_1_q_v_m_1a741a08893001a17609839f50a71f9535>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) const;
@@ -189,48 +174,52 @@ Inherited Members
 		virtual void :ref:`cFreeAll<doxid-class_q_panda_1_1_q_v_m_1a9b9e59e08e47272d70f10681fb380fa1>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&);
 		virtual size_t :ref:`getAllocateQubitNum<doxid-class_q_panda_1_1_q_v_m_1a268030f1c16325f7496f0eef3efb5533>`();
 		virtual size_t :ref:`getAllocateCMemNum<doxid-class_q_panda_1_1_q_v_m_1aba6a435098a6e9d1c6d50948f3f7cbdb>`();
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_q_v_m_1a7115e91d4095a93ba7d0807a8f39fe02>`(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&);
+		virtual size_t :ref:`get_allocate_cbits<doxid-class_q_panda_1_1_q_v_m_1af59b74befd842fd5efad2eb01421d6a9>`(std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>&);
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_q_v_m_1a35e982022b6f057a6d704b9f2c8dd0b4>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&);
+		virtual double :ref:`get_expectation<doxid-class_q_panda_1_1_q_v_m_1ac1a962a1f59c5f2ab29f632d5cabb8a9>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, const QHamiltonian&, const :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`&, int);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a1cb0c50abcd626b8c45b8aa389cb3541>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1adb53e4c20d48a0efd6e377680d7f0988>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a6916170c055781c5ed5a615407390e1c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aed584073b781c9a5c6441b08b14afc3d>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa3389601eef27921246507d9bcd60e8f>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aadbf69a810033196de1790d3f362ef7a>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a2196c7ad5525e519cfedad3d0285d712>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aab65fda71b8e1f719bc4b7bdd70a10e7>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a34a63b4019719d77711fcf6efbb6400c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1ab452f71d25eb3354d46346694ff82db7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a310247426bda77a52b81c7654fa4b848>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a4e97902dc8b42d5f5f50d790d11f1517>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a7d2fb53e43f56cc2f57cf0d025585146>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa311fe1c6abc46d84d90d6f412be063a>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 
 .. _details-class_q_panda_1_1_single_amplitude_q_v_m:
 
@@ -264,18 +253,15 @@ init
 
 void
 
-.. index:: pair: function; pMeasureBinindex
-.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1af1c2b5dfbb5ef6ee4add9729c2cddcc5:
+.. index:: pair: function; run
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a59317db84cdedfac78f9d45b8c172335:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	template <typename _Ty>
-	:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` pMeasureBinindex(_Ty& node, std::string s_dec_index)
+	void run(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, size_t max_rank = 30, size_t alloted_time = 5)
 
-PMeasure by binary index.
-
-example: PMeasure_bin_index("0000000000")
+run
 
 
 
@@ -285,9 +271,116 @@ example: PMeasure_bin_index("0000000000")
 	:widths: 20 80
 
 	*
-		- _Ty
+		- QProg&
 
-		- & :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
+		- quantum program
+
+	*
+		- QVec&
+
+		- qubits vector
+
+	*
+		- size_t
+
+		- rank number
+
+	*
+		- size_t
+
+		- run :ref:`QuickBB <doxid-class_quick_b_b>` alloted time
+
+.. index:: pair: function; run
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a1667931ed1725b4e03cd77d3c7a5d06d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void run(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv, size_t max_rank, const std::vector<:ref:`qprog_sequence_t<doxid-_tensor_engine_8h_1ab1fd320f4cc67d35c6c2d2b6b23c39ec>`>& sequences)
+
+run
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- quantum program
+
+	*
+		- QVec&
+
+		- qubits vector
+
+	*
+		- size_t
+
+		- rank number
+
+	*
+		- size_t
+
+		- quantum program contraction sequence
+
+.. index:: pair: function; getSequence
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1ae201333b87affa9de36b5f7832d8ef93:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	size_t getSequence(
+		const std::vector<size_t>& quickbb_vertice,
+		std::vector<:ref:`qprog_sequence_t<doxid-_tensor_engine_8h_1ab1fd320f4cc67d35c6c2d2b6b23c39ec>`>& sequence_vec
+		)
+
+get quantum program contraction sequence
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- const
+
+		- std::vector<size_t>& quickbb vertice
+
+	*
+		- std::vector<qprog_sequence_t>&
+
+		- quantum program contraction sequence
+
+
+
+.. rubric:: Returns:
+
+size_t sequence number
+
+.. index:: pair: function; pMeasureBinindex
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a88a7e83db80d771fee56fd89a885ac1d:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`qstate_type<doxid-_q_panda_namespace_8h_1ad41e917590ba0a7303522998805aaa9f>` pMeasureBinindex(std::string index)
+
+PMeasure by binary index.
+
+example: pMeasureBinindex("0000000000")
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
 
 	*
 		- std::string
@@ -301,17 +394,16 @@ example: PMeasure_bin_index("0000000000")
 qstate_type double
 
 .. index:: pair: function; pMeasureDecindex
-.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a3b9561be207ede2ea30f5500ba79a41f:
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1adab416607edb0b2191fcf88052590a39:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	template <typename _Ty>
-	:ref:`qstate_type<doxid-_q_panda_namespace_8h_1aa3be5ca16b07cae5d6e1b07151ed01c0>` pMeasureDecindex(_Ty& node, std::string bin_index)
+	:ref:`qstate_type<doxid-_q_panda_namespace_8h_1ad41e917590ba0a7303522998805aaa9f>` pMeasureDecindex(std::string index)
 
 PMeasure by decimal index.
 
-example: PMeasure_dec_index("1")
+example: pMeasureDecindex("1")
 
 
 
@@ -330,4 +422,65 @@ example: PMeasure_dec_index("1")
 .. rubric:: Returns:
 
 qstate_type double
+
+.. index:: pair: function; getProbDict
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1a98fb346bd3ee3bf0e6d93a905fc3d456:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` getProbDict(:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qlist)
+
+get probability by qubits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- const
+
+		- :ref:`QVec <doxid-class_q_panda_1_1_q_vec>` & qubits vector
+
+
+
+.. rubric:: Returns:
+
+prob_dict
+
+.. index:: pair: function; probRunDict
+.. _doxid-class_q_panda_1_1_single_amplitude_q_v_m_1aee0d2c0faaa3ebe70cb250f2fad7d339:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	:ref:`prob_dict<doxid-_q_panda_namespace_8h_1a0b8487bf3711ffe87477dd745ab418dd>` probRunDict(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog, :ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qlist)
+
+get probability by qubits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- quantum program
+
+	*
+		- QVec&
+
+		- qubits vector
+
+
+
+.. rubric:: Returns:
+
+prob_dict
 

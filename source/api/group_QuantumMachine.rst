@@ -19,7 +19,7 @@ QuantumMachine
 	class_QPanda_OriginQMachineStatus.rst
 	class_QPanda_OriginQResult.rst
 	class_QPanda_OriginQubit.rst
-	class_QPanda_OriginQubitPool.rst
+	class_QPanda_OriginQubitPoolv1.rst
 	class_QPanda_OriginQubitPoolv2.rst
 	class_QPanda_PartialAmplitudeQVM.rst
 	class_QPanda_PhysicalQubit.rst
@@ -27,6 +27,7 @@ QuantumMachine
 	class_QPanda_PhysicalQubitFactoryHelper.rst
 	class_QPanda_QMachineStatusFactory.rst
 	class_QPanda_QMachineTypeTarnfrom.rst
+	class_QPanda_QProgCheck.rst
 	class_QPanda_QProgExecution.rst
 	class_QPanda_QResult.rst
 	class_QPanda_QResultFactory.rst
@@ -69,7 +70,7 @@ QPanda2 quantum virtual machine. :ref:`More...<details-group___quantum_machine>`
 	class :ref:`QPanda::OriginQMachineStatus<doxid-class_q_panda_1_1_origin_q_machine_status>`;
 	class :ref:`QPanda::OriginQResult<doxid-class_q_panda_1_1_origin_q_result>`;
 	class :ref:`QPanda::OriginQubit<doxid-class_q_panda_1_1_origin_qubit>`;
-	class :ref:`QPanda::OriginQubitPool<doxid-class_q_panda_1_1_origin_qubit_pool>`;
+	class :ref:`QPanda::OriginQubitPoolv1<doxid-class_q_panda_1_1_origin_qubit_poolv1>`;
 	class :ref:`QPanda::OriginQubitPoolv2<doxid-class_q_panda_1_1_origin_qubit_poolv2>`;
 	class :ref:`QPanda::PartialAmplitudeQVM<doxid-class_q_panda_1_1_partial_amplitude_q_v_m>`;
 	class :ref:`QPanda::PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`;
@@ -77,6 +78,7 @@ QPanda2 quantum virtual machine. :ref:`More...<details-group___quantum_machine>`
 	class :ref:`QPanda::PhysicalQubitFactoryHelper<doxid-class_q_panda_1_1_physical_qubit_factory_helper>`;
 	class :ref:`QPanda::QMachineStatusFactory<doxid-class_q_panda_1_1_q_machine_status_factory>`;
 	class :ref:`QPanda::QMachineTypeTarnfrom<doxid-class_q_panda_1_1_q_machine_type_tarnfrom>`;
+	class :ref:`QPanda::QProgCheck<doxid-class_q_panda_1_1_q_prog_check>`;
 	class :ref:`QPanda::QProgExecution<doxid-class_q_panda_1_1_q_prog_execution>`;
 	class :ref:`QPanda::QResult<doxid-class_q_panda_1_1_q_result>`;
 	class :ref:`QPanda::QResultFactory<doxid-class_q_panda_1_1_q_result_factory>`;
@@ -97,7 +99,6 @@ QPanda2 quantum virtual machine. :ref:`More...<details-group___quantum_machine>`
 
 	// global functions
 
-	std::string :ref:`QPanda::qProgToBinary<doxid-group___quantum_machine_1gab866832e6095f21fe98f8ec7cae1bfab>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`*);
 	void :ref:`QPanda::execute_qprog<doxid-group___quantum_machine_1ga3c31a727dcc23d3c9a918a4ec8441522>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` prog, :ref:`QPUImpl<doxid-class_q_p_u_impl>`* qpu, :ref:`TraversalConfig<doxid-class_q_panda_1_1_traversal_config>`& param);
 
 .. _details-group___quantum_machine:
@@ -109,44 +110,6 @@ QPanda2 quantum virtual machine.
 
 Global Functions
 ----------------
-
-.. index:: pair: function; qProgToBinary
-.. _doxid-group___quantum_machine_1gab866832e6095f21fe98f8ec7cae1bfab:
-
-.. ref-code-block:: cpp
-	:class: doxyrest-title-code-block
-
-	std::string QPanda::qProgToBinary(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`, :ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`*)
-
-Quamtum program tramsform to binary data.
-
-
-
-.. rubric:: Parameters:
-
-.. list-table::
-	:widths: 20 80
-
-	*
-		- size_t
-
-		- qubit num
-
-	*
-		- size_t
-
-		- cbit num
-
-	*
-		- :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
-
-		- the reference to a quantum program
-
-
-
-.. rubric:: Returns:
-
-std::string binary data
 
 .. index:: pair: function; execute_qprog
 .. _doxid-group___quantum_machine_1ga3c31a727dcc23d3c9a918a4ec8441522:

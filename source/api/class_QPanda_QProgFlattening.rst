@@ -7,7 +7,10 @@ class QPanda::QProgFlattening
 .. toctree::
 	:hidden:
 
-flatten quantum program and quantum circuit
+Overview
+~~~~~~~~
+
+flatten quantum program and quantum circuit :ref:`More...<details-class_q_panda_1_1_q_prog_flattening>`
 
 
 .. ref-code-block:: cpp
@@ -20,69 +23,56 @@ flatten quantum program and quantum circuit
 	public:
 		// construction
 	
-		:target:`QProgFlattening<doxid-class_q_panda_1_1_q_prog_flattening_1abcc78022558016b87a5114d04956a27b>`(bool is_full_faltten = false);
+		:target:`QProgFlattening<doxid-class_q_panda_1_1_q_prog_flattening_1a7ba7100ecf8d6ec952722b8be7832899>`(bool is_full_faltten = true);
 
 		// methods
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a3fac22a5cb006cd2d4aa8f420892e9ad>`(
+		void :target:`flatten_circuit<doxid-class_q_panda_1_1_q_prog_flattening_1a170139360689abf173dcf33399292aff>`(:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& src_cir);
+		void :target:`flatten_prog<doxid-class_q_panda_1_1_q_prog_flattening_1a1cfb85559dea4ad3316d63e2a35b23a0>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& src_prog);
+	
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1af4d57cc4e45317ef0e8ba854bf6a564b>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1af0a2d0abf83b362f6b0246667ff653db>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a3d4b99cd94470b232040a443afee6cd0>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a70b7df440b769b60ebfc43c59bad0f2b>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1af2ceeb51f43296e7b3844f6793e7320c>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a6a47382976195995753a0773abe9d2a2>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a8b83a0526d81b2514426c76c5a165522>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a52b4310ebea577f3c4061f70f933cc83>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a5ab3df8d36f661beee00d5d3fb000e67>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1aad2dda6669bed9e60f78368e7b4d82f2>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a2d4565d77de79e169dce8960ef9868b7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a4a8678b6f35a6047f8219836ee17f4f8>`(
+		virtual void :target:`execute<doxid-class_q_panda_1_1_q_prog_flattening_1a263b3d44b8741a421686d0878aa11eec>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& circuit
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog
 			);
 	
-		void :target:`flatten_by_type<doxid-class_q_panda_1_1_q_prog_flattening_1aa43a171ffb2ec696448fe82ed9b5d268>`(
-			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> node,
-			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& out_prog,
-			:ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>`& out_circuit
-			);
-	
-		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` :target:`get_two_qvec_union<doxid-class_q_panda_1_1_q_prog_flattening_1ab02df36b9032673f4add378981b5dcc9>`(
-			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qv_1,
-			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qv_2
-			);
+		static :ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` :ref:`prog_flatten_to_cir<doxid-group___utilities_1gabf5a4452e825f39dd89cef74b375d8dc>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog);
 	};
 
 Inherited Members
@@ -94,45 +84,83 @@ Inherited Members
 	public:
 		// methods
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a1cb0c50abcd626b8c45b8aa389cb3541>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1adb53e4c20d48a0efd6e377680d7f0988>`(
 			std::shared_ptr<:ref:`AbstractQGateNode<doxid-class_q_panda_1_1_abstract_q_gate_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a6916170c055781c5ed5a615407390e1c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aed584073b781c9a5c6441b08b14afc3d>`(
 			std::shared_ptr<:ref:`AbstractQuantumMeasure<doxid-class_q_panda_1_1_abstract_quantum_measure>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa3389601eef27921246507d9bcd60e8f>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aadbf69a810033196de1790d3f362ef7a>`(
 			std::shared_ptr<:ref:`AbstractQuantumReset<doxid-class_q_panda_1_1_abstract_quantum_reset>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a2196c7ad5525e519cfedad3d0285d712>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aab65fda71b8e1f719bc4b7bdd70a10e7>`(
 			std::shared_ptr<:ref:`AbstractControlFlowNode<doxid-class_q_panda_1_1_abstract_control_flow_node>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a34a63b4019719d77711fcf6efbb6400c>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1ab452f71d25eb3354d46346694ff82db7>`(
 			std::shared_ptr<:ref:`AbstractQuantumCircuit<doxid-class_q_panda_1_1_abstract_quantum_circuit>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a310247426bda77a52b81c7654fa4b848>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a4e97902dc8b42d5f5f50d790d11f1517>`(
 			std::shared_ptr<:ref:`AbstractQuantumProgram<doxid-class_q_panda_1_1_abstract_quantum_program>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
 	
-		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1a7d2fb53e43f56cc2f57cf0d025585146>`(
+		virtual void :ref:`execute<doxid-class_q_panda_1_1_traversal_interface_1aa311fe1c6abc46d84d90d6f412be063a>`(
 			std::shared_ptr<:ref:`AbstractClassicalProg<doxid-class_q_panda_1_1_abstract_classical_prog>`> cur_node,
 			std::shared_ptr<:ref:`QNode<doxid-class_q_panda_1_1_q_node>`> parent_node,
 			Args&&... func_args
-			) = 0;
+			);
+
+.. _details-class_q_panda_1_1_q_prog_flattening:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+flatten quantum program and quantum circuit
+
+Methods
+-------
+
+.. index:: pair: function; prog_flatten_to_cir
+.. _doxid-group___utilities_1gabf5a4452e825f39dd89cef74b375d8dc:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	static :ref:`QCircuit<doxid-class_q_panda_1_1_q_circuit>` prog_flatten_to_cir(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog)
+
+Flatten :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` to :ref:`QCircuit <doxid-class_q_panda_1_1_q_circuit>`.
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QProg&
+
+		- the target :ref:`QProg <doxid-class_q_panda_1_1_q_prog>`
+
+
+
+.. rubric:: Returns:
+
+Converted circuit @Note: The input :ref:`QProg <doxid-class_q_panda_1_1_q_prog>` must be no-nesting, and only :ref:`QGate <doxid-class_q_panda_1_1_q_gate>` type is supported.
 

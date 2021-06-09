@@ -23,7 +23,8 @@ Overview
 	public:
 		// methods
 	
-		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_1a05b7dd4dcfe023c3f341fc8d09d90943>`() = 0;
+		virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* :ref:`getPhysicalQubitPtr<doxid-class_q_panda_1_1_qubit_1ab5238f42f6dbbc19b127d80979ee654a>`() const = 0;
+		virtual size_t :ref:`get_phy_addr<doxid-class_q_panda_1_1_qubit_1a3dbdbfb4b2ba305204e703b75e95d7f9>`() const;
 		virtual bool :ref:`getOccupancy<doxid-class_q_panda_1_1_qubit_1a50abaaae859256175922cae0e07ea9f6>`() = 0;
 	};
 
@@ -42,12 +43,12 @@ Methods
 -------
 
 .. index:: pair: function; getPhysicalQubitPtr
-.. _doxid-class_q_panda_1_1_qubit_1a05b7dd4dcfe023c3f341fc8d09d90943:
+.. _doxid-class_q_panda_1_1_qubit_1ab5238f42f6dbbc19b127d80979ee654a:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* getPhysicalQubitPtr() = 0
+	virtual :ref:`PhysicalQubit<doxid-class_q_panda_1_1_physical_qubit>`* getPhysicalQubitPtr() const = 0
 
 Get physical qubit pointer.
 
@@ -56,6 +57,22 @@ Get physical qubit pointer.
 .. rubric:: Returns:
 
 :ref:`PhysicalQubit <doxid-class_q_panda_1_1_physical_qubit>` \*
+
+.. index:: pair: function; get_phy_addr
+.. _doxid-class_q_panda_1_1_qubit_1a3dbdbfb4b2ba305204e703b75e95d7f9:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_phy_addr() const
+
+Get physical addr.
+
+
+
+.. rubric:: Returns:
+
+size_t
 
 .. index:: pair: function; getOccupancy
 .. _doxid-class_q_panda_1_1_qubit_1a50abaaae859256175922cae0e07ea9f6:

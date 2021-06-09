@@ -30,12 +30,14 @@ Implementation class of :ref:`QubitPool <doxid-class_q_panda_1_1_qubit_pool>`. :
 		virtual void :ref:`clearAll<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a2a3a5dfdc29c871efb978ef0c3167a24>`();
 		virtual size_t :ref:`getMaxQubit<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a6544b917f0e7b8a27c948b4beb84dd60>`() const;
 		virtual size_t :ref:`getIdleQubit<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a99bdb2b34f6d55e74418cd416b708b7b>`() const;
+		virtual size_t :ref:`get_max_usedqubit_addr<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a7db69982229c5a11c39ea645861e6bbf>`() const;
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubit<doxid-class_q_panda_1_1_origin_qubit_poolv2_1ac142d7e11ffde291e8ddfba27b223e0b>`();
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughPhyAddress<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a10ca7ae8cde018daf296d9074a30a2c5>`(size_t);
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughVirAddress<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a6ccba68bdfd98c0773efe2910224a47f>`(size_t qubit_num);
 		virtual void :ref:`Free_Qubit<doxid-class_q_panda_1_1_origin_qubit_poolv2_1ae6ea9cb3db525cb4b39832192b5d1a14>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*);
 		virtual size_t :ref:`getPhysicalQubitAddr<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a299a96ee5241fa63805dec2733118d56>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*);
 		virtual size_t :ref:`getVirtualQubitAddress<doxid-class_q_panda_1_1_origin_qubit_poolv2_1a34b9a22f99fb9496083464c6da189d73>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) const;
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_origin_qubit_poolv2_1aba28f1b43496769f54a532d9d5a0a434>`(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*>&) const;
 	};
 
 Inherited Members
@@ -48,6 +50,7 @@ Inherited Members
 		// methods
 	
 		virtual size_t :ref:`getMaxQubit<doxid-class_q_panda_1_1_qubit_pool_1a557d6530da78875d35467979c7390017>`() const = 0;
+		virtual size_t :ref:`get_max_usedqubit_addr<doxid-class_q_panda_1_1_qubit_pool_1aa784fee5f1552fa751ff4da58ddd363b>`() const = 0;
 		virtual size_t :ref:`getIdleQubit<doxid-class_q_panda_1_1_qubit_pool_1ad6a5eba3ef747bea033d58ef8e9325d2>`() const = 0;
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubit<doxid-class_q_panda_1_1_qubit_pool_1a257710c139f9a9df2e7c98f8e8947f84>`() = 0;
 		virtual :ref:`Qubit<doxid-class_q_panda_1_1_qubit>`* :ref:`allocateQubitThroughPhyAddress<doxid-class_q_panda_1_1_qubit_pool_1affdaf4de13f5af779dc57c8f295f0493>`(size_t) = 0;
@@ -56,6 +59,7 @@ Inherited Members
 		virtual void :ref:`clearAll<doxid-class_q_panda_1_1_qubit_pool_1a7962635e7aba3c82037bb9e5c4c5179d>`() = 0;
 		virtual size_t :ref:`getPhysicalQubitAddr<doxid-class_q_panda_1_1_qubit_pool_1a0a2c2fbeb5f26eff65322e2809da4d6d>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) = 0;
 		virtual size_t :ref:`getVirtualQubitAddress<doxid-class_q_panda_1_1_qubit_pool_1a99572216322ec218e12cbc651002dc4a>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*) const = 0;
+		virtual size_t :ref:`get_allocate_qubits<doxid-class_q_panda_1_1_qubit_pool_1ac7914ab31598ef8d7f6b7a717f0856e7>`(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*>&) const = 0;
 
 .. _details-class_q_panda_1_1_origin_qubit_poolv2:
 
@@ -102,6 +106,22 @@ size_t
 	virtual size_t getIdleQubit() const
 
 get size of the idle position
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_max_usedqubit_addr
+.. _doxid-class_q_panda_1_1_origin_qubit_poolv2_1a7db69982229c5a11c39ea645861e6bbf:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_max_usedqubit_addr() const
+
+Gets the largest address in the used physical qubit.
 
 
 
@@ -214,6 +234,34 @@ get virtual qubit address
 
 	*
 		- Qubit\*
+
+		- 
+
+
+
+.. rubric:: Returns:
+
+size_t
+
+.. index:: pair: function; get_allocate_qubits
+.. _doxid-class_q_panda_1_1_origin_qubit_poolv2_1aba28f1b43496769f54a532d9d5a0a434:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual size_t get_allocate_qubits(std::vector<:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*>&) const
+
+get allocate qubits
+
+
+
+.. rubric:: Parameters:
+
+.. list-table::
+	:widths: 20 80
+
+	*
+		- QVec&
 
 		- 
 

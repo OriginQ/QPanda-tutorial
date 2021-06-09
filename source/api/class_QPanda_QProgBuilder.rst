@@ -26,11 +26,19 @@ Quantum Program Builder.
 
 		// construction
 	
-		:target:`QProgBuilder<doxid-class_q_panda_1_1_q_prog_builder_1a0547c58a5c84814c37299a50b6a13391>`(:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm);
+		:target:`QProgBuilder<doxid-class_q_panda_1_1_q_prog_builder_1ae66070b21b83d651c0564f3ceb89b95e>`(
+			:ref:`QuantumMachine<doxid-class_q_panda_1_1_quantum_machine>`* qm,
+			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>`& qv,
+			std::vector<:ref:`ClassicalCondition<doxid-class_q_panda_1_1_classical_condition>`>& cv
+			);
 
 		// methods
 	
 		:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :target:`get_qprog<doxid-class_q_panda_1_1_q_prog_builder_1acb6b8ccc8b0c284309968a52169bd536>`();
+		size_t :target:`get_qubits_size<doxid-class_q_panda_1_1_q_prog_builder_1aa266d5c79714b722752b8d11110204a8>`();
+		size_t :target:`get_cbits_size<doxid-class_q_panda_1_1_q_prog_builder_1a65426cc857d6a698adce94f26ad67340>`();
+		void :target:`set_define_qgate_function<doxid-class_q_panda_1_1_q_prog_builder_1a8276b9aea4a8d8605daa05de3791c4ad>`(const :ref:`DefineQGateContent<doxid-struct_q_panda_1_1_define_q_gate_content>`& define_qgate);
+		:ref:`DefineQGateContent<doxid-struct_q_panda_1_1_define_q_gate_content>` :target:`get_define_qgate_function<doxid-class_q_panda_1_1_q_prog_builder_1aaf094785548db379ce495318f68d1861>`(const std::string& gate_name);
 		void :target:`alloc_qubit<doxid-class_q_panda_1_1_q_prog_builder_1a092c75f0975c717ccf164cc73b76cb4a>`(int num);
 		void :target:`alloc_cbit<doxid-class_q_panda_1_1_q_prog_builder_1aebae2d1c406396ef8f27f461aac6f45b>`(int num);
 		size_t :target:`add_prog<doxid-class_q_panda_1_1_q_prog_builder_1a500da87bc1d76f3199235b78c713a7c2>`();
@@ -65,6 +73,17 @@ Quantum Program Builder.
 	
 		size_t :target:`add_reset_literal<doxid-class_q_panda_1_1_q_prog_builder_1a958dcf227094f033a279008ae081da69>`(size_t qidx);
 		size_t :target:`add_reset_cc<doxid-class_q_panda_1_1_q_prog_builder_1a0c2b69decc872e46e2d68099129bfa9b>`(size_t exprid);
+	
+		size_t :target:`add_barrier_literal<doxid-class_q_panda_1_1_q_prog_builder_1a5775a0c78a7b8fa9aa1bf9be41f0e5fc>`(
+			size_t exprid,
+			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qv
+			);
+	
+		size_t :target:`add_barrier_cc<doxid-class_q_panda_1_1_q_prog_builder_1a566c9486e6af4962f1217eef3ac2db7f>`(
+			size_t exprid,
+			:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` qv
+			);
+	
 		size_t :target:`add_expr_stat<doxid-class_q_panda_1_1_q_prog_builder_1ad51f01c881d0b32c169ab387ea68f5ea>`(size_t exprid);
 	
 		size_t :target:`make_qif<doxid-class_q_panda_1_1_q_prog_builder_1aec37cfbb6b4450bb553bb5f314f7a94c>`(
@@ -120,6 +139,11 @@ Quantum Program Builder.
 	
 		size_t :target:`make_control_new<doxid-class_q_panda_1_1_q_prog_builder_1a3d2ed260614e819f9cfe6639f62fe8c5>`(
 			size_t progid,
+			std::vector<int> idx
+			);
+	
+		:ref:`QVec<doxid-class_q_panda_1_1_q_vec>` :target:`make_qvec<doxid-class_q_panda_1_1_q_prog_builder_1af0b26b939e2a13f9c0bcd9287167e432>`(
+			std::vector<size_t> expridx,
 			std::vector<int> idx
 			);
 	

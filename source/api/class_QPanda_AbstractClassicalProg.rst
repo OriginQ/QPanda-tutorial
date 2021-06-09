@@ -24,7 +24,7 @@ Classical program abstract class. :ref:`More...<details-class_q_panda_1_1_abstra
 		// methods
 	
 		virtual std::shared_ptr<:ref:`CExpr<doxid-class_q_panda_1_1_c_expr>`> :ref:`getExpr<doxid-class_q_panda_1_1_abstract_classical_prog_1ac60d04893715ce3900525675045392b8>`() = 0;
-		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`eval<doxid-class_q_panda_1_1_abstract_classical_prog_1aeb45d67fe6f5783158b010c863d489fa>`() = 0;
+		virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` :ref:`get_val<doxid-class_q_panda_1_1_abstract_classical_prog_1a74e02336eb2b7234678747a83b38180f>`() = 0;
 	};
 
 	// direct descendants
@@ -57,13 +57,13 @@ Get classical expr shared ptr.
 
 std::shared_ptr<CExpr>
 
-.. index:: pair: function; eval
-.. _doxid-class_q_panda_1_1_abstract_classical_prog_1aeb45d67fe6f5783158b010c863d489fa:
+.. index:: pair: function; get_val
+.. _doxid-class_q_panda_1_1_abstract_classical_prog_1a74e02336eb2b7234678747a83b38180f:
 
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` eval() = 0
+	virtual :ref:`cbit_size_t<doxid-namespace_q_panda_1a389dd5cda589523f080c1f8671f5ae5a>` get_val() = 0
 
 Get classical program value.
 

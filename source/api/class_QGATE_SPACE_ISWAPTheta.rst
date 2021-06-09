@@ -32,10 +32,6 @@ class QGATE_SPACE::ISWAPTheta
 		virtual double :target:`getParameter<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_i_s_w_a_p_theta_1a83b676d191c4e3aa0da782ffce306575>`() const;
 	};
 
-	// direct descendants
-
-	class :ref:`SQISWAP<doxid-class_q_g_a_t_e___s_p_a_c_e_1_1_s_q_i_s_w_a_p>`;
-
 Inherited Members
 -----------------
 

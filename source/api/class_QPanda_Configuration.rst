@@ -23,8 +23,8 @@ Quantum qubit and cbit :ref:`Configuration <doxid-struct_q_panda_1_1_configurati
 	public:
 		// fields
 	
-		size_t :ref:`maxQubit<doxid-struct_q_panda_1_1_configuration_1af9956cbee0b8c74060c5bcc04145d7d1>`;
-		size_t :ref:`maxCMem<doxid-struct_q_panda_1_1_configuration_1aa1b780159354441b758013bc17c7b221>`;
+		size_t :ref:`maxQubit<doxid-struct_q_panda_1_1_configuration_1af9956cbee0b8c74060c5bcc04145d7d1>` = 25;
+		size_t :ref:`maxCMem<doxid-struct_q_panda_1_1_configuration_1aa1b780159354441b758013bc17c7b221>` = 25;
 	};
 .. _details-struct_q_panda_1_1_configuration:
 
@@ -50,7 +50,7 @@ Fields
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	size_t maxQubit
+	size_t maxQubit = 25
 
 Config max qubit num
 
@@ -60,7 +60,7 @@ Config max qubit num
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	size_t maxCMem
+	size_t maxCMem = 25
 
 Config max cbit num
 

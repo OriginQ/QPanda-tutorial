@@ -24,5 +24,8 @@ Count Quantum Program clock cycle.
 
 		// methods
 	
-		size_t :target:`count<doxid-class_q_panda_1_1_q_prog_clock_cycle_1a898122969e09a949adf40a7d83532232>`(:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog);
+		size_t :target:`count<doxid-class_q_panda_1_1_q_prog_clock_cycle_1a33d20fb6fdb2610dc2cf16d0b1631754>`(
+			:ref:`QProg<doxid-class_q_panda_1_1_q_prog>`& prog,
+			bool optimize = false
+			);
 	};

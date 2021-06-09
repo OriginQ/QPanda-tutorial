@@ -23,7 +23,7 @@ Class of Optimizer factory. :ref:`More...<details-class_q_panda_1_1_optimizer_fa
 	public:
 		// methods
 	
-		static std::unique_ptr<:ref:`AbstractOptimizer<doxid-class_q_panda_1_1_abstract_optimizer>`> :ref:`makeOptimizer<doxid-class_q_panda_1_1_optimizer_factory_1ae3619b2000d6e06a463cfb084a6edd3c>`(const :ref:`OptimizerType<doxid-namespace_q_panda_1ad1be07c72805502c7d002a53b303bd1e>`& optimizer);
+		static std::unique_ptr<:ref:`AbstractOptimizer<doxid-class_q_panda_1_1_abstract_optimizer>`> :ref:`makeOptimizer<doxid-class_q_panda_1_1_optimizer_factory_1ae3619b2000d6e06a463cfb084a6edd3c>`(const OptimizerType& optimizer);
 		static std::unique_ptr<:ref:`AbstractOptimizer<doxid-class_q_panda_1_1_abstract_optimizer>`> :ref:`makeOptimizer<doxid-class_q_panda_1_1_optimizer_factory_1a59140b212692fc73a39010d7e51c1c54>`(const std::string& optimizer);
 	};
 .. _details-class_q_panda_1_1_optimizer_factory:
@@ -42,7 +42,7 @@ Methods
 .. ref-code-block:: cpp
 	:class: doxyrest-title-code-block
 
-	static std::unique_ptr<:ref:`AbstractOptimizer<doxid-class_q_panda_1_1_abstract_optimizer>`> makeOptimizer(const :ref:`OptimizerType<doxid-namespace_q_panda_1ad1be07c72805502c7d002a53b303bd1e>`& optimizer)
+	static std::unique_ptr<:ref:`AbstractOptimizer<doxid-class_q_panda_1_1_abstract_optimizer>`> makeOptimizer(const OptimizerType& optimizer)
 
 create a Optimizer object by OptimizerType
 

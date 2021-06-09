@@ -31,6 +31,7 @@ Overview
 	    :ref:`RX_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca0ef81629f054170a8bb71f850820bc3f>`,
 	    :ref:`RY_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca7dc7565fd56d69ad24931133d0374267>`,
 	    :ref:`RZ_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca74648a1b57818d818c5f32770dde8fce>`,
+	    :target:`RPHI_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789caba0a36ccbe860206f7737fdafba2e2ed>`,
 	    :ref:`U1_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca2eef4d46e040ca6fa7a3fb68b375eb82>`,
 	    :ref:`U2_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca73fe77fd9785befb60327a9fd5907ef1>`,
 	    :ref:`U3_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca9d0bb91a1b44dbe212e7c2189218ad0a>`,
@@ -49,6 +50,8 @@ Overview
 	    :target:`TOFFOLI_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca8ce7dee098598ba824f02c191965bfce>`,
 	    :target:`ORACLE_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789ca2160ab94c945c11018504b5c0dc18cfc>`,
 	    :target:`I_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789cac83eb4f6e43d98d3a864a3cbb327ceb0>`,
+	    :ref:`ECHO_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789cac70134aabbd73c28593887304d60031e>`,
+	    :ref:`BARRIER_GATE<doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789cac1777658de8249447a21e739b90c2fbf>`,
 	};
 
 .. _details-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789c:
@@ -330,4 +333,24 @@ Quantum swap gate
 	TWO_QUBIT_GATE
 
 Quantum two-qubit gate
+
+.. index:: pair: enumvalue; ECHO_GATE
+.. _doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789cac70134aabbd73c28593887304d60031e:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	ECHO_GATE
+
+Only for 6 qubit online projects
+
+.. index:: pair: enumvalue; BARRIER_GATE
+.. _doxid-_q_global_variable_8h_1a842ca6790f315b3f79faf3cda6d6789cac1777658de8249447a21e739b90c2fbf:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	BARRIER_GATE
+
+Only for 6 qubit online projects
 
