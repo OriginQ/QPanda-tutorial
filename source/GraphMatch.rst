@@ -53,7 +53,7 @@ CZ(1,0)
         replace_cir << CZ(q[0], q[1]);
 
         // 搜索量子程序中的查询线路，并用替换线路替代
-        graph_query_replace(prog, query_cir, replace_cir, update_prog, qvm);
+        //graph_query_replace(prog, query_cir, replace_cir, update_prog, qvm);
 
         std::cout << std::endl;
         std::cout << "查询替换后：" << std::endl;
