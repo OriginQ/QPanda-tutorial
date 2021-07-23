@@ -15,7 +15,7 @@ CZ(1,0)
 
 在量子程序中，可能存在多个相同结构的子量子线路或多个相同的量子逻辑门，查询替换量子程序中指定结构的量子线路的功能就是找这些相同结构的子量子线路并把它们替换成目标量子线路。
 
-通过graph_query_replace接口实现该功能，输入参数一为待替换修改的量子程序节点，输入参数二为查询图量子线路节点，输入参数三为替换图量子线路节点，输入参数四为空的量子程序，输入参数五为量子虚拟机指针。
+通过sub_cir_replace接口实现该功能，输入参数一为待替换修改的量子程序节点，输入参数二为查询线路、 替换线路的有序对。
 
 示例
 >>>>>>>>>>>>>>>>
@@ -31,7 +31,7 @@ CZ(1,0)
         auto q = qvm->qAllocMany(5);
         auto c = qvm->cAllocMany(5);
 
-        QProg prog, update_prog;
+        QProg prog;
         QCircuit replace_cir, query_cir;
 
         // 构建量子程序
@@ -51,13 +51,14 @@ CZ(1,0)
         // 构建查询线路、 构建替换线路
         query_cir << H(q[0]) << CNOT(q[1], q[0]) << H(q[0]);
         replace_cir << CZ(q[0], q[1]);
+        const std::vector<std::pair<QCircuit, QCircuit>>  replace_cir_vec = { {query_cir, replace_cir} };
 
-        // 搜索量子程序中的查询线路，并用替换线路替代
-        graph_query_replace(prog, query_cir, replace_cir, update_prog, qvm);
+        // 搜索量子程序中的查询线路，并用替换线路替代,但会改变原来prog的结构
+        sub_cir_replace(prog, replace_cir_vec);
 
         std::cout << std::endl;
         std::cout << "查询替换后：" << std::endl;
-        std::cout << convert_qprog_to_originir(update_prog, qvm) << std::endl;
+        std::cout << convert_qprog_to_originir(prog, qvm) << std::endl;
 
         destroyQuantumMachine(qvm);
         return 0;
