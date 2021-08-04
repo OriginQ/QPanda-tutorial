@@ -119,9 +119,9 @@ QFT在一维情况就是Hadamard量子门。
 .. code-block:: c
 
    #include "QPanda.h"
-   using namespace QPanda;
+   USING_QPANDA
 
-   int main(void)
+   int main()
    {
       auto qvm = initQuantumMachine(CPU);
       // 申请寄存器并初始化
@@ -139,7 +139,7 @@ QFT在一维情况就是Hadamard量子门。
       // 输出结果
       for (auto aiter : result)
       {
-         cout << aiter.first << " : " << aiter.second << endl;
+         std::cout << aiter.first << " : " << aiter.second << std::endl;
       }
 
       return 0;
