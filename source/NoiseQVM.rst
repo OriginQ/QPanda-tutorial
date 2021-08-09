@@ -41,7 +41,7 @@ DECOHERENCE_KRAUS_OPERATOR是退相干噪声模型，为上述两种噪声模型
 
 :math:`P_{damping} = 1 - e^{-\frac{t_{gate}}{T_1}}, P_{dephasing} = 0.5 \times (1 - e^{-(\frac{t_{gate}}{T_2} - \frac{t_{gate}}{2T_1})})`
 
-:math:`K_1 = K_{1_{damping}}K_{1_{dephasing}}, K_2 = K_{1_{damping}}K_{2_{dephasing}},`
+:math:`K_1 = K_{1_{damping}}K_{1_{dephasing}}, K_2 = K_{1_{damping}}K_{2_{dephasing}}`
 
 :math:`K_3 = K_{2_{damping}}K_{1_{dephasing}}, K_4 = K_{2_{damping}}K_{2_{dephasing}}`
 
@@ -52,9 +52,9 @@ DEPOLARIZING_KRAUS_OPERATOR
 
 DEPOLARIZING_KRAUS_OPERATOR去极化噪声模型，即单量子比特有一定的概率被完全混合态I/2代替, 它的kraus算符和表示方法如下所示：
 
-:math:`K_1 = \sqrt{1 - 3p/4} × I, K_2 = \sqrt{p}/2 × X` 
+:math:`K_1 = \sqrt{1 - 3p/4} \times I, K_2 = \sqrt{p}/2 \times X` 
 
-:math:`K_3 = \sqrt{p}/2 × Y, K_4 = \sqrt{p}/2 × Z`
+:math:`K_3 = \sqrt{p}/2 \times Y, K_4 = \sqrt{p}/2 \times Z`
 
 其中I、X、Y、Z分别代表其量子逻辑门对应的矩阵
 

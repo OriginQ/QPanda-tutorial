@@ -5,6 +5,7 @@
 通过该功能模块，你可以解析通过QPanda2构建的量子程序，将其中包含的量子比特信息以及量子逻辑门操作信息提取出来，得到按固定格式存储的QASM指令集。
 
 .. _QASM介绍:
+
 .. _IBM Q Experience量子云平台: https://quantumexperience.ng.bluemix.net/qx/editor
 
 QASM介绍

@@ -36,14 +36,16 @@ latex_elements = {
     'cmappkg': '',
     'fontenc': '',
     'figure_align':'htbp',
+    'extraclassoptions': 'openany,oneside',
     'preamble': r'''
+        \usepackage[draft]{minted}
+        \fvset{breaklines=true}
         \usepackage{xeCJK}
         \parindent 2em
         \setcounter{tocdepth}{3}
         \renewcommand\familydefault{\ttdefault}
         \renewcommand\CJKfamilydefault{\CJKrmdefault}
         \sphinxtableofcontents
-        'extraclassoptions': 'openany,oneside',
     ''',
 }
 # -- General configuration ---------------------------------------------------

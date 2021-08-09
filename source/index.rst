@@ -16,7 +16,7 @@ QPanda 2
 
 QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构建、运行和优化量子算法。QPanda 2作为本源量子计算系列软件的基础库，为OriginIR、Qurator、量子计算服务提供核心部件。
 
-为了方便用户使用，QPanda 2为用户提供了Python版本的pyQPanda,详情请参考 `pyQPanda使用文档 <https://pyqpanda-toturial.readthedocs.io/zh/latest/index.html>`_ 。
+为了方便用户使用，QPanda 2为用户提供了Python版本的pyQPanda, 详情请参考 `pyQPanda使用文档 <https://pyqpanda-toturial.readthedocs.io/zh/latest/index.html>`_ 。
 
 .. toctree::
     :maxdepth: 1

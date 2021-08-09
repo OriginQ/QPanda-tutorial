@@ -8,7 +8,7 @@ QASM介绍
 >>>>>>>
 ----
 
-QASM的书写格式规范与例程可以参考量子程序转化QASM模块中的 :ref:`QASM介绍` 部分。
+QASM的书写格式规范与例程可以参考量子程序转化QASM模块中的 `QASM介绍`_ 部分。
 
 QPanda 2提供了QASM文件转换工具接口 ``convert_qasm_to_qprog()`` 该接口使用非常简单，具体可参考下方示例程序。
 

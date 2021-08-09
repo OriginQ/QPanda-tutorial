@@ -255,7 +255,7 @@ Linux 和 MacOS
 使用
 ------------------
 
-我们接下来通过一个示例介绍QPanda-2的使用，下面的例子可以在量子计算机中构建量子纠缠态(|00>+|11>)，对其进行测量，重复制备1000次。
+我们接下来通过一个示例介绍QPanda-2的使用，下面的例子可以在量子计算机中构建量子纠缠态(``|00>+|11>``)，对其进行测量，重复制备1000次。
 预期的结果是约有50%的概率使测量结果分别在00或11上。
 
     .. code-block:: c
@@ -315,7 +315,6 @@ visual studio 2017 下链接QPanda库需要配置QPanda的头文件地址和QPan
 1. 选择中GateTypeValidator项目,右键选中属性。
  
 .. image:: images/Properties.png
-    :align: center 
 
 2. 在设置visual studio 2017项目属性时，一定要注意配置管理器中的Release和Debug、及x64要与项目所选的相同（QPanda2不支持x86平台）。
 

@@ -79,7 +79,8 @@ C语言风格
             
             // 构建QIf正确分支以及错误分支
             branch_true << H(qvec[cvec[0]]) << (cvec[0]=cvec[0]+1);
-            branch_false << H(qvec[0]) << CNOT(qvec[0],qvec[1]) << CNOT(qvec[1],qvec[2]);
+            branch_false << H(qvec[0]) << CNOT(qvec[0],qvec[1]) 
+                         << CNOT(qvec[1],qvec[2]);
 
             // 构建QIf
             auto qif = createIfProg(cvec[1]>5, branch_true, branch_false);
