@@ -294,7 +294,7 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
 
       for (auto aiter : result)
       {
-         cout << aiter.first << " : " << aiter.second << endl;
+         std::cout << aiter.first << " : " << aiter.second << std::endl;
       }
 
       return 0;

@@ -84,12 +84,11 @@
 .. code-block:: cpp
 
     #include "QPanda.h"
-    #include "Variational/var.h"
+    USING_QPANDA
 
     int main()
     {
         using namespace std;
-        using namespace QPanda;
         using namespace QPanda::Variational;
 
         constexpr int qnum = 2;

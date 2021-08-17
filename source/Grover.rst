@@ -187,7 +187,7 @@ Grover算法还有其他的接口函数，此处不作赘述。
    #include "QPanda.h"
    using namespace QPanda;
 
-   int main(void)
+   int main()
    {
       auto machine = initQuantumMachine(CPU);
       auto x = machine->allocateCBit();

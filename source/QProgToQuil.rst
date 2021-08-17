@@ -66,7 +66,7 @@
         USING_QPANDA
 
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine(QMachineType::CPU);
             auto qubits = qvm->qAllocMany(4);

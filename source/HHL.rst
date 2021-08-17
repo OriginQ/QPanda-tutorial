@@ -157,51 +157,6 @@ HHL算法的量子线路图如下所示
 1.25 & 0.75 & 3.75 &-2.25 \\ 
 -0.75 & -1.25 & -2.25 &3.75 
 \end{smallmatrix}\bigr), b=\begin{pmatrix} 0.5,0.5,0.5,0.5 \end{pmatrix}^T` ，
-验证HHL的代码实例如下
+验证HHL的代码实例参考 `pyQPandaHHL算法示例 <https://pyqpanda-toturial.readthedocs.io/zh/latest/HHL.html>`_
 
-.. code-block:: c
 
-   #include "QPanda.h"
-   using namespace QPanda;
-
-   int main(void)
-   {
-      auto machine = initQuantumMachine(CPU);
-      auto prog = QProg();
-
-      QStat A = {
-      qcomplex_t(15.0 / 4.0, 0), qcomplex_t(9.0 / 4.0, 0), qcomplex_t(5.0 / 4.0, 0), qcomplex_t(-3.0 / 4.0, 0),
-      qcomplex_t(9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0),
-      qcomplex_t(5.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0),
-      qcomplex_t(-3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0)
-      };
-
-      std::vector<double> b = { 0.5, 0.5, 0.5, 0.5 };
-
-      QStat result = HHL_solve_linear_equations(A, b);
-      int w = 0;
-      double coffe = sqrt(340);
-      for (auto& val : result)
-      {
-         val *= coffe;
-         std::cout << val << " ";
-         if (++w == 2)
-         {
-               w = 0;
-               std::cout << std::endl;
-         }
-      }
-      std::cout << std::endl;
-
-      return 0;
-   }
-
-由理论推导可以知道HHL算法对此问题求得的近似解会有较大误差，经典解为 :math:`\frac{1}{32}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，
-近似解为 :math:`\frac{1}{\sqrt{340}}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，因此输出结果应当如下
-
-.. code-block:: c
-
-   -0.0542326
-   0.379628
-   0.596559
-   0.705024

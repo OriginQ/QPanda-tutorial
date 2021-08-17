@@ -64,7 +64,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine();
             auto qubits = qvm->qAllocMany(4);

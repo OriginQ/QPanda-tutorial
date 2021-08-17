@@ -58,7 +58,7 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine();
 

@@ -89,7 +89,7 @@
    #include "QPanda.h"
    using namespace QPanda;
 
-   int main(void)
+   int main()
    {
       auto qvm = initQuantumMachine(CPU);
       // 申请寄存器并初始化
@@ -110,7 +110,7 @@
       // 输出结果
       for (auto aiter : result)
       {
-         cout << aiter.first << " : " << aiter.second << endl;
+         std::cout << aiter.first << " : " << aiter.second << std::endl;
       }
 
       return 0;

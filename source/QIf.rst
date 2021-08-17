@@ -65,7 +65,7 @@ C语言风格
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             init();
             QProg prog;

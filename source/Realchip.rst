@@ -26,7 +26,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             //通过QCloudMachine创建量子云虚拟机
             QCloudMachine QCM;;
@@ -52,7 +52,7 @@
             auto result = QCM.real_chip_measure(measure_prog, 1000);
             for (auto val : result)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
             
             QCM.finalize();

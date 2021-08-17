@@ -138,7 +138,7 @@ QPE的量子线路图如下所示
       // 输出结果
       for (auto aiter : result)
       {
-         cout << aiter.first << " : " << aiter.second << endl;
+         std::cout << aiter.first << " : " << aiter.second << std::endl;
       }
 
       return 0;

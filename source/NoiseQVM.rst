@@ -125,6 +125,11 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
         void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const QVec &qubits)
         void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const std::vector<QVec> &qubits)
 
+        //设置线路中所有GateType噪声
+        void set_noise_model(const NOISE_MODEL& model, const std::vector<GateType> &types, double prob)
+        void set_noise_model(const NOISE_MODEL &model, const std::vector<GateType> &types, double T1, double T2, double t_gate)
+        void set_noise_model(const NOISE_MODEL &model, const std::vector<GateType> &types, double T1, double T2,double t_gate, const QVec &qubits)
+
 第一个参数为噪声模型类型，第二个参数为量子逻辑门类型，第三个参数为噪声模型所需的参数, 第四个参数是对单个比特设置噪声参数（包含单门和双门），若没有第四个参数则对所有的比特设置相应的噪声模型。
 
 例如：
@@ -203,7 +208,7 @@ p0 表示重置到 :math:`\left|0\right\rangle`\ 的概率，p1表示重置到 :
 
         #include "QPanda.h"
 
-        int main(void)
+        int main()
         {
             NoiseQVM qvm;
             qvm.init();
@@ -231,7 +236,7 @@ p0 表示重置到 :math:`\left|0\right\rangle`\ 的概率，p1表示重置到 :
             auto result = qvm.runWithConfiguration(prog, c, 1000);
             for (auto &item : result)
             {
-                cout << item.first << " : " << item.second << endl;
+                std::cout << item.first << " : " << item.second << std::endl;
             }
 
             return 0;
