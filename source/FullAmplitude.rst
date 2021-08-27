@@ -148,7 +148,7 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             CPUQVM qvm;
             qvm.init();

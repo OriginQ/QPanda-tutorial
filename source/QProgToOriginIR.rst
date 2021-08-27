@@ -286,7 +286,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine();
 

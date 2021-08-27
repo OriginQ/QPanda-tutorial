@@ -13,7 +13,7 @@ pyqpanda封装了量子云虚拟机，可以向本源量子的计算服务器集
 .. image:: images/real.png
    :align: center
 
-.. image:: images/qvm.png
+.. image:: images/cloud.png
    :align: center
  
 .. toctree::

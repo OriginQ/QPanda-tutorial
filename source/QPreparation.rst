@@ -60,7 +60,7 @@
 	#include "QPanda.h"
 	USING_QPANDA
 
-	int main(void)
+	int main()
 	{
 		auto qvm = initQuantumMachine(CPU);
 		QVec qvec = qvm->qAllocMany(3);
@@ -76,7 +76,7 @@
 		// 输出结果
 		for (auto aiter : result)
 		{
-			cout << aiter.first << " : " << aiter.second << endl;
+			std::cout << aiter.first << " : " << aiter.second << std::endl;
 		}
 
 		return 0;

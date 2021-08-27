@@ -28,7 +28,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             //通过QCloudMachine创建量子云虚拟机
             QCloudMachine QCM;;
@@ -53,7 +53,7 @@
             auto result = QCM.real_chip_measure(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4，true,true);
             for (auto val : result)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
 
             auto result2 = QCM.get_state_tomography_density(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);

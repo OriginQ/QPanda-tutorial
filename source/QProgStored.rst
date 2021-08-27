@@ -59,7 +59,7 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine();
             auto qubits = qvm->qAllocMany(4);

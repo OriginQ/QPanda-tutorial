@@ -78,7 +78,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             // 单量子门有效性验证
             std::vector<std::string> single_gate;

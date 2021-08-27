@@ -146,13 +146,13 @@ Shor算法的量子线路图如下所示
 .. code-block:: c
 
    #include "QPanda.h"
-   using namespace QPanda;
+   USING_QPANDA
 
-   int main(void)
+   int main()
    {
-      int N = 15, factor_1, factor_2;
+      int N = 15;
       auto p = Shor_factorization(N);
-      cout << boolalpha << p.first << "," << p.second.first << "," << p.second.second << endl;
+      cout <<  p.first << "," << p.second.first << "," << p.second.second << endl;
 
       return 0;
    }
