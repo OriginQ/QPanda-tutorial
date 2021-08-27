@@ -5,12 +5,15 @@
 
 本源量子量子云平台经由调度服务器向部署在远程的量子计算机或计算集群提交任务，并接收返回的结果，流程如下图所示。
 
-.. image:: images/qcloud.gif
+.. image:: images/qcloud.png
    :align: center  
 
 pyqpanda封装了量子云虚拟机，可以向本源量子的计算服务器集群或量子真实芯片发送计算指令，并获取计算结果，在使用下文介绍的各种虚拟机之前，需要确保已开通对应的虚拟机产品。
 
-.. image:: images/products.png
+.. image:: images/real.png
+   :align: center
+
+.. image:: images/qvm.png
    :align: center
  
 .. toctree::
