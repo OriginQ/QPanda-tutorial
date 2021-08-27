@@ -26,7 +26,7 @@
 >>>>>>>>>>>>>>>>
 ----
 
-QPanda2中设计了 ``matrix_decompose`` 接口用于进行酉矩阵分解，该接口需要两个参数，
+QPanda2中设计了 ``matrix_decompose_qr`` 接口用于进行酉矩阵分解，该接口需要两个参数，
 第一个是使用到的所有量子比特，第二个是待分解的酉矩阵，该函数的输出是转换后的量子线路。
 
 实例
@@ -38,8 +38,8 @@ QPanda2中设计了 ``matrix_decompose`` 接口用于进行酉矩阵分解，该
 
     .. code-block:: c
   
-        #include "QPanda.h"
-        USING_QPANDA
+    #include "QPanda.h"
+    USING_QPANDA
 
         int main()
         {
@@ -57,8 +57,8 @@ QPanda2中设计了 ``matrix_decompose`` 接口用于进行酉矩阵分解，该
 
             std::cout << "source matrix:" << std::endl << source_matrix << std::endl;
 
-            QCircuit out_cir = matrix_decompose(q, source_matrix);
-            auto circuit_matrix = getCircuitMatrix(out_cir);
+        QCircuit out_cir = matrix_decompose_qr(q, source_matrix);
+        auto circuit_matrix = getCircuitMatrix(out_cir);
 
             std::cout << "the decomposed matrix:" << std::endl << circuit_matrix << std::endl;
 
@@ -68,6 +68,8 @@ QPanda2中设计了 ``matrix_decompose`` 接口用于进行酉矩阵分解，该
             }
             return 0;
         }
+        return 0;
+    }
 
 上述实例运行的结果如下：
 

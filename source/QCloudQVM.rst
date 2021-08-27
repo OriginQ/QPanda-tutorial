@@ -11,7 +11,8 @@
 
         int main()
         {
-            //通过QCloudMachine创建量子云虚拟机
+            /*需下载curl并将其加入环境变量
+            通过QCloudMachine创建量子云虚拟机*/
             QCloudMachine QCM;
 
             //通过传入当前用户的token来初始化
