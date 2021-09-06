@@ -111,6 +111,7 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
         **返回值**
             当前可变逻辑门的一份拷贝。
 
+
 下面将简要介绍各个可变量子逻辑门的构造方式
 
 .. cpp:class:: VariationalQuantumGate_H
