@@ -200,6 +200,7 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
 
 动态修改参数方法
 ----------
+
 若构造的VQC中含有变量参数，可以通过以下方法动态修改参数值，并生成对应的参数的普通量子逻辑门。
 
 （1）：setValue()，使用方法如下：
@@ -212,17 +213,59 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
 
     object = newValue;
 
+
+更新可变量子线路
+----------
+
+通过以下方法可以向可变量子线路中插入VQG或VQC
+
+（1）：insert()，使用方法如下：
+
+    object.insert(VQC);
+    
+    // or object.insert(VQG);
+
+（2）："<<"运算符插入，使用方法如下：
+
+
+    object << VQC;
+    
+    //or object << VQG;
+
+
+批量构造可变量子线路
+----------
+
+提供一组根据QVec批量构造可变量子线路的方法
+
+.. code-block:: cpp
+
+	QVec qvec = { q[0], q[1], q[2] };
+	VQC vqc;
+	vqc << VQG_H_batch(qvec);
+
+通过上述操作，可以构造一个含3个VQG_H的可变量子线路，在OriginIR层面上，构造的可变量子线路可以表示为：
+
+.. code-block:: cpp
+
+	 H q[0]
+	 H q[1]
+	 H q[2]
+
+在对应的可变量子逻辑门后加_batch,就可以批量构造对应VQG的VQC。
+
 实例
 ----------
 
 .. code-block:: cpp
+
 
     #include "QPanda.h"
     #include "Variational/var.h"
 
     int main()
     {
-        using namespace QPanda;
+	using namespace QPanda;
 	using namespace QPanda::Variational;
 
 	constexpr int qnum = 4;
@@ -242,36 +285,42 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
 	var ts(1.5);
 	ts = 1.8;
 
-	
+	QVec qvec = {q[0], q[1], q[2] };
 
-	VQC vqc;
-	vqc.insert(VQG_H(q[0]));
-	vqc.insert(VQG_T(q[0]));
-	vqc.insert(VQG_S(q[1]));
+	//QVec q
+	VariationalQuantumCircuit vqc;
+	vqc << VQG_H_batch(qvec);
+
+	vqc << VQG_I(q[0])
+	    << VQG_U1(q[1], ts)
+	    << VQG_H_batch(qvec)
+	    << VQG_S_batch(qvec)
+	    << VQG_I(q[0])
+	    << VQG_H(qvec)
+	    << VQG_T(q[0])
+	    << VQG_S(q[1])
+	    << VQG_X(q[2])
+	    << VQG_Y(q[1])
+	    << VQG_Z(q[2])
+
+	    << VQG_X1(q[2])
+	    << VQG_Y1(q[1])
+	    << VQG_Z1(q[2])
+
+	    << VQG_RPhi(q[0], ts, x)
+	    << VQG_U1_batch(qvec, ts)
+	    << VQG_U2_batch(qvec, PI, ts)
+	    << VQG_U3(q[2], PI, ts, x)
+	    << VQG_U4(q[2], PI, ts, x, x1)
+	    << VQG_RX(q[0], x1)
+	    << VQG_RY_batch(qvec, x2)
+	    << VQG_RZ(q[0], x1)
+	    << VQG_CZ(q[0], q[1])
+	    << VQG_CR(q[0], q[1], ts)
+	    << VQG_CNOT(q[0], q[1]);
 
 
-	vqc.insert(VQG_X(q[2]));
-	vqc.insert(VQG_Y(q[1]));
-	vqc.insert(VQG_Z(q[2]));
 
-	vqc.insert(VQG_X1(q[2]));
-	vqc.insert(VQG_Y1(q[1]));
-	vqc.insert(VQG_Z1(q[2]));
-
-	vqc.insert(VQG_RPhi(q[0], ts, x));
-	vqc.insert(VQG_U1(q[0], ts));
-	vqc.insert(VQG_U2(q[1], PI, PI/2));
-	vqc.insert(VQG_U3(q[2], PI, PI / 2, PI / 4));
-
-
-	//vqc.insert();
-
-	vqc.insert(VQG_RX(q[0], x1));
-	vqc.insert(VQG_RY(q[1], x2));
-	vqc.insert(VQG_RZ(q[0], 0.123));
-	vqc.insert(VQG_CZ(q[0], q[1]));
-	vqc.insert(VQG_CR(q[0], q[1], PI));
-	vqc.insert(VQG_CNOT(q[0], q[1]));
 
 	QCircuit circuit = vqc.feed();
 	QProg prog;
@@ -286,7 +335,7 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
 
 	x.setValue(m1);
 	y.setValue(m2);
-	
+
 	ts.setValue(3.145);
 	ts = 3.148;
 
@@ -305,46 +354,88 @@ VariationalQuantumGate_SqiSWAP        VQG_SqiSWAP
 
 
         QINIT 4
-        CREG 0
-        H q[0]
-        T q[0]
-        S q[1]
-        X q[2]
-        Y q[1]
-        Z q[2]
-        X1 q[2]
-        Y1 q[1]
-        Z1 q[2]
-        RPhi q[0],(1.8,1)
-        U1 q[0],(1.8)
-        U2 q[1],(3.1415927,1.5707963)
-        U3 q[2],(3.1415927,1.5707963,0.78539816)
-        RX q[0],(1.562)
-        RY q[1],(2.3658)
-        RZ q[0],(0.123)
-        CZ q[0],q[1]
-        CR q[0],q[1],(3.1415927)
-        CNOT q[0],q[1]
+	CREG 0
+	H q[0]
+	H q[1]
+	H q[2]
+	I q[0]
+	U1 q[1],(1.8)
+	H q[0]
+	H q[1]
+	H q[2]
+	S q[0]
+	S q[1]
+	S q[2]
+	I q[0]
+	H q[2]
+	T q[0]
+	S q[1]
+	X q[2]
+	Y q[1]
+	Z q[2]
+	X1 q[2]
+	Y1 q[1]
+	Z1 q[2]
+	RPhi q[0],(1.8,1)
+	U1 q[0],(1.8)
+	U1 q[1],(1.8)
+	U1 q[2],(1.8)
+	U2 q[0],(3.1415927,1.8)
+	U2 q[1],(3.1415927,1.8)
+	U2 q[2],(3.1415927,1.8)
+	U3 q[2],(3.1415927,1.8,1)
+	U4 q[2],(3.1415927,1.8,1,1.562)
+	RX q[0],(1.562)
+	RY q[0],(2.3658)
+	RY q[1],(2.3658)
+	RY q[2],(2.3658)
+	RZ q[0],(1.562)
+	CZ q[0],q[1]
+	CONTROL q[1]
+	RX q[0],(1.8)
+	ENDCONTROL
+	CNOT q[0],q[1]
 
-        QINIT 4
-        CREG 0
-        H q[0]
-        T q[0]
-        S q[1]
-        X q[2]
-        Y q[1]
-        Z q[2]
-        X1 q[2]
-        Y1 q[1]
-        Z1 q[2]
-        RPhi q[0],(3.148,3.3)
-        U1 q[0],(3.148)
-        U2 q[1],(3.1415927,1.5707963)
-        U3 q[2],(3.1415927,1.5707963,0.78539816)
-        RX q[0],(1.562)
-        RY q[1],(2.3658)
-        RZ q[0],(0.123)
-        CZ q[0],q[1]
-        CR q[0],q[1],(3.1415927)
-        CNOT q[0],q[1]
+	QINIT 4
+	CREG 0
+	H q[0]
+	H q[1]
+	H q[2]
+	I q[0]
+	U1 q[1],(3.148)
+	H q[0]
+	H q[1]
+	H q[2]
+	S q[0]
+	S q[1]
+	S q[2]
+	I q[0]
+	H q[2]
+	T q[0]
+	S q[1]
+	X q[2]
+	Y q[1]
+	Z q[2]
+	X1 q[2]
+	Y1 q[1]
+	Z1 q[2]
+	RPhi q[0],(3.148,3.3)
+	U1 q[0],(3.148)
+	U1 q[1],(3.148)
+	U1 q[2],(3.148)
+	U2 q[0],(3.1415927,3.148)
+	U2 q[1],(3.1415927,3.148)
+	U2 q[2],(3.1415927,3.148)
+	U3 q[2],(3.1415927,3.148,3.3)
+	U4 q[2],(3.1415927,3.148,3.3,1.562)
+	RX q[0],(1.562)
+	RY q[0],(2.3658)
+	RY q[1],(2.3658)
+	RY q[2],(2.3658)
+	RZ q[0],(1.562)
+	CZ q[0],q[1]
+	CONTROL q[1]
+	RX q[0],(3.148)
+	ENDCONTROL
+	CNOT q[0],q[1]
        
