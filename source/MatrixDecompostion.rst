@@ -36,7 +36,7 @@ QPanda2中设计了 ``matrix_decompose_qr`` 接口用于进行酉矩阵分解，
 .. _酉矩阵分解示例程序:
 以下示例展示了部分振幅量子虚拟机接口的使用方式
 
-    .. code-block:: c
+.. code-block:: c
   
     #include "QPanda.h"
     USING_QPANDA

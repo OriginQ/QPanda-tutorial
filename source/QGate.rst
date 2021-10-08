@@ -111,8 +111,7 @@
 .. tabularcolumns:: |m{0.1\textwidth}<{\centering}|c|c|
 
 .. list-table:: 
-   :align: center
-   :class: longtable 
+
 
    * - |I|                                                     
      - ``I``                     
@@ -172,9 +171,7 @@
 .. tabularcolumns:: |m{0.1\linewidth}<{\centering}|c|c|
 
 .. list-table:: 
-   :widths: auto
-   :align: center
-   :class: longtable 
+
 
    * - |CNOT|                                                      
      - ``CNOT``                  
