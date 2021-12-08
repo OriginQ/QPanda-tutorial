@@ -146,62 +146,39 @@ HHL算法的量子线路图如下所示
 
 .. code-block:: c
 
-   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm);
-   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b);  
+   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm, const uint32_t precision_cnt = 0);
+   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b, const uint32_t precision_cnt = 0);  
 
 第一个函数接口用于得到HHL算法对应的量子线路，第二个函数接口则可以输入QStat格式的矩阵和右端项，返还解向量。
+目前第一个函数接口返回的线路需要追加特殊后处理，得到的并不是直接求解的结果，一般推荐使用第二个函数接口HHL_solve_linear_equations。
 
 选取 :math:`A=\bigl(\begin{smallmatrix}
-3.75 & 2.25 & 1.25 &-0.75 \\ 
-2.25 &3.75  & 0.75 & -1.25\\ 
-1.25 & 0.75 & 3.75 &-2.25 \\ 
--0.75 & -1.25 & -2.25 &3.75 
-\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.5,0.5,0.5,0.5 \end{pmatrix}^T` ，
-验证HHL的代码实例如下
+1 & 0 \\ 
+0 & 1 \\  
+\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.6,0.8\end{pmatrix}^T` ，
+验证HHL的代码实例如下：
 
 .. code-block:: c
 
    #include "QPanda.h"
-   using namespace QPanda;
+   #include <Extensions\QAlg\HHL.h>
 
    int main(void)
    {
-      auto machine = initQuantumMachine(CPU);
-      auto prog = QProg();
+      std::vector<double> b = { 0.6,0.8 };
+      QStat A = { 1,0,0,1 };
 
-      QStat A = {
-      qcomplex_t(15.0 / 4.0, 0), qcomplex_t(9.0 / 4.0, 0), qcomplex_t(5.0 / 4.0, 0), qcomplex_t(-3.0 / 4.0, 0),
-      qcomplex_t(9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0),
-      qcomplex_t(5.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0),
-      qcomplex_t(-3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0)
-      };
-
-      std::vector<double> b = { 0.5, 0.5, 0.5, 0.5 };
-
-      QStat result = HHL_solve_linear_equations(A, b);
-      int w = 0;
-      double coffe = sqrt(340);
+      auto result = HHL_solve_linear_equations(A, b);
       for (auto& val : result)
       {
-         val *= coffe;
-         std::cout << val << " ";
-         if (++w == 2)
-         {
-               w = 0;
-               std::cout << std::endl;
-         }
+      std:cout << val << std::endl;
       }
-      std::cout << std::endl;
-
       return 0;
    }
 
-由理论推导可以知道HHL算法对此问题求得的近似解会有较大误差，经典解为 :math:`\frac{1}{32}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，
-近似解为 :math:`\frac{1}{\sqrt{340}}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，因此输出结果应当如下
+输出结果应该和右端项向量一样是 :math:`[0.6,0.8]`，虚数项参数为0。因为误差会出现较小的扰动：
 
 .. code-block:: c
 
-   -0.0542326
-   0.379628
-   0.596559
-   0.705024
+	(0.6,0)
+	(0.8,0)
