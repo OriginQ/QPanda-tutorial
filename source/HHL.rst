@@ -99,7 +99,7 @@ HHL算法相对于经典算法有着指数级的加速，但经典算法可以�
 
 .. math::
    \begin{aligned}
-   (\prod (CR(k)\otimes I))\sum_{N-1}^{j=0}b_j\left|0\right\rangle\left|\widetilde{\lambda_j}\right\rangle
+   (\prod (CR(k)\otimes I))\sum^{N-1}_{j=0}b_j\left|0\right\rangle\left|\widetilde{\lambda_j}\right\rangle
    \left|u_j\right\rangle=\sum_{j=0}^{N-1}{(\sqrt{1-\frac{C^2}{{\widetilde{\lambda_j}}^2}}\left|0\right\rangle
    +\frac{C}{\widetilde{\lambda_j}}\left|1\right\rangle)b_j\left|\widetilde{\lambda_j}\right\rangle\left|u_j\right\rangle}.
    \end{aligned}
@@ -146,17 +146,39 @@ HHL算法的量子线路图如下所示
 
 .. code-block:: c
 
-   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm);
-   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b);  
+   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm, const uint32_t precision_cnt = 0);
+   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b, const uint32_t precision_cnt = 0);  
 
 第一个函数接口用于得到HHL算法对应的量子线路，第二个函数接口则可以输入QStat格式的矩阵和右端项，返还解向量。
+目前第一个函数接口返回的线路需要追加特殊后处理，得到的并不是直接求解的结果，一般推荐使用第二个函数接口HHL_solve_linear_equations。
 
 选取 :math:`A=\bigl(\begin{smallmatrix}
-3.75 & 2.25 & 1.25 &-0.75 \\ 
-2.25 &3.75  & 0.75 & -1.25\\ 
-1.25 & 0.75 & 3.75 &-2.25 \\ 
--0.75 & -1.25 & -2.25 &3.75 
-\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.5,0.5,0.5,0.5 \end{pmatrix}^T` ，
-验证HHL的代码实例参考 `pyQPandaHHL算法示例 <https://pyqpanda-toturial.readthedocs.io/zh/latest/HHL.html>`_
+1 & 0 \\ 
+0 & 1 \\  
+\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.6,0.8\end{pmatrix}^T` ，
+验证HHL的代码实例如下：
 
+.. code-block:: c
 
+   #include "QPanda.h"
+   #include <Extensions\QAlg\HHL.h>
+
+   int main(void)
+   {
+      std::vector<double> b = { 0.6,0.8 };
+      QStat A = { 1,0,0,1 };
+
+      auto result = HHL_solve_linear_equations(A, b);
+      for (auto& val : result)
+      {
+      std:cout << val << std::endl;
+      }
+      return 0;
+   }
+
+输出结果应该和右端项向量一样是 :math:`[0.6,0.8]`，虚数项参数为0。因为误差会出现较小的扰动：
+
+.. code-block:: c
+
+	(0.6,0)
+	(0.8,0)
