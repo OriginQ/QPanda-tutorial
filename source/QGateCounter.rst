@@ -49,7 +49,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             init();
             auto qubits = qAllocMany(4);

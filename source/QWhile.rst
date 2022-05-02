@@ -64,7 +64,7 @@ C语言风格
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             init();
             QProg prog;
@@ -74,7 +74,8 @@ C语言风格
 
             // 构建QWhile的循环分支
             QProg prog_in;
-            prog_in << cvec[0] << H(qvec[cvec[0]]) << (cvec[0] = cvec[0]+1);
+            prog_in << BARRIER(qvec) << cvec[0] << H(qvec[cvec[0]]) 
+                    << (cvec[0] = cvec[0]+1);
             
             // 构建QWhile
             auto qwhile = createWhileProg(cvec[0]<3, prog_in);
@@ -94,7 +95,7 @@ C语言风格
             finalize();
             return 0;
         }
-
+        
 运行结果：
 
     .. code-block:: c

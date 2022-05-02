@@ -41,7 +41,7 @@ DECOHERENCE_KRAUS_OPERATOR是退相干噪声模型，为上述两种噪声模型
 
 :math:`P_{damping} = 1 - e^{-\frac{t_{gate}}{T_1}}, P_{dephasing} = 0.5 \times (1 - e^{-(\frac{t_{gate}}{T_2} - \frac{t_{gate}}{2T_1})})`
 
-:math:`K_1 = K_{1_{damping}}K_{1_{dephasing}}, K_2 = K_{1_{damping}}K_{2_{dephasing}},`
+:math:`K_1 = K_{1_{damping}}K_{1_{dephasing}}, K_2 = K_{1_{damping}}K_{2_{dephasing}}`
 
 :math:`K_3 = K_{2_{damping}}K_{1_{dephasing}}, K_4 = K_{2_{damping}}K_{2_{dephasing}}`
 
@@ -52,9 +52,9 @@ DEPOLARIZING_KRAUS_OPERATOR
 
 DEPOLARIZING_KRAUS_OPERATOR去极化噪声模型，即单量子比特有一定的概率被完全混合态I/2代替, 它的kraus算符和表示方法如下所示：
 
-:math:`K_1 = \sqrt{1 - 3p/4} × I, K_2 = \sqrt{p}/2 × X` 
+:math:`K_1 = \sqrt{1 - 3p/4} \times I, K_2 = \sqrt{p}/2 \times X` 
 
-:math:`K_3 = \sqrt{p}/2 × Y, K_4 = \sqrt{p}/2 × Z`
+:math:`K_3 = \sqrt{p}/2 \times Y, K_4 = \sqrt{p}/2 \times Z`
 
 其中I、X、Y、Z分别代表其量子逻辑门对应的矩阵
 
@@ -124,6 +124,11 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
         void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob)
         void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const QVec &qubits)
         void set_noise_model(const NOISE_MODEL &model, const GateType &type, double prob, const std::vector<QVec> &qubits)
+
+        //设置线路中所有GateType噪声
+        void set_noise_model(const NOISE_MODEL& model, const std::vector<GateType> &types, double prob)
+        void set_noise_model(const NOISE_MODEL &model, const std::vector<GateType> &types, double T1, double T2, double t_gate)
+        void set_noise_model(const NOISE_MODEL &model, const std::vector<GateType> &types, double T1, double T2,double t_gate, const QVec &qubits)
 
 第一个参数为噪声模型类型，第二个参数为量子逻辑门类型，第三个参数为噪声模型所需的参数, 第四个参数是对单个比特设置噪声参数（包含单门和双门），若没有第四个参数则对所有的比特设置相应的噪声模型。
 
@@ -203,7 +208,7 @@ p0 表示重置到 :math:`\left|0\right\rangle`\ 的概率，p1表示重置到 :
 
         #include "QPanda.h"
 
-        int main(void)
+        int main()
         {
             NoiseQVM qvm;
             qvm.init();
@@ -231,7 +236,7 @@ p0 表示重置到 :math:`\left|0\right\rangle`\ 的概率，p1表示重置到 :
             auto result = qvm.runWithConfiguration(prog, c, 1000);
             for (auto &item : result)
             {
-                cout << item.first << " : " << item.second << endl;
+                std::cout << item.first << " : " << item.second << std::endl;
             }
 
             return 0;

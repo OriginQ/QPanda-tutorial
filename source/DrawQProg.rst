@@ -26,7 +26,7 @@
     #include "QPanda.h"
     USING_QPANDA
 
-    int main(void)
+    int main()
     {
         auto qvm = initQuantumMachine(QMachineType::CPU);
         auto q = qvm->qAllocMany(3);
@@ -42,13 +42,8 @@
         cir2 << cir1 << CU(1, 2, 3, 4, q[0], q[2]) << S(q[2]) << CR(q[2], q[1], PI / 2);
         cir2.setDagger(true);
         prog << cir2 << MeasureAll(q, c);
-
-        // 量子程序字符画
-        std::string text_picture = draw_qprog(prog);
-
         // 打印字符画
-        std::cout << text_picture << std::endl;
-
+        std::cout << prog << std::endl;
         destroyQuantumMachine(qvm);
         return 0;
     }

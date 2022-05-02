@@ -9,9 +9,10 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
-            //通过QCloudMachine创建量子云虚拟机
+            /*需下载curl并将其加入环境变量
+            通过QCloudMachine创建量子云虚拟机*/
             QCloudMachine QCM;
 
             //通过传入当前用户的token来初始化
@@ -41,7 +42,7 @@
             auto result0 = QCM.full_amplitude_measure(measure_prog, 100);
             for (auto val : result0)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
             
             QCM.finalize();
@@ -59,7 +60,7 @@
             auto result0 = QCM.full_amplitude_measure(measure_prog, 100);
             for (auto val : result0)
             {
-                cout << val.first <<" : "<< val.second << endl;
+                std::cout << val.first <<" : "<< val.second << std::endl;
             }
         
         输出结果如下，左侧是量子态的二进制表示，右边表示测量次数对应的概率：
@@ -82,7 +83,7 @@
             auto result1 = QCM.full_amplitude_pmeasure(pmeasure_prog, { 0, 1, 2 });
             for (auto val : result1)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
 
         需要传入的第二个参数是测量的比特，输出结果如下，左侧是量子态的二进制表示，右边表示测量对应的概率：
@@ -108,7 +109,7 @@
             auto result2 = QCM.partial_amplitude_pmeasure(pmeasure_prog, { "0", "1", "2"});
             for (auto val : result2)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
         
         需要传入的第二个参数是测量的量子态振幅的十进制表示，输出结果如下，左侧是量子态振幅的十进制表示，右边表示复数形式的振幅值：
@@ -127,7 +128,7 @@
         .. code-block:: c
 
             auto result3 = QCM.single_amplitude_pmeasure(pmeasure_prog, "0");
-            cout << "0" << " : " << result3 << endl;
+            std::cout << "0" << " : " << result3 << std::endl;
         
         需要传入的第二个参数是测量的振幅（十进制表示），输出结果如下，只会输出一个量子态对应的复数形式的振幅值：
         
@@ -146,7 +147,7 @@
             auto result4 = QCM.noise_measure(measure_prog, 100);
             for (auto val : result4)
             {
-                cout << val.first << " : " << val.second << endl;
+                std::cout << val.first << " : " << val.second << std::endl;
             }
         
         通过 ``set_noise_model`` 设置噪声参数，第一个参数是噪声模型，后面分别是单门噪声参数和双门噪声参数，噪声模型的定义如下：

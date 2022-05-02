@@ -59,7 +59,7 @@
 
         USING_QPANDA
 
-        int main(void)
+        int main()
         {
             auto qvm = initQuantumMachine();
             QProg parseProg;

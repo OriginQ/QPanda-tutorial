@@ -13,15 +13,15 @@
 .. math::
 
    \begin{aligned}
-   y_k\rightarrow\frac{1}{\sqrt N}\mathrm{\Sigma}_{j=0}^{N-1}x_j \
-    e^{\frac{2\pi\ i}{N}jk},\\ \left|x\right\rangle\rightarrow \ 
-    \frac{1}{2^\frac{n}{2}}\Sigma_{k=0}^{2^n-1}e^{\frac{2\pi i}{2^n} \ 
-    xk}\left|k\right\rangle.
+     y_k\rightarrow\frac{1}{\sqrt N}\Sigma_{j=0}^{N-1}x_j \
+     e^{\frac{2\pi\ i}{N}jk},\\ \left|x\right\rangle\rightarrow \ 
+     \frac{1}{2^\frac{n}{2}}\Sigma_{k=0}^{2^n-1}e^{\frac{2\pi i}{2^n} \ 
+     xk}\left|k\right\rangle.
    \end{aligned}
 
-由定义可知，空间 :math:`span\{\left|x\right\rangle\}` 中的某个向量 :math:`\mathrm{\Sigma}_x\alpha_x\left|x\right\rangle` \
+由定义可知，空间 :math:`span\{\left|x\right\rangle\}` 中的某个向量 :math:`\Sigma_x\alpha_x\left|x\right\rangle` \
 通过傅里叶变换可以表示为另一个等价空间 :math:`span\{\left|k\right\rangle\}` 中基向量的线性组合\
-:math:`\mathrm{\Sigma}_k\beta_k\left|k\right\rangle`, 且线性组合的系数 :math:`\beta_k` 由\
+:math:`\Sigma_k\beta_k\left|k\right\rangle`, 且线性组合的系数 :math:`\beta_k` 由\
 :math:`\left|x\right\rangle` 和 :math:`\alpha_x` 决定。
 
 .. note:: 量子傅里叶变换/逆变换，实质上可以视为一种振幅和基向量的相互转化。
@@ -34,15 +34,15 @@
 QFT的求和形式与张量积形式
 ----
 
-对任给整数 :math:`x` ，由二进制展开 :math:`k=\mathrm{\Sigma}_{i=1}^nk_i2^{n-i}`，对\
+对任给整数 :math:`x` ，由二进制展开 :math:`k=\Sigma_{i=1}^nk_i2^{n-i}`，对\
 :math:`\left|x\right\rangle` 进行量子傅里叶变换的结果可表示为
 
 .. math::
    \begin{aligned}
-   & QFT(\left|x\right\rangle)=\frac{1}{2^\frac{n}{2}}\mathrm{\Sigma}_{k=0}^{2^n-1}e^\frac{2\pi ixk}{2^n} \ 
-   \left|k\right\rangle=\frac{1}{2^\frac{n}{2}}\mathrm{\Sigma}_{k_1=0}^1\cdots\mathrm{\Sigma}_{k_n=0}^1 \ 
-   e^{2\pi ixk\left(\mathrm{\Sigma}_{l=1}^nk_l2^{-l}\right)}\left|k_1\cdots k_n\right\rangle \\ 
-   & =\frac{1}{2^\frac{n}{2}}\mathrm{\Sigma}_{k_1=0}^1\cdots\mathrm{\Sigma}_{k_n=0}^1\otimes_{l=1}^n 
+   & QFT(\left|x\right\rangle)=\frac{1}{2^\frac{n}{2}}\Sigma_{k=0}^{2^n-1}e^\frac{2\pi ixk}{2^n} \ 
+   \left|k\right\rangle=\frac{1}{2^\frac{n}{2}}\Sigma_{k_1=0}^1\cdots\Sigma_{k_n=0}^1 \ 
+   e^{2\pi ixk\left(\Sigma_{l=1}^nk_l2^{-l}\right)}\left|k_1\cdots k_n\right\rangle \\ 
+   & =\frac{1}{2^\frac{n}{2}}\Sigma_{k_1=0}^1\cdots\Sigma_{k_n=0}^1\otimes_{l=1}^n 
    e^{2\pi ix k_l2^{-l}} \left|k_l\right\rangle=\frac{1}{2^\frac{n}{2}}\otimes_{l=1}^n(\left|0\right\rangle+e^{2\pi ix2^{-l}} \ 
    \left|1\right\rangle).
    \end{aligned}
@@ -119,9 +119,9 @@ QFT在一维情况就是Hadamard量子门。
 .. code-block:: c
 
    #include "QPanda.h"
-   using namespace QPanda;
+   USING_QPANDA
 
-   int main(void)
+   int main()
    {
       auto qvm = initQuantumMachine(CPU);
       // 申请寄存器并初始化
@@ -139,7 +139,7 @@ QFT在一维情况就是Hadamard量子门。
       // 输出结果
       for (auto aiter : result)
       {
-         cout << aiter.first << " : " << aiter.second << endl;
+         std::cout << aiter.first << " : " << aiter.second << std::endl;
       }
 
       return 0;
