@@ -336,7 +336,7 @@ visual studio 2017 下链接QPanda库需要配置QPanda的头文件地址和QPan
  .. image:: images/MT.png
     :align: center 
 
-5. 设置库目录 ,选中链接器 -> 常规 -> 附加库目录，只需要设置lib路径卫：${QPanda的安装路径}/lib
+5. 设置库目录 ,选中链接器 -> 常规 -> 附加库目录，只需要设置lib路径为：${QPanda的安装路径}/lib
  
  .. image:: images/LibPath.png
     :align: center 
