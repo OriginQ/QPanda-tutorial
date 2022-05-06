@@ -6,29 +6,23 @@
 简介
 --------------
 
-已知每个量子逻辑门在运行时所需时间的条件下，估算一个量子程序运行所需要的时间。每个量子逻辑门的时间设置在项目的元数据配置文件 ``QPandaConfig.xml`` 中，
+已知每个量子逻辑门在运行时所需时间的条件下，估算一个量子程序运行所需要的时间。每个量子逻辑门的时间设置在项目的元数据配置文件 ``QPandaConfig.json`` 中，
 如果未设置则会给定一个默认值，单量子门的默认时间为2，双量子门的时间为5。
 
 配置文件可仿照下面设置
 ***********************
 
-.. code-block:: xml
+.. code-block:: json
 
-    <QGate>
-        <SingleGate>
-            <Gate time = "2">rx</Gate>
-            <Gate time = "2">Ry</Gate>
-            <Gate time = "2">RZ</Gate>
-            <Gate time = "2">S</Gate>
-            <Gate time = "2">H</Gate>
-            <Gate time = "2">X1</Gate>
-        </SingleGate>
-        <DoubleGate>
-            <Gate time = "5">CNOT</Gate>
-            <Gate time = "5">CZ</Gate>
-            <Gate time = "5">ISWAP</Gate>
-        </DoubleGate>
-    </QGate>
+    "QGate": {
+        "SingleGate": {
+        "U3": { "time": 2 }
+        },
+        "DoubleGate": {
+        "CNOT": { "time": 5 },
+        "CZ": { "time": 5 }
+        }
+    },
 
 接口介绍
 --------------
@@ -37,8 +31,8 @@
 
     .. code-block:: c
           
-        auto qubits = qvm->qAllocMany(4);
-        auto prog = createEmptyQProg();
+        auto qubits = qvm.qAllocMany(4);
+        auto prog = QProg();
         prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
                 << iSWAP(qubits[1], qubits[2]) << RX(qubits[3], PI/4);
 
@@ -64,23 +58,22 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
-            auto qvm = initQuantumMachine();
-            auto qubits = qvm->qAllocMany(4);
-            auto prog = createEmptyQProg();
+            auto qvm = CPUQVM();
+            qvm.init();
+            auto qubits = qvm.qAllocMany(4);
+            auto prog = QProg();
 
             // 构建量子程序
-            prog << H(qubits[0]) 
+            prog << H(qubits[0])
                 << CNOT(qubits[0], qubits[1])
-                << iSWAP(qubits[1], qubits[2]) 
-                << RX(qubits[3], PI/4);
+                << iSWAP(qubits[1], qubits[2])
+                << RX(qubits[3], PI / 4);
 
             // 统计量子程序时钟周期
-            auto time = getQProgClockCycle(prog, qvm);
-            
+            auto time = getQProgClockCycle(prog, &qvm);
             std::cout << "clockCycle : " << time << std::endl;
-            destroyQuantumMachine(qvm);
 
             return 0;
         }
@@ -89,5 +82,5 @@
 
     .. code-block:: c
 
-        clockCycle : 12
+        clockCycle : 8
     

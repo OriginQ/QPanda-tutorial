@@ -75,8 +75,8 @@
 
 .. code-block:: cpp
 
-    #include "Optimizer/AbstractOptimizer.h"
-    #include "Optimizer/OptimizerFactory.h"
+    #include "Components/Optimizer/AbstractOptimizer.h"
+    #include "Components/Optimizer/OptimizerFactory.h"
     #include <iostream>
 
     int main()

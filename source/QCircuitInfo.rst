@@ -15,11 +15,12 @@
     #include "QPanda.h"
     USING_QPANDA
 
-    int main()
+    int main(void)
     {
-        auto qvm = initQuantumMachine(QMachineType::CPU);
-        auto q = qvm->qAllocMany(2);
-        auto c = qvm->cAllocMany(2);
+        auto qvm = CPUQVM();
+        avm.init()
+        auto q = qvm.qAllocMany(2);
+        auto c = qvm.cAllocMany(2);
 
         // 构建量子线路
         QCircuit cir;
@@ -33,15 +34,14 @@
         // 打印矩阵信息
         std::cout << cir_matrix << std::endl;
 
-        destroyQuantumMachine(qvm);
         return 0;
     }
 
 
 具体步骤如下:
 
-1. 首先在主程序中用 initQuantumMachine()
-   初始化一个量子虚拟机对象，用于管理后续一系列行为
+1. 首先在主程序中用 CPUQVN() 生成一个虚拟机
+   再初始化这个虚拟机，用于管理后续一系列行为
 2. 接着用 qAllocMany() 和 cAllocMany()初始化量子比特与经典寄存器数目
 3. 然后构建量子线路 cir
 4. 最后调用接口 getCircuitMatrix() 输出量子线路的对应矩阵，并打印矩阵
@@ -94,9 +94,10 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
     USING_QPANDA
     int main(void)
     {
-        auto qvm = initQuantumMachine(QMachineType::CPU);
-        auto q = qvm->qAllocMany(4);
-        auto c = qvm->cAllocMany(4);
+        auto qvm = CPUQVM();
+        qvm.init()
+        auto q = qvm.qAllocMany(4);
+        auto c = qvm.cAllocMany(4);
         QProg prog;
 
         // 构建量子程序
@@ -121,7 +122,6 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
         std::cout << "The previous node type : " << node_iter_vector[0].m_node_type << std::endl;
         std::cout << "The node type that follows :" << node_iter_vector[1].m_node_type << std::endl;
 
-        destroyQuantumMachine(qvm);
         return 0;
     }
 
@@ -163,9 +163,10 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
     USING_QPANDA
     int main(void)
     {
-        auto qvm = initQuantumMachine(QMachineType::CPU);
-        auto q = qvm->qAllocMany(4);
-        auto c = qvm->cAllocMany(4);
+        auto qvm = CPUQVM();
+        qvm.init();
+        auto q = qvm.qAllocMany(4);
+        auto c = qvm.cAllocMany(4);
         QProg prog;
 
         // 构建量子程序
@@ -192,7 +193,6 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
         else
             std::cout << "is not swappable! " << std::endl;
 
-        destroyQuantumMachine(qvm);
         return 0;
     }
 
@@ -200,7 +200,7 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 判断逻辑门是否属于量子芯片支持的量子逻辑门集合
 ==============================================
 
-量子芯片支持的量子逻辑门集合可在元数据配置文件QPandaConfig.xml
+量子芯片支持的量子逻辑门集合可在元数据配置文件QPandaConfig.json
 中配置。如果我们没有设置配置文件，QPanda会默认设置一个默认量子逻辑门集合。
 
 默认集合如下所示：
@@ -222,21 +222,22 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 
 ::
 
-    <QGate>
-        <SingleGate>
-            <Gate time = "2">rx</Gate>
-            <Gate time = "2">Ry</Gate>
-            <Gate time = "2">RZ</Gate>
-            <Gate time = "2">S</Gate>
-            <Gate time = "2">H</Gate>
-            <Gate time = "2">X1</Gate>
-        </SingleGate>
-        <DoubleGate>
-            <Gate time = "5">CNOT</Gate>
-            <Gate time = "5">CZ</Gate>
-            <Gate time = "5">ISWAP</Gate>
-        </DoubleGate>
-    </QGate>
+
+    "QGate": {
+        "SingleGate": {
+        "RX": { "time": 2 },
+        "RY": { "time": 2 },
+        "RZ": { "time": 2 },
+        "S":  { "time": 2 },
+        "H":  { "time": 2 },
+        "X1": { "time": 2 },
+        },
+        "DoubleGate": {
+        "CNOT":  { "time": 5 },
+        "CZ":    { "time": 5 },
+        "ISWAP": { "time": 5 },
+        }
+    },  
 
 从上面的示例中我们可以得到，量子芯片支持RX，RY，RZ，S，H，X1，CNOT，CZ，ISWAP门。在配置文件配置完成后，我们可以调用接口isSupportedGateType，判断逻辑门是否属于量子芯片支持的量子逻辑门集合。isSupportedGateType接口只有一个参数：目标量子逻辑门；
 
@@ -247,8 +248,9 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
 
     int main(void)
     {
-        auto qvm = initQuantumMachine();
-        auto q = qvm->qAllocMany(5);
+        auto qvm = CPUQVM();
+        qvm.init();
+        auto q = qvm.qAllocMany(5);
         QProg prog;
 
         // 构建待判断的逻辑门
@@ -262,8 +264,7 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
         else
             std::cout << "Gate type is not supported !";
 
-        destroyQuantumMachine(qvm);
         return 0;
     }
 
-.. note:: 用户可通过如下链接地址获取默认配置文件 `QPandaConfig.xml <https://github.com/OriginQ/QPanda-2/blob/master/QPandaConfig.xml>`_ , 将该默认配置文件放在执行程序同级目录下，可执行程序会自动解析该文件。
+.. note:: 用户可通过如下链接地址获取默认配置文件 `QPandaConfig.json <https://github.com/OriginQ/QPanda-2/blob/master/CMakeSettings.json>`_ , 将该默认配置文件放在执行程序同级目录下，可执行程序会自动解析该文件。

@@ -25,7 +25,7 @@ CZ(1,0)
     #include "QPanda.h"
     USING_QPANDA
 
-    int main()
+    int main(void)
     {
         auto qvm = initQuantumMachine();
         auto q = qvm->qAllocMany(5);

@@ -15,8 +15,8 @@
 
     .. code-block:: c
           
-        auto qubits = qAllocMany(4);
-        auto cbits = cAllocMany(4);
+        auto qubits = qvm.qAllocMany(4);
+        auto cbits = qvm.cAllocMany(4);
 
         QProg prog;
         prog << X(qubits[0])
@@ -49,11 +49,12 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
-            init();
-            auto qubits = qAllocMany(4);
-            auto cbits = cAllocMany(4);
+            auto qvm = CPUQVM();
+            qvm.init();
+            auto qubits = qvm.qAllocMany(4);
+            auto cbits = qvm.cAllocMany(4);
 
             QProg prog;
 
@@ -68,7 +69,6 @@
             size_t num = getQGateNum(prog);
 
             std::cout << "QGate number: " << num << std::endl;
-            finalize();
             return;
         }
 
@@ -76,12 +76,8 @@
 
     .. code-block:: c
 
-        QGate number: 5
+        QGate number: 4
 
-.. warning:: 
-        新版本中接口名有所调整，旧接口 ``getQGateNumber()`` 将由 ``getQGateNum()`` 替代。\
-      
-        ``getQGateNumber()`` 将于下版本去除，请读者知悉。
 
 
     

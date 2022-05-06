@@ -198,8 +198,7 @@
 
 .. code-block:: cpp
 
-    #include "QPanda.h"
-    USING_QPANDA
+    #include "Variational/var.h"
 
     int main()
     {

@@ -5,7 +5,6 @@
 通过该功能模块，你可以解析通过QPanda2构建的量子程序，将其中包含的量子比特信息以及量子逻辑门操作信息提取出来，得到按固定格式存储的QASM指令集。
 
 .. _QASM介绍:
-
 .. _IBM Q Experience量子云平台: https://quantumexperience.ng.bluemix.net/qx/editor
 
 QASM介绍
@@ -58,15 +57,16 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
-            auto qvm = initQuantumMachine();
+            auto qvm = CPUQVM();
+            qvm.init();
 
-            auto prog = createEmptyQProg();
-            auto cir = createEmptyCircuit();
+            auto prog = QProg();
+            auto cir = Circuit();
 
-            auto q = qvm->qAllocMany(6);
-            auto c = qvm->cAllocMany(6);
+            auto q = qvm.qAllocMany(6);
+            auto c = qvm.cAllocMany(6);
 
             // 构建量子程序
             cir << Y(q[2]) << H(q[2]);
@@ -84,17 +84,18 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
             // 量子程序转换QASM，并打印QASM
             std::cout << convert_qprog_to_qasm(prog,qvm);
 
-            destroyQuantumMachine(qvm);
             return 0;
         }
 
 具体步骤如下:
 
- - 首先在主程序中用 ``initQuantumMachine()`` 初始化一个量子虚拟机对象，用于管理后续一系列行为
+ - 首先在主程序中用 ``CPUQVM()`` 初始化一个量子虚拟机对象，用于管理后续一系列行为
+
+ - 然后调用init()函数来初始化虚拟机
 
  - 接着用 ``qAllocMany()`` 和 ``cAllocMany()`` 初始化量子比特与经典寄存器数目
 
- - 然后调用 ``createEmptyQProg()`` 构建量子程序
+ - 然后调用 ``QProg()`` 构建量子程序
 
  - 最后调用接口 ``convert_qprog_to_qasm`` 输出QASM指令集并用 ``destroyQuantumMachine`` 释放系统资源
 
@@ -127,6 +128,3 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
         measure q[3] -> c[3];
         measure q[4] -> c[4];
         measure q[5] -> c[5];
-
-.. warning:: 
-        新增接口 ``convert_qprog_to_qasm()`` ，与老版本接口 ``transformQProgToQASM()`` 功能相同。

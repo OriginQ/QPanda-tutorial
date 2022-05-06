@@ -12,14 +12,14 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
+# import os
+# import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'QPanda-2'
+project = 'QPanda'
 copyright = '2019, OriginQC'
 author = 'OriginQC'
 
@@ -28,26 +28,26 @@ version = ''
 # The full version, including alpha/beta/rc tags
 release = ''
 
-# latex_engine = "xelatex"
-# latex_elements = {
-#     'papersize': 'a4paper',
-#     'utf8extra': '',
-#     'inputenc': '',
-#     'cmappkg': '',
-#     'fontenc': '',
-#     'figure_align':'htbp',
-#     'extraclassoptions': 'openany,oneside',
-#     'preamble': r'''
-#         \usepackage[draft]{minted}
-#         \fvset{breaklines=true}
-#         \usepackage{xeCJK}
-#         \parindent 2em
-#         \setcounter{tocdepth}{3}
-#         \renewcommand\familydefault{\ttdefault}
-#         \renewcommand\CJKfamilydefault{\CJKrmdefault}
-#         \sphinxtableofcontents
-#     ''',
-# }
+latex_engine = "xelatex"
+latex_elements = {
+    'papersize': 'a4paper',
+    'utf8extra': '',
+    'inputenc': '',
+    'cmappkg': '',
+    'fontenc': '',
+    'figure_align':'htbp',
+    'preamble': r'''
+        \usepackage[draft]{minted}
+        \fvset{breaklines=true}
+        \usepackage{xeCJK}
+        \parindent 2em
+        \setcounter{tocdepth}{3}
+        \renewcommand\familydefault{\ttdefault}
+        \renewcommand\CJKfamilydefault{\CJKrmdefault}
+        \sphinxtableofcontents
+        'extraclassoptions': 'openany,oneside',
+    ''',
+}
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -125,37 +125,37 @@ html_static_path = ['.static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'QPanda-2 Introduction'
+htmlhelp_basename = 'QPandaintroductiondoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
-# latex_engine = 'xelatex'
-# latex_elements = {
-#     # The paper size ('letterpaper' or 'a4paper').
-#     #
-#     # 'papersize': 'letterpaper',
+latex_engine = 'xelatex'
+latex_elements = {
+    # The paper size ('letterpaper' or 'a4paper').
+    #
+    # 'papersize': 'letterpaper',
 
-#     # The font size ('10pt', '11pt' or '12pt').
-#     #
-#     # 'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #
+    # 'pointsize': '10pt',
 
-#     'fncychap' : '',
+    'fncychap' : '',
 
-#     # Additional stuff for the LaTeX preamble.
-#     #
-#     'preamble': r'''\usepackage{ctex}
-#     ''',
+    # Additional stuff for the LaTeX preamble.
+    #
+    'preamble': r'''\usepackage{ctex}
+    ''',
 
-#     # Latex figure (float) alignment
-#     #
-#     # 'figure_align': 'htbp',
-# }
+    # Latex figure (float) alignment
+    #
+    # 'figure_align': 'htbp',
+}
 
 # # Grouping the document tree into LaTeX files. List of tuples
 # # (source start file, target name, title,
 # #  author, documentclass [howto, manual, or own class]).
 # latex_documents = [
-#     (root_doc, 'QPanda2introduction.tex', 'QPanda2 Introduction',
+#     (root_doc, 'pyQPandaintroduction.tex', 'pyQPanda Introduction ',
 #      'OriginQC', 'manual'),
 # ]
 
@@ -165,7 +165,7 @@ htmlhelp_basename = 'QPanda-2 Introduction'
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (root_doc, 'qpanda2introduction', 'QPanda2 Introduction',
+    (root_doc, 'QPandaintroduction', 'QPanda Introduction',
      [author], 1)
 ]
 
@@ -176,8 +176,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (root_doc, 'QPanda2introduction', 'QPanda2 Introduction',
-     author, 'QPanda2introduction', 'One line description of project.',
+    (root_doc, 'QPandaintroduction', 'QPanda introduction',
+     author, 'QPandaintroduction', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -211,65 +211,65 @@ epub_exclude_files = ['search.html']
 #pdf_compressed = False
  
 # A colon-separated list of folders to search for fonts. Example:
-# pdf_font_path = ['C:\\Windows\\Fonts']
+pdf_font_path = ['C:\\Windows\\Fonts']
  
-# # Language to be used for hyphenation support
+# Language to be used for hyphenation support
 # pdf_language = "zh_CN"
  
-# # Mode for literal blocks wider than the frame. Can be
-# # overflow, shrink or truncate
-# pdf_fit_mode = "shrink"
+# Mode for literal blocks wider than the frame. Can be
+# overflow, shrink or truncate
+pdf_fit_mode = "shrink"
  
-# # Section level that forces a break page.
-# # For example: 1 means top-level sections start in a new page
-# # 0 means disabled
-# #pdf_break_level = 0
+# Section level that forces a break page.
+# For example: 1 means top-level sections start in a new page
+# 0 means disabled
+#pdf_break_level = 0
  
-# # When a section starts in a new page, force it to be 'even', 'odd',
-# # or just use 'any'
-# pdf_breakside = 'any'
+# When a section starts in a new page, force it to be 'even', 'odd',
+# or just use 'any'
+#pdf_breakside = 'any'
  
-# # Insert footnotes where they are defined instead of
-# # at the end.
-# #pdf_inline_footnotes = True
+# Insert footnotes where they are defined instead of
+# at the end.
+#pdf_inline_footnotes = True
  
-# # verbosity level. 0 1 or 2
-# #pdf_verbosity = 0
+# verbosity level. 0 1 or 2
+#pdf_verbosity = 0
  
-# # If false, no index is generated.
-# #pdf_use_index = True
+# If false, no index is generated.
+#pdf_use_index = True
  
-# # If false, no modindex is generated.
-# #pdf_use_modindex = True
+# If false, no modindex is generated.
+#pdf_use_modindex = True
  
-# # If false, no coverpage is generated.
-# #pdf_use_coverpage = True
+# If false, no coverpage is generated.
+#pdf_use_coverpage = True
  
-# # Documents to append as an appendix to all manuals.
-# #pdf_appendices = []
+# Documents to append as an appendix to all manuals.
+#pdf_appendices = []
  
-# # Enable experimental feature to split table cells. Use it
-# # if you get "DelayedTable too big" errors
-# #pdf_splittables = False
+# Enable experimental feature to split table cells. Use it
+# if you get "DelayedTable too big" errors
+#pdf_splittables = False
  
-# # Set the default DPI for images
-# pdf_default_dpi = 300
+# Set the default DPI for images
+#pdf_default_dpi = 72
  
-# # Enable rst2pdf extension modules (default is only vectorpdf)
-# # you need vectorpdf if you want to use sphinx's graphviz support
-# #pdf_extensions = ['vectorpdf']
+# Enable rst2pdf extension modules (default is only vectorpdf)
+# you need vectorpdf if you want to use sphinx's graphviz support
+#pdf_extensions = ['vectorpdf']
  
-# # Page template name for "regular" pages
-# #pdf_page_template = 'cutePage'
+# Page template name for "regular" pages
+#pdf_page_template = 'cutePage'
  
-# # Show Table Of Contents at the beginning?
-# # pdf_use_toc = False
+# Show Table Of Contents at the beginning?
+# pdf_use_toc = False
  
-# # How many levels deep should the table of contents be?
-# pdf_toc_depth = 2
+# How many levels deep should the table of contents be?
+pdf_toc_depth = 2
  
-# # Add section number to section references
-# pdf_use_numbered_links = False
+# Add section number to section references
+pdf_use_numbered_links = False
  
-# # Background images fitting mode
-# pdf_fit_background_mode = 'scale'
+# Background images fitting mode
+pdf_fit_background_mode = 'scale'

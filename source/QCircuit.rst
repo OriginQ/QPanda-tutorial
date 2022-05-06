@@ -15,7 +15,7 @@
 
 在目前的量子计算理论研究中，各种量子算法常用量子线路表示，比如下方列出的量子算法中的 ``HHL算法`` 量子线路图。
 
-.. image:: images/hhl.png
+.. image:: images/_hhl.png
    :align: center   
 
 .. _api_introduction:
@@ -32,17 +32,6 @@ C++风格
 
         QCircuit cir = QCircuit();
 
-C语言风格
-
-    .. code-block:: c
-
-        QCircuit cir = CreateEmptyCircuit();
-
-或
-
-    .. code-block:: c
-
-        QCircuit cir = createEmptyCircuit();
 
 你可以通过如下方式向QCircuit尾部填充节点
 
@@ -53,7 +42,7 @@ C语言风格
 
 QGate是量子逻辑门类型。
 
-同时，你也可以对目标线路施加装置共轭和受控操作，QCircuit类型有两个成员函数可以做转置共轭操作：
+同时，你也可以对目标线路施加转置共轭和受控操作，QCircuit类型有两个成员函数可以做转置共轭操作：
 dagger、setDagger。
 
 setDagger的作用是根据输入参数更新当前量子线路的dagger标记，在计算时计算后端会根据dagger判断当前量子逻辑门是否需要执行转置共轭操作。举个例子：
@@ -110,11 +99,12 @@ control的作用是复制当前的量子线路，并给复制的量子线路添�
 
         int main(void)
         {
-            init();
-            auto qvec = qAllocMany(4);
-            auto cbits = cAllocMany(4);
-            auto circuit = createEmptyCircuit(); 
-            auto prog = createEmptyQProg();
+            auto qvm = CPUQVM();
+            qvm.init();
+            auto qvec = qvm.qAllocMany(4);
+            auto cbits = qvm.cAllocMany(4);
+            auto circuit = QCircuit(); 
+            auto prog = QProg();
 
             // 构建量子线路
             circuit << H(qvec[0]) << CNOT(qvec[0], qvec[1])
@@ -127,7 +117,7 @@ control的作用是复制当前的量子线路，并给复制的量子线路添�
             prog << H(qvec[3]) << circuit << Measure(qvec[0], cbits[0]);
 
             // 量子程序运行1000次，并返回测量结果
-            auto result = runWithConfiguration(prog, cbits, 1000);
+            auto result = qvm.runWithConfiguration(prog, cbits, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
@@ -135,7 +125,6 @@ control的作用是复制当前的量子线路，并给复制的量子线路添�
                 std::cout << val.first << ", " << val.second << std::endl;
             }
 
-            finalize();
             return 0;
         }
 
@@ -143,9 +132,5 @@ control的作用是复制当前的量子线路，并给复制的量子线路添�
 
     .. code-block:: c
 
-        0000, 510
-        1000, 490
-
-.. warning::
-
-    ``CreateEmptyCircuit`` 接口在后续的版本中会被舍弃。
+        0000, 490
+        0001, 510

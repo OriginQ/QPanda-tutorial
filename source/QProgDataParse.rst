@@ -59,7 +59,7 @@
 
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
             auto qvm = initQuantumMachine();
             QProg parseProg;
@@ -109,8 +109,3 @@
         14, 0
 
 .. note:: 可以运行出正确的结果说明可以将序列化的量子程序正确的解析出来
-
-
-.. warning:: 
-        新增接口 ``convert_binary_data_to_qprog()`` ，与老版本接口 ``transformBinaryDataToQProg()`` 功能相同。
-

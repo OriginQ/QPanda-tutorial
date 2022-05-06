@@ -59,7 +59,7 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
             auto qvm = initQuantumMachine();
             auto qubits = qvm->qAllocMany(4);
@@ -92,6 +92,3 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
     
 .. note:: 二进制数据不能直接输出，以base64的编码格式编码，得到相应的字符串
 
-
-.. warning:: 
-        新增接口 ``convert_qprog_to_binary()`` ，与老版本接口 ``transformQProgToBinary()`` 功能相同。
