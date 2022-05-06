@@ -31,12 +31,12 @@
 判断量子门有效性的方法
 --------------------------
 
-判断量子门有效性是由 ``SingleGateTypeValidator`` 和 ``DoubleGateTypeValidator`` 两个类实现的。下面分别对这两个类中的接口介绍。
+判断量子门有效性是由 ``validateSingleQGateType`` 和 ``validateDoubleQGateType`` 两个类实现的。下面分别对这两个类中的接口介绍。
 
 接口介绍
 ---------------
 
-``SingleGateTypeValidator`` 是验证单量子逻辑门有效性的工具类，使用方式如下：
+``validateSingleQGateType`` 是验证单量子逻辑门有效性的工具类，使用方式如下：
 
     .. code-block:: c
 
@@ -45,7 +45,7 @@
         single_gate.push_back("T");
         single_gate.push_back("H");
         single_gate.push_back("S");
-        auto single_gate_type = SingleGateTypeValidator::GateType(single_gate, valid_single_gate); // 得到有效的量子逻辑门组合，和有效组合的类型
+        auto single_gate_type = validateSingleQGateType(single_gate, valid_single_gate); // 得到有效的量子逻辑门组合，和有效组合的类型
 
 使用QPanda2封装的接口：
 
@@ -53,7 +53,7 @@
           
         auto single_gate_type = validateSingleQGateType(double_gate, valid_double_gate);
 
-``DoubleGateTypeValidator`` 是验证双量子逻辑门有效性的工具类，使用方式如下：
+``validateDoubleQGateType()`` 是验证双量子逻辑门有效性的工具类，使用方式如下：
 
     .. code-block:: c
 
@@ -62,7 +62,7 @@
         double_gate.push_back("CNOT");
         double_gate.push_back("SWAP");
         double_gate.push_back("CZ");
-        auto double_gate_type = DoubleGateTypeValidator::GateType(double_gate, valid_double_gate); // 得到有效的量子逻辑门组合，和有效组合的类型
+        auto double_gate_type = validateDoubleQGateType(double_gate, valid_double_gate); // 得到有效的量子逻辑门组合，和有效组合的类型
 
 使用QPanda2封装的接口：
 
@@ -78,7 +78,7 @@
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
             // 单量子门有效性验证
             std::vector<std::string> single_gate;
@@ -123,14 +123,7 @@
     .. code-block:: c
 
         SingleGateTransferType: 3
-        T H 
+        T H
         doubleGateTransferType: 0
-        CNOT 
+        CNOT SWAP CZ
 
-
-
-.. warning:: 
-        新版本中接口名有所调整，旧接口 ``SingleGateTypeValidator::GateType()`` 和 ``DoubleGateTypeValidator::GateType()`` 
-        分别由新接口 ``validateSingleQGateType()`` 和 ``validateDoubleQGateType()`` 替代。\
-
-        ``SingleGateTypeValidator::GateType()`` 和 ``DoubleGateTypeValidator::GateType()``  将于下版本去除，请读者知悉。

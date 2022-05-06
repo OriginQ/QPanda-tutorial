@@ -19,15 +19,6 @@ C++风格
         QIfProg qif = QIfProg(ClassicalCondition, QProg);
         QIfProg qif = QIfProg(ClassicalCondition, QProg, QProg);
 
-C语言风格
-
-    .. code-block:: c
-
-        QIfProg qif = CreateIfProg(ClassicalCondition, QProg);
-        QIfProg qif = CreateIfProg(ClassicalCondition, QProg, QProg);
-
-        QIfProg qif = createIfProg(ClassicalCondition, QProg);
-        QIfProg qif = createIfProg(ClassicalCondition, QProg, QProg);
 
 上述函数需要提供两种类型参数，即ClassicalCondition与QProg，
 当传入1个QProg参数时，QProg表示正确分支，当传入2个QProg参数时，第一个表示正确分支，第二个表示错误分支
@@ -39,7 +30,7 @@ C语言风格
 
     .. code-block:: c
 
-        QIfProg qif = createIfProg(ClassicalCondition, QProg, QProg);
+        QIfProg qif = QIfProg(ClassicalCondition, QProg, QProg);
         QNode* true_branch  = qif.getTrueBranch();
         QNode* false_branch = qif.getFalseBranch();
 
@@ -47,13 +38,13 @@ C语言风格
 
     .. code-block:: c
 
-        QIfProg qif = createIfProg(ClassicalCondition, QProg, QProg);
+        QIfProg qif = QIfProg(ClassicalCondition, QProg, QProg);
         ClassicalCondition cc = qif.getCExpr();
 
 或
     .. code-block:: c
 
-        QIfProg qif = createIfProg(ClassicalCondition, QProg, QProg);
+        QIfProg qif = QIfProg(ClassicalCondition, QProg, QProg);
         ClassicalCondition cc = qif.getClassicalCondition();
 
 实例
@@ -65,7 +56,7 @@ C语言风格
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
             init();
             QProg prog;
@@ -79,11 +70,10 @@ C语言风格
             
             // 构建QIf正确分支以及错误分支
             branch_true << H(qvec[cvec[0]]) << (cvec[0]=cvec[0]+1);
-            branch_false << H(qvec[0]) << CNOT(qvec[0],qvec[1]) 
-                         << CNOT(qvec[1],qvec[2]);
+            branch_false << H(qvec[0]) << CNOT(qvec[0],qvec[1]) << CNOT(qvec[1],qvec[2]);
 
             // 构建QIf
-            auto qif = createIfProg(cvec[1]>5, branch_true, branch_false);
+            auto qif = QIfProg(cvec[1]>5, branch_true, branch_false);
 
             // QIf插入到量子程序中
             prog << qif;
@@ -113,7 +103,3 @@ C语言风格
         4, 0
         5, 0
         6, 0
-
-.. warning::
-
-    ``CreateIfProg``、 ``getCExpr`` 等在后续的版本中会被舍弃。

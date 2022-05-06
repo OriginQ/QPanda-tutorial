@@ -57,7 +57,7 @@ VariationalQuantumGate_CZ     VQG_CZ
 .. code-block:: cpp
 
     #include "QPanda.h"
-    USING_QPANDA
+    #include "Variational/var.h"
 
     int main()
     {

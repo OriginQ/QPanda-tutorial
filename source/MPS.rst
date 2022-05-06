@@ -128,13 +128,13 @@
                 auto measure_result = qvm.runWithConfiguration(prog, clist, 1000);
                 for (auto val : measure_result)
                 {
-                    std::cout << val.first << " : " << val.second << std::endl;
+                    cout << val.first << " : " << val.second << endl;
                 }
 
                 auto pmeasure_result = qvm.probRunDict(prog, qlist, -1);
                 for (auto val : pmeasure_result)
                 {
-                    std::cout << val.first << " : " << val.second << std::endl;
+                    cout << val.first << " : " << val.second << endl;
                 }
 
                 qvm.finalize();

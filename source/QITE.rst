@@ -180,7 +180,7 @@ QPanda-2.0中QITE算法相关代码是一个类，因而下面将介绍所有相
    #include "QPanda.h"
    using namespace QPanda;
 
-   int main()
+   int main(void)
    {
       std::vector<std::vector<double>> node7graph{
         // A  B  C  D  E  F  G

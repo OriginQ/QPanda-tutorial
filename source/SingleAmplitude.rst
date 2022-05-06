@@ -108,11 +108,11 @@ QPanda2中设计了 ``SingleAmplitudeQVM`` 类用于运行单振幅模拟量子�
             // 第四个就是quickBB优化的最大运行时间，默认5s
             qvm->run(prog, qv);
             qvm->run(prog);
-            std::cout << qvm->pMeasureBinindex("0001000000") << std::endl;
+            cout << qvm->pMeasureBinindex("0001000000") << endl;
 
             // pMeasureDecindex : 获取对应（10进制）量子态概率
             qvm->run(prog, qv);
-            std::cout << qvm->pMeasureDecindex("1") << std::endl;
+            cout << qvm->pMeasureDecindex("1") << endl;
 
             // getProbDict 获取对应量子比特所有量子态（如果申请比特数超过30， 该接口不提供使用）
             qvm->run(prog, qv);

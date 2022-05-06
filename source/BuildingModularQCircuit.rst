@@ -27,7 +27,8 @@ QPanda中最常见的做法是用C++函数来定义一个量子线路模块。�
 
 
 .. image:: images/QCircuit_cir.png
-    :align: center   
+    :align: center
+	:width: 350
 
 
 Qubit分配（qAlloc）与映射

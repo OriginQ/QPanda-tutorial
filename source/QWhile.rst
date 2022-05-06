@@ -18,15 +18,6 @@ C++风格
 
         QWhileProg qwile = QWhileProg(ClassicalCondition, QProg);
 
-C语言风格
-
-    .. code-block:: c
-
-        QWhileProg qwile = CreateWhileProg(ClassicalCondition, QProg);
-
-        QWhileProg qwile = createWhileProg(ClassicalCondition, QProg);
-
-
 上述函数需要提供两个参数，即ClassicalCondition(量子表达式)与QProg(量子程序)
 
 .. note:: 由于QNode*、 shared_ptr<QNode>、QCircuit、QIfProg、QWhileProg、QGate、QMeasure、ClassicalCondition可以隐式转换为QProg，
@@ -36,21 +27,21 @@ C语言风格
 
     .. code-block:: c
 
-        QWhileProg qwhile = createWhileProg(ClassicalCondition, QProg);
+        QWhileProg qwhile = QWhileProg(ClassicalCondition, QProg);
         QNode* true_branch = qwhile.getTrueBranch();
 
 也可以获取量子表达式
 
     .. code-block:: c
 
-        QWhileProg qwhile = createWhileProg(ClassicalCondition, QProg);
+        QWhileProg qwhile = QWhileProg(ClassicalCondition, QProg);
         ClassicalCondition cc = qwhile.getCExpr();
 
 或
 
     .. code-block:: c
 
-        QWhileProg qwhile = createWhileProg(ClassicalCondition, QProg);
+        QWhileProg qwhile = QWhileProg(ClassicalCondition, QProg);
         ClassicalCondition cc = qwhile.getClassicalCondition();
 
 具体的操作流程可以参考下方示例
@@ -64,7 +55,7 @@ C语言风格
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
             init();
             QProg prog;
@@ -74,11 +65,10 @@ C语言风格
 
             // 构建QWhile的循环分支
             QProg prog_in;
-            prog_in << BARRIER(qvec) << cvec[0] << H(qvec[cvec[0]]) 
-                    << (cvec[0] = cvec[0]+1);
+            prog_in << cvec[0] << H(qvec[cvec[0]]) << (cvec[0] = cvec[0]+1);
             
             // 构建QWhile
-            auto qwhile = createWhileProg(cvec[0]<3, prog_in);
+            auto qwhile = QWhileProg(cvec[0]<3, prog_in);
 
             // QWhile插入到量子程序中
             prog << qwhile;
@@ -95,7 +85,7 @@ C语言风格
             finalize();
             return 0;
         }
-        
+
 运行结果：
 
     .. code-block:: c
@@ -108,7 +98,3 @@ C语言风格
         5, 0.125
         6, 0.125
         7, 0.125
-
-.. warning::
-
-    ``CreateQWhile``、 ``getCExpr`` 等在后续的版本中会被舍弃。

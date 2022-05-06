@@ -74,29 +74,29 @@ QPanda接口函数
     #include "QPanda.h"
     using namespace QPanda;
 
-    int main()
+    int main(void)
     {
-        auto qvm = initQuantumMachine(CPU);
+        auto qvm = CPUQVM();
+        qvm.init();
         // 申请寄存器并初始化
-        QVec q = qvm->qAllocMany(3);
+        QVec q = qvm.qAllocMany(3);
         // 基于已有QVec定义
         QVec qubits = { q[0],q[1] };
 
         // 构建量子线路
-        auto prog = createEmptyQProg();
+        auto prog = QProg();
         prog << H(q[0])
             << H(q[1])
             << H(q[0]).dagger()         // 转置共轭
             << X(q[2]).control(qubits); // 受控
 
         // 以概率方法输出结果量子态的理论值（并非测量）
-        auto result = probRunDict(prog, q);
-        destroyQuantumMachine(qvm);
+        auto result = qvm.probRunDict(prog, q);
 
         // 输出结果
         for (auto aiter : result)
         {
-            std::cout << aiter.first << " : " << aiter.second << std::endl;
+            cout << aiter.first << " : " << aiter.second << endl;
         }
 
         return 0;
