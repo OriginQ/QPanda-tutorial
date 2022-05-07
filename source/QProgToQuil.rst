@@ -66,7 +66,7 @@
         USING_QPANDA
 
 
-        int main()
+        int main(void)
         {
             auto qvm = initQuantumMachine(QMachineType::CPU);
             auto qubits = qvm->qAllocMany(4);
@@ -96,7 +96,3 @@
         H 2
         RX(3.140000) 3
         MEASURE 0 [0]
-
-.. warning:: 
-        新增接口 ``convert_qprog_to_quil()`` ，与老版本接口 ``transformQProgToQuil()`` 功能相同。
-

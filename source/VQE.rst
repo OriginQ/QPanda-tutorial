@@ -187,10 +187,8 @@
 
 .. code-block:: cpp
     
-    #include "QPanda.h"
     #include "VQE/VQE.h"
     #include "Optimizer/AbstractOptimizer.h"
-    USING_QPANDA
 
     int main()
     {

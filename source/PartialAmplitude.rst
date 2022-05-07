@@ -91,8 +91,8 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
             machine->run(prog);
 
             // 打印特定量子态分量的振幅
-            std::cout << machine->pmeasure_dec_index("0") << std::endl;
-            std::cout << machine->pmeasure_dec_index("1") << std::endl;
+            cout << machine->pmeasure_dec_index("0") << endl;
+            cout << machine->pmeasure_dec_index("1") << endl;
 
             machine->finalize();
         }
@@ -110,7 +110,7 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
             auto res = machine->getProbDict(qvec,6);
             for (auto val :res)
             {
-                std::cout << val.first << " : " << val.second << std::endl;
+                std::cout << val.first << " : " << val.second << endl;
             }
 
         结果输出如下，每个结果的前半部分表示量子态的二进制形式，后面的值表示概率：
@@ -159,7 +159,7 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
 
             for (auto val : res)
             {
-                std::cout << val.first << " : " << val.second << std::endl;
+                std::cout << val.first << " : " << val.second << endl;
             }
 
         结果输出如下：

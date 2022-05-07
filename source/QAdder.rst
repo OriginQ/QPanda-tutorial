@@ -55,33 +55,33 @@ is_carry为辅助比特，用于保存最终结果的进位项；返回值为量
 
     int main(int argc, char **argv) {
 
-	    auto qvm = initQuantumMachine();
+        auto qvm = initQuantumMachine();
 
-	    auto a = qvm->allocateQubits(3);
-	    auto b = qvm->allocateQubits(3);
-	    Qubit *c = qvm->allocateQubit();
-	    Qubit *is_carry = qvm->allocateQubit();
-	    QProg prog;
-	    prog << X(a[0]) << X(a[1])
-		    << X(b[0]) << X(b[1]) << X(b[2])
-		    << QAdder(a, b, c, is_carry);
-		    //<< isCarry(a, b, c, is_carry);
-		    //<< QAdderIgnoreCarry(a, b, c);
+        auto a = qvm->allocateQubits(3);
+        auto b = qvm->allocateQubits(3);
+        Qubit *c = qvm->allocateQubit();
+        Qubit *is_carry = qvm->allocateQubit();
+        QProg prog;
+        prog << X(a[0]) << X(a[1])
+            << X(b[0]) << X(b[1]) << X(b[2])
+            << QAdder(a, b, c, is_carry);
+            //<< isCarry(a, b, c, is_carry);
+            //<< QAdderIgnoreCarry(a, b, c);
 
-	    qvm->directlyRun(prog);
-	    auto temp = dynamic_cast<IdealMachineInterface *>(qvm);
+        qvm->directlyRun(prog);
+        auto temp = dynamic_cast<IdealMachineInterface *>(qvm);
 
-	    //auto result = temp->quickMeasure(b , 1000);
-	    //auto result = temp->quickMeasure({ is_carry }, 1000);
-	    auto result = temp->quickMeasure(a, 1000);
-	    for (auto &val : result)
-	    {
-	    	std::cout << val.first << ", " << val.second << std::endl;
-	    }
+        //auto result = temp->quickMeasure(b , 1000);
+        //auto result = temp->quickMeasure({ is_carry }, 1000);
+        auto result = temp->quickMeasure(a, 1000);
+        for (auto &val : result)
+        {
+            std::cout << val.first << ", " << val.second << std::endl;
+        }
 
-	    destroyQuantumMachine(qvm);
+        destroyQuantumMachine(qvm);
 
-	    system("pause");
+        system("pause");
         return 0;
     }
 

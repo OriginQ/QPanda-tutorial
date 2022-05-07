@@ -6,7 +6,7 @@
 量子测量是指通过外界对量子系统进行干扰来获取需要的信息，测量门使用的是蒙特卡洛方法的测量。在量子线路中用如下图标表示：
 
 .. image:: images/QGate_measure.png
-    :width: 65
+    :width: 50
 
 .. _api_introduction:
 
@@ -73,9 +73,10 @@
 
         int main(void)
         {
-            auto qvm = initQuantumMachine();
-            auto qubits = qvm->qAllocMany(4);
-            auto cbits = qvm->cAllocMany(4);
+            auto qvm = CPUQVM();
+            qvm.init();
+            auto qubits = qvm.qAllocMany(4);
+            auto cbits = qvm.cAllocMany(4);
 
             // 构建量子程序
             QProg prog;
@@ -86,16 +87,13 @@
                     << MeasureAll(qubits, cbits);
            
             // 量子程序运行1000次，并返回测量结果
-            auto result = runWithConfiguration(prog, cbits, 1000);
+            auto result = qvm.runWithConfiguration(prog, cbits, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val: result)
             {
                 std::cout << val.first << ", " << val.second << std::endl;
             }
-
-            qvm->finalize();
-            delete qvm;
 
             return 0;
         }

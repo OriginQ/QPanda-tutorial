@@ -28,7 +28,7 @@
 
 .. code-block:: cpp
 
-    #include "Operator/FermionOperator.h"
+    #include "Components/Operator/FermionOperator.h"
 
     int main()
     {

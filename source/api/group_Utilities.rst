@@ -1122,11 +1122,11 @@ std::string OriginIR instruction set
 
 .. ref-code-block:: cpp
 
-	  init(QuantumMachine_type::CPU);
-	
-	  auto qubit = qAllocMany(6);
-	  auto cbit  = cAllocMany(2);
-	  auto prog = CreateEmptyQProg();
+	  auto qvm = CPUQVM();
+	  qvm.init();
+	  auto qubit = qvm.qAllocMany(6);
+	  auto cbit  = qvm.cAllocMany(2);
+	  auto prog = QProg();
 	
 	  prog << CZ(qubit[0], qubit[2]) << H(qubit[1]) << CNOT(qubit[1], qubit[2])
 	  << RX(qubit[0],pi/2) << Measure(qubit[1],cbit[1]);
@@ -2183,17 +2183,16 @@ Get quantum program clock cycle.
 .. rubric:: See also:
 
 .. ref-code-block:: cpp
-
-	init();
-	auto qubits = qAllocMany(4);
-	auto prog = CreateEmptyQProg();
+    auto qvm = CPUQVM();
+	qvm.init();
+	auto qubits = qvm.qAllocMany(4);
+	auto prog = QProg();
 	prog << H(qubits[0]) << CNOT(qubits[0], qubits[1])
 	        << iSWAP(qubits[1], qubits[2]) << RX(qubits[3], PI/4);
 	extern QuantumMachine* global_quantum_machine;
 	auto time = getQProgClockCycle(prog,global_quantum_machine );
 	std::cout << "clockCycle : " << time << std::endl;
 	
-	finalize();
 
 .. index:: pair: function; get_qprog_clock_cycle
 .. _doxid-group___utilities_1gaee357ef471dd4546550d5689ae97cd03:

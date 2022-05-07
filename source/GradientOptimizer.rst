@@ -56,8 +56,7 @@
 
 .. code-block:: cpp
 
-    #include "QPanda.h"
-    USING_QPANDA
+    #include "Variational/Optimizer.h"
 
     int main()
     {

@@ -18,18 +18,6 @@ C++风格
 
         QProg prog = QProg();
 
-C语言风格
-
-    .. code-block:: c
-
-        QProg prog = CreateEmptyQProg();
-
-或
-
-    .. code-block:: c
-
-        QProg prog = createEmptyQProg();
-
 QProg的构造函数还有以下几种：
 
 通过量子线路构造量子程序：
@@ -99,7 +87,7 @@ QProg的构造函数还有以下几种：
         auto gate = H(qubit);
         auto qif = QIfProg(cbit > 1, gate);
 
-构建QIf的第二个参数本来是要传入QProg的， 但由于QGate可以构造QProg， 在使用时传入参数QGate就会隐士转换为QProg，方便使用。
+构建QIf的第二个参数本来是要传入QProg的， 但由于QGate可以构造QProg， 在使用时传入参数QGate就会隐式转换为QProg，方便使用。
 
 你可以通过如下方式向QProg尾部填充节点
 
@@ -146,11 +134,12 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
         #include "QPanda.h"
         USING_QPANDA
 
-        int main()
+        int main(void)
         {
-            init();
-            auto qvec = qAllocMany(4);
-            auto cvec = cAllocMany(4);
+            auto qvm = CPUQVM();
+            qvm.init();
+            auto qvec = qvm.qAllocMany(4);
+            auto cvec = qvm.cAllocMany(4);
 
             QProg prog;
             
@@ -163,7 +152,7 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
                 << MeasureAll(qvec ,cvec);
 
             // 量子程序运行1000次，并返回多次测量的结果
-            auto result = runWithConfiguration(prog, cvec, 1000);
+            auto result = qvm.runWithConfiguration(prog, cvec, 1000);
 
             // 打印量子态在量子程序多次运行结果中出现的次数
             for (auto &val : result)
@@ -171,7 +160,6 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
                 std::cout << val.first << ", " << val.second << std::endl;
             }
 
-            finalize();
             return 0;
         }
 
@@ -179,12 +167,8 @@ QNode的类型有QGate，QPorg，QIf，Measure等等，QProg支持插入所有�
 运行结果：
 
     .. code-block:: c
-
-        1000, 242
-        1001, 277
-        1110, 254
-        1111, 227
-
-.. warning::
-
-    ``CreateEmptyQProg`` 接口在后续的版本中会被舍弃。
+        
+        0001, 254
+        0111, 261
+        1001, 257
+        1111, 228

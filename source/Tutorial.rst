@@ -255,7 +255,7 @@ Linux 和 MacOS
 使用
 ------------------
 
-我们接下来通过一个示例介绍QPanda-2的使用，下面的例子可以在量子计算机中构建量子纠缠态(``|00>+|11>``)，对其进行测量，重复制备1000次。
+我们接下来通过一个示例介绍QPanda-2的使用，下面的例子可以在量子计算机中构建量子纠缠态(|00>+|11>)，对其进行测量，重复制备1000次。
 预期的结果是约有50%的概率使测量结果分别在00或11上。
 
     .. code-block:: c
@@ -299,7 +299,7 @@ Linux 和 MacOS
     
             00 : 493 
             11 : 507
-    
+在linux下自己创建文件运行需要把QPandaConfig.json拷贝到运行程序路径下
 示例程序的编译方式与编译QPanda库的方式基本类似。我们在QPanda-2的github库中添加了 `Template <https://github.com/OriginQ/QPanda-2/tree/master/Template>`_ 文件夹，用于展示各个平台的使用案例。
 
 下面将简单介绍一下QPanda2在Windows、linux、MacOS下的使用教程：
@@ -315,6 +315,7 @@ visual studio 2017 下链接QPanda库需要配置QPanda的头文件地址和QPan
 1. 选择中GateTypeValidator项目,右键选中属性。
  
 .. image:: images/Properties.png
+    :align: center 
 
 2. 在设置visual studio 2017项目属性时，一定要注意配置管理器中的Release和Debug、及x64要与项目所选的相同（QPanda2不支持x86平台）。
 
@@ -336,7 +337,7 @@ visual studio 2017 下链接QPanda库需要配置QPanda的头文件地址和QPan
  .. image:: images/MT.png
     :align: center 
 
-5. 设置库目录 ,选中链接器 -> 常规 -> 附加库目录，只需要设置lib路径为：${QPanda的安装路径}/lib
+5. 设置库目录 ,选中链接器 -> 常规 -> 附加库目录，只需要设置lib路径卫：${QPanda的安装路径}/lib
  
  .. image:: images/LibPath.png
     :align: center 

@@ -203,7 +203,7 @@ QPanda2 quantum circuit and quantum program. :ref:`More...<details-group___quant
 	template <typename _Ty>
 	_Ty :ref:`QPanda::deepCopy<doxid-group___quantum_circuit_1ga5cbebca719de8665deb5b54a6a8dbcea>`(_Ty& node);
 
-	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::createEmptyQProg<doxid-group___quantum_circuit_1ga5af30111cb3b8e0c745cf36de80e2d8e>`();
+	:ref:`QProg<doxid-class_q_panda_1_1_q_prog>` :ref:`QPanda::QProg<doxid-group___quantum_circuit_1ga5af30111cb3b8e0c745cf36de80e2d8e>`();
 	:ref:`QReset<doxid-class_q_panda_1_1_q_reset>` :ref:`QPanda::Reset<doxid-group___quantum_circuit_1gaa7f97690f18c8da7fda06f3d9d2f13e9>`(:ref:`Qubit<doxid-class_q_panda_1_1_qubit>`*);
 	:ref:`QReset<doxid-class_q_panda_1_1_q_reset>` :ref:`QPanda::Reset<doxid-group___quantum_circuit_1ga2893f8349092dc09744ad95e0a6e9917>`(int qaddr);
 
@@ -2679,7 +2679,7 @@ deep copy interface for classess base on :ref:`QNode <doxid-class_q_panda_1_1_q_
 
 _Ty
 
-.. index:: pair: function; createEmptyQProg
+.. index:: pair: function; QProg
 .. _doxid-group___quantum_circuit_1ga5af30111cb3b8e0c745cf36de80e2d8e:
 
 .. ref-code-block:: cpp

@@ -33,7 +33,7 @@ MAJ量子线路的输入分别为前一位的进位值 :math:`c_i`、当前位�
 
 MAJ模块是为了实现获得进位，我们想要得到进位 :math:`c_{i+1}` ,也就是要从 :math:`a_i+b_i+c_i` 出发，判断 :math:`(a_i+b_i+c_i)/2`。
 
-在待加值中任选一个数 :math:`a_i` 对进位情况进行如下枚举，
+在待加值中任选一个数 :math:`a_i`对进位情况进行如下枚举，
 
 #. :math:`a_i=0`， :math:`c_i=[(a_i+b_i)\%2]*[(a_i+c_i)\%2]`；
 #. :math:`a_i=1`， :math:`c_i=([(a_i+b_i)\%2]*[(a_i+c_i)\%2]+1)\%2`；
@@ -266,7 +266,7 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
       QVec qvec2 = qvm->qAllocMany(4);
       QVec qvec3 = qvm->qAllocMany(4);
       auto cbit = qvm->cAlloc();
-      auto qcProg = CreateEmptyQProg();
+      auto qcProg = QProg();
 
       // 4/1=4
       qcProg << bind_data(4, qvec3);
@@ -294,7 +294,7 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
 
       for (auto aiter : result)
       {
-         std::cout << aiter.first << " : " << aiter.second << std::endl;
+         cout << aiter.first << " : " << aiter.second << endl;
       }
 
       return 0;

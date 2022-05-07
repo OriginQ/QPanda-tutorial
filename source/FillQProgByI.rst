@@ -1,5 +1,5 @@
 用I门填充QProg
-===============
+=================
 
 接口 ``fill_qprog_by_I`` 实现用I门填充QProg(量子程序)的功能。
 
@@ -11,7 +11,7 @@
     #include "QPanda.h"
     USING_QPANDA
 
-	int main()
+	int main(void)
 	{
 		auto qvm = initQuantumMachine(QMachineType::CPU);
 		auto q = qvm->qAllocMany(4);

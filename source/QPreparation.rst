@@ -57,41 +57,42 @@
 
 .. code-block:: c
 
-	#include "QPanda.h"
-	USING_QPANDA
+    #include "QPanda.h"
+    USING_QPANDA
 
-	int main()
-	{
-		auto qvm = initQuantumMachine(CPU);
-		QVec qvec = qvm->qAllocMany(3);
+    int main(void)
+    {
+        auto qvm = CPUQVM();
+        qvm.init();
+        QVec qvec = qvm.qAllocMany(3);
 
-		// 制备最大叠加态
-		auto prog = createEmptyQProg();
-		prog << applySingleGateToAll("H", qvec);
+        // 制备最大叠加态
+        auto prog = QProg();
+        prog << applySingleGateToAll("H", qvec);
 
-		// 以概率方法输出结果量子态的理论值（并非测量）
-		auto result = probRunDict(prog, qvec);
-		destroyQuantumMachine(qvm);
+        // 以概率方法输出结果量子态的理论值（并非测量）
+        auto result = qvm.probRunDict(prog, qvec);
+        destroyQuantumMachine(qvm);
 
-		// 输出结果
-		for (auto aiter : result)
-		{
-			std::cout << aiter.first << " : " << aiter.second << std::endl;
-		}
+        // 输出结果
+        for (auto aiter : result)
+        {
+            cout << aiter.first << " : " << aiter.second << endl;
+        }
 
-		return 0;
-	}
+        return 0;
+    }
 
 运行结果应当是以均匀概率1/8得到3比特空间中所有量子态：
 
 .. code-block:: c
 
-	000, 0.125
-	001, 0.125
-	010, 0.125
-	011, 0.125
-	100, 0.125
-	101, 0.125
-	110, 0.125
-	111, 0.125
+    000, 0.125
+    001, 0.125
+    010, 0.125
+    011, 0.125
+    100, 0.125
+    101, 0.125
+    110, 0.125
+    111, 0.125
         

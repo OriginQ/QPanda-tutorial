@@ -40,7 +40,7 @@ Hadamard Test的量子线路图结构简单，如下所示。
 .. math::
 
    \begin{aligned}
-   P_0= \frac{1}{4}\left \| (I+U)\left|\psi \right\rangle \right \|^2 \ 
+   P_0= \frac{1}{4}\left \| (I+U)(Q\left|{0} \right\rangle\left|\psi \right\rangle)| \right \|^2 \ 
    =\frac{1+Re(\left\langle\psi\left|U\right|\psi\right\rangle)}{2}, \
    P_1 = 1- P_0.
    \end{aligned}
@@ -61,27 +61,27 @@ Hadamard Test的一个代码实例如下：
     #include "QPanda.h"
     using namespace QPanda;
 
-    int main()
+    int main(void)
     {
-        auto qvm = initQuantumMachine(CPU);
+        auto qvm = CPUQVM();
+        qvm.init();
         // 申请寄存器并初始化
-        QVec cqv = qvm->qAllocMany(1);
-        QVec tqv = qvm->qAllocMany(1);
+        QVec cqv = qvm.qAllocMany(1);
+        QVec tqv = qvm.qAllocMany(1);
 
         // 构建Hadamard量子线路
-        auto prog = createEmptyQProg();
+        auto prog = QProg();
         prog << H(cqv[0]) << H(tqv[0])
             << H(tqv[0]).control(cqv[0]) 
             << H(cqv[0]);
 
         // 以概率方法输出结果量子态的理论值（并非测量）
-        auto result = probRunDict(prog, cqv);
-        destroyQuantumMachine(qvm);
+        auto result = qvm.probRunDict(prog, cqv);
 
         // 输出结果
         for (auto aiter : result)
         {
-            std::cout << aiter.first << " : " << aiter.second << std::endl;
+            cout << aiter.first << " : " << aiter.second << endl;
         }
 
         return 0;
@@ -147,22 +147,22 @@ SWAP Test的一个代码实例如下：
 
     int main(void)
     {
-        auto qvm = initQuantumMachine(CPU);
+        auto qvm = CPUQVM();
+        qvm.init();
         // 申请寄存器并初始化
-        QVec cqv = qvm->qAllocMany(1);
-        QVec tqv = qvm->qAllocMany(1);
-        QVec qvec = qvm->qAllocMany(1);
+        QVec cqv = qvm.qAllocMany(1);
+        QVec tqv = qvm.qAllocMany(1);
+        QVec qvec = qvm.qAllocMany(1);
 
         // 构建SWAP量子线路
-        auto prog = createEmptyQProg();
+        auto prog = QProg();
         prog << H(cqv[0]) << H(tqv[0])
             << X(qvec[0])
             << SWAP(tqv[0], qvec[0]).control(cqv[0])
             << H(cqv[0]);
 
         // 以概率方法输出结果量子态的理论值（并非测量）
-        auto result = probRunDict(prog, cqv);
-        destroyQuantumMachine(qvm);
+        auto result = qvm.probRunDict(prog, cqv);
 
         // 输出结果
         for (auto aiter : result)
@@ -178,5 +178,5 @@ SWAP Test的一个代码实例如下：
 
 .. code-block:: c
     
-	0:0.75
-	1:0.25
+    0:0.75
+    1:0.25
