@@ -189,8 +189,9 @@ Grover算法还有其他的接口函数，此处不作赘述。
 
    int main(void)
    {
-      auto machine = initQuantumMachine(CPU);
-      auto x = machine->allocateCBit();
+      auto machine=CPUQVM();
+      machine.init();
+      auto x = machine.allocateCBit();
       std::vector<SearchDataByUInt> search_space;
       search_space.push_back(8);
       search_space.push_back(7);
@@ -198,23 +199,21 @@ Grover算法还有其他的接口函数，此处不作赘述。
       search_space.push_back(0);
 
       QVec measure_qubits;
-      QProg grover_Qprog = build_grover_alg_prog(search_space, x == 6, machine, measure_qubits, 1);
+      QProg grover_Qprog = build_grover_alg_prog(search_space, x == 6, &machine, measure_qubits, 1);
 
       //measure
       printf("Strat pmeasure.\n");
-      auto result = probRunDict(grover_Qprog, measure_qubits);
+      auto result = machine.probRunDict(grover_Qprog, measure_qubits);
 
       printf("pmeasure result:\n");
-      for (auto aiter : result)
+      for (auto& aiter : result)
       {
-         if (0 == aiter.second) 
+         if (0 == aiter.second)
          {
-             continue;
+               continue;
          }
          printf("%s:%5f\n", aiter.first.c_str(), aiter.second);
       }
-
-      destroyQuantumMachine(machine);
 
       return 0;
    }

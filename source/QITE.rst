@@ -178,7 +178,7 @@ QPanda-2.0中QITE算法相关代码是一个类，因而下面将介绍所有相
 .. code-block:: c
 
    #include "QPanda.h"
-   using namespace QPanda;
+   USING_QPANDA
 
    int main(void)
    {
