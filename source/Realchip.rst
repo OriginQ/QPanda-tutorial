@@ -50,21 +50,11 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.real_chip_measure(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4，true,true);
+            auto result = QCM.real_chip_measure(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4,true,true);
             for (auto val : result)
             {
                 cout << val.first << " : " << val.second << endl;
             }
-
-            auto result2 = QCM.get_state_tomography_density(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            for (auto val : result2)
-            {
-                cout << val << endl;
-            }
-
-            auto result3 = QCM.get_state_fidelity(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            cout << result3 << endl;
-
 
             QCM.finalize();
             return;
@@ -113,8 +103,8 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.get_state_tomography_density(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            for (auto val : result2)
+            auto result = QCM.get_state_tomography_density(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4);
+            for (auto val : result)
             {
                 cout << val << endl;
             }
@@ -161,7 +151,7 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.get_state_fidelity(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
+            auto result = QCM.get_state_fidelity(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4);
             cout << result << endl;
 
             QCM.finalize();
