@@ -111,7 +111,7 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     QFT
     QPE
     QArithmetic
-    #HHL
+    HHL
     Grover
     Shor
     QITE

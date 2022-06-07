@@ -94,7 +94,7 @@ QPanda接口函数
         auto result = qvm.probRunDict(prog, q);
 
         // 输出结果
-        for (auto& aiter : result)
+        for (auto aiter : result)
         {
             cout << aiter.first << " : " << aiter.second << endl;
         }
