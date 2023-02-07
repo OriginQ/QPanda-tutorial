@@ -140,9 +140,7 @@ HHL算法的量子线路图如下所示
 .. image:: images/HHL_Alg.png
    :align: center
 
-基于QPanda-2.0的HHL算法实现代码较为冗长，此处不作详述，具体参见\
-`QPanda-2.0下HHL算法程序源码 <https://github.com/OriginQ/QPanda-2/tree/master/QAlg/HHL>`_ \ ，\
-此处仅介绍QPanda-2.0中提供的几个HHL算法调用接口。
+基于QPanda-2.0的HHL算法实现代码较为冗长，此处不作详述，此处仅介绍QPanda-2.0中提供的几个HHL算法调用接口。
 
 .. code-block:: c
 

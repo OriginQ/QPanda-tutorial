@@ -29,12 +29,13 @@
 基态编码
 ----
 
-基态编码[1] ``basic_encode(const QVec &qubit,const std::string& data)`` 即是将一个 :math:`n` 位的二进制字符串 :math:`x` 转换为一个具有 :math:`n` 个量子比特的系统的量子态 :math:`\left|x\right\rangle=\left|\psi\right\rangle` 其中 :math:`\left|\psi\right\rangle`为转换后的计算基态。
+基态编码[1] ``basic_encode(const QVec &qubit,const std::string& data)`` 即是将一个 :math:`n` 位的二进制字符串 :math:`x` 转换为一个具有 :math:`n` 个量子比特的系统的量子态 :math:`\left|x\right\rangle=\left|\psi\right\rangle` 。其中 :math:`\left|\psi\right\rangle`为转换后的计算基态。
 例如，当需要对一个长度为4的二进制字符串 :math:`1001` 编码时，得到的结果即为 :math:`\left|1001\right\rangle`。实现如下所示：
 
 .. code-block:: c
 
     #include "QPanda.h"
+    #include "QAlg/Encode/Encode.h"
     USING_QPANDA
     int main()
     {
@@ -65,8 +66,22 @@
 
     .. code-block:: c
 
-        1001: 1
-
+        0000:0
+        0001:0
+        0010:0
+        0011:0
+        0100:0
+        0101:0
+        0110:0
+        0111:0
+        1000:0
+        1001:1
+        1010:0
+        1011:0
+        1100:0
+        1101:0
+        1110:0
+        1111:0
 角度编码
 ----
 角度编码[1]即是利用旋转门 :math:`R_{x}` , :math:`R_{y}` , :math:`R_{z}` 的旋转角度进行对经典信息的编码。而在QPanda中，我们提供了两种角度编码，分别为经典角度编码 ``angle_encode(const QVec &qubit, const std::vector<double> &data, const GateType &gate_type=GateType::RY_GATE)`` 与密集角度编码 ``dense_angle_encode(const QVec &qubit, const std::vector<double> &data)`` 两种方式。
@@ -92,6 +107,7 @@
 .. code-block:: c
 
     #include "QPanda.h"
+    #include "QAlg/Encode/Encode.h"
     USING_QPANDA
     int main()
     {
@@ -123,7 +139,10 @@
 
     .. code-block:: c
 
-        11: 1
+        00:1.4058e-65
+        01:3.7494e-33
+        10:3.7494e-33
+        11:1
 
 可以发现，在经典角度编码中将经典数据向量 :math:`x` 向 :math:`y` 轴旋转了 :math:`\pi`。而密集角度编码结果运行结果则需要调用 ``qvm.directly_run`` 接口，运行结果如下
 
@@ -143,7 +162,7 @@
     \left|\psi\right\rangle=x_{0}|0\rangle+\cdots+x_{N-1}|N-1\rangle
     \end{aligned}
 
-然而，可以发现由于处于纯态的量子系统的迹是为1的，所以我们需要将数据进行归一化处理，这在我们的编码算法中是默认调用的，同时会产生一个归一化系数，最后通过调用Encode类中的 ``get_normalization_constant`` 接口获取。
+然而，可以发现由于处于纯态的量子系统的迹是为1的，所以我们会对数据进行归一化检测。
 同时，一个编码算法需要考虑的通常有三点，分别为编码线路的深度，宽度(qubit数量)，以及CNOT门的数量。因此，对应以上三点，在QPanda中也提供了不同的编码方法。同时根据数据形式的不同也可分为密集数据编码和稀疏数据编码。
 
 密集数据编码
@@ -170,7 +189,7 @@ Bottom-top振幅编码
 .. image:: images/Bottom-top.png
    :align: center
 
-其中，level1，与level2对应的量子逻辑门为受控SWAP门，其作用为交换辅助比特与输出比特量子态。
+其中，level1与level2对应的量子逻辑门为受控SWAP门，其作用为交换辅助比特与输出比特量子态。
 
 双向振幅编码
 ****
@@ -260,6 +279,7 @@ sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<
 .. code-block:: c
 
     #include "QPanda.h"
+    #include "QAlg/Encode/Encode.h"
     USING_QPANDA
     int main()
     {
@@ -269,14 +289,14 @@ sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<
         QProg prog;
         auto q = qvm->qAllocMany(3);
         Encode encode_b;
-        std::vector<double>data{0, 1/sqrt(3), 0, 0, 0, 0, 1/sqrt(3), 1/sqrt(3);
+        std::vector<double>data{ 0, 1 / sqrt(3), 0, 0, 0, 0, 1 / sqrt(3), 1 / sqrt(3) };
 
         encode_b.efficient_sparse(q, data);
         prog << encode_b.get_circuit() << BARRIER(q);
         QVec out_qubits = encode_b.get_out_qubits();
-        auto result=qvm.probRunDict(prog,out_qubits,-1);
-        for (auto &val : result) {
-            std::cout << "Amplitude" << ":" << val << std::endl;
+        auto result = qvm->probRunDict(prog,out_qubits,-1);
+        for (auto& val : result) {
+            std::cout << val.first << ":" << val.second << std::endl;
         }
         destroyQuantumMachine(qvm);
         return 0;
@@ -287,9 +307,14 @@ sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<
 
     .. code-block:: c
 
-        001: 0.333333333
-        110: 0.333333333
-        111: 0.333333333
+        000:0
+        001:0.333333
+        010:0
+        011:0
+        100:0
+        101:0
+        110:0.333333
+        111:0.333333
 
 .. note:: 
     ``amplitude_encode`` ， ``ds_quantum_state_preparation`` ， ``efficient_sparse`` ， ``sparse_isometry`` 不仅支持double类型数据编码，也支持complex类型数据编码。
@@ -327,6 +352,7 @@ IQP编码[7]是一种应用于量子机器学习的编码方法。将一个经�
 .. code-block:: c
 
     #include "QPanda.h"
+    #include "QAlg/Encode/Encode.h"
     USING_QPANDA
     int main()
     {

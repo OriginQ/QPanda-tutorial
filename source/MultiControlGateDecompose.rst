@@ -53,37 +53,37 @@
     int main()
     {
         CPUQVM machine;
-    machine.init();
+        machine.init();
 
-    auto q = machine.qAllocMany(6);
-    auto c = machine.cAllocMany(6);
+        auto q = machine.qAllocMany(6);
+        auto c = machine.cAllocMany(6);
 
-    /* 构造测试量子线路 */
-    QProg prog;
-    prog << H(q[1]) << H(q[2]) << Z(q[0]).control({ q[1],q[2] });
-    cout << "Src prog:" << prog << endl;
+        /* 构造测试量子线路 */
+        QProg prog;
+        prog << H(q[1]) << H(q[2]) << Z(q[0]).control({ q[1],q[2] });
+        cout << "Src prog:" << prog << endl;
 
-    /* 获取原始量子线路矩阵 */
-    const auto mat_1 = getCircuitMatrix(prog);
+        /* 获取原始量子线路矩阵 */
+        const auto mat_1 = getCircuitMatrix(prog);
 
-    /* 执行多控门分解操作 */
-    decompose_multiple_control_qgate(prog, &machine);
-    cout << "after decompose_multiple_control_qgate prog:" << prog << endl;
+        /* 执行多控门分解操作 */
+        decompose_multiple_control_qgate(prog, &machine);
+        cout << "after decompose_multiple_control_qgate prog:" << prog << endl;
 
-    /* 获取多控门分解后的量子线路矩阵 */
-    const auto mat_2 = getCircuitMatrix(prog);
+        /* 获取多控门分解后的量子线路矩阵 */
+        const auto mat_2 = getCircuitMatrix(prog);
 
-    /* 结果验证：
-     * 如果分解前后矩阵一致，则表示多控门被正确分解，否则，表示分解错误。
-     */
-    if (mat_1 == mat_2)
-    {
-        cout << "The multi-control gate was successfully decomposed." << endl;
-        return -1;
-    }
+        /* 结果验证：
+        * 如果分解前后矩阵一致，则表示多控门被正确分解，否则，表示分解错误。
+        */
+        if (mat_1 == mat_2)
+        {
+           cout << "The multi-control gate was successfully decomposed." << endl;
+           return -1;
+        }
     
-    cout << "Decompose error !" << endl;
-    return 0;
+        cout << "Decompose error !" << endl;
+        return 0;
     }
 
 上述实例运行的结果如下：

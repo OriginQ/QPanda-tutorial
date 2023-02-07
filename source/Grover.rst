@@ -118,7 +118,7 @@ Grover算法的时间复杂度为 :math:`O(\sqrt N)`，相对于经典算法的O
 (I-2\left|\psi\right\rangle \left\langle\psi\right|)` 在实际的编程实现和运算过程中计算量过大，因此需要考虑如何将其利用\
 基础的普适量子门简单实现累乘。
 
-将原问题转换到空间 :math:`\{\left|\omega\right\rangle,\left|\psi\right\rangle\}`上，不妨记 :math:`\left|\Omega\right|=N`，由
+将原问题转换到空间 :math:`\{\left|\omega\right\rangle,\left|\psi\right\rangle\}`上，不妨记 :math: `\left|\Omega\right|=N` ，由
 :math:`\left\langle\varphi\middle|\omega\right\rangle=\frac{1}{\sqrt N}, \left\langle\varphi\middle|\varphi\right\rangle=1` 可知
 
 .. math::
@@ -185,6 +185,7 @@ Grover算法还有其他的接口函数，此处不作赘述。
 .. code-block:: c
 
    #include "QPanda.h"
+   #include "QAlg/Grover/GroverAlgorithm.h"
    using namespace QPanda;
 
    int main(void)
@@ -222,4 +223,6 @@ Grover算法还有其他的接口函数，此处不作赘述。
 
 .. code-block:: c
 
-   10:1
+   Strat pmeasure.
+   pmeasure result:
+   10:1.000000

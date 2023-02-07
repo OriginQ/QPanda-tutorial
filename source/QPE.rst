@@ -123,8 +123,8 @@ QPE的量子线路图如下所示
       auto qvm = CPUQVM();
       qvm.init();
       // 申请寄存器并初始化
-      QVec qvec = qvm.qAllocMany(1);
-      QVec cqv = qvm.qAllocMany(2);
+      QVec qvec = qvm.qAllocMany(4);
+      QVec cqv = qvm.qAllocMany(4);
 
       // 提取特征值相位并合并到基向量
       auto prog = QProg();

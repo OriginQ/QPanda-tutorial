@@ -57,7 +57,7 @@
             }
 
             QCM.finalize();
-            return;
+            return 0;
         }
 
     上述过程需要注意的是， ``init`` 需要用户传入量子云平台用户验证标识token，可以从本源量子云平台个人信息下获取，具体见下方截图。
@@ -110,7 +110,7 @@
             }
 
             QCM.finalize();
-            return;
+            return 0;
         }
 
     输出结果如下：
