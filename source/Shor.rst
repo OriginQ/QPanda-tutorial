@@ -119,8 +119,8 @@ Shor分解算法的具体步骤如下：
 :math:`[\frac{2^ts}{r}]`，对实数 :math:`\frac{[\frac{2^ts}{r}]}{2^t}` 进行连续分数展开得到 :math:`\frac{s}{r}`，\
 自然可以获得分母 :math:`r`。
 
-此处 :math:`L=n={[\log}_2N]`，如果取 :math:`t=2n+1+[log(2+\frac{1}{2\varepsilon})]`，那么可以得到二进制展开精度为
-:math:`2n+1` 位的相位估计结果，且测量得到该结果的概率至少为 :math:`\frac{1-\varepsilon}{r}`。一般取 :math:`t=2n`。
+此处 :math:`L=n=\lceil\log_2N\rceil`，如果取 :math:`t=m+\lceil\log (2+\frac{1}{2\varepsilon}) \rceil`，那么可以得到二进制展开精度为 :math:`m` 位\
+的相位估计结果，且测量得到该结果的概率至少为 :math:`1-\varepsilon`。一般取 :math:`t=2n` 时结果的精度和成功率已能满足需求。
 
 量子线路图与参考代码
 ****
@@ -140,7 +140,7 @@ Shor算法的量子线路图如下所示
 
 输入参数为被质因数分解的大数，返还计算过程是否成功和分解后的质因子对。
 
-选取 :math:`N=15` ，
+选取 :math:`N=9` ，
 验证Shor的代码实例如下
 
 .. code-block:: c
@@ -150,15 +150,15 @@ Shor算法的量子线路图如下所示
 
    int main(void)
    {
-      int N = 15;
+      int N = 9;
       auto p = Shor_factorization(N);
       cout <<  p.first << "," << p.second.first << "," << p.second.second << endl;
 
       return 0;
    }
 
-对 :math:`15` 的质因子分解结果应该是 :math:`15=3*5` ，所以应当返还算法成功标志和两个质因子 :math:`3` 和 :math:`5` 。 
+对 :math:`9` 的质因子分解结果应该是 :math:`9=3*3` ，所以应当返还算法成功标志和两个质因子 :math:`3` 和 :math:`3` 。 
 
 .. code-block:: c
 
-   true, 3, 5
+   1, 3, 3

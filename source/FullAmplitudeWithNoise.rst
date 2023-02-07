@@ -33,8 +33,11 @@
 表示系统最终的状态，50%的概率处于 :math:`|0\rangle`, 50%的概率处于 :math:`|1\rangle`。
 多次重复测量得到的结果与态 :math:`\frac{1}{\sqrt 2}|0\rangle + \frac{1}{\sqrt 2}|1\rangle` 相同，但两者的量子态却完全不同。
 
-密度矩阵
+.. _密度矩阵介绍:
+
+密度矩阵介绍
 >>>>>>>>>>>>>
+
 对于混合态，态矢已难以完整的表示系统的量子态，一般使用密度矩阵来描述：
 
 .. math::
@@ -197,7 +200,7 @@ DEPHASING_KRAUS_OPERATOR是量子比特的退相位过程噪声模型，它的kr
 
 :math:`K_1 = \begin{bmatrix} \sqrt{1 - p} & 0 \\ 0 & \sqrt{1 - p} \end{bmatrix},   K_2 = \begin{bmatrix} \sqrt{p} & 0 \\ 0 & -\sqrt{p} \end{bmatrix}`
 
-需要一个噪声参数。
+需要一个浮点型噪声参数。
 
 DECOHERENCE_KRAUS_OPERATOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -210,7 +213,7 @@ DECOHERENCE_KRAUS_OPERATOR是退相干噪声模型，为上述两种噪声模型
 
 :math:`K_3 = K_{2_{damping}}K_{1_{dephasing}}, K_4 = K_{2_{damping}}K_{2_{dephasing}}`
 
-需要三个噪声参数。
+需要三个浮点型噪声参数。
 
 DEPOLARIZING_KRAUS_OPERATOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,7 +226,7 @@ DEPOLARIZING_KRAUS_OPERATOR去极化噪声模型，即单量子比特有一定�
 
 其中I、X、Y、Z分别代表其量子逻辑门对应的矩阵
 
-需要一个参数
+需要一个浮点型参数
 
 BITFLIP_KRAUS_OPERATOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -232,7 +235,7 @@ BITFLIP_KRAUS_OPERATOR是比特反转噪声模型，它的kraus算符和表示�
 
 :math:`K_1 = \begin{bmatrix} \sqrt{1 - p} & 0 \\ 0 & \sqrt{1 - p} \end{bmatrix}, K_2 = \begin{bmatrix} 0 & \sqrt{p} \\ \sqrt{p} & 0 \end{bmatrix}`
 
-需要一个噪声参数。
+需要一个浮点型噪声参数。
 
 BIT_PHASE_FLIP_OPRATOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,7 +244,7 @@ BIT_PHASE_FLIP_OPRATOR是比特-相位反转噪声模型，它的kraus算符和�
 
 :math:`K_1 = \begin{bmatrix} \sqrt{1 - p} & 0 \\ 0 & \sqrt{1 - p} \end{bmatrix}, K_2 = \begin{bmatrix} 0 & -i \times \sqrt{p} \\ i \times \sqrt{p} & 0 \end{bmatrix}`
 
-需要一个噪声参数。
+需要一个浮点型噪声参数。
 
 PHASE_DAMPING_OPRATOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -250,7 +253,7 @@ PHASE_DAMPING_OPRATOR是相位阻尼噪声模型，它的kraus算符和表示方
 
 :math:`K_1 = \begin{bmatrix} 1 & 0 \\ 0 & \sqrt{1 - p} \end{bmatrix}, K_2 = \begin{bmatrix} 0 & 0 \\ 0 & \sqrt{p} \end{bmatrix}`
 
-需要一个噪声参数。
+需要一个浮点型噪声参数。
 
 双门噪声模型
 >>>>>>>>>>>>>>
@@ -352,7 +355,7 @@ p0 表示重置到 :math:`|0\rangle` 的概率，p1表示重置到 :math:`|1\ran
 
     int main(void)
     {
-        CPUQVM qvm();
+        CPUQVM qvm;
         qvm.init();
         auto q = qvm.qAllocMany(4);
         auto c = qvm.cAllocMany(4);
@@ -367,7 +370,7 @@ p0 表示重置到 :math:`|0\rangle` 的概率，p1表示重置到 :math:`|1\ran
 
         double f0 = 0.9;
         double f1 = 0.85;
-        noise.add_readout_error({{f0, 1-f0}, {1-f1, f1}});
+        noise.set_readout_error({{f0, 1-f0}, {1-f1, f1}});
         noise.set_rotation_error(0.05);
 
         QProg prog;

@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'QPanda'
-copyright = '2019, OriginQC'
+copyright = '2023, OriginQC'
 author = 'OriginQC'
 
 # The short X.Y version
