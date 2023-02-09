@@ -1,3 +1,0 @@
-rst2pdf
-Sphinx
-sphinx_rtd_theme
