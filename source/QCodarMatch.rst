@@ -57,7 +57,7 @@
         auto r1 = qvm->pMeasureNoIndex(q);
 
         // 对srcprog进行拓扑匹配，得到匹配ORIGIN_VIRTUAL_ARCH拓扑结构的量子程序outprog
-        QProg  outprog = topology_match(srcprog, q, qvm, CNOT_GATE_METHOD, ORIGIN_VIRTUAL_ARCH);
+        QProg  outprog = topology_match(srcprog, q, qvm);
 
         // 对outprog进行概率测量，得到结果r2
         qvm->directlyRun(outprog);
@@ -165,7 +165,7 @@
         auto r1 = qvm->pMeasureNoIndex(q);
 
         // 对srcprog进行拓扑匹配，得到匹配SIMPLE_TYPE拓扑结构的量子程序outprog
-        QProg outprog = qcodar_match(srcprog, q, qvm, SIMPLE_TYPE, 2, 3, 5);
+        QProg outprog = qcodar_match_by_simple_type(srcprog, q, qvm, 2, 3, 5);
 
         // 对outprog进行概率测量，得到结果r2
         qvm->directlyRun(outprog);
@@ -228,3 +228,5 @@
     0.00794791
     0.0786762
     0.0463238
+
+.. note:: 运行量子程序匹配拓扑结构接口时，需要在本地运行目录下配置 ``QPandaConfig.json`` 文件，在配置文件中的 ``QuantumChipArch`` 字段对拓扑结构进行配置修改。

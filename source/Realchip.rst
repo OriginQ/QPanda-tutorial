@@ -34,7 +34,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
@@ -50,24 +50,14 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.real_chip_measure(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4，true,true);
+            auto result = QCM.real_chip_measure(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4,true,true);
             for (auto val : result)
             {
                 cout << val.first << " : " << val.second << endl;
             }
 
-            auto result2 = QCM.get_state_tomography_density(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            for (auto val : result2)
-            {
-                cout << val << endl;
-            }
-
-            auto result3 = QCM.get_state_fidelity(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            cout << result3 << endl;
-
-
             QCM.finalize();
-            return;
+            return 0;
         }
 
     上述过程需要注意的是， ``init`` 需要用户传入量子云平台用户验证标识token，可以从本源量子云平台个人信息下获取，具体见下方截图。
@@ -97,7 +87,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
@@ -113,14 +103,14 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.get_state_tomography_density(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
-            for (auto val : result2)
+            auto result = QCM.get_state_tomography_density(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4);
+            for (auto val : result)
             {
                 cout << val << endl;
             }
 
             QCM.finalize();
-            return;
+            return 0;
         }
 
     输出结果如下：
@@ -145,7 +135,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
@@ -161,7 +151,7 @@
                         << Measure(q[1], c[1]);
 
             //调用真实芯片计算接口，至少需要量子程序和测量次数两个参数，后面的三个默认参数依次为芯片类型，是否开启线路映射与线路优化功能。
-            auto result = QCM.get_state_fidelity(measure_prog, 1000, REAL_CHIP_TYPE::ORIGIN_WUYUAN_D4);
+            auto result = QCM.get_state_fidelity(measure_prog, 1000, RealChipType::ORIGIN_WUYUAN_D4);
             cout << result << endl;
 
             QCM.finalize();
