@@ -291,7 +291,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
             auto qvm = CPUQVM();
             qvm.init();
             auto prog = QProg();
-            auto cir = QCircuit();
+            auto cir = Circuit();
 
             auto q = qvm.qAllocMany(6);
             auto c = qvm.cAllocMany(6);
@@ -313,7 +313,7 @@ QPanda2提供了OriginIR转换工具接口 ``std::string convert_qprog_to_origin
                 << MeasureAll(q,c);
 
             // 量子程序转换QriginIR，并打印OriginIR
-            std::cout << convert_qprog_to_originir(prog,&qvm) << std::endl;
+            std::cout << convert_qprog_to_originir(prog,qvm) << std::endl;
 
             return 0;
         }

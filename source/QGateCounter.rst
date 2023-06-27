@@ -69,7 +69,7 @@
             size_t num = getQGateNum(prog);
 
             std::cout << "QGate number: " << num << std::endl;
-            return 0;
+            return;
         }
 
 运行结果：

@@ -80,7 +80,7 @@ QPanda2还提供了封装好的接口来实现量子程序序列化，上述的�
             std::string data_str(base64_data.begin(), base64_data.end());
             std::cout << data_str << std::endl;
 
-            destroyQuantumMachine(qvm);
+ 	        destroyQuantumMachine(qvm);
             return 0;
         }
         

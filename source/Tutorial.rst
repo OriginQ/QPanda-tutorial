@@ -81,7 +81,7 @@ Gitee
 Windows
 >>>>>>>>>>>
 
-在Windows平台下，QPanda-2推荐使用Visual Studio编译、安装。
+在Windows平台下，QPanda-2支持使用Visual Studio和MinGW编译、安装。
 
 Visual Studio 
 ****************
@@ -125,6 +125,42 @@ Visual Studio
 
 .. image:: images/CMakeInstall.png
     :align: center   
+
+MinGW
+**********************
+
+编译
+`````````
+
+使用MinGW编译QPanda-2，需要自行搭建CMake和MinGW环境，用户可自行在网上查询环境搭建教程。（注意： MinGW需要安装64位版本）
+
+CMake+MinGW的编译命令如下：
+
+1. 在QPanda-2根目录下创建build文件夹
+   
+2. 进入build文件夹，可以按住 ``Shift`` + ``鼠标右键`` ，然后选择 ``在此处打开命令窗口(w)`` 或 ``在此处打开PowerShell窗口(s)`` 快捷打开cmd或PowerShell。
+  
+.. image:: images/PowerShell.jpg
+    :align: center 
+
+3. 输入下面的命令：
+
+.. code-block:: c
+
+    cmake -G"MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=C:/QPanda2 -DFIND_CUDA=OFF -DUSE_CHEMIQ=OFF -DUSE_PYQPANDA=OFF ..
+    mingw32-make
+
+也可以根据需要，将一些可配置项设置为 ``ON``。
+
+.. image:: images/win_compile_MinGW.jpg
+    :align: center 
+
+.. image:: images/powershell2.jpg
+    :align: center 
+
+.. warning::
+
+    MinGW在支持cuda有还存在一些问题，因此使用MinGW不能将 ``DFIND_CUDA`` 设置为 ``ON`` 。
 
 安装
 `````````
@@ -335,6 +371,70 @@ visual studio 2017 下链接QPanda库需要配置QPanda的头文件地址和QPan
     
     .. image:: images/errorhandling.jpg
         :align: center
+
+MinGW
+********************
+
+1. 可以使用如下命令编译：
+
+.. code-block:: c
+
+    g++ test.cpp -std=c++14 -fopenmp -I{QPanda安装路径}/include/qpanda2/ -I{QPanda安装路径}/include/qpanda2/ThirdParty/ -L{QPanda安装路径}/lib/ -lQPanda2 -lantlr4 -o test
+
+.. image:: images/MinGW.jpg
+    :align: center
+ 
+示例运行结果如下：
+
+.. image:: images/MinGW2.jpg
+    :align: center
+
+2. 也可以使用MinGW+CMake使用如下命令编译：
+
+.. code-block:: c
+
+    cd test
+    mkdir -p build
+    cd build
+    cmake -G"MinGW Makefiles" -DQPANDA_INSTALL_DIR=C:/QPanda2/ ..
+    mingw32-make
+
+.. image:: images/mingw+cmake.jpg
+    :align: center
+
+.. image:: images/mingw+cmake2.jpg
+    :align: center 
+
+CMakelists配置为:
+
+.. code-block:: c
+
+    #指定 cmake 的最小版本
+    cmake_minimum_required(VERSION 3.1)
+    #设置项目名称
+    project(testQPanda)
+    # 定义自己的 cmake 模块所在的路径
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${QPANDA_INSTALL_DIR}/lib/cmake")
+    #指定C++版本
+    set(CMAKE_CXX_STANDARD 14)
+
+    #设置 C++ 编译选项
+    add_definitions("-w -DGTEST_USE_OWN_TR1_TUPLE=1")
+    set(CMAKE_BUILD_TYPE "Release")
+    set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -g -ggdb")
+    set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3")
+    add_compile_options(-fpermissive)
+
+    #重新定义目标链接库文件的存放位置
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+    #重新定义目标二进制可执行文件的存放位置
+    set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+    #引入外部依赖包
+    find_package(QPANDA REQUIRED)
+    include_directories(${QPANDA_INCLUDE_DIR})
+    # 生成可执行文件
+    add_executable(${PROJECT_NAME} test.cpp)
+    target_link_libraries(${PROJECT_NAME} ${QPANDA_LIBRARIES})
 
 
 CMake

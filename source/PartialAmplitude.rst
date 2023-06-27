@@ -100,6 +100,30 @@ QPanda2中设计了 ``PartialAmplitudeQVM`` 类用于运行部分振幅模拟量
 
 接口介绍如下：
 
+    - ``getProbDict(qvec,std::string)`` ,输入的第一个参数表示选取哪几个量子比特构成的量子态的概率，第二个参数表示选取结果的前多少项，使用示例如下：
+
+        .. code-block:: c
+
+            QVec qvec;
+            for_each(qlist.begin(), qlist.end(), [&](Qubit *val) { qvec.emplace_back(val); });
+
+            auto res = machine->getProbDict(qvec,6);
+            for (auto val :res)
+            {
+                std::cout << val.first << " : " << val.second << endl;
+            }
+
+        结果输出如下，每个结果的前半部分表示量子态的二进制形式，后面的值表示概率：
+
+        .. code-block:: c
+
+            0000000000 : 8.37758e-05
+            0000000001 : 8.37758e-05
+            0000000010 : 8.37758e-05
+            0000000011 : 8.37758e-05
+            0000000100 : 0.000488281
+            0000000101 : 0.000488281
+
     - ``pmeasure_bin_index(std::string)`` ,输入的参数表示指定需要测量的量子态二进制形式，使用示例如下：
 
         .. code-block:: c
