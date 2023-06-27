@@ -15,7 +15,7 @@
             QCloudMachine QCM;
 
             //通过传入当前用户的token来初始化
-            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082");
+            QCM.init("3B1AC640AAC248C6A7EE4E8D8537370D");
             auto qlist = QCM.allocateQubits(6);
             auto clist = QCM.allocateCBits(6);
 

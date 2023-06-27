@@ -5,6 +5,7 @@
 通过该功能模块，你可以解析通过QPanda2构建的量子程序，将其中包含的量子比特信息以及量子逻辑门操作信息提取出来，得到按固定格式存储的QASM指令集。
 
 .. _QASM介绍:
+.. _IBM Q Experience量子云平台: https://quantumexperience.ng.bluemix.net/qx/editor
 
 QASM介绍
 >>>>>>>>>>>>>>>
@@ -41,6 +42,8 @@ QASM(Quantum Assembly Language)是IBM公司提出的量子汇编语言，与 :re
  - OriginIR支持对量子逻辑门与量子线路施加控制操作，而QASM不支持，在对量子程序转化QASM指令集之前，会对其中包含的控制操作进行分解。
 
 
+关于QASM更多详细信息的介绍、使用与体验请参考 `IBM Q Experience量子云平台`_
+
 QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg &, QuantumMachine*)`` 该接口使用非常简单，具体可参考下方示例程序。
 
 实例
@@ -60,7 +63,7 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
             qvm.init();
 
             auto prog = QProg();
-            auto cir = QCircuit();
+            auto cir = Circuit();
 
             auto q = qvm.qAllocMany(6);
             auto c = qvm.cAllocMany(6);
@@ -79,7 +82,7 @@ QPanda2提供了QASM转换工具接口 ``std::string convert_qprog_to_qasm(QProg
                  <<MeasureAll(q,c);
 
             // 量子程序转换QASM，并打印QASM
-            std::cout << convert_qprog_to_qasm(prog, &qvm);
+            std::cout << convert_qprog_to_qasm(prog,qvm);
 
             return 0;
         }

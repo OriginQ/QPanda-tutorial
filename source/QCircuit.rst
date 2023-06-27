@@ -61,7 +61,7 @@ dagger的作用是复制一份当前的量子线路，并更新复制的量子�
             QCircuit cir;
             QCircuit cir_dagger = cir.dagger();
 
-除了转置共轭操作，您也可以为量子线路添加控制比特。QCircuit类型有两个成员函数用于添加控制比特：control、setControl。
+除了转置共轭操作，您也可以为量子线路添加控制比特.QCircuit类型有两个成员函数用于添加控制比特：control、setControl。
 
 setControl的作用是给当前的量子线路添加控制比特，例如：
 

@@ -38,7 +38,6 @@ e^{2\pi i\varphi}\left|\psi\right\rangle` 中的 :math:`\varphi`，\
    (C-U^{2^t})(a\left|0\right\rangle+b\left|1\right\rangle)\otimes\left|\psi\right\rangle \ 
    =(a\left|0\right\rangle+e^{2\pi i\varphi2^t}b\left|1\right\rangle)\otimes\left|\psi\right\rangle.
    \end{aligned}
-
 特征值相位 :math:`\varphi` 通过这种受控变换可以提取到振幅中。
 
 特征值相位由振幅转移到基向量
@@ -50,17 +49,15 @@ e^{2\pi i\varphi}\left|\psi\right\rangle` 中的 :math:`\varphi`，\
    (C-U^{2^0})\cdots(C-U^{2^n})\frac{1}{2^\frac{n}{2}}\otimes_{t=1}^n
    (\left|0\right\rangle+\left|1\right\rangle)= (\left|0\right\rangle+e^{2\pi i\varphi2^{1-1}}\
    \left|1\right\rangle)\cdots(\left|0\right\rangle+e^{2\pi i\varphi2^{n-1}}\left|1\right\rangle).
-
 此时辅助比特中的量子态形式与QFT的结果量子态相近，借助IQFT有如下结果：
 
 .. math::
    \begin{aligned}
    & QFT^{-1}\frac{1}{2^\frac{n}{2}}\otimes_{t=1}^n(\left|0\right\rangle+e^{2\pi i\varphi2^{t-1}}
-   \left|1\right\rangle) \\ & =QFT^{-1}\frac{1}{2^\frac{n}{2}}\Sigma_{k=0}^{2^n-1}e^{2\pi i
-   \varphi k}\left|k\right\rangle \\ & =\frac{1}{2^n}\Sigma_{k=0}^{2^n-1}\Sigma_{x=0}
+   \left|1\right\rangle) \\ & =QFT^{-1}\frac{1}{2^\frac{n}{2}}\mathrm{\Sigma}_{k=0}^{2^n-1}e^{2\pi i
+   \varphi k}\left|k\right\rangle \\ & =\frac{1}{2^n}\mathrm{\Sigma}_{k=0}^{2^n-1}\mathrm{\Sigma}_{x=0}
    ^{2^n-1}e^{-\frac{2\pi ik}{2^n}\left(x-2^n\varphi\right)}\left|x\right\rangle.
    \end{aligned}
-
 含特征值相位的基向量测量
 ++++
 
@@ -123,48 +120,35 @@ QPE的量子线路图如下所示
       auto qvm = CPUQVM();
       qvm.init();
       // 申请寄存器并初始化
-      QVec qvec = qvm.qAllocMany(4);
-      QVec cqv = qvm.qAllocMany(4);
+      QVec qvec = qvm.qAllocMany(1);
+      QVec cqv = qvm.qAllocMany(2);
 
       // 提取特征值相位并合并到基向量
       auto prog = QProg();
-      prog << H(cqv[0]) << H(cqv[1]) << H(cqv[2]) << H(cqv[3]);
-      prog << H(qvec[0]) << S(qvec[0]);
+      prog << H(cqv[0]) << H(cqv[1]);
+      prog << S(qvec[0]);
+      prog << RY(qvec[0], PI / 4).control(cqv[1]);
       prog << RY(qvec[0], PI / 4).control(cqv[0]);
-      prog << RY(qvec[0], PI / 2).control(cqv[1]);
-      prog << RY(qvec[0], PI).control(cqv[2]);
-      prog << RY(qvec[0], PI * 2).control(cqv[3]);
+      prog << RY(qvec[0], PI / 4).control(cqv[0]);
       prog << QFT(cqv).dagger();
 
       // 以概率方法输出结果量子态的理论值（并非测量）
       auto result = qvm.probRunDict(prog, cqv);
 
       // 输出结果
-      for (auto& aiter : result)
+      for (auto aiter : result)
       {
-         std::cout << aiter.first << " : " << aiter.second << std::endl;
+         cout << aiter.first << " : " << aiter.second << endl;
       }
 
       return 0;
    }
 
-由前文可知输出结果应当以接近 :math:`1` 的概率得到量子态 :math:`\left|1111\right\rangle` （即 :math:`-1` ）
+由前文可知输出结果应当以较大概率得到量子态 :math:`\left|0\right\rangle` 
 
 .. code-block:: c
 
-   0000 : 8.02794e-34
-   0001 : 2.62542e-34
-   0010 : 6.32458e-35
-   0011 : 5.83969e-33
-   0100 : 1.17169e-34
-   0101 : 3.98726e-34
-   0110 : 7.14677e-35
-   0111 : 1.35464e-32
-   1000 : 1.17169e-34
-   1001 : 2.62542e-34
-   1010 : 6.32458e-35
-   1011 : 1.13095e-33
-   1100 : 2.01916e-34
-   1101 : 3.98726e-34
-   1110 : 1.04109e-33
-   1111 : 1
+   000, 0.821067
+   001, 0.0732233
+   010, 0.0324864
+   011, 0.0732233

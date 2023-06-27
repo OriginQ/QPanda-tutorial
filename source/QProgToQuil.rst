@@ -91,9 +91,8 @@
 
     .. code-block:: c
 
-        DECLARE ro BIT[1]
         X 0
         Y 1
         H 2
         RX(3.140000) 3
-        MEASURE 0 ro[0]
+        MEASURE 0 [0]

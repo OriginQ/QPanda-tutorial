@@ -33,7 +33,7 @@ MAJ量子线路的输入分别为前一位的进位值 :math:`c_i`、当前位�
 
 MAJ模块是为了实现获得进位，我们想要得到进位 :math:`c_{i+1}` ,也就是要从 :math:`a_i+b_i+c_i` 出发，判断 :math:`(a_i+b_i+c_i)/2`。
 
-在待加值中任选一个数 :math:`a_i` 对进位情况进行如下枚举，
+在待加值中任选一个数 :math:`a_i`对进位情况进行如下枚举，
 
 #. :math:`a_i=0`， :math:`c_i=[(a_i+b_i)\%2]*[(a_i+c_i)\%2]`；
 #. :math:`a_i=1`， :math:`c_i=([(a_i+b_i)\%2]*[(a_i+c_i)\%2]+1)\%2`；
@@ -254,19 +254,18 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
 
    int main(void)
    {
-      auto qvm = CPUQVM();
-      qvm.init();
+      auto qvm = initQuantumMachine();
       
       // 为了节约比特数，辅助比特有大量互相借用
-      QVec qdivvec = qvm.qAllocMany(10);
+      QVec qdivvec = qvm->qAllocMany(10);
       QVec qmulvec = { qdivvec[0],qdivvec[1],qdivvec[2],qdivvec[3],
          qdivvec[4],qdivvec[5],qdivvec[9] };
       QVec qsubvec = { qmulvec[0],qmulvec[1],qmulvec[2],qmulvec[3],
          qmulvec[4],qmulvec[5] };
-      QVec qvec1 = qvm.qAllocMany(4);
-      QVec qvec2 = qvm.qAllocMany(4);
-      QVec qvec3 = qvm.qAllocMany(4);
-      auto cbit = qvm.cAlloc();
+      QVec qvec1 = qvm->qAllocMany(4);
+      QVec qvec2 = qvm->qAllocMany(4);
+      QVec qvec3 = qvm->qAllocMany(4);
+      auto cbit = qvm->cAlloc();
       auto qcProg = QProg();
 
       // 4/1=4
@@ -290,11 +289,12 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
       qcProg << QMul(qvec1, qvec2, qvec3, qmulvec);
       qcProg << bind_data(5, qvec2);
 
-      auto result = qvm.probRunDict(qcProg, qmulvec);
+      auto result = probRunDict(qcProg, qmulvec);
+      destroyQuantumMachine(qvm);
 
-      for (auto& aiter : result)
+      for (auto aiter : result)
       {
-         std::cout << aiter.first << " : " << aiter.second << std::endl;
+         cout << aiter.first << " : " << aiter.second << endl;
       }
 
       return 0;
@@ -305,4 +305,4 @@ k为辅助比特，t或s为限制QWhile循环次数的经典比特或。
 
 .. code-block:: c
     
-    0001010 : 1
+    10:1

@@ -111,6 +111,27 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
         int shots = 1000;
         qvm->runWithConfiguration(prog, cbits, shots);
 
+``runWithConfiguration`` 另个重载方法是为了以后的扩展，配置参数类型为rapidjson::Document， rapidjson::Document保存的是一个Json对象，由于现在只支持
+量子程序运行次数的配置， 其json数据结构为：
+
+    .. code-block:: json
+
+        {
+            "shots":1000              
+        }
+
+利用rapidjson库去得到rapidjson::Document对象， rapidjson的使用可以参照 `Rapidjson首页 <http://rapidjson.org/zh-cn/>`_ 。举个例子如下：
+
+    .. code-block:: c
+
+        int shots = 1000;
+        rapidjson::Document doc;
+        doc.Parse("{}");
+        doc.AddMember("shots",
+            shots,
+            doc.GetAllocator());
+        qvm->runWithConfiguration(prog, cbits, doc);
+
 如果想得到量子程序运行之后各个量子态的振幅值，可以调用 ``getQState`` 函数获得：
 
     .. code-block:: c
@@ -160,9 +181,9 @@ QPanda2中在构造量子虚拟机时有以下几种方式：
     .. code-block:: c
 
         0000, 498
-        0001, 502
+        1000, 502
 
-.. note:: 这个量子程序的运行结果是不确定的，但其 ``0000`` 和 ``0001`` 对应的值都应该在500左右。
+.. note:: 这个量子程序的运行结果是不确定的，但其 ``0000`` 和 ``1000`` 对应的值都应该在500左右。
 
 实例2
 ------------------

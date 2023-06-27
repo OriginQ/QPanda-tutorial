@@ -89,7 +89,7 @@ HHL算法相对于经典算法有着指数级的加速，但经典算法可以�
 .. math::
    \begin{aligned}
    CR(k)(\left|a\right\rangle\left|j\right\rangle)=\left\{\begin{matrix}
-   RY(2\arcsin{\frac{C}{k}})\left|a\right\rangle\left|k\right\rangle,j=k,\\ 
+   RY(\arccos{\frac{C}{k}})\left|a\right\rangle\left|k\right\rangle,j=k,\\ 
    \left|a\right\rangle\left|j\right\rangle,j\neq k,
    \end{matrix}\right.
    \end{aligned}
@@ -99,7 +99,7 @@ HHL算法相对于经典算法有着指数级的加速，但经典算法可以�
 
 .. math::
    \begin{aligned}
-   (\prod (CR(k)\otimes I))\sum^{N-1}_{j=0}b_j\left|0\right\rangle\left|\widetilde{\lambda_j}\right\rangle
+   (\prod (CR(k)\otimes I))\sum_{N-1}^{j=0}b_j\left|0\right\rangle\left|\widetilde{\lambda_j}\right\rangle
    \left|u_j\right\rangle=\sum_{j=0}^{N-1}{(\sqrt{1-\frac{C^2}{{\widetilde{\lambda_j}}^2}}\left|0\right\rangle
    +\frac{C}{\widetilde{\lambda_j}}\left|1\right\rangle)b_j\left|\widetilde{\lambda_j}\right\rangle\left|u_j\right\rangle}.
    \end{aligned}
@@ -140,43 +140,68 @@ HHL算法的量子线路图如下所示
 .. image:: images/HHL_Alg.png
    :align: center
 
-基于QPanda-2.0的HHL算法实现代码较为冗长，此处不作详述，此处仅介绍QPanda-2.0中提供的几个HHL算法调用接口。
+基于QPanda-2.0的HHL算法实现代码较为冗长，此处不作详述，具体参见\
+`QPanda-2.0下HHL算法程序源码 <https://github.com/OriginQ/QPanda-2/tree/master/QAlg/HHL>`_ \ ，\
+此处仅介绍QPanda-2.0中提供的几个HHL算法调用接口。
 
 .. code-block:: c
 
-   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm, const uint32_t precision_cnt = 0);
-   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b, const uint32_t precision_cnt = 0);  
+   QCircuit build_HHL_circuit(const QStat& A, const std::vector<double>& b, QuantumMachine *qvm);
+   QStat HHL_solve_linear_equations(const QStat& A, const std::vector<double>& b);  
 
 第一个函数接口用于得到HHL算法对应的量子线路，第二个函数接口则可以输入QStat格式的矩阵和右端项，返还解向量。
-目前第一个函数接口返回的线路需要追加特殊后处理，得到的并不是直接求解的结果，一般推荐使用第二个函数接口HHL_solve_linear_equations。
 
 选取 :math:`A=\bigl(\begin{smallmatrix}
-1 & 0 \\ 
-0 & 1 \\  
-\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.6,0.8\end{pmatrix}^T` ，
-验证HHL的代码实例如下：
+3.75 & 2.25 & 1.25 &-0.75 \\ 
+2.25 &3.75  & 0.75 & -1.25\\ 
+1.25 & 0.75 & 3.75 &-2.25 \\ 
+-0.75 & -1.25 & -2.25 &3.75 
+\end{smallmatrix}\bigr), b=\begin{pmatrix} 0.5,0.5,0.5,0.5 \end{pmatrix}^T` ，
+验证HHL的代码实例如下
 
 .. code-block:: c
 
    #include "QPanda.h"
-   #include <Extensions\QAlg\HHL.h>
+   using namespace QPanda;
 
    int main(void)
    {
-      std::vector<double> b = { 0.6,0.8 };
-      QStat A = { 1,0,0,1 };
+      auto machine = initQuantumMachine(CPU);
+      auto prog = QProg();
 
-      auto result = HHL_solve_linear_equations(A, b);
+      QStat A = {
+      qcomplex_t(15.0 / 4.0, 0), qcomplex_t(9.0 / 4.0, 0), qcomplex_t(5.0 / 4.0, 0), qcomplex_t(-3.0 / 4.0, 0),
+      qcomplex_t(9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0),
+      qcomplex_t(5.0 / 4.0, 0), qcomplex_t(3.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0),
+      qcomplex_t(-3.0 / 4.0, 0), qcomplex_t(-5.0 / 4.0, 0), qcomplex_t(-9.0 / 4.0, 0), qcomplex_t(15.0 / 4.0, 0)
+      };
+
+      std::vector<double> b = { 0.5, 0.5, 0.5, 0.5 };
+
+      QStat result = HHL_solve_linear_equations(A, b);
+      int w = 0;
+      double coffe = sqrt(340);
       for (auto& val : result)
       {
-      cout << val << endl;
+         val *= coffe;
+         std::cout << val << " ";
+         if (++w == 2)
+         {
+               w = 0;
+               std::cout << std::endl;
+         }
       }
+      std::cout << std::endl;
+
       return 0;
    }
 
-输出结果应该和右端项向量一样是 :math:`[0.6,0.8]`，虚数项参数为0。因为误差会出现较小的扰动：
+由理论推导可以知道HHL算法对此问题求得的近似解会有较大误差，经典解为 :math:`\frac{1}{32}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，
+近似解为 :math:`\frac{1}{\sqrt{340}}\begin{pmatrix} -1,7,11,13 \end{pmatrix}^T`，因此输出结果应当如下
 
 .. code-block:: c
 
-	(0.6,0)
-	(0.8,0)
+   -0.0542326
+   0.379628
+   0.596559
+   0.705024

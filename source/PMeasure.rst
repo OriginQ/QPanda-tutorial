@@ -47,7 +47,7 @@ QPanda2提供了三种获得PMeasure结果的方式，其中有 ``probRunList`` 
         {
             auto qvm = CPUQVM();
             qvm.init();
-            auto qubits = qvm.qAllocMany(2);
+            auto qubits = qvm,qAllocMany(2);
 
             QProg prog;
             prog << H(qubits[0])
@@ -63,7 +63,7 @@ QPanda2提供了三种获得PMeasure结果的方式，其中有 ``probRunList`` 
 
             // 概率测量，并返回目标量子比特的概率测量结果，下标为十进制
             std::cout << "probRunTupleList: " << std::endl;
-            auto result2 = qvm.probRunTupleList(prog, qubits);
+            auto result2 = probRunTupleList(prog, qubits);
             for (auto &val: result2)
             {
                 std::cout << val.first << ", " << val.second << std::endl;

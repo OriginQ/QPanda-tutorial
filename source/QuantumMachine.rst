@@ -15,5 +15,3 @@
    SingleAmplitude
    PartialAmplitude
    MPS
-   DensityMatrix
-   Stabilizer

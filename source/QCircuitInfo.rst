@@ -18,7 +18,7 @@
     int main(void)
     {
         auto qvm = CPUQVM();
-        qvm.init();
+        avm.init()
         auto q = qvm.qAllocMany(2);
         auto c = qvm.cAllocMany(2);
 
@@ -95,7 +95,7 @@ CNOT逻辑门操作的是1,3号量子比特，而从图中可以看出1,3号量�
     int main(void)
     {
         auto qvm = CPUQVM();
-        qvm.init();
+        qvm.init()
         auto q = qvm.qAllocMany(4);
         auto c = qvm.cAllocMany(4);
         QProg prog;
