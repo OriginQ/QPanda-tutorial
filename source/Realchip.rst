@@ -34,7 +34,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
@@ -87,7 +87,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
@@ -135,7 +135,7 @@
             QCloudMachine QCM;;
 
             //通过传入当前用户的token来初始化
-            QCM.init("5075D2CF755640C99B586A3E10C73437", true);
+            QCM.init("302e020100301006072a8648ce3d020106052b8104001c041730150201010410634a5b6d0a2a9a2b03b9d7c17c57405f/13082", true);
             auto q = QCM.allocateQubits(6);
             auto c = QCM.allocateCBits(6);
 
