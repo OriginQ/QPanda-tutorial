@@ -252,10 +252,31 @@ Bottom-top振幅编码
 .. image:: images/double_sparse_decompostion.png
    :align: center
 
+矩阵乘积态(MPS)近似编码
+****
+ MPS近似编码[5] ``approx_mps_encode(const QVec &q, const vector<T>& data, const int &layers = 3, const int &step = 100)`` 是一种利用矩阵乘积态的低秩表达近似分布制备算法，可以通过一种较少的CNOT的门完成对分布的表达，
+ 并且这种表达是一种近邻接形式，因此可以直接作用于芯片，且双门个数的减少，也有利于增加分布制备的成功率，量子线路图如下所示。
+
+.. image:: images/MPS_circuit.png
+    :align: center
+
+可以发现该函数是一个模板函数，因此支持多种类型数据制备（float，double，complex），其中layer指的是使用矩阵乘积态近似的层数，step是指通过环境张量优化的迭代次数，环境张量的数学表达如下：
+
+.. math::
+    \begin{aligned}
+        \hat{\mathcal{F}}_m=\operatorname{Tr}_{\bar{U}_m}\left[\prod_{i=M}^{m+1} U_i\left|\psi_{\chi_{\max }}\right\rangle\left\langle 0^{\otimes N}\right| \prod_{j=1}^{m-1} U_j^{\dagger}\right]
+    \end{aligned}
+
+其中， :math:`\operatorname{Tr}_{\bar{U}_m}` 指的是不与 :math:`U_m` 相互作用的量子比特索引上的偏迹，环境张量 :math:`\hat{\mathcal{F}}_m` 则被表示为一个4x4的矩阵，在实际中可以通过从量子线路中移除 :math:`U_m` 并收缩剩余的张量来计算(见下图)，并同时始终保持MPS结构。
+最后，为了适配芯片的拓扑结构，该制备算法的 :math:`chi` 均为2。
+
+.. image:: images/MPS_tensor.png
+    :align: center
+
 sparse_isometry编码
 ****
 
-sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<double> &data)`` 不同于双稀疏量子态编码需要辅助比特去构建线路。 sparse_isometry编码首先通过将长度为 :math:`N` 稀疏数据向量中的非0元素 :math:`x` 
+sparse_isometry编码[6] ``sparse_isometry(const QVec &qubit, const std::vector<double> &data)`` 不同于双稀疏量子态编码需要辅助比特去构建线路。 sparse_isometry编码首先通过将长度为 :math:`N` 稀疏数据向量中的非0元素 :math:`x` 
 统一编码至前 :math:`\lceil log_2len(x) \rceil` 个量子比特上，后通过受控X门对其进行受控转化。其线路构建如下图所示：
 
 .. image:: images/sparse_isometry.png
@@ -267,7 +288,7 @@ sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<
 多项式稀疏量子态编码
 ****
 
-多项式稀疏量子态编码[6] ``efficient_sparse(const QVec &qubit, const std::vector<double> &data)`` 是一种稀疏数据向量中的非0元素个数与qubit个数成线性关系的稀疏数据编码方式。其线路编码深度为 :math:`O\left(|S|^{2} \log (|S|) n\right)` 。
+多项式稀疏量子态编码[7] ``efficient_sparse(const QVec &qubit, const std::vector<double> &data)`` 是一种稀疏数据向量中的非0元素个数与qubit个数成线性关系的稀疏数据编码方式。其线路编码深度为 :math:`O\left(|S|^{2} \log (|S|) n\right)` 。
 其中，:math:`|S|` 为非0元素个数，:math:`n` 为所需qubit个数，即为 :math:`\lceil log_2N \rceil` , :math:`N` 为稀疏数据长度。下面以编码 :math:`|x\rangle=1/\sqrt{3}(|001\rangle+|100\rangle+|111\rangle)` 为例，其线路图构建如下：
 
 .. image:: images/efficient_encode.png
@@ -317,12 +338,12 @@ sparse_isometry编码[5] ``sparse_isometry(const QVec &qubit, const std::vector<
         111:0.333333
 
 .. note:: 
-    ``amplitude_encode`` ， ``ds_quantum_state_preparation`` ， ``efficient_sparse`` ， ``sparse_isometry`` 不仅支持double类型数据编码，也支持complex类型数据编码。
+    ``amplitude_encode`` ， ``ds_quantum_state_preparation`` ，  ``approx_mps_encode`` ， ``efficient_sparse`` ， ``sparse_isometry`` 不仅支持double类型数据编码，也支持complex类型数据编码。
 
 IQP编码
 ----
 
-IQP编码[7]是一种应用于量子机器学习的编码方法。将一个经典数据x编码到
+IQP编码[8]是一种应用于量子机器学习的编码方法。将一个经典数据x编码到
 ::
 
     iqp_encode(const QVec &qubit, const std::vector<double> &data, const std::vector<std::pair<int, int>> &control_vector = {}, const bool &inverse=false, const int &repeats = 1)
@@ -346,6 +367,9 @@ IQP编码[7]是一种应用于量子机器学习的编码方法。将一个经�
 
 .. image:: images/RZZ.png
     :align: center
+
+
+
 
 下面我们以编码 :math:`data=[-1.3, 1.8, 2.6, -0.15]` 为例介绍：
 
@@ -413,6 +437,7 @@ IQP编码[7]是一种应用于量子机器学习的编码方法。将一个经�
     [2] Araujo I F, Park D K, Ludermir T B, et al. "Configurable sublinear circuits for quantum state preparation."[J]. arXiv preprint arXiv:2108.10182, 2021.
     [3] Ghosh K. "Encoding classical data into a quantum computer"[J]. arXiv preprint arXiv:2107.09155, 2021.
     [4] de Veras T M L, da Silva L D, da Silva A J. "Double sparse quantum state preparation"[J]. arXiv preprint arXiv:2108.13527, 2021.
-    [5] Malvetti E, Iten R, Colbeck R. "Quantum circuits for sparse isometries"[J]. Quantum, 2021, 5: 412.
-    [6] N. Gleinig and T. Hoefler, "An Efficient Algorithm for Sparse Quantum State Preparation," 2021 58th ACM/IEEE Design Automation Conference (DAC), 2021, pp. 433-438, doi: 10.1109/DAC18074.2021.9586240.
-    [7] Havlíček, Vojtěch, et al. "Supervised learning with quantum-enhanced feature spaces." Nature 567.7747 (2019): 209-212.
+    [5] Rudolph M S, Chen J, Miller J, et al. Decomposition of matrix product states into shallow quantum circuits[J]. arXiv preprint arXiv:2209.00595, 2022.
+    [6] Malvetti E, Iten R, Colbeck R. "Quantum circuits for sparse isometries"[J]. Quantum, 2021, 5: 412.
+    [7] N. Gleinig and T. Hoefler, "An Efficient Algorithm for Sparse Quantum State Preparation," 2021 58th ACM/IEEE Design Automation Conference (DAC), 2021, pp. 433-438, doi: 10.1109/DAC18074.2021.9586240.
+    [8] Havlíček, Vojtěch, et al. "Supervised learning with quantum-enhanced feature spaces." Nature 567.7747 (2019): 209-212.
