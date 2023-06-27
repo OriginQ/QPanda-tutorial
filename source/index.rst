@@ -26,6 +26,7 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     :maxdepth: 2
 
     Tutorial
+    ChangeLog
 
 .. toctree::
     :caption: 深入学习
@@ -52,9 +53,8 @@ QPanda 2是由本源量子开发的开源量子计算框架，它可以用于构
     QGateCounter
     QCircuitInfo
     DrawQProg
-    QuantumVolume
-    RandomizedBenchmarking
-    CrossEntropyBenchmarking
+    QuantumBenchmark
+
 
 .. toctree::
     :caption: 编译量子程序

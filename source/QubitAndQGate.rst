@@ -94,7 +94,7 @@ QPanda接口函数
         auto result = qvm.probRunDict(prog, q);
 
         // 输出结果
-        for (auto aiter : result)
+        for (auto& aiter : result)
         {
             cout << aiter.first << " : " << aiter.second << endl;
         }
@@ -106,7 +106,13 @@ QPanda接口函数
 
 .. code-block:: c
     
-    000:0.5
-    010:0.5
+    000 : 0.5
+    001 : 0
+    010 : 0.5
+    011 : 0
+    100 : 0
+    101 : 0
+    110 : 0
+    111 : 0
 
 以上就是量子比特和量子门的基本定义和在QPanda-2.0中的调用介绍。

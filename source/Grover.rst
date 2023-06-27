@@ -118,7 +118,7 @@ Grover算法的时间复杂度为 :math:`O(\sqrt N)`，相对于经典算法的O
 (I-2\left|\psi\right\rangle \left\langle\psi\right|)` 在实际的编程实现和运算过程中计算量过大，因此需要考虑如何将其利用\
 基础的普适量子门简单实现累乘。
 
-将原问题转换到空间 :math:`\{\left|\omega\right\rangle,\left|\psi\right\rangle\}`上，不妨记 :math:`\left|\Omega\right|=N`，由
+将原问题转换到空间 :math:`\{\left|\omega\right\rangle,\left|\psi\right\rangle\}`上，不妨记 :math: `\left|\Omega\right|=N` ，由
 :math:`\left\langle\varphi\middle|\omega\right\rangle=\frac{1}{\sqrt N}, \left\langle\varphi\middle|\varphi\right\rangle=1` 可知
 
 .. math::
@@ -185,12 +185,14 @@ Grover算法还有其他的接口函数，此处不作赘述。
 .. code-block:: c
 
    #include "QPanda.h"
+   #include "QAlg/Grover/GroverAlgorithm.h"
    using namespace QPanda;
 
    int main(void)
    {
-      auto machine = initQuantumMachine(CPU);
-      auto x = machine->allocateCBit();
+      auto machine=CPUQVM();
+      machine.init();
+      auto x = machine.allocateCBit();
       std::vector<SearchDataByUInt> search_space;
       search_space.push_back(8);
       search_space.push_back(7);
@@ -198,23 +200,21 @@ Grover算法还有其他的接口函数，此处不作赘述。
       search_space.push_back(0);
 
       QVec measure_qubits;
-      QProg grover_Qprog = build_grover_alg_prog(search_space, x == 6, machine, measure_qubits, 1);
+      QProg grover_Qprog = build_grover_alg_prog(search_space, x == 6, &machine, measure_qubits, 1);
 
       //measure
       printf("Strat pmeasure.\n");
-      auto result = probRunDict(grover_Qprog, measure_qubits);
+      auto result = machine.probRunDict(grover_Qprog, measure_qubits);
 
       printf("pmeasure result:\n");
-      for (auto aiter : result)
+      for (auto& aiter : result)
       {
-         if (0 == aiter.second) 
+         if (0 == aiter.second)
          {
-             continue;
+               continue;
          }
          printf("%s:%5f\n", aiter.first.c_str(), aiter.second);
       }
-
-      destroyQuantumMachine(machine);
 
       return 0;
    }
@@ -223,4 +223,6 @@ Grover算法还有其他的接口函数，此处不作赘述。
 
 .. code-block:: c
 
-   10:1
+   Strat pmeasure.
+   pmeasure result:
+   10:1.000000

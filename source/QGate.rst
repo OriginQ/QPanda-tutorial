@@ -102,6 +102,22 @@
    :width: 50px
    :height: 50px
 
+.. |RXX| image:: images/QGate_RXX.png
+   :width: 50px
+   :height: 50px
+
+.. |RYY| image:: images/QGate_RYY.png
+   :width: 50px
+   :height: 50px
+
+.. |RZZ| image:: images/QGate_RZZ.png
+   :width: 50px
+   :height: 50px
+
+.. |RZX| image:: images/QGate_RZX.png
+   :width: 50px
+   :height: 50px
+
 .. |Toffoli| image:: images/QGate_Toff.png
    :width: 50px
    :height: 50px
@@ -184,7 +200,7 @@
      - :math:`\begin{bmatrix} 1 & 0 & 0 & 0  \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & \exp(i\theta) \end{bmatrix}\quad`
    * - |iSWAP|                                                      
      - ``iSWAP``                 
-     - :math:`\begin{bmatrix} 1 & 0 & 0 & 0  \\ 0 & \cos(\theta) & -i×\sin(\theta) & 0 \\ 0 & -i×\sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\quad`
+     - :math:`\begin{bmatrix} 1 & 0 & 0 & 0  \\ 0 & \cos(\theta) & i×\sin(\theta) & 0 \\ 0 & i×\sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\quad`
    * - |SWAP|                                                      
      - ``SWAP``                  
      - :math:`\begin{bmatrix} 1 & 0 & 0 & 0  \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\quad`
@@ -194,6 +210,18 @@
    * - |CU|                                                        
      - ``CU``                    
      - :math:`\begin{bmatrix} 1 & 0 & 0 & 0  \\ 0 & 1 & 0 & 0 \\ 0 & 0 & u0 & u1 \\ 0 & 0 & u2 & u3 \end{bmatrix}\quad`
+   * - |RXX|                                                        
+     - ``RXX``
+     - :math:`\begin{bmatrix} \cos(\theta/2) & 0 & 0 & -i\sin(\theta/2)  \\ 0 & \cos(\theta/2) & -i\sin(\theta/2) & 0 \\ 0 & -i\sin(\theta/2) & \cos(\theta/2) & 0 \\ -i\sin(\theta/2) & 0 & 0 & \cos(\theta/2) \end{bmatrix}\quad`
+   * - |RYY|                                                        
+     - ``RYY``
+     - :math:`\begin{bmatrix} \cos(\theta/2) & 0 & 0 & i\sin(\theta/2)  \\ 0 & \cos(\theta/2) & -i\sin(\theta/2) & 0 \\ 0 & -i\sin(\theta/2) & \cos(\theta/2) & 0 \\ i\sin(\theta/2) & 0 & 0 & \cos(\theta/2) \end{bmatrix}\quad`
+   * - |RZZ|                                                        
+     - ``RZZ``
+     - :math:`\begin{bmatrix} \exp(-i\theta/2) & 0 & 0 & 0  \\ 0 & \exp(i\theta/2) & 0 & 0 \\ 0 & 0 & \exp(i\theta/2) & 0 \\ 0 & 0 & 0 & \exp(-i\theta/2) \end{bmatrix}\quad`
+   * - |RZX|                                                        
+     - ``RZX``
+     - :math:`\begin{bmatrix} \cos(\theta/2) & 0 & -i\sin(\theta/2) & 0  \\ 0 & \cos(\theta/2) & 0 & i\sin(\theta/2) \\ -i\sin(\theta/2) & 0 & \cos(\theta/2) & 0 \\ 0 & i\sin(\theta/2) & 0 & \cos(\theta/2) \end{bmatrix}\quad`
    * - |Toffoli|                                                    
      - ``Toffoli``               
      - :math:`\begin{bmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0  \\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1  \\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ \end{bmatrix}\quad`
