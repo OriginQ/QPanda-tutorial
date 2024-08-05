@@ -40,7 +40,6 @@ QAOA
 .. code-block:: cpp
 
     #include "QPanda.h"
-    #include "Operator/PauliOperator.h"
     #include "Variational/var.h"
     #include "Variational/expression.h"
     #include "Variational/utils.h"
@@ -127,7 +126,7 @@ QAOA
 
         QuantumMachine *machine = initQuantumMachine();
         QVec qlist;
-        for (int i = 0; i < op.getMaxIndex(); ++i)
+        for (int i = 0; i < op.getMaxIndex() + 1; ++i)
             qlist.push_back(machine->qAlloc());
 
         VQC vqc;
